@@ -187,20 +187,43 @@ def residual_moran(Y, eta_mean, edges):
     return float(np.mean(Is)), Is
 
 
-def variance_decomposition(idata, ind, has_cov, has_state, has_sp):
-    """Varianza de eta atribuible a factores / covariables / geografía / (resto=uniqueness)."""
+def variance_decomposition(idata, ind, rural, X, state):
+    """Descompone la varianza de eta_ij (por indicador) en las contribuciones aditivas del modelo,
+    usando las medias posteriores de cada término. Devuelve un DataFrame indicador x bloque con la
+    fracción de varianza atribuible a: factores latentes, ruralidad, cofactores, estado, método,
+    espacial, y uniqueness (sigma_j^2). Las fracciones suman ~1 por indicador."""
     post = idata.posterior
-    def comp_var(name):
-        return None  # placeholder; se calcula abajo con reconstrucción parcial si se desea
-    # descomposición simple sobre las contribuciones medias (aprox): varianza de cada término sumado
-    parts = {}
-    z = post["z"].mean(("chain", "draw")).values
-    Lam = post["Lam"].mean(("chain", "draw")).values
-    parts["factores"] = np.var(z @ Lam.T, axis=0)
-    if has_cov and "betaD" in post:
-        pass  # X no está en el idata; la descomposición completa se hace en el reporte con los datos
-    total = parts["factores"]
-    return {"var_factores_media": float(np.mean(parts["factores"]))}
+    N, J = len(rural), len(ind)
+    m = lambda v: post[v].mean(("chain", "draw")).values
+
+    z = m("z"); Lam = m("Lam")                          # (N,K),(J,K)
+    contrib = {"factores": z @ Lam.T}                   # (N,J)
+    if "beta_rural" in post:
+        contrib["ruralidad"] = rural[:, None] * m("beta_rural")[None, :]
+    if "betaD" in post:
+        contrib["cofactores"] = X @ m("betaD")
+    if "gamma" in post:                                 # gamma: (J,S) -> por municipio via state
+        gam = m("gamma"); contrib["estado"] = gam.T[state]
+    # bloques de método
+    meth = np.zeros((N, J)); IDX = {n: i for i, n in enumerate(ind)}
+    bi = 0
+    while f"mfac{bi}" in post:
+        mf = m(f"mfac{bi}"); lm = float(m(f"mload{bi}"))
+        for name in METHOD_BLOCKS[bi]:
+            meth[:, IDX[name]] += lm * mf
+        bi += 1
+    if meth.any():
+        contrib["metodo"] = meth
+    # espacial: si z ya incluye BYM2, su varianza estructurada está dentro de "factores";
+    # reportamos aparte la fracción espacial de z via rho para trazabilidad
+    var_by_block = {b: np.var(c, axis=0) for b, c in contrib.items()}   # (J,) por bloque
+    uniqueness = m("sigma") ** 2                                         # (J,)
+    var_by_block["uniqueness"] = uniqueness
+    total = np.sum(list(var_by_block.values()), axis=0)
+    frac = {b: v / total for b, v in var_by_block.items()}
+    df = pd.DataFrame(frac, index=ind)
+    df.index.name = "indicador"
+    return df
 
 
 def run_rung(rung, K, data, spatial, sampler, draws, tune, chains, seed, ref_loadings):
@@ -232,6 +255,10 @@ def run_rung(rung, K, data, spatial, sampler, draws, tune, chains, seed, ref_loa
                       columns=[f"{f}_mean" for f in facs] + [f"{f}_sd" for f in facs])
     zc.insert(0, "cvegeo", cvegeo)
     zc.to_csv(os.path.join(OUT, f"zscores_rung{rung}_K{K}.csv"), index=False)
+
+    # descomposición de varianza por bloque (indicador x bloque, fracciones que suman ~1)
+    vardec = variance_decomposition(idata, ind, rural, X, state)
+    vardec.to_csv(os.path.join(OUT, f"vardecomp_rung{rung}_K{K}.csv"))
 
     eta_mean = idata.posterior_predictive["Y"].mean(("chain", "draw")).values
     mI, _ = residual_moran(Y, eta_mean, edges)
