@@ -21,4 +21,4 @@ __pycache__/
 
 # Posteriores pesados de la escalera
 outputs/*.nc
-outputs/ladder_run.log
+outputs/*.log
