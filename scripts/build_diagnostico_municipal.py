@@ -46,6 +46,10 @@ def main():
     # señal/ruido por factor: |media|/sd — qué tan seguro es que el municipio se desvía
     for f in ["material", "educativo", "monetario"]:
         d[f"{f}_snr"] = d[f"{f}_mean"].abs() / d[f"{f}_sd"]
+    # ejes canónicos del modelo marginalizado convergido (representación oficial desde 2026-07-12)
+    can = pd.read_csv(os.path.join(OUT, "zscores_canonicos_rung3.csv"), dtype={"cvegeo": str})
+    can["cvegeo"] = can["cvegeo"].astype(str).str.zfill(5)
+    d = d.merge(can, on="cvegeo", how="left")
     d.to_parquet(os.path.join(PROC, "diagnostico_municipal_v1.parquet"), index=False)
     print("diagnostico_municipal_v1.parquet:", d.shape)
 

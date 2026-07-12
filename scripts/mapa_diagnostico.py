@@ -64,8 +64,8 @@ def main():
     fig, axes = plt.subplots(2, 2, figsize=(13, 10), facecolor=SURF)
     panels = [
         ("discordancia_obs", "(a) Discordancia observable (CONAPO − CONEVAL, logit-z)\nrojo = más marginado que pobre", DIV, True),
-        ("material_mean", "(b) z material residual, peldaño 3\n(privación no explicada por composición ni estado)", DIV, True),
-        ("material_sd", "(c) Incertidumbre del z material (sd posterior)\ndónde el dato municipal es menos concluyente", SEQ, False),
+        ("eje1_mean", "(b) Eje canónico 1: privación material-infraestructural residual\n(modelo marginalizado convergido, R-hat 1.003)", DIV, True),
+        ("eje1_sd", "(c) Incertidumbre del eje 1 (sd posterior)\ndónde el dato municipal es menos concluyente", SEQ, False),
         ("lisa", "(d) Régimen LISA de discordancia", None, False),
     ]
     for ax, (col, title, cmap, diverging) in zip(axes.flat, panels):

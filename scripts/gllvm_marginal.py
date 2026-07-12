@@ -149,6 +149,10 @@ def main():
     print(f"divergencias: {div} | BFMI min: {float(np.min(bfmi)):.2f}")
     print(f"ELPD-LOO: {float(az.loo(idata).elpd_loo):.1f}")
     idata.to_netcdf(os.path.join(OUT, f"idata_marginal_rung{a.rung}.nc"))
+    if a.rung == 3:
+        # persistir la matriz gamma (media posterior) — insumo de validaciones sin depender del .nc
+        gm = idata.posterior["gamma"].mean(("chain", "draw")).values
+        pd.DataFrame(gm, index=ind).to_csv(os.path.join(OUT, "gamma_marginal_rung3.csv"))
 
     if a.free:
         # ejes canónicos: eigen-descomposición de E[LamLam'] (convención documentada)
