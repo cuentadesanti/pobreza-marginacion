@@ -68,3 +68,13 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
   232 ciudades del ITER 2020 local (lat/lon DMS parseadas). Upgrade opcional: raster Malaria Atlas.
 - ⚠ BUG DE CLAVE: `cvegeo` se lee como int64 desde los zscores CSV (pierde el cero inicial);
   SIEMPRE `astype(str).str.zfill(5)` antes de cualquier join (asserts en los scripts).
+
+### Vista G — crimen organizado (Fase 1, 2026-07-12)
+- OCVED 2.0 (Osorio): https://github.com/javierosorio/OCVED_2.0 (OCVED_2.0.xlsx, 4 MB).
+  64,895 eventos diario-municipales 2000–2018 (⚠ el sitio anuncia 2019; el archivo termina
+  2018-12-31), actor_main/actor_sub, lat/lon, clave municipal (match 100% con la base).
+  Metodología Eventus ID (κ=0.70). Constructor: `scripts/build_vistaG.py <scratch>`.
+- ⚠ O = R × D: eventos documentados, NO censo ni control territorial; sin-registro ≠ ausencia.
+  Proxies de observabilidad en la misma tabla (internet_pct del ITER, dist_capital_km, etc.).
+- ACLED (2018+): REQUIERE cuenta gratuita — variables `ACLED_EMAIL`/`ACLED_KEY` pendientes.
+- Auditoría completa de 12 fuentes: `reports/auditoria_fuentes_crimen.md` + `outputs/g_fuentes_crimen.csv`.
