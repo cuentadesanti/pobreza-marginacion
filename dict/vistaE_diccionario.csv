@@ -14,3 +14,9 @@ inversion_publica,finanzas_mun_2020.parquet,Capítulo de inversión pública (ob
 dep_transferencias_pct,finanzas_mun_2020.parquet,(participaciones+aportaciones)/ingresos totales * 100,derivada,DERIVADA - numerador contiene FAIS,descriptivo / validación
 autonomia_fiscal_pct,finanzas_mun_2020.parquet,ingresos propios / ingresos totales * 100,derivada,DERIVADA,cofactor posible con análisis de sensibilidad
 *_pc,finanzas_mun_2020.parquet,Versiones per cápita (pob_conapo),derivada,DERIVADA,—
+ntl_mean,vistaF_satelital.parquet,radiancia nocturna media 2020 (NPP-VIIRS-like v2 500m),Harvard Dataverse YGIVCD,SATELITAL — proxy de actividad no causa de bienestar,lente Vista F
+ntl_pc,vistaF_satelital.parquet,radiancia total / población,derivada,DERIVADA,lente Vista F
+log_ntl,vistaF_satelital.parquet,log1p de radiancia media,derivada,DERIVADA,lente Vista F
+elev_mean,vistaF_satelital.parquet,elevación media GMTED2010 30arcseg,USGS GMTED2010,SATELITAL,lente Vista F
+tri_mean,vistaF_satelital.parquet,rugosidad del terreno TRI media,derivada de GMTED,DERIVADA,lente Vista F
+acc_km,vistaF_satelital.parquet,km a la localidad >=50k más cercana (232 ciudades ITER),derivada ITER 2020,DERIVADA (fallback tabular de accesibilidad),lente Vista F

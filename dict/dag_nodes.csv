@@ -50,3 +50,8 @@ formula_fais_t1,fórmula FAIS 2021+,politica,municipal,t+1,no,alimentada por la 
 fism_t1,FISM 2021+,politica,municipal,t+1,no,
 inversion_t1,inversión municipal 2021+,politica,municipal,t+1,no,
 masa_carencial_pre2013,masa carencial (fórmula FAIS 1998-2013),indice,municipal,t-2,no,constructo de la fórmula vieja: indicadores de carencia pre-2013 (educación drenaje electricidad piso; perfil marginación)
+actividad_economica,actividad económica local,latente,municipal,t,no,intensidad económica del territorio; no observada directamente
+viirs_ntl,luces nocturnas VIIRS 2020,satelital,municipal,t,no,radiancia anual NPP-VIIRS-like v2 (Chen et al.); PROXY OBSERVADO de actividad — no causa de bienestar
+elevacion,elevación media,satelital,municipal,t,no,GMTED2010 30 arcseg media municipal
+rugosidad,rugosidad del terreno (TRI),satelital,municipal,t,no,Terrain Ruggedness Index medio (Riley 1999) sobre GMTED
+acc_ciudad,distancia a ciudad ≥50k,satelital,municipal,t,no,km del centroide a la localidad ≥50k más cercana (ITER 2020)

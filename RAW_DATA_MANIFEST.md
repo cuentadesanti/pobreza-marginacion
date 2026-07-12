@@ -56,3 +56,15 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
 ## Nota de reproducibilidad
 - CVEGEO = clave de 5 dígitos (2 entidad + 3 municipio). Llave de cruce validada: CONAPO ∩ CONEVAL = 2,469 municipios, 0 huérfanos.
 - Indicadores en porcentaje transformados con logit tras corrección de continuidad: `p = (y + c)/(100 + 2c)`.
+
+### Vista F — lentes satelitales (2026-07-12)
+- NTL: NPP-VIIRS-like v2 anual 2020, 500 m (Chen et al.), Harvard Dataverse doi:10.7910/DVN/YGIVCD,
+  archivo `2020_Version2.zip` (id 13295279; EOG VNL v2.1 requiere OAuth — por eso el espejo).
+  Recortado a bbox MX antes de zonal stats (global = 10 GB).
+- DEM: GMTED2010 media 30 arcseg, tiles USGS `10N120W`, `10N090W`, `30N120W`
+  (⚠ el nombre del tile es la esquina INFERIOR-izquierda). TRI (Riley 1999) calculado en
+  `scripts/build_vistaF.py`.
+- Accesibilidad: distancia (EPSG:6372) del centroide municipal a la localidad ≥50k más cercana,
+  232 ciudades del ITER 2020 local (lat/lon DMS parseadas). Upgrade opcional: raster Malaria Atlas.
+- ⚠ BUG DE CLAVE: `cvegeo` se lee como int64 desde los zscores CSV (pierde el cero inicial);
+  SIEMPRE `astype(str).str.zfill(5)` antes de cualquier join (asserts en los scripts).

@@ -38,12 +38,13 @@ STYLE = {
     "retroalimentacion_politica": ("#e34948", "--", 1.5, 0.95),
 }
 ALLOWED = {
-    "causal_sustantivo": {("estructural", "latente"), ("estructural", "indicador")},
+    "causal_sustantivo": {("estructural", "latente"), ("estructural", "indicador"),
+                          ("satelital", "latente"), ("latente", "latente")},
     "efecto_directo": {("estructural", "indicador")},
     "relacion_definicional": {("estructural", "indicador")},
     "carga_latente": {("latente", "indicador")},
     "medicion": {("instrumento", "indicador"), ("instrumento", "estructural"),
-                 ("instrumento", "microdato")},
+                 ("instrumento", "microdato"), ("latente", "satelital")},
     "estimacion_estadistica": {("instrumento", "operador"), ("operador", "preliminar"),
                                ("preliminar", "operador"), ("operador", "indicador"),
                                ("operador", "microdato"), ("operador", "indice")},
@@ -70,15 +71,17 @@ POS = {"loc_peq": (1.15, 11.35), "pct_60mas": (1.15, 9.85), "dep_ratio": (1.15, 
        "masa_carencial_pre2013": (0.9, 0.05), "piso_2013": (2.75, 0.05),
        "formula_fais_t0": (4.9, 0.4), "fism_t0": (6.7, 0.05), "inversion_t0": (8.5, 0.4),
        "formula_fais_t1": (11.0, 0.9), "fism_t1": (12.45, 2.6),
-       "inversion_t1": (12.45, 4.6), "z_infra_t2": (12.45, 8.8)}
+       "inversion_t1": (12.45, 4.6), "z_infra_t2": (12.45, 8.8),
+       "actividad_economica": (2.4, 12.15), "viirs_ntl": (0.9, 12.15),
+       "elevacion": (1.05, 2.6), "rugosidad": (2.45, 2.2), "acc_ciudad": (1.05, 3.25)}
 for i, nid in enumerate(IND_ORDER):
     POS[nid] = (6.9, 11.7 - i * 0.62)
 KIND_FC = {"estructural": "#f2fbf7", "latente": "#eef4fd", "indicador": "#ffffff",
            "instrumento": "#f6f5f1", "operador": "#f6f3ff", "indice": "#fdf2e6",
-           "politica": "#fdeeee", "preliminar": "#faf8ff", "microdato": "#fffbe8"}
+           "politica": "#fdeeee", "preliminar": "#faf8ff", "microdato": "#fffbe8", "satelital": "#eafaf2"}
 KIND_EC = {"estructural": "#1baf7a", "latente": "#2a78d6", "indicador": "#898781",
            "instrumento": "#52514e", "operador": "#4a3aa7", "indice": "#eda100",
-           "politica": "#e34948", "preliminar": "#9085e9", "microdato": "#c98500"}
+           "politica": "#e34948", "preliminar": "#9085e9", "microdato": "#c98500", "satelital": "#0e7a52"}
 
 
 def validate(N, E):

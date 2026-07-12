@@ -91,3 +91,8 @@ formula_fais_t1,fism_t1,retroalimentacion_politica,asignación FISM 2021+,politi
 fism_t1,inversion_t1,retroalimentacion_politica,ejecución futura,politica,politica
 inversion_t1,z_infra_t2,retroalimentacion_politica,AUMENTA el stock futuro de infraestructura (= reduce la privación en t+2); acíclico por versionado temporal,politica,latente
 masa_carencial_pre2013,piso_2013,retroalimentacion_politica,la fórmula 1998-2013 asignaba por masa carencial (indicadores pre-2013 de perfil marginación); la asignación 2013 congeló ese reparto como piso vigente,indice,politica
+rugosidad,z_infra,causal_sustantivo,relieve encarece redes de agua/drenaje/luz (señal empírica débil bajo CV bloqueado por estado: R²≈0),satelital,latente
+acc_ciudad,z_infra,causal_sustantivo,aislamiento encarece provisión y mantenimiento de servicios,satelital,latente
+elevacion,z_infra,causal_sustantivo,altitud correlaciona con dispersión y costo de infraestructura,satelital,latente
+actividad_economica,viirs_ntl,medicion,las luces nocturnas OBSERVAN la actividad (proxy); la flecha correcta es actividad→NTL y no NTL→privación,latente,satelital
+actividad_economica,z_mon,causal_sustantivo,(−) la actividad económica local sostiene el ingreso,latente,latente
