@@ -1,0 +1,18 @@
+# GLLVM espacial bayesiano — entorno de replicación
+# Trío verificado que importa limpio (pymc 5.25 necesita arviz>=0.20 y matplotlib<3.10):
+pymc==5.25.1
+arviz==0.20.0
+matplotlib==3.9.2
+numpy
+scipy
+pandas
+pyarrow
+
+# Sampler NUTS rápido (recomendado para el peldaño 4 / BYM2). Requiere JAX.
+numpyro
+jax
+
+# Análisis espacial (grafo de contigüidad; el edge list ya está en spatial/, pero por si regeneras)
+libpysal
+esda
+geopandas
