@@ -98,6 +98,11 @@ graph TD
 
     Z --> CB; Z --> CA; Z --> ENIGH
     RUR --> Z; REM --> Z; DEM --> Z
+    RUR -->|β_D directo: costo de red por dispersión| A2
+    RUR ==>|IDENTIDAD: ruralidad ≡ loc_peq| A4
+    DEM -->|cohortes viejas / pensiones| B1
+    DEM -->|estructura ocupacional| B2
+    REM -->|transferencias directas al ingreso| B3
     CB --> A1; CB --> A2; CB --> A3; CB --> A4
     CA --> A4
     CA --> B1
@@ -113,6 +118,28 @@ graph TD
 
 *(Los índices finales — IM/DP2 de CONAPO, cuadrantes de CONEVAL, IRS — son funciones
 deterministas de los nodos indicadores; se omiten porque el repo trabaja con componentes.)*
+
+### Los cofactores tienen DOS rutas, no una
+
+Los cofactores no operan solo "causando privación" (x → z). Cada familia tiene **canales
+directos sobre indicadores específicos que no son privación** — y el GLLVM los modela
+explícitamente: eso son los `β_D,j` (un coeficiente POR indicador, no un efecto común):
+
+| Cofactor | Ruta vía z (privación) | Ruta directa β_D,j (no-privación) |
+|---|---|---|
+| ruralidad (`loc_peq`) | dispersión → menos acceso efectivo | **costo de ingeniería de red**: agua/drenaje faltan en localidades dispersas a igual privación; además **identidad definicional**: ruralidad ≡ `loc_peq`, uno de los 9 indicadores CONAPO |
+| demografía (`dep_ratio`, `pct_60mas`) | dependencia económica real | **composición de cohortes**: los mayores estudiaron menos (`rezago_educ`, `analf` suben sin que la privación actual cambie); pensiones → `car_segsoc` |
+| sectores (`pct_primario`) | economías agrícolas más pobres | **estructura ocupacional**: autoempleo agrícola sin seguridad social por diseño (`car_segsoc`) e ingreso en especie/subreportado (`ing_2sm`, `lp_ingreso`) |
+| remesas | aliviana la privación de largo plazo | **transferencia directa al ingreso corriente** (`lp_ingreso*`) y a calidad de vivienda financiada, sin mover educación/servicios |
+
+**Consecuencia de identificación (honesta):** la escalera identifica la SUMA de ambas rutas,
+no su separación — el peldaño 2 mide "cuánto de la varianza va por composición en total"
+(β_D,j capta la ruta directa *y* la parte de z correlacionada con x). Separar x→z de x→η
+requeriría restricciones de exclusión (p. ej. "las remesas no afectan rezago educativo de
+adultos en el corto plazo") que están disponibles pero son supuestos sustantivos, no
+estadísticos. Por eso los factores de los peldaños 2–4 se leen como *privación condicional* y
+no como "la privación verdadera". El DAG dibuja ambas rutas para que ese límite quede a la
+vista.
 
 ## 4. Las cinco dependencias mecánicas que el DAG hace visibles
 

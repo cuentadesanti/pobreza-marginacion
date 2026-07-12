@@ -15,8 +15,8 @@ FIG = os.path.join(HERE, "figures")
 SURF, INK, INK2, MUT = "#fcfcfb", "#0b0b0b", "#52514e", "#898781"
 BLUE, AQUA, YELLOW, RED, VIOLET = "#2a78d6", "#1baf7a", "#eda100", "#e34948", "#4a3aa7"
 
-fig, ax = plt.subplots(figsize=(14, 8.6), facecolor=SURF)
-ax.set_xlim(0, 14); ax.set_ylim(0, 8.6); ax.set_axis_off()
+fig, ax = plt.subplots(figsize=(14, 9.6), facecolor=SURF)
+ax.set_xlim(0, 14); ax.set_ylim(0, 9.6); ax.set_axis_off()
 
 
 def box(x, y, w, h, text, fc, ec, fs=8.5, tc=INK, style="round,pad=0.08", lw=1.4):
@@ -43,6 +43,18 @@ ax.text(1.8, 4.5, "PRIVACIÓN LATENTE\n$z_i$ material · educativo\n· monetario
         va="center", fontsize=9, color=INK, zorder=4)
 box(1.8, 7.3, 3.0, 1.1, "COFACTORES (Vista D/E)\nruralidad · remesas · demografía\nsectores · fiscal", "#f2fbf7", AQUA)
 arrow(1.8, 6.7, 1.8, 5.35, AQUA, 1.8)
+ax.text(1.45, 6.0, "composición\n→ privación", ha="right", fontsize=7.2, color=INK2)
+# efectos DIRECTOS beta_D,j de los cofactores sobre los indicadores (NO pasan por z):
+# infraestructura por dispersión, cohortes, estructura ocupacional, transferencias
+arrow(3.35, 7.62, 11.0, 7.85, AQUA, 2.2, rad=-0.14)
+ax.text(7.2, 8.62, "efectos DIRECTOS $\\beta_{D,j}$ por indicador — canales que NO son privación:\n"
+        "dispersión→costo de red (agua/drenaje) · cohortes viejas→rezago_educ · pensiones→car_segsoc\n"
+        "· sector primario→ing_2sm · remesas→lp_ingreso/vivienda", ha="center",
+        fontsize=7.2, color=INK2)
+# identidad definicional: ruralidad ES loc_peq (el cofactor es uno de los 9 indicadores)
+arrow(2.9, 6.72, 10.5, 6.6, "#0e7a52", 1.6, ls="--", rad=0.22)
+ax.text(5.4, 5.45, "identidad: ruralidad ≡ loc_peq (mismo dato)", fontsize=7.2,
+        color="#0e7a52", ha="center")
 
 # ---- instrumentos ----
 box(5.4, 6.6, 2.5, 1.0, "CENSO 2020\ncuestionario básico\n(conteo completo)", "#fff", INK2)
@@ -86,9 +98,9 @@ arrow(4.55, 0.62, 1.75, 3.7, RED, 1.5, ls=":", rad=0.25)
 tag(3.3, 1.35, 5); ax.text(3.95, 1.06, "circularidad de política:\nel dinero sigue a la medida",
                            ha="center", fontsize=7.2, color=INK2)
 
-ax.text(0.15, 8.35, "El proceso generador de datos como DAG de medición — México 2020",
+ax.text(0.15, 9.35, "El proceso generador de datos como DAG de medición — México 2020",
         fontsize=13, color=INK, fontweight="bold")
-ax.text(0.15, 8.0, "flechas sólidas: flujo de medición · punteadas rojas: retroalimentación de política · "
+ax.text(0.15, 9.02, "flechas sólidas: flujo de medición · punteadas rojas: retroalimentación de política · "
         "círculos rojos: las 5 dependencias mecánicas (reporte_dgp_dag.md)", fontsize=8.5, color=INK2)
 
 fig.tight_layout()

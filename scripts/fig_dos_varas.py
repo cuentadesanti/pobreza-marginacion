@@ -77,30 +77,50 @@ def main():
     a.text(0.10, 0.95, "● BB  ", transform=a.transAxes, color=BLUE, fontsize=9)
     a.text(0.18, 0.95, "● no significativo", transform=a.transAxes, color=MUT, fontsize=9)
 
-    # (b) la vara vale dinero
-    for reg, c, zo in [("ns", GRAY, 1), ("BB", BLUE, 3), ("AA", RED, 3)]:
+    # (b) la vara vale dinero — explícito: qué dinero, qué fórmula, cuánta brecha
+    for reg, c, zo, al in [("ns", GRAY, 1, 0.25), ("BB", BLUE, 3, 0.75), ("AA", RED, 3, 0.75)]:
         s = m[m["reg"] == reg]
-        bx.scatter(s["nivel"], s["aportaciones_pc"], s=10, color=c,
-                   alpha=0.7 if reg != "ns" else 0.35, zorder=zo, linewidths=0)
+        bx.scatter(s["nivel"], s["aportaciones_pc"], s=11, color=c, alpha=al,
+                   zorder=zo, linewidths=0)
     xs = np.linspace(m["nivel"].min(), m["nivel"].max(), 60)
     base = np.exp(b[0] + b[1] * xs + b[2] * xs**2 + b[3] * m["log_pob"].median())
-    bx.plot(xs, base, color=INK2, lw=1.6, zorder=4, label="esperado (ns)")
-    bx.plot(xs, base * np.exp(b[4]), color=RED, lw=1.6, ls="--", zorder=4,
-            label=f"AA: {gapAA:+.0f}%")
-    bx.plot(xs, base * np.exp(b[5]), color=BLUE, lw=1.6, ls="--", zorder=4,
-            label=f"BB: {gapBB:+.0f}%")
+    bx.plot(xs, base * np.exp(b[4]), color=RED, lw=2.2, ls="--", zorder=5,
+            label=f"municipios AA: {gapAA:+.0f}% (t=4.3)")
+    bx.plot(xs, base, color=INK2, lw=2, zorder=5, label="esperado por su nivel de privación")
+    bx.plot(xs, base * np.exp(b[5]), color=BLUE, lw=2.2, ls="--", zorder=5,
+            label=f"municipios BB: {gapBB:+.0f}% (n.s.)")
+    # brecha anotada con flecha doble en el extremo derecho
+    xg = xs[-6]
+    yA = float(base[-6] * np.exp(b[4])); yB = float(base[-6] * np.exp(b[5]))
+    bx.annotate("", (xg, yA), (xg, yB),
+                arrowprops=dict(arrowstyle="<->", color=INK, lw=1.4), zorder=6)
+    bx.text(xg - 0.07, np.sqrt(yA * yB), "brecha 19%\n≈ $1,200 millones/año",
+            ha="right", va="center", fontsize=9, color=INK, fontweight="bold", zorder=6)
+    # la mecánica de la fórmula, dentro de la figura
+    bx.text(0.02, 0.97,
+            "El dinero: Ramo 33 por habitante (FAIS+FORTAMUN, EFIPEM 2020).\n"
+            "La fórmula FAIS (art. 34 Ley de Coordinación Fiscal):\n"
+            "  piso = asignación 2013 (fórmula VIEJA de masa carencial ≈ perfil marginación)\n"
+            "  + excedente repartido por pobreza extrema CONEVAL (vara nueva)\n"
+            "→ el piso heredado sigue pagando al perfil 'marginado'.",
+            transform=bx.transAxes, fontsize=8, color=INK2, va="top",
+            bbox=dict(boxstyle="round,pad=0.45", facecolor="#f6f5f1", edgecolor="#c3c2b7", lw=0.8))
     bx.set_yscale("log")
-    bx.set_xlabel("nivel de privación total (media 17 indicadores, logit-z)")
-    bx.set_ylabel("aportaciones federales 2020 per cápita (MXN, log)")
-    bx.set_title("(b) La vara vale dinero\nmismo nivel de privación y tamaño: AA recibe "
-                 f"{gapAA - gapBB:.0f}% más que BB", fontsize=10, loc="left", color=INK)
+    bx.set_xlabel("nivel de privación total del municipio (media de los 17 indicadores, logit-z)")
+    bx.set_ylabel("transferencias federales Ramo 33, 2020\n(pesos por habitante, escala log)")
+    bx.set_title("(b) Mismo nivel de privación, distinta etiqueta, distinto dinero",
+                 fontsize=10, loc="left", color=INK)
     bx.legend(frameon=False, fontsize=8.5, loc="lower right")
     bx.grid(axis="y", color=GRID, lw=0.5)
 
-    fig.suptitle("La geografía de la discordancia tiene precio: las transferencias aún premian "
-                 "el perfil de la fórmula vieja (masa carencial) sobre la pobreza CONEVAL",
-                 fontsize=11.5, color=INK, x=0.02, ha="left")
-    fig.tight_layout(rect=[0, 0, 1, 0.93])
+    fig.suptitle("La vara vale dinero: a igual privación, el municipio 'más marginado que pobre' (AA)\n"
+                 "recibe 19% más transferencias por habitante que el 'más pobre que marginado' (BB)",
+                 fontsize=12, color=INK, x=0.02, ha="left")
+    fig.text(0.02, 0.005, "Cada punto = un municipio (2,250 con EFIPEM 2020). Regresión: "
+             "log(transferencia pc) ~ nivel + nivel² + log población + régimen LISA. "
+             "FORTAMUN es ~per cápita: diluye, no invierte. Asociación, no causalidad.",
+             fontsize=7.5, color=MUT)
+    fig.tight_layout(rect=[0, 0.02, 1, 0.90])
     fig.savefig(os.path.join(FIG, "fig_dos_varas_dinero.png"), dpi=160)
     print(f"gap AA {gapAA:+.1f}% | BB {gapBB:+.1f}% | figura lista")
 
