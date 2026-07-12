@@ -61,7 +61,10 @@ PROC = os.path.join(HERE, "data", "processed")
 SPAT = os.path.join(HERE, "spatial")
 OUT  = os.path.join(HERE, "outputs"); os.makedirs(OUT, exist_ok=True)
 
-ANCHOR = {"material": "sin_agua", "educativo": "rezago_educ", "monetario": "lp_ingreso"}
+# Anclas v2 (2026-07-11): material re-anclado en piso_tierra — sin_agua pierde casi todo su
+# contenido factorial al condicionar en composición y la carga ancla colapsaba a 0 en algunas
+# cadenas (label switching). piso_tierra retiene carga parcial fuerte en todos los peldaños.
+ANCHOR = {"material": "piso_tierra", "educativo": "rezago_educ", "monetario": "lp_ingreso"}
 METHOD_BLOCKS = [
     ["analf", "sin_basica", "rezago_educ"],                                   # educación
     ["lp_ingreso", "lp_ingreso_ext"],                                         # líneas de ingreso
@@ -122,7 +125,10 @@ def build_gllvm(Y, ind, K, rural=None, X=None, state=None,
             mask[ar, c] = 0.0
     with pm.Model() as mod:
         Loff = pm.Normal("Loff", 0, 1, shape=(J, K))
-        diag = pm.HalfNormal("diag", 1.0, shape=K)          # diagonal positiva -> fija signo/etiqueta
+        # diagonal positiva ACOTADA LEJOS DE 0: con HalfNormal la carga ancla tiene modos en ~0
+        # y la rotación queda libre (label switching entre cadenas). LogNormal(log .5, .4)
+        # concentra en [0.22, 1.1] aprox y mantiene el signo/etiqueta amarrado.
+        diag = pm.LogNormal("diag", np.log(0.5), 0.4, shape=K)
         Lm = Loff * mask
         for k, ar in enumerate(anchor_rows):
             Lm = pt.set_subtensor(Lm[ar, k], diag[k])

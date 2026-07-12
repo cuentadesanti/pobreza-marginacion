@@ -56,7 +56,19 @@ GLLVM_REPLICACION.md   guía de corrida e interpretación de la escalera
    efectos estatales, circularidad FAIS).
 6. **Mapa de literatura** (`reporte_literatura.md`): el proyecto en el cruce economía de la
    desigualdad × ciencia social computacional; el hueco que ocupa.
-7. **Escalera GLLVM** (`reporte_gllvm_escalera.md`): resultados de los 4 peldaños, K=2/K=3.
+7. **Escalera GLLVM** (`reporte_gllvm_escalera.md`): la composición absorbe el grueso del
+   factor general (0.60→0.15); `car_salud` es ~22% estado (federalismo INSABI, no ruido);
+   lo espacial reduce la incertidumbre municipal a la mitad pero la geografía residual es
+   específica por indicador; K=3 domina a K=2 en ELPD en los 4 peldaños.
+8. **Validación externa — homicidios** (`reporte_validacion_homicidios.md`): la privación
+   explica ~23% de la violencia municipal, casi todo vía composición; el residual latente no
+   aporta (R²=0.016). La señal es un *contraste* intra-familia de indicadores, casi ortogonal
+   al nivel — un índice sintético único no puede focalizar privación y anticipar violencia a
+   la vez.
+9. **Diagnóstico municipal** (`data/processed/diagnostico_municipal_v1.parquet`,
+   `outputs/top_discordantes.csv`): z ± sd por factor y municipio + régimen LISA + fiscal;
+   los top residual-material (Sierra Tarahumara) son todos régimen AA — dos rutas
+   independientes, misma historia.
 
 ## Especificación del GLLVM
 

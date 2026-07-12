@@ -40,6 +40,13 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
   fórmula del art. 34 LCF sobre pobreza extrema CONEVAL → NO usar como cofactor del latente
   (ver `reports/reporte_dgp_dag.md`, dependencia 5).
 
+### Defunciones registradas 2019–2021 (validación externa: homicidios)
+- Espejo abierto (CSV por año, 160–240 MB): `https://repodatos.atdt.gob.mx/all_data/secretaria_salud/6fecbbb3-afd9-44a1-8665-679a80ce4a15/defunciones_registradas_{2019,2020,2021}.csv`
+  (los zips de inegi.org.mx/programas/edr rechazan descargas no-navegador).
+- Homicidio: `PRESUNTO == 2` (≡ ICD-10 X85–Y09 al 99.99%); municipio de OCURRENCIA
+  (`ENT_OCURR`+`MUN_OCURR`, excluyendo claves ≥900). Totales validados contra boletines INEGI.
+- Constructor: `scripts/validacion_homicidios.py <dir>` → `homicidios_mun_2019_2021.parquet`.
+
 ## Tooling para ampliar indicadores
 - `~/code/inegi-client` (repo local): cliente de la API de Indicadores INEGI/BISE, DENUE y Marco
   Geoestadístico, con backfill a DuckDB. Requiere `INEGI_TOKEN` (env var). Pendientes naturales:
