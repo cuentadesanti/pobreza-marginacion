@@ -10,7 +10,22 @@ El producto **no es un nuevo índice** sino un modelo generativo diagnóstico: u
 probabilística de dimensiones comunes, efectos de método y desviaciones municipales, con
 incertidumbre explícita.
 
-## Pregunta central
+## Tesis central (el giro a desigualdad)
+
+**La desigualdad territorial mexicana opera en dos escalas.** En los indicadores observados,
+aproximadamente la mitad de la dispersión ocurre entre estados y la otra mitad dentro de
+ellos. Una vez descontada la heterogeneidad estatal, los factores latentes revelan
+desigualdades predominantemente intraestatales y geografías de privación material, educativa
+y monetaria que rara vez se superponen. Además, la actividad económica visible puede coexistir
+con precariedad laboral y con mejoras sociales locales menores de las que sugeriría la
+luminosidad del territorio.
+
+Tres resultados principales (el resto los apoya o acota — ver `reports/TABLA_MAESTRA.md`):
+1. **Dos escalas** de desigualdad (50.8% entre estados el z bruto; 13–24% los ejes condicionales).
+2. **Geografías residuales débilmente solapadas** (Jaccard ≤0.21): la acumulación vive en el bruto.
+3. **Brecha de apropiación territorial**: precariedad laboral primero (β=+0.23), remesas al revés.
+
+## Pregunta original
 ¿Cuándo marginación y pobreza cuentan historias distintas del mismo territorio, y qué estructura
 (dimensional, de método, espacial) explica esa discordancia?
 
