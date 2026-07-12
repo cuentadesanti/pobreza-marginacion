@@ -156,8 +156,13 @@ def main():
         w, V = np.linalg.eigh(M)
         orden = np.argsort(-w)
         print("eigenvalores de E[LamLam']:", np.round(w[orden], 3))
-        eig = pd.DataFrame(V[:, orden] * np.sqrt(np.maximum(w[orden], 0)),
+        top = orden[:3]
+        eig = pd.DataFrame(V[:, top] * np.sqrt(np.maximum(w[top], 0)),
                            index=ind, columns=["eje1", "eje2", "eje3"])
+        # convención de signo: el elemento de mayor magnitud de cada eje es positivo
+        for c in eig.columns:
+            if eig[c].iloc[eig[c].abs().argmax()] < 0:
+                eig[c] = -eig[c]
         eig.round(3).to_csv(os.path.join(OUT, "ejes_canonicos_marginal.csv"))
         print(eig.round(2).to_string())
         return

@@ -146,6 +146,46 @@ Se re-corrió K=3 completo con material→`piso_tierra` y `diag ~ LogNormal(log 
      integrada: Y ~ N(μ, ΛΛ' + Ψ) con bloques de método), que elimina 7,365 parámetros
      latentes y típicamente funde los modos; no más cirugía de priors.
 
+## CIERRE DEL FRENTE 1 (2026-07-12): la multimodalidad resuelta — y era autoinfligida
+
+Secuencia de diagnóstico (cada paso con su veredicto formal en tres niveles):
+
+| Modelo | R-hat ΛΛᵀ | R-hat σ/mload | media (W, γ) | ELPD-LOO |
+|---|---|---|---|---|
+| z muestreada (escalera) | — (alineación) | ~2 | ~1–2.6 | — |
+| marginalizado + anclas + bloques uniformes | 2.05 | 1.7 / 1.9 | 1.011 / 1.022 | — |
+| + método como CONTRASTE inter-agencia | 1.53 | 1.5 | 1.007 / 1.006 | −24,183 |
+| **+ Λ libre (sin anclas), identificar ΛΛᵀ** | **1.003** (ESS 3,490) | **1.006 / 1.002** | 1.005 / 1.005 | **−24,106** |
+
+Tres causas apiladas, todas de especificación: (i) los z muestreados fabricaban geometría
+multimodal; (ii) el bloque de método con dirección uniforme era casi colineal con las cargas
+del factor (se intercambiaban) — resuelto definiendo el método como **contraste inter-agencia**
+(dirección fija CONAPO+/CONEVAL−, ortogonal al nivel; conceptualmente superior: el método ES el
+desacuerdo entre instrumentos); (iii) **las anclas peleaban con la verosimilitud** — una cadena
+encontraba un modo con logp +106 pagando prior enorme por colapsar el ancla monetaria. Sin
+anclas, todo converge (0 divergencias, BFMI 0.91) y los **eigenvalores de E[ΛΛᵀ] = 1.23, 0.50,
+0.34, ≈0…** confirman K=3 desde dentro del modelo.
+
+**Convención de orientación documentada** (`outputs/ejes_canonicos_marginal.csv`,
+`zscores_canonicos_rung3.csv`): ejes = eigen-descomposición de E[ΛΛᵀ], signo del elemento
+mayor positivo, ejes por draw alineados al canónico. Lectura: eje1 = privación
+material-infraestructural general; eje2 = educativo; **eje3 = vivienda+líneas de ingreso
+CONTRA servicios de red** — la tercera dimensión que el ancla "monetaria" no dejaba emerger.
+Los criterios de cierre del revisor: (1) R-hat<1.01 + ESS en no-rotacionales ✓; (2) ΛΛᵀ
+estable ✓; (3) partición de varianza estable ✓; (4) scores estables tras alineación ✓;
+(5) conclusiones sustantivas replican (tabla estatal, abajo) ✓.
+
+## CIERRE DEL FRENTE 2: medición vs federalismo, con incertidumbre posterior
+
+Con las γ del modelo convergido (`outputs/tabla_medicion_federalismo.csv`): `car_salud` domina
+el share de varianza estatal (0.27), seguido de `sin_drenaje` (0.23) y `car_servbas` (0.19);
+`loc_peq` ≈ 0.01. Contrastes de grupo (posterior): **Δshare SAE − CONEVAL directo = −0.034,
+IC95 [−0.060, −0.007]** (los calibrados NO dominan — muere "todo es SAE") y **Δshare SAE −
+CONAPO censal = +0.027, IC95 [+0.007, +0.049]** (el piso de calibración existe, y es chico).
+Conclusión calibrada: el componente estatal no está dominado por la arquitectura SAE; es
+compatible con heterogeneidad sustantiva estatal, aunque sigue mezclando política, composición
+y medición.
+
 ## Implicación integradora
 
 La pregunta central del repo ("¿cuándo cuentan historias distintas?") queda reformulada por la
