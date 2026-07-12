@@ -58,6 +58,10 @@ Detalles del cálculo que importan para el modelo:
 
 ## 3. El DAG
 
+![DAG de medición](../figures/fig_dag_dgp.png)
+
+*(Versión mermaid navegable abajo; el PNG es el canónico.)*
+
 ```mermaid
 graph TD
     subgraph LATENTE["Privación latente del municipio i"]
@@ -155,6 +159,22 @@ totales municipales de aportaciones, que lo contienen) como *covariable* condici
 descendiente del outcome medido: sesgo de colisionador/mediador garantizado. FAIS entra al
 análisis solo como **variable de validación o de política**, jamás como cofactor del espacio
 latente.
+
+## 4b. La dependencia 5, cuantificada: la vara vale dinero
+
+![Dos varas, un presupuesto](../figures/fig_dos_varas_dinero.png)
+
+Condicional al **mismo nivel de privación total y tamaño poblacional**, los municipios en
+régimen AA (más marginados que pobres) recibieron en 2020 **+15.8% de aportaciones federales
+per cápita** (t=4.3) y los BB −3.0% (n.s.) — brecha AA−BB ≈ **+19%**, del orden de 1.2 mmdp/año
+sobre la masa AA (`outputs/gap_aportaciones_regimen.csv`). Interpretación propuesta (hipótesis,
+no demostrada): la fórmula vigente del FAIS conserva como piso la asignación 2013, heredada de
+la fórmula *vieja* de masa carencial (perfil marginación: drenaje, electricidad, piso,
+educación); solo el excedente se reparte por pobreza extrema CONEVAL (0.8z+0.2e) → **el dinero
+de hoy aún lleva la huella de la vara vieja**. Caveats: aportaciones EFIPEM = FAIS+FORTAMUN
+(FORTAMUN ~per cápita, diluye pero no invierte el signo), cobertura 91%, un solo año,
+asociación no causal. El diseño con montos FISM reales 2016–2020 (tarea abierta) convierte
+esto en el estudio de identificación central.
 
 ## 5. Implicaciones directas para la escalera GLLVM
 
