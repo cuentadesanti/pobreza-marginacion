@@ -1,0 +1,13 @@
+escenario,outcome,beta_P,t_P,beta_C,t_C
+ventana_calderon,eje1,0.056,1.1,-0.074,-1.4
+ventana_calderon,brecha,0.011,0.4,0.003,0.1
+ventana_calderon,log_hom_eb,0.026,0.9,0.124,3.4
+ventana_2018,eje1,-0.069,-1.5,0.005,0.1
+ventana_2018,brecha,0.011,0.4,-0.027,-0.9
+ventana_2018,log_hom_eb,0.108,3.4,0.127,2.7
+sin_proxies_cobertura,eje1,0.054,1.1,-0.141,-2.6
+sin_proxies_cobertura,brecha,-0.005,-0.2,0.03,1.1
+sin_proxies_cobertura,log_hom_eb,0.084,3.2,0.045,1.3
+sin_5_metropolis,eje1,0.019,0.4,-0.053,-1.1
+sin_5_metropolis,brecha,0.004,0.2,0.031,1.2
+sin_5_metropolis,log_hom_eb,0.084,3.2,0.046,1.3
