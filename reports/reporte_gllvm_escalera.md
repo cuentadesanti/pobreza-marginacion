@@ -132,12 +132,19 @@ Se re-corrió K=3 completo con material→`piso_tierra` y `diag ~ LogNormal(log 
    (−16,855 vs −13,555), igual que en K=2. La ordenación 3>4 es la robusta; la 4>3 de la v1 era
    dependiente del modo. Conclusión reforzada: **la geografía por indicador (estado) es la
    especificación defendible; el BYM2 compartido en z no lo es** (ρ sigue clavado en 1.00).
-3. **Las anclas v2 no eliminaron el label switching** (max|R−I| entre cadenas ≈ 1.3 en peldaños
-   3–4): la multimodalidad es más profunda que el prior del ancla — material y educativo están
-   tan correlacionados que hay modos rotados casi equiprobables. Todo lo reportado sigue
-   alineado por cadena (válido); la solución de fondo para la siguiente iteración es
-   post-procesamiento rotacional por draw (varimax/target hacia una estructura fija) o
-   reparametrizar (marginalizar z), no seguir apretando priors.
+3. **Las anclas v2 no eliminaron el label switching y el test decisivo
+   (`scripts/test_label_switching.py`, peldaño 2, 4 cadenas) mostró que NO es solo rotación**:
+   R-hat sobre cantidades alineadas draw a draw con Procrustes sigue alto (Λ alineada 2.16,
+   z alineada 1.54, σ 2.16; α 1.04). Hay **multimodalidad genuina**: las cadenas encuentran
+   soluciones de cargas parecidas pero no reconciliables por un mapa ortogonal (difieren en el
+   reparto de varianza entre factores, bloques de método y σ). Consecuencias:
+   - Lo que publicamos son **promedios sobre modos**; su validez empírica descansa en la
+     replicación entre corridas independientes (v1 vs v2 = multi-arranque de facto): scores
+     r≈0.9, mismas conclusiones de escalera, mismos hallazgos fiscales. Lo que NO replicó
+     (ELPD del peldaño 4) queda correctamente descartado por este mismo criterio.
+   - La ruta de fondo para la siguiente iteración es **marginalizar z** (verosimilitud
+     integrada: Y ~ N(μ, ΛΛ' + Ψ) con bloques de método), que elimina 7,365 parámetros
+     latentes y típicamente funde los modos; no más cirugía de priors.
 
 ## Implicación integradora
 
