@@ -1,7 +1,7 @@
 # Escalera GLLVM: resultados K=3 (peldaños 1–4)
 
 **Corrida:** 2026-07-11, NumPyro NUTS, 4 cadenas × (1000 tune + 1000 draws), semilla 1,
-N=2,455 municipios × J=17 indicadores (logit-z). K=2 en curso; este reporte cubre K=3.
+N=2,455 municipios × J=17 indicadores (logit-z). K=3 y K=2 completos.
 Figuras: `fig_escalera_cargas.png`, `fig_escalera_vardecomp.png`, `fig_escalera_metricas.png`,
 `fig_gamma_estados.png`.
 
@@ -76,6 +76,23 @@ insuficiente como geografía única:
    **indicador-específica, no un continuo compartido**. La comparación 3-vs-4 respondió algo
    más interesante que "¿cuál gana?": son geografías de naturaleza distinta.
 
+## K=2 vs K=3: la dimensión extra paga en los cuatro peldaños
+
+| Peldaño | ELPD K=2 | ELPD K=3 | Δ (K=3 − K=2) |
+|---|---|---|---|
+| 1 base | −30,341 | −26,229 | +4,112 |
+| 2 +Vista D | −21,076 | −15,730 | +5,346 |
+| 3 +estado | −16,538 | −15,118 | +1,420 |
+| 4 +BYM2 | −19,443 | −12,876 | **+6,567** |
+
+Dos lecturas: (i) **K=3 domina en todos los peldaños** — cierra la duda del reporte
+confirmatorio ("K=3 en el borde") a favor de K=3, ahora con covariables, geografía e
+incertidumbre en la ecuación; (ii) en K=2 el peldaño espacial es *peor* que el estatal
+(−19,443 < −16,538), mientras en K=3 lo espacial gana: con pocos factores el campo BYM2
+compartido no tiene canales suficientes para la geografía específica por indicador — refuerza
+el Hallazgo 3. El Moran residual de K=2 replica el patrón de K=3 (mínimo en el peldaño 3:
+0.237; sube a 0.341 con BYM2).
+
 ## Diagnóstico técnico (leer antes de citar números finos)
 
 - **Label switching real entre cadenas en los 4 peldaños** (diagnóstico max|R−I| ≈ 1.1–1.5).
@@ -105,5 +122,7 @@ pero menores, con incertidumbre ya cuantificada municipio por municipio en
 `outputs/zscores_rung4_K3.csv`). El producto diagnóstico prometido — "no un índice nuevo" —
 ya tiene forma empírica.
 
-*Pendiente: fila K=2 al terminar la corrida; respecificación de anclas; mapas de z ± sd (falta
-geojson — ver inegi-client en el manifiesto).*
+*Pendiente: respecificación de anclas y re-corrida; mapas de z ± sd (falta geojson — ver
+inegi-client en el manifiesto). Nota K=2: el label switching también aparece (salvo el peldaño
+3, único con cadenas coincidentes); los CSVs de ambos K están regenerados con la alineación
+por cadena.*

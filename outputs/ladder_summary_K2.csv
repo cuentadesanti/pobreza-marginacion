@@ -1,0 +1,5 @@
+rung,K,facs,residual_moran_I,rhat_alpha_sigma,elpd_loo,mean_latent_sd,rho_spatial
+1,2,material|monetario,0.4314,1.184,-30341.3,0.372,
+2,2,material|monetario,0.3628,2.133,-21075.6,0.486,
+3,2,material|monetario,0.2366,2.867,-16538.0,0.51,
+4,2,material|monetario,0.3408,1.946,-19443.2,0.195,material:1.00|monetario:1.00
