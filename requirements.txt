@@ -19,3 +19,4 @@ geopandas
 h5py
 netcdf4
 scikit-learn
+networkx

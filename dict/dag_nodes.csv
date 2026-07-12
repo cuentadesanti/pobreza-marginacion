@@ -1,0 +1,51 @@
+node_id,label,kind,observed_level,time_index,dual_role,definition
+loc_peq,% población en localidades <5000 hab,estructural,municipal,t,structural_and_indicator,dispersión territorial; TAMBIÉN componente del IM-CONAPO (misma columna censal)
+pct_60mas,estructura etaria (% 60+),estructural,municipal,t,no,población de 60 años y más entre población total (censo)
+dep_ratio,razón de dependencia,estructural,municipal,t,no,(0-14 + 60+)/(15-59) del censo
+pct_prim,% ocupados sector primario,estructural,municipal,t,no,ocupados en SCIAN 11 ponderado (muestra censal)
+empleo_prec,mercado laboral precario (proxy),estructural,municipal,t,no,cuenta propia+sin pago+jornalero+ayudante (SITTRA); proxy no oficial de informalidad
+remesas,remesas per cápita,estructural,municipal,t,no,flujo anual Banxico CE166 / población
+fiscal,capacidad fiscal municipal,estructural,municipal,t,no,ingresos propios pc (EFIPEM); cobertura 91%
+pol_salud,política estatal de salud,estructural,estatal,t,no,régimen de afiliación en la transición INSABI 2020
+z_edu,privación educativa,latente,municipal,t,no,constructo latente
+z_infra,privación infraestructura y vivienda,latente,municipal,t,no,constructo latente
+z_lab,privación laboral / protección social,latente,municipal,t,no,constructo conceptual; NO emerge como factor separado en K=3 (evidencia GLLVM)
+z_mon,privación monetaria,latente,municipal,t,no,constructo latente
+z_infra_t2,privación infraestructura (futura),latente,municipal,t+2,no,estado futuro del constructo; sumidero del lazo de política
+analf,analfabetismo 15+,indicador,municipal,t,no,porcentaje publicado CONAPO
+sin_basica,sin educación básica,indicador,municipal,t,no,porcentaje publicado CONAPO
+rezago_educ,rezago educativo,indicador,municipal,t,no,porcentaje publicado CONEVAL (directo de muestra censal)
+sin_drenaje,viviendas sin drenaje,indicador,municipal,t,no,porcentaje publicado CONAPO
+sin_electr,viviendas sin electricidad,indicador,municipal,t,no,porcentaje publicado CONAPO
+sin_agua,viviendas sin agua entubada,indicador,municipal,t,no,porcentaje publicado CONAPO
+piso_tierra,viviendas con piso de tierra,indicador,municipal,t,no,porcentaje publicado CONAPO
+hacinam,hacinamiento,indicador,municipal,t,no,porcentaje publicado CONAPO (>2.5 ocupantes/dormitorio)
+car_vivienda,carencia calidad de vivienda,indicador,municipal,t,no,porcentaje publicado CONEVAL (directo)
+car_servbas,carencia servicios básicos,indicador,municipal,t,no,porcentaje publicado CONEVAL (directo)
+car_salud,carencia acceso a salud,indicador,municipal,t,no,porcentaje publicado CONEVAL (directo); sin padre latente: varianza estatal
+car_segsoc,carencia seguridad social,indicador,municipal,t,no,porcentaje publicado CONEVAL (modelado y calibrado)
+ing_2sm,ocupados con ingreso ≤2 SM,indicador,municipal,t,no,porcentaje publicado CONAPO (única de muestra censal)
+car_alim,carencia alimentación,indicador,municipal,t,no,porcentaje publicado CONEVAL (modelado y calibrado)
+lp_ingreso,ingreso < línea de pobreza,indicador,municipal,t,no,porcentaje publicado CONEVAL (EBPH calibrado)
+lp_ingreso_ext,ingreso < línea extrema,indicador,municipal,t,no,porcentaje publicado CONEVAL (EBPH calibrado)
+segsoc_raw,est. preliminar seguridad social,preliminar,municipal,t,no,predicción SAE municipal ANTES de calibración
+alim_raw,est. preliminar alimentación,preliminar,municipal,t,no,ídem
+lpi_raw,est. preliminar línea pobreza,preliminar,municipal,t,no,ídem (EBPH)
+lpe_raw,est. preliminar línea extrema,preliminar,municipal,t,no,ídem (EBPH)
+dist_conjunta,distribución conjunta persona-hogar,microdato,persona,t,no,vector de carencias × ICTPC (100 simulaciones) por persona en la muestra censal
+censo_basico,Censo 2020 cuestionario básico,instrumento,persona,t,no,conteo completo
+muestra_censal,muestra censal (ampliado),instrumento,persona,t,no,cuestionario ampliado; representativa municipal
+mec_enigh,MEC MCS-ENIGH,instrumento,persona,t,no,representativa nacional/estatal
+op_sae,operador SAE (12 modelos),operador,,t,no,logístico + EBPH por grupos de estados
+op_calib,operador calibración,operador,,t,no,ponderadores recalibrados a totales estatales (Deville-Särndal logit)
+op_identif,regla de identificación multidimensional,operador,,t,no,pobre si carencias≥1 e ingreso<LPI (extrema: ≥3 y <LPEI); aplicada persona a persona
+im_conapo,índice de marginación CONAPO,indice,municipal,t,no,DP2 sobre 9 componentes
+pobreza_coneval,pobreza multidimensional municipal,indice,municipal,t,no,agregación municipal (ponderadores calibrados) de la condición individual
+pobreza_2015,pobreza municipal 2015,indice,municipal,t-1,no,corte anterior de la misma maquinaria
+piso_2013,piso 2013 (fórmula masa carencial),politica,municipal,t-1,no,asignación heredada de la fórmula vieja (perfil marginación)
+formula_fais_t0,fórmula FAIS ejercicios 2016-2020,politica,municipal,t,no,art. 34 LCF con pobreza 2015 + piso 2013
+fism_t0,FISM recibido 2016-2020,politica,municipal,t,no,recursos ejercidos que afectan la privación ACTUAL
+inversion_t0,inversión municipal 2016-2020,politica,municipal,t,no,agua/drenaje/electrificación/vivienda
+formula_fais_t1,fórmula FAIS 2021+,politica,municipal,t+1,no,alimentada por la medición 2020
+fism_t1,FISM 2021+,politica,municipal,t+1,no,
+inversion_t1,inversión municipal 2021+,politica,municipal,t+1,no,

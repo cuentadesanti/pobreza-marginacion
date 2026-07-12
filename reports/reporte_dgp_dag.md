@@ -60,28 +60,34 @@ Detalles del cálculo que importan para el modelo:
 
 ![DAG de medición](../figures/fig_dag_dgp.png)
 
-**El objeto canónico es la edge-list**: `dict/dag_edges.csv` — 87 relaciones, una fila por
-arista con `source, target, relation_type, mechanism, source_kind, target_kind`. La figura se
-genera desde ella (`scripts/fig_dag.py`), de modo que figura y tabla no pueden divergir.
-Reglas de construcción (revisión conceptual 2026-07-12):
+**El objeto canónico son dos tablas**: `dict/dag_nodes.csv` (50 nodos: `node_id, label, kind,
+observed_level, time_index, dual_role, definition`) y `dict/dag_edges.csv` (91 relaciones
+tipificadas). La figura se genera desde ellas (`scripts/fig_dag.py`), que antes de renderizar
+**valida formalmente**: aciclicidad con networkx, consistencia nodos↔aristas, y una matriz
+permitida de tipos `relation_type × (source_kind, target_kind)`. Estado: acíclico, 0
+violaciones. Reglas de construcción (revisión conceptual 2026-07-12, dos rondas):
 
 - **Un nodo = una variable empírica, un constructo latente, un instrumento, un operador
   estadístico, un índice publicado o un objeto de política.** Sin cajas colectivas.
-- **`loc_peq` es UN solo nodo** con doble rol (condición estructural "dispersión territorial"
-  e indicador CONAPO): son la misma columna, y una identidad no es una relación causal.
-- **Privación latente en 4 dimensiones conceptuales** (educativa, infraestructura/vivienda,
-  monetaria, laboral/protección). La evidencia del GLLVM (K=3) dice que la laboral no emerge
-  como factor separado — eso es un *resultado* sobre el mundo, no un supuesto del grafo.
-  `car_salud` no tiene padre latente: su varianza municipal es política estatal (hallazgo de
-  la escalera, ~22% estado).
-- **Siete semánticas de arista** distinguidas por color: causal sustantivo, carga latente,
-  efecto directo de cofactor (no vía z), observación por instrumento, estimación estadística
-  (operadores SAE y calibración), derivación determinista (índices), y retroalimentación de
-  política. Los operadores (12 modelos SAE, calibración) se dibujan como operadores, no como
-  variables del mundo.
-- **Los índices publicados aparecen antes de la fórmula FAIS**: IM-CONAPO y pobreza municipal
-  CONEVAL son derivaciones deterministas de los indicadores; la fórmula toma la pobreza 2015
-  (y el piso 2013 de la fórmula vieja) y produce FISM → inversión → privación futura.
+- **`loc_peq` es UN solo nodo** con rol dual declarado (`dual_role=structural_and_indicator`):
+  condición estructural de dispersión *y* componente del IM. Consecuencia que el índice hereda:
+  un componente del IM causa otros componentes del mismo índice (endogeneidad estructural
+  interna — ver §4c).
+- **La pobreza multidimensional NO se deriva de las prevalencias marginales municipales**: dos
+  municipios con las mismas ocho prevalencias pueden tener distinta pobreza según el
+  solapamiento persona a persona. El grafo pasa por `dist_conjunta` (vector de carencias ×
+  ICTPC simulado, nivel persona) → regla de identificación → agregación municipal.
+- **SAE y calibración son secuenciales, no padres paralelos**: `op_sae → estimaciones
+  preliminares (*_raw) → op_calib → indicadores publicados`. Queda visible qué parte es modelo
+  y qué parte es reconciliación estatal.
+- **El lazo FAIS está temporalizado** (t−1, t, t+1, t+2): pobreza 2015 y piso 2013 → FAIS
+  2016–2020 → inversión pasada → privación ACTUAL; y la medición 2020 → FAIS 2021+ →
+  privación futura (t+2). El CSV es acíclico sin notas externas.
+- **Relación definicional como tipo propio**: `dep_ratio → lp_ingreso` es acoplamiento por el
+  denominador del ICTPC (per cápita), no un efecto económico como `remesas → lp_ingreso`.
+  `remesas → piso_tierra` se podó (el canal documentado es calidad/espacios: `car_vivienda`).
+- **Siete semánticas de arista** por color; operadores dibujados como operadores; los índices
+  publicados (IM-DP2, pobreza CONEVAL) explícitos antes de la fórmula FAIS.
 
 
 ### Los cofactores tienen DOS rutas, no una
@@ -105,6 +111,16 @@ adultos en el corto plazo") que están disponibles pero son supuestos sustantivo
 estadísticos. Por eso los factores de los peldaños 2–4 se leen como *privación condicional* y
 no como "la privación verdadera". El DAG dibuja ambas rutas para que ese límite quede a la
 vista.
+
+## 4c. Endogeneidad estructural interna del IM (consecuencia del rol dual de loc_peq)
+
+`loc_peq` es simultáneamente componente del índice de marginación y determinante causal de
+otros componentes del mismo índice (`sin_agua`, `sin_drenaje`, `sin_electr`, vía costo de red;
+y de las privaciones educativa e infraestructural vía z). El IM mezcla así una privación con
+un *determinante territorial de otras privaciones* — al agregarlas, el DP2 cuenta parte del
+mismo fenómeno dos veces por rutas distintas, y su corrección (1−R²) trata esa redundancia
+como duplicidad informativa, no como estructura causal. No es un error de CONAPO: es una
+propiedad del diseño que cualquier análisis del índice debería declarar.
 
 ## 4. Las cinco dependencias mecánicas son CAMINOS del grafo, no aristas
 
