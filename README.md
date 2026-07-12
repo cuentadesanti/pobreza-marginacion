@@ -20,10 +20,11 @@ y monetaria que rara vez se superponen. Además, la actividad económica visible
 con precariedad laboral y con mejoras sociales locales menores de las que sugeriría la
 luminosidad del territorio.
 
-Tres resultados principales (el resto los apoya o acota — ver `reports/TABLA_MAESTRA.md`):
+Cuatro resultados principales (el resto los apoya o acota — ver `reports/TABLA_MAESTRA.md`; manuscrito en `paper/manuscrito.md`):
 1. **Dos escalas** de desigualdad (50.8% entre estados el z bruto; 13–24% los ejes condicionales).
 2. **Geografías residuales débilmente solapadas** (Jaccard ≤0.21): la acumulación vive en el bruto.
 3. **Brecha de apropiación territorial**: precariedad laboral primero (β=+0.23), remesas al revés.
+4. **La discordancia fundacional es de método**: la firma SAE-EBPH parte los regímenes LISA (AA −0.33 vs BB +0.34); en educación las agencias casi acuerdan.
 
 ## Pregunta original
 ¿Cuándo marginación y pobreza cuentan historias distintas del mismo territorio, y qué estructura
