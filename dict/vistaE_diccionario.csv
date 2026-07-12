@@ -1,0 +1,16 @@
+variable,archivo,descripcion,fuente,estatus_medicion,rol_modelo
+pibe_mdp,estatales_2020.csv,PIB estatal 2020 preliminar millones de pesos corrientes precios básicos base 2013,INEGI PIBE boletín dic-2021,OFICIAL (11 entidades monto exacto; resto reconstruido de estructura porcentual - flag pibe_aprox),cofactor estatal / descomposición de gamma_s
+pibe_aprox,estatales_2020.csv,Bandera: PIBE reconstruido de porcentaje (precisión 0.1 pp) en vez de monto exacto,derivada,BANDERA DE CALIDAD,metadato
+gasto_estatal_pesos,estatales_2020.csv,Total de egresos del gobierno estatal 2020 en pesos,INEGI EFIPEM estatal,OFICIAL (CDMX no reportó 2020 -> NaN),cofactor estatal
+pibe_pc_mxn,estatales_2020.csv,PIBE per cápita (pesos/persona; pob = suma municipal CONAPO),derivada,DERIVADA,cofactor estatal
+gasto_estatal_pc_mxn,estatales_2020.csv,Gasto estatal per cápita,derivada,DERIVADA,cofactor estatal
+gasto_pibe_pct,estatales_2020.csv,Gasto estatal como % del PIBE (tamaño del estado en la economía local),derivada,DERIVADA,cofactor estatal clave (pregunta del usuario: gasto ajustado por PIB)
+ingresos_tot,finanzas_mun_2020.parquet,Total de ingresos municipales 2020 pesos,INEGI EFIPEM municipal,OFICIAL (cobertura 2250/2469=91%; faltante concentrado en Puebla/Chiapas/Oaxaca/CDMX - NO aleatorio),descriptivo / validación
+participaciones,finanzas_mun_2020.parquet,Participaciones federales (Ramo 28: fórmula población+recaudación),INEGI EFIPEM municipal,OFICIAL,cofactor posible (menos endógeno que aportaciones)
+aportaciones,finanzas_mun_2020.parquet,Aportaciones federales y estatales (contiene FAIS/FISM Ramo 33),INEGI EFIPEM municipal,OFICIAL - CIRCULAR: FAIS se asigna por pobreza extrema CONEVAL (art. 34 LCF),SOLO validación/política. NO cofactor del latente
+ingresos_propios,finanzas_mun_2020.parquet,Impuestos+derechos+productos+aprovechamientos+contribuciones de mejoras,INEGI EFIPEM municipal,OFICIAL,cofactor posible (capacidad fiscal propia)
+egresos_tot,finanzas_mun_2020.parquet,Total de egresos municipales,INEGI EFIPEM municipal,OFICIAL,descriptivo
+inversion_publica,finanzas_mun_2020.parquet,Capítulo de inversión pública (obra),INEGI EFIPEM municipal,OFICIAL - parcialmente financiada por FAIS -> misma advertencia,validación
+dep_transferencias_pct,finanzas_mun_2020.parquet,(participaciones+aportaciones)/ingresos totales * 100,derivada,DERIVADA - numerador contiene FAIS,descriptivo / validación
+autonomia_fiscal_pct,finanzas_mun_2020.parquet,ingresos propios / ingresos totales * 100,derivada,DERIVADA,cofactor posible con análisis de sensibilidad
+*_pc,finanzas_mun_2020.parquet,Versiones per cápita (pob_conapo),derivada,DERIVADA,—

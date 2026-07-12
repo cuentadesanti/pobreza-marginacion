@@ -23,8 +23,12 @@ data/
 dict/           diccionarios de variables (fuente, universo, directa/modelada, oficial/proxy)
 figures/        figuras de cada sprint
 reports/        reportes por hito (markdown)
+scripts/        gllvm_ladder.py (escalera), analyze_ladder.py (análisis/figuras),
+                build_finanzas_2020.py (Vista E fiscal)
+outputs/        posteriores (.nc, no versionados) y resúmenes csv de la escalera
 spatial/        grafo de contigüidad (edge list ICAR)
 RAW_DATA_MANIFEST.md   URLs de origen de los crudos grandes NO versionados
+GLLVM_REPLICACION.md   guía de corrida e interpretación de la escalera
 ```
 
 ## Datasets analíticos clave (`data/processed/`)
@@ -37,6 +41,8 @@ RAW_DATA_MANIFEST.md   URLs de origen de los crudos grandes NO versionados
 | `crosswalk_banxico_cvegeo.csv` | Crosswalk 2,456 series de remesas Banxico ↔ CVEGEO, con banderas de confianza de match. |
 | `lisa_classes.parquet` | Clases LISA de discordancia (Alto-Alto, Bajo-Bajo, no significativo). |
 | `gllvm_Y.parquet`, `gllvm_covars.parquet` | Matriz de diseño alineada (2,455) para el GLLVM: 17 indicadores + cofactores Vista D. |
+| `estatales_2020.csv` | **Vista E estatal**: PIBE 2020, gasto estatal EFIPEM, per cápita y gasto/PIB (CDMX sin EFIPEM 2020). |
+| `finanzas_mun_2020.parquet` | **Vista E municipal**: ingresos/egresos, participaciones, aportaciones (⚠ FAIS circular — solo validación), autonomía fiscal (2,250 municipios, 91%). |
 
 ## Hallazgos por hito (`reports/`)
 
@@ -44,6 +50,13 @@ RAW_DATA_MANIFEST.md   URLs de origen de los crudos grandes NO versionados
 2. **Confirmación K** (`reporte_confirmatorio_k.md`): un baseline ridge/KNN gana al factor model en precisión puntual (el latente NO es predictor superior); entre factor models, K=3 > K=2 en 15/17 indicadores. Modelo deduplicado colapsa a K=2 → K=3 está en el borde.
 3. **Regímenes LISA** (`reporte_regimenes_lisa.md`): régimen AA (más marginado que pobre) es rural, con remesas; BB (más pobre que marginado) es urbano. La composición explica la magnitud pero no la geografía.
 4. **Modelo externo** (`reporte_modelo_externo.md`): con cofactores externos (sin insumos CONAPO/CONEVAL), la dependencia espacial residual persiste (Moran I 0.51→0.46, p=0.001) → el componente espacial del GLLVM está justificado empíricamente.
+5. **DGP como DAG de medición** (`reporte_dgp_dag.md`): los dos pipelines oficiales (DP2 censal;
+   SAE = 12 logísticos + EBPH + calibración estatal) como grafo dirigido, con 5 dependencias
+   mecánicas y sus implicaciones de especificación (bloques de método, lectura doble de los
+   efectos estatales, circularidad FAIS).
+6. **Mapa de literatura** (`reporte_literatura.md`): el proyecto en el cruce economía de la
+   desigualdad × ciencia social computacional; el hueco que ocupa.
+7. **Escalera GLLVM** (`reporte_gllvm_escalera.md`): resultados de los 4 peldaños, K=2/K=3.
 
 ## Especificación del GLLVM
 

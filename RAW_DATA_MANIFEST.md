@@ -25,6 +25,27 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
 ### Geometrías municipales
 - Marco Geoestadístico INEGI 2020 (usado para el grafo de contigüidad Queen → `spatial/icar_edges.npz`).
 
+### Finanzas públicas 2020 (Vista E — cofactores fiscales)
+- EFIPEM estatal (CSV abiertos): https://www.inegi.org.mx/contenidos/programas/finanzas/datosabiertos/efipem_estatal_csv.zip
+- EFIPEM municipal (109 MB): https://www.inegi.org.mx/contenidos/programas/finanzas/datosabiertos/efipem_municipal_csv.zip
+  - Cobertura 2020: 2,250/2,469 municipios (91%). El faltante NO es aleatorio: se concentra por
+    estado (Puebla 139, Chiapas 33, Oaxaca 24, las 16 alcaldías de CDMX). CDMX tampoco reportó
+    el nivel estatal 2020 (gasto NaN en `estatales_2020.csv`).
+- PIBE 2020 preliminar (base 2013): boletín INEGI dic. 2021
+  https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2021/pibe/PIBEntFed2020.pdf
+  (11 entidades con monto exacto; resto reconstruido de la estructura porcentual, flag `pibe_aprox`).
+- Constructor: `scripts/build_finanzas_2020.py <dir_con_zips_extraidos>` → `estatales_2020.csv`,
+  `finanzas_mun_2020.parquet`.
+- **Advertencia de circularidad**: las aportaciones municipales contienen FAIS, asignado por la
+  fórmula del art. 34 LCF sobre pobreza extrema CONEVAL → NO usar como cofactor del latente
+  (ver `reports/reporte_dgp_dag.md`, dependencia 5).
+
+## Tooling para ampliar indicadores
+- `~/code/inegi-client` (repo local): cliente de la API de Indicadores INEGI/BISE, DENUE y Marco
+  Geoestadístico, con backfill a DuckDB. Requiere `INEGI_TOKEN` (env var). Pendientes naturales:
+  PIBE exacto por entidad (reemplaza la reconstrucción porcentual de `estatales_2020.csv`),
+  densidad de amenidades DENUE (cofactor municipal, Vista F), geojson para mapas de scores.
+
 ## Nota de reproducibilidad
 - CVEGEO = clave de 5 dígitos (2 entidad + 3 municipio). Llave de cruce validada: CONAPO ∩ CONEVAL = 2,469 municipios, 0 huérfanos.
 - Indicadores en porcentaje transformados con logit tras corrección de continuidad: `p = (y + c)/(100 + 2c)`.

@@ -16,3 +16,5 @@ jax
 libpysal
 esda
 geopandas
+h5py
+netcdf4

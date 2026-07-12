@@ -196,8 +196,14 @@ def variance_decomposition(idata, ind, rural, X, state):
     N, J = len(rural), len(ind)
     m = lambda v: post[v].mean(("chain", "draw")).values
 
-    z = m("z"); Lam = m("Lam")                          # (N,K),(J,K)
-    contrib = {"factores": z @ Lam.T}                   # (N,J)
+    # E[z Lam'] draw a draw (invariante a rotación/reflexión de los factores; promediar
+    # z y Lam por separado entre cadenas se cancela si hay label switching)
+    zL = np.zeros((N, J)); ndraw = 0
+    zday = post["z"].values; Lday = post["Lam"].values  # (C,D,N,K), (C,D,J,K)
+    for c in range(zday.shape[0]):
+        for d in range(zday.shape[1]):
+            zL += zday[c, d] @ Lday[c, d].T; ndraw += 1
+    contrib = {"factores": zL / ndraw}                  # (N,J)
     if "beta_rural" in post:
         contrib["ruralidad"] = rural[:, None] * m("beta_rural")[None, :]
     if "betaD" in post:
@@ -243,14 +249,22 @@ def run_rung(rung, K, data, spatial, sampler, draws, tune, chains, seed, ref_loa
         else:
             idata = pm.sample(cores=chains, init="jitter+adapt_diag", **sk)
         idata.extend(pm.sample_posterior_predictive(idata, progressbar=False))
+        # log-verosimilitud pointwise para ELPD-LOO (PyMC no la guarda por defecto -> az.loo daría NaN)
+        pm.compute_log_likelihood(idata, progressbar=False)
 
     ref = ref_loadings if ref_loadings is not None else idata.posterior["Lam"].values[0].mean(0)
     Lam_mean, Lam_sd = procrustes_to_ref(idata, ref)
     pd.DataFrame(Lam_mean, index=ind, columns=facs).to_csv(
         os.path.join(OUT, f"loadings_rung{rung}_K{K}.csv"))
-    # z por municipio (media + sd = ancho de incertidumbre)
-    zmean = idata.posterior["z"].mean(("chain", "draw")).values
-    zsd = idata.posterior["z"].std(("chain", "draw")).values
+    # z por municipio (media + sd): alineado POR CADENA contra ref (las anclas fijan el modo,
+    # pero si una cadena cae en otra rotación, el promedio ingenuo entre cadenas se cancela)
+    zch = idata.posterior["z"].values          # (C, D, N, K)
+    Lch = idata.posterior["Lam"].values
+    zrot = np.empty_like(zch)
+    for c in range(zch.shape[0]):
+        R, _ = orthogonal_procrustes(Lch[c].mean(0), ref)
+        zrot[c] = zch[c] @ R
+    zmean = zrot.mean((0, 1)); zsd = zrot.std((0, 1))
     zc = pd.DataFrame(np.hstack([zmean, zsd]),
                       columns=[f"{f}_mean" for f in facs] + [f"{f}_sd" for f in facs])
     zc.insert(0, "cvegeo", cvegeo)
@@ -266,6 +280,9 @@ def run_rung(rung, K, data, spatial, sampler, draws, tune, chains, seed, ref_loa
     rhat_stable = float(max(float(rh[v].max()) for v in ["alpha", "sigma"] if v in rh))
     try: elpd = float(az.loo(idata).elpd_loo)
     except Exception: elpd = float("nan")
+    # no persistir la log-verosimilitud (4 cadenas x draws x 2455 x 17 ~ GBs en el .nc)
+    if hasattr(idata, "log_likelihood"):
+        del idata.log_likelihood
     rho_str = ""
     if "rho_sp" in idata.posterior:
         rho = idata.posterior["rho_sp"].mean(("chain", "draw")).values

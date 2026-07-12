@@ -36,6 +36,19 @@ Tiempos esperados (M-series, NumPyro, 4 cadenas): peldaños 1–3 unos minutos c
 el peldaño 4 (BYM2 sobre z, +2,455×K parámetros espaciales) es el caro — de decenas de minutos
 a ~1 h según draws. Empieza con `--draws 500 --tune 500` para una corrida de prueba.
 
+### Correcciones aplicadas en la corrida (2026-07-11)
+
+- `h5py`/`netcdf4` agregados a requirements (el `to_netcdf` de arviz los necesita; sin ellos el
+  guardado del posterior falla al final del peldaño).
+- **ELPD-LOO**: PyMC no guarda la log-verosimilitud pointwise por defecto → `az.loo` daba NaN.
+  El script ahora llama `pm.compute_log_likelihood` tras muestrear (y la descarta antes de
+  escribir el `.nc`, que si no pesaría GBs).
+- **Descomposición de varianza**: se calcula sobre `E[zΛ']` draw a draw (invariante a rotación),
+  no `E[z]·E[Λ]'` — el promedio ingenuo entre cadenas se cancela si hay label switching.
+- **z-scores**: alineados por cadena (Procrustes de la media de Λ por cadena contra la referencia)
+  antes de promediar. `scripts/analyze_ladder.py` puede regenerar ambos desde los `.nc`
+  (`recompute_from_idata`) y reporta un diagnóstico de rotaciones entre cadenas.
+
 ## 3. Qué produce (en `outputs/`)
 
 | Archivo | Contenido |

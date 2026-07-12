@@ -1,0 +1,109 @@
+# Escalera GLLVM: resultados K=3 (peldaños 1–4)
+
+**Corrida:** 2026-07-11, NumPyro NUTS, 4 cadenas × (1000 tune + 1000 draws), semilla 1,
+N=2,455 municipios × J=17 indicadores (logit-z). K=2 en curso; este reporte cubre K=3.
+Figuras: `fig_escalera_cargas.png`, `fig_escalera_vardecomp.png`, `fig_escalera_metricas.png`,
+`fig_gamma_estados.png`.
+
+## Resumen por peldaño
+
+| Peldaño | Moran I resid. | ELPD-LOO | sd latente media | ρ BYM2 |
+|---|---|---|---|---|
+| 1 base | 0.422 | −26,229 | 0.80 | — |
+| 2 +Vista D | 0.336 | −15,730 | 0.78 | — |
+| 3 +estado | **0.225** | −15,118 | 0.70 | — |
+| 4 +BYM2 (sin estado) | 0.294 | **−12,876** | **0.42** | 1.00 en los 3 factores |
+
+*(R-hat de α es ~1.00 en todos los peldaños; el R-hat alto reportado (2.0–2.6) viene de σ y del
+bloque factorial y refleja multimodalidad rotacional — ver §Diagnóstico. Las cantidades a nivel
+ajuste (η, ELPD, Moran, α) coinciden entre cadenas; cargas, scores y descomposiciones están
+alineadas por Procrustes por cadena.)*
+
+## Hallazgo 1 — El "factor general" del peldaño 1 era, en su mayoría, composición observable
+
+La fracción media de varianza atribuida a los factores latentes cae de **0.60 → 0.15** al
+entrar Vista D (+ruralidad); los cofactores absorben **0.48**. Las cargas que más caen
+(post-Procrustes, 1→2): `ing_2sm` (−0.59), `car_servbas` (−0.52), `sin_electr` (−0.48),
+`lp_ingreso`/`lp_ingreso_ext` (−0.44/−0.47) sobre el factor material (`loc_peq` −0.68 es
+mecánico: ruralidad ES la covariable). El ELPD salta +10,500 — por mucho el peldaño que más
+aporta. Esto confirma con maquinaria bayesiana lo que el baseline ridge/KNN del reporte
+confirmatorio ya insinuaba: **la privación municipal es ante todo una función del perfil
+territorial-demográfico observable**; el espacio latente "puro" es la desviación respecto a esa
+composición, no el fenómeno completo. La lectura correcta de los factores de los peldaños 2–4
+es condicional: *privación no explicada por composición*.
+
+## Hallazgo 2 — La geografía discreta es real, y `car_salud` es su caso extremo
+
+Los efectos estatales (peldaño 3) absorben en promedio **0.17** de la varianza y bajan el Moran
+residual a 0.225. El caso dramático: **`car_salud`**, el indicador "casi ortogonal" de los
+reportes previos (uniqueness 0.94 en el peldaño 1), resulta ser **~22% estado**: su uniqueness
+cae de 0.82 → 0.53 al entrar γ_s. En 2020 — año de la transición Seguro Popular→INSABI — el
+acceso a salud es un fenómeno de *política estatal*, no de municipio. Su "ortogonalidad" era
+federalismo, no ruido.
+
+**Test del DAG (directo vs modelado):** la predicción era |γ_s| mayor en los indicadores SAE
+(calibrados a totales estatales). Resultado matizado: SAE 0.322 > CONAPO censal 0.269 ✓, pero
+los CONEVAL *directos* son los más altos (0.340), arrastrados por `car_salud` (0.438, el máximo
+de los 17) y `car_servbas` (0.363). Es decir: **ambos bloques CONEVAL (universo personas,
+muestra censal) cargan más estado que los CONAPO censales**, y el componente estatal mezcla
+política real (salud) con posible artefacto de calibración (las dos líneas de ingreso SAE están
+en el top-5: 0.359 y 0.353, mientras `car_segsoc` SAE queda abajo, 0.267). El artefacto de
+calibración no queda descartado ni confirmado en bloque: hay que mirarlo indicador por
+indicador (`outputs/dag_test_directo_vs_modelado.csv`).
+
+**Descomposición fiscal de γ̄_s** (`fig_gamma_estados.png`, `outputs/gamma_estados_decomposicion.csv`):
+el efecto estatal medio correlaciona r = −0.46 con log PIBE pc y r = +0.48 con gasto estatal/PIBE.
+Los estados con efecto positivo (más privación de la que su composición municipal predice) son
+pobres y con gobiernos grandes relativo a su economía (Chiapas 07, Guerrero 12, Oaxaca 20,
+Veracruz 30, Yucatán 31); los negativos son el norte rico (NL 19, Coahuila 05, BCS, Sonora).
+Con 32 puntos y CDMX sin gasto EFIPEM esto es descriptivo, no causal — pero deja los efectos
+estatales anclados a algo medido, no como cajón residual. (Nota: gasto/PIBE alto en estados
+pobres es en parte mecánico — transferencias federales sobre PIB chico.)
+
+## Hallazgo 3 — Lo espacial suave predice mejor y angosta la incertidumbre, pero NO sustituye al estado
+
+El peldaño 4 (BYM2 sobre z, sin estado) da el mejor ELPD (−12,876, +2,242 sobre el peldaño 3) y
+**la incertidumbre municipal se reduce a la mitad** (sd media 0.70 → 0.42; por factor:
+material 0.15→0.10, educativo 0.52→0.33, monetario 0.26→0.12) — el "préstamo de fuerza" de los
+vecinos es real y cuantificado. Pero dos señales dicen que la especificación espacial actual es
+insuficiente como geografía única:
+
+1. **ρ = 1.00 en los tres factores** — el posterior se apila en la frontera (ICAR puro). Con un
+   campo por factor tan flexible, ρ pierde su papel de "métrica 4" y ya no discrimina.
+2. **El Moran residual SUBE respecto al peldaño 3** (0.294 vs 0.225): un campo espacial
+   *compartido* (vía z) no puede absorber autocorrelación *específica por indicador* (salud,
+   drenaje), que los γ_s por indicador sí capturan. → La geografía residual del sistema es
+   **indicador-específica, no un continuo compartido**. La comparación 3-vs-4 respondió algo
+   más interesante que "¿cuál gana?": son geografías de naturaleza distinta.
+
+## Diagnóstico técnico (leer antes de citar números finos)
+
+- **Label switching real entre cadenas en los 4 peldaños** (diagnóstico max|R−I| ≈ 1.1–1.5).
+  Causa raíz: **las anclas se apagan** — `diag` (carga ancla) tiene modos en ~0 en algunas
+  cadenas (p.ej. material→`sin_agua` en el peldaño 2: a `sin_agua` casi no le queda contenido
+  factorial tras condicionar en composición; HalfNormal permite diag→0 y la rotación queda
+  libre). Consecuencias contenidas: cargas/scores/descomposiciones se reportan alineadas por
+  Procrustes por cadena (`analyze_ladder.py::recompute_from_idata`), y α/η/ELPD/Moran son
+  invariantes (desacuerdo entre cadenas: α ≤ 0.007; σ ≤ 0.17 en el peor peldaño).
+- **Respecificación recomendada para la siguiente corrida:**
+  1. Re-anclar material en un indicador con carga parcial fuerte (`piso_tierra` o `hacinam`),
+     no `sin_agua`;
+  2. `diag ~ LogNormal(log 0.5, 0.4)` (acotada lejos de 0) en vez de HalfNormal;
+  3. para ρ: prior penalizada hacia 0 (tipo PC prior) o reportar en su lugar el Moran de z;
+  4. peldaño 4b exploratorio: BYM2 **por indicador** solo para `car_salud` y `sin_drenaje`
+     (los de mayor γ_s), que es donde la geografía específica vive.
+- ELPD-LOO: Pareto-k altos (esperado con latentes por observación); usar solo como ordenamiento
+  grueso entre peldaños, no como diferencia calibrada.
+
+## Implicación integradora
+
+La pregunta central del repo ("¿cuándo cuentan historias distintas?") queda reformulada por la
+escalera: la discordancia marginación-pobreza vive en tres capas separables — (i) composición
+territorial (la mayor parte, y compartida), (ii) política estatal (salud sobre todo, con mezcla
+de calibración SAE no resuelta), y (iii) desviaciones municipales espacialmente suaves (reales
+pero menores, con incertidumbre ya cuantificada municipio por municipio en
+`outputs/zscores_rung4_K3.csv`). El producto diagnóstico prometido — "no un índice nuevo" —
+ya tiene forma empírica.
+
+*Pendiente: fila K=2 al terminar la corrida; respecificación de anclas; mapas de z ± sd (falta
+geojson — ver inegi-client en el manifiesto).*

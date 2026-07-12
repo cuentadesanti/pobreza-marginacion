@@ -18,3 +18,7 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Posteriores pesados de la escalera
+outputs/*.nc
+outputs/ladder_run.log
