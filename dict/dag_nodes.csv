@@ -11,7 +11,7 @@ z_edu,privación educativa,latente,municipal,t,no,constructo latente
 z_infra,privación infraestructura y vivienda,latente,municipal,t,no,constructo latente
 z_lab,privación laboral / protección social,latente,municipal,t,no,constructo conceptual; NO emerge como factor separado en K=3 (evidencia GLLVM)
 z_mon,privación monetaria,latente,municipal,t,no,constructo latente
-z_infra_t2,privación infraestructura (futura),latente,municipal,t+2,no,estado futuro del constructo; sumidero del lazo de política
+z_infra_t2,infraestructura municipal futura,latente,municipal,t+2,no,stock futuro de infraestructura (complemento de la privación); la inversión lo AUMENTA = reduce la privación t+2
 analf,analfabetismo 15+,indicador,municipal,t,no,porcentaje publicado CONAPO
 sin_basica,sin educación básica,indicador,municipal,t,no,porcentaje publicado CONAPO
 rezago_educ,rezago educativo,indicador,municipal,t,no,porcentaje publicado CONEVAL (directo de muestra censal)
@@ -49,3 +49,4 @@ inversion_t0,inversión municipal 2016-2020,politica,municipal,t,no,agua/drenaje
 formula_fais_t1,fórmula FAIS 2021+,politica,municipal,t+1,no,alimentada por la medición 2020
 fism_t1,FISM 2021+,politica,municipal,t+1,no,
 inversion_t1,inversión municipal 2021+,politica,municipal,t+1,no,
+masa_carencial_pre2013,masa carencial (fórmula FAIS 1998-2013),indice,municipal,t-2,no,constructo de la fórmula vieja: indicadores de carencia pre-2013 (educación drenaje electricidad piso; perfil marginación)

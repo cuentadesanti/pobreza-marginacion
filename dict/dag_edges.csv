@@ -89,4 +89,5 @@ pobreza_coneval,formula_fais_t1,retroalimentacion_politica,la medición 2020 ali
 piso_2013,formula_fais_t1,retroalimentacion_politica,el piso heredado persiste en la fórmula vigente,politica,politica
 formula_fais_t1,fism_t1,retroalimentacion_politica,asignación FISM 2021+,politica,politica
 fism_t1,inversion_t1,retroalimentacion_politica,ejecución futura,politica,politica
-inversion_t1,z_infra_t2,retroalimentacion_politica,reduce la privación futura (t+2): el lazo queda acíclico al versionar en el tiempo,politica,latente
+inversion_t1,z_infra_t2,retroalimentacion_politica,AUMENTA el stock futuro de infraestructura (= reduce la privación en t+2); acíclico por versionado temporal,politica,latente
+masa_carencial_pre2013,piso_2013,retroalimentacion_politica,la fórmula 1998-2013 asignaba por masa carencial (indicadores pre-2013 de perfil marginación); la asignación 2013 congeló ese reparto como piso vigente,indice,politica

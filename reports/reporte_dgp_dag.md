@@ -58,10 +58,12 @@ Detalles del cálculo que importan para el modelo:
 
 ## 3. El DAG (a nivel de variable)
 
-![DAG de medición](../figures/fig_dag_dgp.png)
+![DAG de medición — vista principal](../figures/fig_dag_main.png)
 
-**El objeto canónico son dos tablas**: `dict/dag_nodes.csv` (50 nodos: `node_id, label, kind,
-observed_level, time_index, dual_role, definition`) y `dict/dag_edges.csv` (91 relaciones
+*Vista suplementaria auditable con los 51 nodos y 92 aristas: `figures/fig_dag_full.png`.*
+
+**El objeto canónico son dos tablas**: `dict/dag_nodes.csv` (51 nodos: `node_id, label, kind,
+observed_level, time_index, dual_role, definition`) y `dict/dag_edges.csv` (92 relaciones
 tipificadas). La figura se genera desde ellas (`scripts/fig_dag.py`), que antes de renderizar
 **valida formalmente**: aciclicidad con networkx, consistencia nodos↔aristas, y una matriz
 permitida de tipos `relation_type × (source_kind, target_kind)`. Estado: acíclico, 0

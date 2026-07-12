@@ -66,10 +66,11 @@ POS = {"loc_peq": (1.15, 11.35), "pct_60mas": (1.15, 9.85), "dep_ratio": (1.15, 
        "segsoc_raw": (5.1, 4.55), "alim_raw": (5.1, 3.9), "lpi_raw": (5.1, 3.25),
        "lpe_raw": (5.1, 2.6),
        "dist_conjunta": (7.0, 1.05), "op_identif": (8.5, 1.75),
-       "im_conapo": (9.7, 9.6), "pobreza_coneval": (9.7, 3.4), "pobreza_2015": (9.7, 0.45),
-       "formula_fais_t0": (7.6, 0.05), "fism_t0": (5.45, 0.05), "inversion_t0": (3.1, 0.3),
-       "piso_2013": (12.45, 0.9), "formula_fais_t1": (12.45, 2.5), "fism_t1": (12.45, 4.2),
-       "inversion_t1": (12.45, 5.9), "z_infra_t2": (12.45, 8.8)}
+       "im_conapo": (9.7, 9.6), "pobreza_coneval": (9.7, 3.4), "pobreza_2015": (2.75, 0.95),
+       "masa_carencial_pre2013": (0.9, 0.05), "piso_2013": (2.75, 0.05),
+       "formula_fais_t0": (4.9, 0.4), "fism_t0": (6.7, 0.05), "inversion_t0": (8.5, 0.4),
+       "formula_fais_t1": (11.0, 0.9), "fism_t1": (12.45, 2.6),
+       "inversion_t1": (12.45, 4.6), "z_infra_t2": (12.45, 8.8)}
 for i, nid in enumerate(IND_ORDER):
     POS[nid] = (6.9, 11.7 - i * 0.62)
 KIND_FC = {"estructural": "#f2fbf7", "latente": "#eef4fd", "indicador": "#ffffff",
@@ -115,9 +116,9 @@ def main():
     fig, ax = plt.subplots(figsize=(15.5, 12.6), facecolor=SURF)
     ax.set_xlim(0, 14.6); ax.set_ylim(-0.3, 13.4); ax.set_axis_off()
     rad_cycle = [0.0, 0.07, -0.07, 0.12, -0.12]
-    special_rad = {("inversion_t0", "z_infra"): 0.34, ("loc_peq", "im_conapo"): -0.24,
+    special_rad = {("inversion_t0", "z_infra"): 0.28, ("loc_peq", "im_conapo"): -0.24,
                    ("pobreza_coneval", "formula_fais_t1"): 0.12,
-                   ("mec_enigh", "op_calib"): 0.30, ("piso_2013", "formula_fais_t0"): 0.12}
+                   ("mec_enigh", "op_calib"): 0.30, ("piso_2013", "formula_fais_t1"): -0.12}
     for i, r in E.iterrows():
         (x1, y1), (x2, y2) = POS[r["source"]], POS[r["target"]]
         col, ls, lw, al = STYLE[r["relation_type"]]
@@ -158,15 +159,15 @@ def main():
                for k, (c, ls, lw, al) in STYLE.items()]
     ax.legend(handles=leyenda, loc="center right", bbox_to_anchor=(0.998, 0.83),
               frameon=False, fontsize=7.5)
-    ax.text(0.1, 13.25, "DAG de medición y política a nivel de variable — México 2020",
+    ax.text(0.1, 13.25, "DAG de medición y política a nivel de variable — México 2020 (vista completa)",
             fontsize=12.5, color=INK, fontweight="bold")
     ax.text(0.1, 12.95, f"canónico: dict/dag_nodes.csv ({len(N)}) + dict/dag_edges.csv ({len(E)}) · "
             "verificado acíclico (networkx) · pobreza vía distribución conjunta persona + regla de "
             "identificación · SAE→preliminares→calibración→publicados · borde grueso = rol dual",
             fontsize=7.3, color=INK2)
     fig.tight_layout()
-    fig.savefig(os.path.join(FIG, "fig_dag_dgp.png"), dpi=150)
-    print("\nfigures/fig_dag_dgp.png regenerada")
+    fig.savefig(os.path.join(FIG, "fig_dag_full.png"), dpi=150)
+    print("\nfigures/fig_dag_full.png regenerada (vista suplementaria auditable)")
 
 
 if __name__ == "__main__":
