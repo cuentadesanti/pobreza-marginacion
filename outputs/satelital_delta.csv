@@ -1,0 +1,13 @@
+outcome,factor,M0_vistaD,M1_ntl,M2_geografia,M3_lentes,M4_vistaD+lentes,delta_vistaF
+indicadores,car_salud,-0.037,0.006,-0.06,-0.027,0.029,0.067
+indicadores,car_servbas,0.347,0.328,-0.118,0.279,0.544,0.197
+indicadores,car_vivienda,0.296,0.14,-0.087,0.151,0.379,0.083
+indicadores,lp_ingreso,0.51,0.13,-0.19,0.13,0.569,0.059
+indicadores,piso_tierra,0.086,0.049,-0.128,0.092,0.233,0.147
+indicadores,rezago_educ,0.424,0.322,0.017,0.284,0.539,0.116
+rung1,educativo,0.248,-0.105,-0.116,-0.066,0.321,0.074
+rung1,material,0.68,0.408,0.016,0.409,0.765,0.086
+rung1,monetario,0.432,0.022,0.024,0.177,0.502,0.07
+rung3,educativo,-0.068,-0.085,-0.108,-0.111,-0.083,-0.015
+rung3,material,-0.099,-0.137,-0.194,-0.197,-0.108,-0.009
+rung3,monetario,-0.094,-0.103,-0.15,-0.145,-0.03,0.064

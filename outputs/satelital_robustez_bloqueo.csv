@@ -1,0 +1,7 @@
+outcome,bloqueo,r2,r2_min_fold
+z_material_rung1,estado32,0.403,0.157
+z_material_rung1,kmeans15_espacial,0.431,0.286
+z_material_rung1,macroregion_LORO,-0.312,-0.563
+car_servbas_obs,estado32,0.328,0.064
+car_servbas_obs,kmeans15_espacial,0.312,0.041
+car_servbas_obs,macroregion_LORO,-0.74,-1.211

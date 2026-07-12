@@ -1,74 +1,102 @@
 # Dos lentes sobre la privación: qué ve la actividad nocturna, qué explica la geografía y qué permanece invisible
 
-**Encuadre.** Validación externa del espacio latente con lentes independientes de todo el
-aparato censal-social: luces nocturnas VIIRS 2020 (NPP-VIIRS-like v2, 500 m), relieve
-(GMTED2010: elevación y rugosidad TRI) y accesibilidad (distancia a ciudad ≥50k, ITER).
-Vista F congelada en `data/processed/vistaF_satelital.parquet` (2,469 municipios, 0 NaN).
-Evaluación: R² con **CV bloqueado por estado** (GroupKFold sobre CVE_ENT — el mismo criterio
-anti-autocorrelación de la validación de homicidios), ponderado por 1/sd² posterior.
+**Encuadre.** Validación externa del espacio latente con lentes independientes del aparato
+censal-social: luces nocturnas VIIRS 2020 (NPP-VIIRS-like v2, 500 m), relieve (GMTED2010:
+elevación + rugosidad TRI) y accesibilidad (distancia a ciudad ≥50k). Vista F en
+`data/processed/vistaF_satelital.parquet` (2,469 municipios, 0 NaN). Evaluación: R² con CV
+**bloqueado por estado**, ponderado por 1/sd² posterior donde aplica.
 
-## La tabla central (HistGradientBoosting; Ridge da el mismo patrón)
+## Tres resultados distintos — separados con disciplina
 
-| Lente | material | educativo | monetario |
+### 1. El hallazgo limpio: la privación material bruta es visible desde el espacio
+
+R²(NTL → z_material bruto) = **0.41** extrapolando a estados no vistos. Robustez de bloqueo
+(`satelital_robustez_bloqueo.csv`): con clusters espaciales KMeans-15 construidos sin usar
+outcomes, **0.43** (peor fold 0.29) — no es un artefacto del bloqueo administrativo. Límite
+de alcance: **no cruza macroregiones** (leave-one-macroregion-out: R²=−0.31) — el mapeo
+luz↔privación se recalibra entre el norte y el sur del país; la lente funciona dentro de una
+región, no como regla nacional transportable. En cambio, más luz NO equivale a mejor
+educación (−0.11) ni a menor privación monetaria (0.02).
+
+### 2. El 0.77 NO es mérito de las lentes: la fila decisiva es ΔR²
+
+| (hgb, CV-estado) | M0 Vista D | M1 NTL | M2 geo | M3 lentes | M4 D+lentes | **ΔR² lentes** |
+|---|---|---|---|---|---|---|
+| z material bruto | 0.68 | 0.41 | 0.02 | 0.41 | 0.77 | **+0.09** |
+| z educativo bruto | 0.25 | −0.11 | −0.12 | −0.07 | 0.32 | **+0.07** |
+| z monetario bruto | 0.43 | 0.02 | 0.02 | 0.18 | 0.50 | **+0.07** |
+| z (los tres) residual p.3 | ≈−0.1 | <0 | <0 | <0 | ≈−0.07 | **≈0** |
+
+Vista D sola ya explica 0.68 del material; las lentes agregan +0.07–0.09 sobre el contexto
+tabular. Ese es el número honesto del valor marginal de Vista F (`satelital_delta.csv`).
+
+### 3. Validación contra indicadores OBSERVADOS (independiente del GLLVM)
+
+El patrón replica sin pasar por la parametrización del factor model
+(logit-z publicados, mismos modelos):
+
+| indicador | M1 NTL | M0 Vista D | ΔR² lentes |
 |---|---|---|---|
-| **Privación bruta (peldaño 1)** | | | |
-| M1 solo luces | **0.41** | −0.11 | 0.02 |
-| M2 solo geografía (elev+TRI+acc) | 0.02 | −0.12 | 0.02 |
-| M3 lentes combinadas | 0.41 | −0.07 | 0.18 |
-| M4 + Vista D | 0.77 | 0.32 | 0.50 |
-| **Privación residual (peldaño 3)** | | | |
-| M1–M4 (todos) | **< 0** | **< 0** | **< 0** |
+| car_servbas | 0.33 | 0.35 | **+0.20** |
+| rezago_educ | 0.32 | 0.42 | +0.12 |
+| piso_tierra | 0.05 | 0.09 | **+0.15** |
+| car_vivienda | 0.14 | 0.30 | +0.08 |
+| lp_ingreso | 0.13 | 0.51 | +0.06 |
+| car_salud | 0.01 | −0.04 | +0.07 |
 
-(`outputs/satelital_modelos.csv` trae MAE, Moran residual, MAE por régimen LISA y R² por
-macro-región para las 48 combinaciones.)
+Las lentes agregan más exactamente donde el mecanismo físico lo predice (servicios básicos,
+piso de tierra). Matiz fino: el `rezago_educ` observado sí es visible para las luces (0.32)
+aunque el factor educativo latente no (−0.11) — el indicador crudo correlaciona con
+urbanización; el factor latente es la parte que queda tras el eje material, y esa parte es
+demográfica (cohortes), no luminosa.
 
-## Tríada de invisibilidad (confirmada, con una sorpresa)
+## La geografía física: precisión en la conclusión
 
-1. **La privación material bruta SÍ es visible desde el espacio** — las luces solas explican
-   0.41 fuera de muestra entre estados. Corr(log NTL, z_material) < 0 ✓; corr(log NTL,
-   loc_peq) = −0.57 (la lente nocturna es, ante todo, un urbanómetro).
-2. **La sorpresa: la geografía física NO agrega poder predictivo bajo CV bloqueado** (M2 ≈ 0.02;
-   M3 ≈ M1). El relieve "explica" privación solo mientras se le permite memorizar diferencias
-   entre estados; obligado a extrapolar a estados no vistos, no viaja. La arista causal
-   `rugosidad → z_infra` del DAG queda como mecanismo plausible con señal empírica débil a
-   escala municipal-nacional (así se anotó en `dag_edges.csv`).
-3. **Nada ve el espacio residual.** Sobre los z condicionales del peldaño 3, las 24
-   combinaciones dan R² negativo. Ni luces ni relieve ni accesibilidad saben nada de la
-   privación que queda tras composición y estado — **cuarta ruta independiente** a la misma
-   conclusión (dimensionalidad → `car_salud` ortogonal; escalera → γ_s estatal; homicidios →
-   residual sin señal; satélite → residual invisible). La privación educativa además es
-   invisible a TODAS las lentes espaciales incluso en bruto (solo la demografía la ve, M4):
-   es un fenómeno de cohortes, no de territorio luminoso.
+**No** concluimos "el relieve no explica la privación". Lo que muestra la evidencia:
+*elevación media, TRI a 30 arcseg y distancia euclídea a ciudad no generalizan entre estados
+como predictores suficientes de los factores latentes ni de los indicadores observados*
+(M2 ≤ 0.02 en todo). Puede fallar por operacionalización (media municipal borra barrancas;
+distancia euclídea ≠ tiempo de viaje; 30 arcseg es grueso), por heterogeneidad regional del
+efecto, o porque la infraestructura estatal media el efecto del relieve. La arista
+`rugosidad → z_infra` del DAG queda como **mecanismo plausible no respaldado de forma
+generalizable por esta operacionalización** — no refutado (así está anotado en
+`dag_edges.csv`).
 
-**Frase de cierre:** *la privación material deja huella espacial visible; la privación
-institucional no emite luz ni sigue el relieve.*
+## Remesas: el mejor hallazgo del capítulo, ahora con controles
 
-## Discordancia bidireccional (`outputs/satelital_discordancia.csv`, fig_satelital_discordancia)
+Residual de lentes `e = z_obs − ẑ_M3` (bruto, out-of-fold), regresión con FE de estado +
+ruralidad + log población, errores HC1 (`satelital_remesas_reg.csv`):
 
-Con M3 out-of-fold sobre la privación bruta:
+- **Material: β(log1p remesas) = −0.034, t = −5.1** — a más remesas, mejor vivienda/servicios
+  de lo que sus luces y geografía predicen. No es solo un contraste de colas: sobrevive
+  controles y FE.
+- **Monetario: β = +0.027, t = +3.4** — signo opuesto: el ingreso (laboral) local sigue pobre
+  relativo a su huella luminosa.
+- Lectura conjunta: **las transferencias se materializan en paredes, no en salarios locales**.
+  La economía de remesas rompe la equivalencia actividad-visible ↔ bienestar en las dos
+  direcciones a la vez.
+- Colas (titular calibrado): razón de medianas de remesas pc entre "mejor de lo esperado" y
+  "subestimadas" = **~20× (IC95 bootstrap 14–28×)**, estable a umbral (5/10/15%) y al filtro
+  pob≥5k. (El "40×" inicial era el punto con colas de 20 municipios; se reporta el rango.)
 
-- **(a) El satélite subestima la privación** (z_obs ≫ ẑ): municipios indígenas adyacentes a
-  corredores luminosos — San Mateo del Mar (Istmo), Chenalhó/Mitontic/Zinacantán (Altos de
-  Chiapas), Valles Centrales de Oaxaca — más las sierras profundas (Batopilas, Cochoapa el
-  Grande). Actividad luminosa cercana, población excluida de ella: la lente confunde
-  *proximidad a la economía* con *participación en ella*.
-- **(b) Mejor de lo esperado por sus luces/geografía**: la hipótesis de remesas se confirma
-  con contundencia — mediana de **600 USD pc** en esta cola vs **92** general y **14** en la
-  cola (a). Economías de transferencias: integración económica externa que ni la luz local ni
-  el relieve registran.
+## Lo que nada ve: el residual del peldaño 3
 
-## Conexión con el DAG
+24/24 combinaciones con R²<0 sobre los z condicionales, y ΔR² de las lentes ≈ 0. Tras remover
+composición observable y efectos estatales, **las lentes espaciales no recuperan la desviación
+municipal residual** — el residuo del GLLVM no es una versión escondida de urbanización o
+brillo. Interpretación por factor, sin sobre-extender: en salud apunta a lo institucional
+(consistente con γ_s/INSABI); en educación puede ser cohortes históricas, persistencia o
+identificabilidad del factor; en lo monetario, informalidad y transferencias que el NTL no
+registra. La etiqueta "invisibilidad institucional" se sostiene con fuerza para salud; para
+el resto la afirmación precisa es *invisibilidad a lentes espaciales convencionales*.
 
-Cinco nodos nuevos (`kind=satelital` + el latente `actividad_economica`) y cinco aristas en el
-canónico (56 nodos, 97 aristas, acíclico verificado). Punto conceptual cuidado: las luces son
-**proxy observado de actividad** — la flecha es `actividad → NTL` (medición) y `actividad →
-z_mon` (causal), nunca `NTL → privación`. Los nodos satelitales van como causas contextuales
-de latentes; jamás tocan `im_conapo`/`pobreza_coneval`.
+**Cierre:** *la privación material deja una huella visible en la actividad nocturna; la
+educación, el ingreso sostenido por transferencias y la heterogeneidad institucional pueden
+permanecer invisibles para las lentes espaciales convencionales.*
 
 ## Reproducibilidad
 
-`scripts/build_vistaF.py <scratch>` (fuentes en `RAW_DATA_MANIFEST.md`; ⚠ bug de clave cvegeo
-int/str documentado y verificado con asserts) → `scripts/satelital_modelos.py` →
-`scripts/satelital_discordancia.py`. Pendientes de segunda iteración: raster de accesibilidad
-Malaria Atlas (hoy distancia euclídea a ciudad), densidad vial OSM, y SHAP (la importancia por
-permutación ya está en `outputs/satelital_importancias.csv`).
+`build_vistaF.py` → `satelital_modelos.py` (M0–M4 × {rung1, rung3, 6 indicadores} × {ridge,
+hgb}) → `satelital_robustez.py` (bloqueos alternativos + remesas) → `satelital_discordancia.py`.
+Fuentes y advertencias (bug cvegeo, tiles GMTED, espejo Dataverse) en `RAW_DATA_MANIFEST.md`.
+Pendientes: raster de accesibilidad Malaria Atlas, densidad vial OSM, SHAP.
