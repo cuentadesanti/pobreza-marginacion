@@ -46,7 +46,7 @@ anticipar violencia** — son direcciones distintas del mismo espacio de indicad
 
 ## Reproducibilidad
 `python scripts/validacion_homicidios.py <dir_con_defunciones_csv>` — descarga documentada en
-`RAW_DATA_MANIFEST.md`. Figura: `figures/fig_validacion_homicidios.png`; tabla:
+`RAW_DATA_MANIFEST.md`. Figura: `../figures/06_validacion_homicidios/fig_validacion_homicidios.png`; tabla:
 `outputs/validacion_homicidios.csv`.
 
 *Sensibilidad pendiente: tasa por municipio de residencia (vs ocurrencia), y ventana 2018–2022.*

@@ -58,9 +58,9 @@ Detalles del cálculo que importan para el modelo:
 
 ## 3. El DAG (a nivel de variable)
 
-![DAG de medición — vista principal](../figures/fig_dag_main.png)
+![DAG de medición — vista principal](../figures/05_dag/fig_dag_main.png)
 
-*Vista suplementaria auditable con los 51 nodos y 92 aristas: `figures/fig_dag_full.png`.*
+*Vista suplementaria auditable con los 51 nodos y 92 aristas: `../figures/05_dag/fig_dag_full.png`.*
 
 **El objeto canónico son dos tablas**: `dict/dag_nodes.csv` (51 nodos: `node_id, label, kind,
 observed_level, time_index, dual_role, definition`) y `dict/dag_edges.csv` (92 relaciones
@@ -191,7 +191,7 @@ latente.
 
 ## 4b. La dependencia 5, cuantificada: la vara vale dinero
 
-![Dos varas, un presupuesto](../figures/fig_dos_varas_dinero.png)
+![Dos varas, un presupuesto](../figures/05_dag/fig_dos_varas_dinero.png)
 
 Condicional al **mismo nivel de privación total y tamaño poblacional**, los municipios en
 régimen AA (más marginados que pobres) recibieron en 2020 **+15.8% de aportaciones federales

@@ -25,6 +25,11 @@ plt.rcParams.update({"figure.facecolor": SURF, "axes.facecolor": SURF, "font.siz
                      "axes.spines.top": False, "axes.spines.right": False})
 
 
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("07_satelital")
+
 def norm(df):
     df = df.copy(); df["cvegeo"] = df["cvegeo"].astype(str).str.zfill(5); return df
 

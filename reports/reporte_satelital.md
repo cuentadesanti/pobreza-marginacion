@@ -104,9 +104,9 @@ participación en ella; el relieve condiciona costos pero no genera una relació
 estable; y las remesas permiten mejorar vivienda e ingreso sin una huella productiva local
 equivalente.*
 
-Figuras: `fig_satelital_delta.png` (la fila decisiva, visualizada), `fig_satelital_mapa.png`
+Figuras: `../figures/07_satelital/fig_satelital_delta.png` (la fila decisiva, visualizada), `../figures/07_satelital/fig_satelital_mapa.png`
 (la geografía de la discordancia: el cinturón azul "mejor de lo esperado" es el corredor
-migratorio Zacatecas–Jalisco–Michoacán–Guanajuato–Mixteca), `fig_satelital_discordancia.png`
+migratorio Zacatecas–Jalisco–Michoacán–Guanajuato–Mixteca), `../figures/07_satelital/fig_satelital_discordancia.png`
 (municipios nombrados).
 
 ## Reproducibilidad

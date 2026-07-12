@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Vista principal del DAG (figures/fig_dag_main.png): ≤25 nodos visibles.
+Vista principal del DAG (figures/05_dag/fig_dag_main.png): ≤25 nodos visibles.
 
 NO cambia la edge-list: las familias de indicadores se dibujan como PLACAS (notación de
 repetición ×N con un nodo unitario ejemplar adentro), no como cajas agregadas causales.
@@ -89,6 +89,11 @@ DRAW = [
 ]
 
 
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("05_dag")
+
 def verify(E):
     """cada arista dibujada debe existir en el canónico para ALGÚN miembro de la placa."""
     fam = {ex: set(m) | {ex} for ex, (_, m) in PLATES.items()}
@@ -166,7 +171,7 @@ def main():
     fig.legend(handles=leyenda, loc="lower center", ncol=4, frameon=False, fontsize=8)
     fig.tight_layout(rect=[0, 0.05, 1, 1])
     fig.savefig(os.path.join(FIG, "fig_dag_main.png"), dpi=160)
-    print("figures/fig_dag_main.png lista")
+    print("figures/05_dag/fig_dag_main.png lista")
 
 
 if __name__ == "__main__":

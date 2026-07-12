@@ -1,0 +1,20 @@
+capitulo,archivo,ruta_relativa,script_generador,reporte_donde_aparece,descripcion_1linea
+01_dimensionalidad,fig_dimensionalidad.png,figures/01_dimensionalidad/fig_dimensionalidad.png,(sprint dimensionalidad — sin script en repo),reporte_dimensionalidad.md,Horn/Velicer/bootstrap: el dato soporta 2-3 factores; car_salud casi ortogonal
+01_dimensionalidad,fig_robustez_k.png,figures/01_dimensionalidad/fig_robustez_k.png,(confirmatorio K — sin script en repo),reporte_confirmatorio_k.md,K=3 vs K=2 por indicador y baseline ridge/KNN
+02_escalera_gllvm,fig_escalera_cargas.png,figures/02_escalera_gllvm/fig_escalera_cargas.png,scripts/analyze_ladder.py,reporte_gllvm_escalera.md,Cargas por peldaño alineadas por Procrustes al peldaño 1 (K=3)
+02_escalera_gllvm,fig_escalera_metricas.png,figures/02_escalera_gllvm/fig_escalera_metricas.png,scripts/analyze_ladder.py,reporte_gllvm_escalera.md,Moran residual / ELPD-LOO / sd latente por peldaño y K
+02_escalera_gllvm,fig_escalera_vardecomp.png,figures/02_escalera_gllvm/fig_escalera_vardecomp.png,scripts/analyze_ladder.py,reporte_gllvm_escalera.md,Descomposición de varianza por indicador y bloque en los 4 peldaños
+02_escalera_gllvm,fig_gamma_estados.png,figures/02_escalera_gllvm/fig_gamma_estados.png,scripts/analyze_ladder.py,reporte_gllvm_escalera.md,Efectos estatales del peldaño 3: test DAG (SAE vs directos) y correlación con PIBE/gasto
+03_lisa_discordancia,fig_regimenes_lisa.png,figures/03_lisa_discordancia/fig_regimenes_lisa.png,(sprint LISA — sin script en repo),reporte_regimenes_lisa.md,Regímenes AA (más marginado que pobre) y BB con sus perfiles
+03_lisa_discordancia,fig_modelo_externo.png,figures/03_lisa_discordancia/fig_modelo_externo.png,(modelo externo — sin script en repo),reporte_modelo_externo.md,Dependencia espacial residual con cofactores externos (justifica el componente espacial)
+04_diagnostico_mapas,fig_mapa_diagnostico.png,figures/04_diagnostico_mapas/fig_mapa_diagnostico.png,scripts/mapa_diagnostico.py,README.md (hito 10),4 paneles: discordancia observable / z material residual / incertidumbre / régimen LISA
+04_diagnostico_mapas,fig_mapa_latente_material.png,figures/04_diagnostico_mapas/fig_mapa_latente_material.png,(sesión paralela — sin script en repo),—,Mapa insignia del z material con incertidumbre y top discordantes Tarahumara
+05_dag,fig_dag_main.png,figures/05_dag/fig_dag_main.png,scripts/fig_dag_main.py,reporte_dgp_dag.md,Vista principal del DAG (25 nodos con placas ×N; verificada contra dag_edges.csv)
+05_dag,fig_dag_full.png,figures/05_dag/fig_dag_full.png,scripts/fig_dag.py,reporte_dgp_dag.md,Vista completa auditable (56 nodos / 97 aristas; acíclico verificado con networkx)
+05_dag,fig_dag_pesado.png,figures/05_dag/fig_dag_pesado.png,(sesión paralela — pipeline dag_edges_weighted),—,DAG con pesos empíricos por arista
+05_dag,fig_dag_suplementaria.png,figures/05_dag/fig_dag_suplementaria.png,(sesión paralela — análisis de red),—,Vista suplementaria del análisis de red (centralidades)
+05_dag,fig_dos_varas_dinero.png,figures/05_dag/fig_dos_varas_dinero.png,scripts/fig_dos_varas.py,reporte_dgp_dag.md §4b,Dos varas dos Méxicos + brecha de +19% en Ramo 33 pc entre regímenes AA y BB
+06_validacion_homicidios,fig_validacion_homicidios.png,figures/06_validacion_homicidios/fig_validacion_homicidios.png,scripts/validacion_homicidios.py,reporte_validacion_homicidios.md,R² CV de cada conjunto predictor sobre la tasa de homicidios 2019-2021
+07_satelital,fig_satelital_delta.png,figures/07_satelital/fig_satelital_delta.png,scripts/fig_satelital_cierre.py,reporte_satelital.md,ΔR² de las lentes sobre Vista D (factores brutos / indicadores observados / residual)
+07_satelital,fig_satelital_discordancia.png,figures/07_satelital/fig_satelital_discordancia.png,scripts/satelital_discordancia.py,reporte_satelital.md,Dispersión z observado vs predicho por lentes con colas etiquetadas (material y monetario)
+07_satelital,fig_satelital_mapa.png,figures/07_satelital/fig_satelital_mapa.png,scripts/fig_satelital_cierre.py,reporte_satelital.md,Mapa de la discordancia satelital; cinturón azul = corredor de remesas (~20× IC95 14-28)

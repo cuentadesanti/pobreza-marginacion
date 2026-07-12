@@ -6,7 +6,7 @@ Discordancia bidireccional (§5): con M3 (solo lentes espaciales) sobre la priva
  (a) z_obs >> ẑ  -> "las luces dicen riqueza, lo social dice privación" (satélite SUBESTIMA)
  (b) z_obs << ẑ  -> "mejor de lo esperado por su geografía/luces" (hipótesis: remesas)
 
-Salidas: outputs/satelital_discordancia.csv, figures/fig_satelital_discordancia.png
+Salidas: outputs/satelital_discordancia.csv, figures/07_satelital/fig_satelital_discordancia.png
 """
 import os
 import numpy as np, pandas as pd
@@ -23,6 +23,11 @@ plt.rcParams.update({"figure.facecolor": SURF, "axes.facecolor": SURF, "font.siz
                      "xtick.color": MUT, "ytick.color": MUT,
                      "axes.spines.top": False, "axes.spines.right": False})
 
+
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("07_satelital")
 
 def norm(df):
     df = df.copy(); df["cvegeo"] = df["cvegeo"].astype(str).str.zfill(5); return df

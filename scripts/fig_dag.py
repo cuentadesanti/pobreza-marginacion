@@ -84,6 +84,11 @@ KIND_EC = {"estructural": "#1baf7a", "latente": "#2a78d6", "indicador": "#898781
            "politica": "#e34948", "preliminar": "#9085e9", "microdato": "#c98500", "satelital": "#0e7a52"}
 
 
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("05_dag")
+
 def validate(N, E):
     ok = True
     ids = set(N["node_id"])
@@ -170,7 +175,7 @@ def main():
             fontsize=7.3, color=INK2)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig_dag_full.png"), dpi=150)
-    print("\nfigures/fig_dag_full.png regenerada (vista suplementaria auditable)")
+    print("\nfigures/05_dag/fig_dag_full.png regenerada (vista suplementaria auditable)")
 
 
 if __name__ == "__main__":

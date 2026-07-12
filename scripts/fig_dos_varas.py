@@ -8,7 +8,7 @@ Figura insignia: "Dos varas, un presupuesto".
     y tamaño, AA recibe +19% vs BB (fórmula FAIS: base 2013 heredada de la fórmula vieja de
     masa carencial + incremento por pobreza CONEVAL).
 
-Salida: figures/fig_dos_varas_dinero.png, outputs/gap_aportaciones_regimen.csv
+Salida: figures/05_dag/fig_dos_varas_dinero.png, outputs/gap_aportaciones_regimen.csv
 """
 import os
 import numpy as np, pandas as pd
@@ -31,6 +31,11 @@ plt.rcParams.update({"figure.facecolor": SURF, "axes.facecolor": SURF, "font.siz
                      "xtick.color": MUT, "ytick.color": MUT,
                      "axes.spines.top": False, "axes.spines.right": False})
 
+
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("05_dag")
 
 def main():
     d = pd.read_parquet(os.path.join(PROC, "diagnostico_municipal_v1.parquet"))

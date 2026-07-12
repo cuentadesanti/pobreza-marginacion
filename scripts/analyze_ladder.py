@@ -3,10 +3,10 @@
 Análisis de la escalera GLLVM (outputs/ -> figures/ + csv de apoyo).
 
 Produce:
-  figures/fig_escalera_cargas.png        cambio de cargas post-Procrustes entre peldaños
-  figures/fig_escalera_vardecomp.png     varianza por bloque e indicador, por peldaño
-  figures/fig_escalera_metricas.png      Moran residual, ELPD-LOO, sd latente, rho BYM2
-  figures/fig_gamma_estados.png          efectos estatales del peldaño 3: test DAG
+  figures/02_escalera_gllvm/fig_escalera_cargas.png        cambio de cargas post-Procrustes entre peldaños
+  figures/02_escalera_gllvm/fig_escalera_vardecomp.png     varianza por bloque e indicador, por peldaño
+  figures/02_escalera_gllvm/fig_escalera_metricas.png      Moran residual, ELPD-LOO, sd latente, rho BYM2
+  figures/02_escalera_gllvm/fig_gamma_estados.png          efectos estatales del peldaño 3: test DAG
                                          (directo vs modelado) y descomposición fiscal
   outputs/dag_test_directo_vs_modelado.csv
   outputs/gamma_estados_decomposicion.csv
@@ -38,6 +38,11 @@ K = 3
 RUNGS = [1, 2, 3, 4]
 RLAB = {1: "1 base", 2: "2 +VistaD", 3: "3 +estado", 4: "4 +BYM2"}
 
+
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("02_escalera_gllvm")
 
 def load_loadings():
     return {r: pd.read_csv(os.path.join(OUT, f"loadings_rung{r}_K{K}.csv"), index_col=0)

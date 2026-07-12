@@ -16,7 +16,7 @@ Conjuntos comparados:
   z_rung3+disc     3 factores condicionales + discordancia observable CONAPO-CONEVAL
   vistaD+z3+disc   el modelo completo del repo
 
-Salidas: outputs/validacion_homicidios.csv, figures/fig_validacion_homicidios.png,
+Salidas: outputs/validacion_homicidios.csv, figures/06_validacion_homicidios/fig_validacion_homicidios.png,
          data/processed/homicidios_mun_2019_2021.parquet
 """
 import os, sys
@@ -37,6 +37,11 @@ YEARS = [2019, 2020, 2021]
 C = ["#2a78d6", "#1baf7a", "#eda100", "#008300", "#4a3aa7", "#e34948"]
 SURF, INK, MUT, GRID = "#fcfcfb", "#0b0b0b", "#898781", "#e1e0d9"
 
+
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("06_validacion_homicidios")
 
 def icd_homicidio(c):
     c = str(c).upper()

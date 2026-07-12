@@ -11,7 +11,7 @@ diagnostico_municipal_v1.parquet:
   (c) sd posterior de z material (secuencial: dónde estamos menos seguros)
   (d) régimen LISA (categórico: AA / BB / ns)
 
-Salida: figures/fig_mapa_diagnostico.png; caché geo en <scratch>/geo_municipal.geojson
+Salida: figures/04_diagnostico_mapas/fig_mapa_diagnostico.png; caché geo en <scratch>/geo_municipal.geojson
 """
 import os, sys, json
 import numpy as np, pandas as pd
@@ -31,6 +31,11 @@ DIV = LinearSegmentedColormap.from_list("div", ["#104281", "#3987e5", "#f0efec",
 SEQ = LinearSegmentedColormap.from_list("seq", ["#cde2fb", "#3987e5", "#0d366b"])
 LISA_COL = {"AA": "#e34948", "BB": "#2a78d6", "ns": "#e1e0d9"}
 
+
+# estilo homogéneo del repo + figuras por capítulo (ver scripts/plotstyle.py)
+import plotstyle as ps
+ps.use()
+FIG = ps.figdir("04_diagnostico_mapas")
 
 def get_geo():
     import geopandas as gpd
@@ -86,7 +91,7 @@ def main():
                  fontsize=13, color=INK, x=0.02, ha="left")
     fig.tight_layout(rect=[0, 0, 1, 0.97])
     fig.savefig(os.path.join(FIG, "fig_mapa_diagnostico.png"), dpi=150)
-    print("figures/fig_mapa_diagnostico.png lista")
+    print("figures/04_diagnostico_mapas/fig_mapa_diagnostico.png lista")
 
 
 if __name__ == "__main__":

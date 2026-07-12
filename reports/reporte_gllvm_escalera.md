@@ -2,8 +2,8 @@
 
 **Corrida:** 2026-07-11, NumPyro NUTS, 4 cadenas × (1000 tune + 1000 draws), semilla 1,
 N=2,455 municipios × J=17 indicadores (logit-z). K=3 y K=2 completos.
-Figuras: `fig_escalera_cargas.png`, `fig_escalera_vardecomp.png`, `fig_escalera_metricas.png`,
-`fig_gamma_estados.png`.
+Figuras: `../figures/02_escalera_gllvm/fig_escalera_cargas.png`, `../figures/02_escalera_gllvm/fig_escalera_vardecomp.png`, `../figures/02_escalera_gllvm/fig_escalera_metricas.png`,
+`../figures/02_escalera_gllvm/fig_gamma_estados.png`.
 
 ## Resumen por peldaño
 
@@ -51,7 +51,7 @@ en el top-5: 0.359 y 0.353, mientras `car_segsoc` SAE queda abajo, 0.267). El ar
 calibración no queda descartado ni confirmado en bloque: hay que mirarlo indicador por
 indicador (`outputs/dag_test_directo_vs_modelado.csv`).
 
-**Descomposición fiscal de γ̄_s** (`fig_gamma_estados.png`, `outputs/gamma_estados_decomposicion.csv`):
+**Descomposición fiscal de γ̄_s** (`../figures/02_escalera_gllvm/fig_gamma_estados.png`, `outputs/gamma_estados_decomposicion.csv`):
 el efecto estatal medio correlaciona r = −0.46 con log PIBE pc y r = +0.48 con gasto estatal/PIBE.
 Los estados con efecto positivo (más privación de la que su composición municipal predice) son
 pobres y con gobiernos grandes relativo a su economía (Chiapas 07, Guerrero 12, Oaxaca 20,
