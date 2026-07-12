@@ -28,6 +28,14 @@ Una vez descontadas composición y pertenencia estatal, la desigualdad restante 
 **intra-estatal en ~80%**: el residuo es un fenómeno de vecindades y municipios, no de
 fronteras estatales.
 
+**Sensibilidad al objeto distributivo** (`desigualdad_robustez.csv`): la partición bruta es
+robusta al esquema de ponderación (z material bruto: 50.8% con población, 47.6%
+equiponderando municipios, 50.7% excluyendo <1,000 hab). La del eje residual NO: eje 1 pasa
+de 23.6% (población) a **0.5%** (municipios equiponderados) — su componente federal es un
+fenómeno de *personas concentradas en municipios grandes*, no de territorios. La elección
+del objeto distributivo (personas vs territorios) es parte de la conclusión, no un detalle
+técnico.
+
 ## B. La brecha de apropiación territorial: actividad visible sin bienestar apropiado
 
 `B_i = z_obs − ẑ_lentes` (material bruto; B>0 = más privado de lo que su actividad luminosa y
@@ -43,8 +51,10 @@ geografía sugieren). Regresión con FE de estado, β estandarizadas
 | % secundario | +0.085 | 8.1 |
 | **remesas pc (log)** | **−0.072** | −5.3 |
 
-El hallazgo reordena la historia: la brecha de apropiación es **ante todo un fenómeno de
-precariedad laboral** — municipios donde la actividad existe y brilla pero la inserción es por
+Definición formal: la *brecha de apropiación territorial* es la **discordancia residual entre
+la actividad económica visible y la privación social observada** (constructo interpretativo
+sobre una cantidad medida, no una variable observada directa). El hallazgo reordena la
+historia: la brecha es **ante todo un fenómeno de precariedad laboral** — municipios donde la actividad existe y brilla pero la inserción es por
 cuenta propia/jornal/sin pago — con el tamaño urbano como segundo factor (pobreza urbana
 invisible a la luz agregada). Las remesas operan en la dirección opuesta (apropiación vía
 transferencias, confirmando el capítulo satelital) pero con un tercio de la fuerza de la
@@ -63,18 +73,32 @@ satelital" era su nombre de medición.
 | 2 | 14.4 | 12.3 |
 | 3 | **2.0** | 0.8 |
 
-Bajo independencia, P(3 severas) = 0.25³ = 1.6% ≈ el 2.0% observado: **las tres geografías
-residuales casi no se superponen**. La privación acumulada — el municipio "peor en todo" — es
-un fenómeno del nivel bruto (donde el factor general concentra), no del espacio residual: cada
-dimensión condicional produce su propia geografía. Consecuencia de política: focalizar "los
-más pobres en todo" y focalizar "los peores residuales por dimensión" son listas casi
-disjuntas.
+Robustez (`desigualdad_robustez.csv`): razón observado/esperado de 3-severas = 1.25 en q70 y
+q75 (IC95 bootstrap [1.00, 1.51] y [0.94, 1.62]), 1.43 en q80, 2.44 en q90 con IC muy ancho;
+Jaccard entre pares de conjuntos de alta privación: 0.05–0.21. Afirmación calibrada: **las
+tres geografías residuales se solapan débilmente** (dependencia positiva leve, lejos de la
+acumulación automática). La privación acumulada — el municipio "peor en todo" — es un
+fenómeno del nivel bruto (donde el factor general concentra), no del espacio residual.
+Consecuencia de política: focalizar "los más pobres en todo" y focalizar "los peores
+residuales por dimensión" producen listas mayormente distintas (tabla completa de
+intersecciones en el CSV).
 
-## Capa 3 exprés — desigualdad asociada a circunstancias estructurales
+## Capa 3 — desigualdad asociada a circunstancias estructurales (incremental)
 
-R²cv(rugosidad + aislamiento + ruralidad + estructura etaria + elevación → z material bruto)
-= **0.47** bajo CV bloqueado por estado. Asociación, no causal; falta la composición indígena
-(pendiente señalado — el censo la trae, próxima iteración de Vista D).
+Formulación correcta: *el X% de la variación territorial del outcome puede predecirse a partir
+del conjunto definido de circunstancias* — no "es causada por". Escalera incremental
+(hgb, CV bloqueado por estado; z material bruto):
+
+| Bloque de circunstancias | R²cv | Δ |
+|---|---|---|
+| geografía heredada (rugosidad, elevación, aislamiento, dispersión) | 0.27 | +0.27 |
+| + composición demográfica | 0.47 | +0.20 |
+| + inserción productiva (sectores, precariedad) | **0.73** | +0.26 |
+| + pertenencia estatal (KFold simple — NO bloqueado, no comparable estrictamente) | 0.88 | — |
+
+La inserción productiva aporta tanto como la geografía heredada. "Estado" se reporta aparte:
+no es una circunstancia elemental del mismo tipo. Falta composición indígena (el censo la
+trae; pendiente de Vista D).
 
 ## Capa 5 — fiscal (referencia)
 

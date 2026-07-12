@@ -1,0 +1,21 @@
+bloque,esquema,medida,valor,ic_lo,ic_hi,"J(eje1,eje2)","J(eje1,eje3)","J(eje2,eje3)"
+A_ponderacion,pob,z1_material,50.8,,,,,
+A_ponderacion,pob,eje1,23.6,,,,,
+A_ponderacion,pob,lp_ingreso_pct,58.8,,,,,
+A_ponderacion,pob,sin_agua_pct,40.4,,,,,
+A_ponderacion,municipio_equiponderado,z1_material,47.6,,,,,
+A_ponderacion,municipio_equiponderado,eje1,0.5,,,,,
+A_ponderacion,municipio_equiponderado,lp_ingreso_pct,55.4,,,,,
+A_ponderacion,municipio_equiponderado,sin_agua_pct,24.0,,,,,
+A_ponderacion,pob_sin_menores_1000,z1_material,50.7,,,,,
+A_ponderacion,pob_sin_menores_1000,eje1,23.7,,,,,
+A_ponderacion,pob_sin_menores_1000,lp_ingreso_pct,58.8,,,,,
+A_ponderacion,pob_sin_menores_1000,sin_agua_pct,40.5,,,,,
+C_acumulacion,q70,razon_obs_esp_3sev,1.25,1.0,1.51,0.19,0.21,0.18
+C_acumulacion,q75,razon_obs_esp_3sev,1.25,0.94,1.62,0.15,0.18,0.14
+C_acumulacion,q80,razon_obs_esp_3sev,1.43,0.97,1.99,0.13,0.15,0.1
+C_acumulacion,q90,razon_obs_esp_3sev,2.44,0.8,4.48,0.06,0.1,0.05
+capa3_incremental,geografía heredada,r2cv,0.265,,,,,
+capa3_incremental,+ demografía,r2cv,0.469,,,,,
+capa3_incremental,+ estructura económica,r2cv,0.732,,,,,
+capa3_incremental,+ estado (KFold simple),r2cv,0.879,,,,,
