@@ -164,7 +164,8 @@ del factor (se intercambiaban) — resuelto definiendo el método como **contras
 desacuerdo entre instrumentos); (iii) **las anclas peleaban con la verosimilitud** — una cadena
 encontraba un modo con logp +106 pagando prior enorme por colapsar el ancla monetaria. Sin
 anclas, todo converge (0 divergencias, BFMI 0.91) y los **eigenvalores de E[ΛΛᵀ] = 1.23, 0.50,
-0.34, ≈0…** confirman K=3 desde dentro del modelo.
+0.34, ≈0…** respaldan K=3 con fuerza desde dentro — condicionado a esta especificación y a la
+escala de los indicadores; no es una prueba de K.
 
 **Convención de orientación documentada** (`outputs/ejes_canonicos_marginal.csv`,
 `zscores_canonicos_rung3.csv`): ejes = eigen-descomposición de E[ΛΛᵀ], signo del elemento
@@ -174,6 +175,10 @@ CONTRA servicios de red** — la tercera dimensión que el ancla "monetaria" no 
 Los criterios de cierre del revisor: (1) R-hat<1.01 + ESS en no-rotacionales ✓; (2) ΛΛᵀ
 estable ✓; (3) partición de varianza estable ✓; (4) scores estables tras alineación ✓;
 (5) conclusiones sustantivas replican (tabla estatal, abajo) ✓.
+
+*Nota de comparabilidad: los ELPD de esta tabla solo se comparan ENTRE modelos marginalizados
+(misma verosimilitud MvN sobre la misma Y). No son comparables con los ELPD de la escalera con
+z muestreada (verosimilitud puntual condicional distinta): el objeto predictivo cambió.*
 
 ## CIERRE DEL FRENTE 2: medición vs federalismo, con incertidumbre posterior
 
