@@ -146,7 +146,17 @@ Se re-corrió K=3 completo con material→`piso_tierra` y `diag ~ LogNormal(log 
      integrada: Y ~ N(μ, ΛΛ' + Ψ) con bloques de método), que elimina 7,365 parámetros
      latentes y típicamente funde los modos; no más cirugía de priors.
 
-## CIERRE DEL FRENTE 1 (2026-07-12): la multimodalidad resuelta — y era autoinfligida
+## CIERRE DEL FRENTE 1 (2026-07-12): identificación del subespacio resuelta por marginalización
+
+Formulación correcta del cierre: **la marginalización resolvió el principal problema de
+identificación del peldaño 3 al trabajar sobre ΛΛᵀ** — pero no es que el label switching
+"nunca fuera multimodalidad real": el peldaño 2 marginalizado (sin efectos estatales) muestra
+que **puede persistir multimodalidad estructural en especificaciones insuficientes**
+(R-hat ΛΛᵀ = 1.53 en p2 vs 1.003 en p3, misma maquinaria). Bajo la parametrización y priors
+actuales, la inclusión de efectos estatales transforma una posterior multimodal e inestable en
+una solución de covarianza latente bien identificada — lo cual admite al menos tres lecturas
+(retiran heterogeneidad real que el modelo repartía ambiguamente; regularizan útilmente; o
+cambian favorablemente la geometría posterior) que la comparación 2-vs-3 debe separar.
 
 Secuencia de diagnóstico (cada paso con su veredicto formal en tres niveles):
 
@@ -163,9 +173,9 @@ del factor (se intercambiaban) — resuelto definiendo el método como **contras
 (dirección fija CONAPO+/CONEVAL−, ortogonal al nivel; conceptualmente superior: el método ES el
 desacuerdo entre instrumentos); (iii) **las anclas peleaban con la verosimilitud** — una cadena
 encontraba un modo con logp +106 pagando prior enorme por colapsar el ancla monetaria. Sin
-anclas, todo converge (0 divergencias, BFMI 0.91) y los **eigenvalores de E[ΛΛᵀ] = 1.23, 0.50,
-0.34, ≈0…** respaldan K=3 con fuerza desde dentro — condicionado a esta especificación y a la
-escala de los indicadores; no es una prueba de K.
+anclas, todo converge (0 divergencias, BFMI 0.91) y **tres eigenvalores sustantivos de E[ΛΛᵀ] (1.23, 0.50, 0.34) y el resto cercanos a cero,
+compatibles con rango efectivo 3** — condicionado a esta especificación y a la escala de los
+indicadores; no es una prueba de K.
 
 **Convención de orientación documentada** (`outputs/ejes_canonicos_marginal.csv`,
 `zscores_canonicos_rung3.csv`): ejes = eigen-descomposición de E[ΛΛᵀ], signo del elemento

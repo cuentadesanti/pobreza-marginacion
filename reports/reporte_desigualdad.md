@@ -28,6 +28,12 @@ Una vez descontadas composición y pertenencia estatal, la desigualdad restante 
 **intra-estatal en ~80%**: el residuo es un fenómeno de vecindades y municipios, no de
 fronteras estatales.
 
+**Por qué no es contradicción** que los indicadores observados y el z bruto den ~50% entre
+estados mientras los ejes canónicos del peldaño 3 dan solo 13–24%: son **dos objetos de
+desigualdad distintos**. Los efectos estatales del modelo absorben parte de la desigualdad
+interestatal ANTES de estimar los factores residuales municipales — los ejes condicionales
+miden, por construcción, lo que queda después de esa absorción.
+
 **Sensibilidad al objeto distributivo** (`desigualdad_robustez.csv`): la partición bruta es
 robusta al esquema de ponderación (z material bruto: 50.8% con población, 47.6%
 equiponderando municipios, 50.7% excluyendo <1,000 hab). La del eje residual NO: eje 1 pasa
@@ -111,11 +117,13 @@ extensión longitudinal.
 
 Antes: *CONAPO y CONEVAL miden cosas distintas de la privación municipal.*
 
-Ahora: **la desigualdad territorial mexicana no es un único gradiente — se compone de brechas
-materiales, monetarias, educativas, institucionales y de apropiación económica que se
-superponen de manera desigual entre regiones y estados**: la mitad de la desigualdad publicada
-es federal; el residuo es local y sus dimensiones casi no se tocan; y la brecha entre actividad
-visible y bienestar apropiado es un fenómeno de calidad del empleo antes que de geografía.
+Ahora (tesis central): **la desigualdad territorial mexicana opera en dos escalas. En los
+indicadores observados, aproximadamente la mitad de la dispersión ocurre entre estados y la
+otra mitad dentro de ellos. Una vez descontada la heterogeneidad estatal, los factores
+latentes revelan desigualdades predominantemente intraestatales y geografías de privación
+material, educativa y monetaria que rara vez se superponen. Además, la actividad económica
+visible puede coexistir con precariedad laboral y con mejoras sociales locales menores de las
+que sugeriría la luminosidad del territorio.**
 
 Y la frase fuerte, ahora con números detrás: *dos municipios pueden mostrar la misma
 marginación agregada y ocupar posiciones opuestas en la estructura de desigualdad — uno carece

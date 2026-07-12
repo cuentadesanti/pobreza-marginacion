@@ -71,7 +71,13 @@ GLLVM_REPLICACION.md   guía de corrida e interpretación de la escalera
    básicos/piso de tierra, replicado en indicadores observados); nada ve el residual
    condicional; las remesas se materializan en paredes, no en salarios locales (β opuestas
    por factor, colas ~20×).
-10. **Diagnóstico municipal** (`data/processed/diagnostico_municipal_v1.parquet`,
+10. **El giro a desigualdad** (`reporte_desigualdad.md`): la desigualdad territorial opera en
+   dos escalas — ~50% entre estados en los indicadores observados; predominantemente
+   intraestatal en los factores condicionales (los efectos estatales absorben la parte
+   interestatal antes de estimar el residuo). Las geografías de privación residual se solapan
+   débilmente (Jaccard ≤0.21) y la brecha actividad-vs-bienestar es ante todo precariedad
+   laboral (β=+0.23), con remesas en la dirección opuesta.
+11. **Diagnóstico municipal** (`data/processed/diagnostico_municipal_v1.parquet`,
    `outputs/top_discordantes.csv`): z ± sd por factor y municipio + régimen LISA + fiscal;
    los top residual-material (Sierra Tarahumara) son todos régimen AA — dos rutas
    independientes, misma historia.
