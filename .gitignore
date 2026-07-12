@@ -1,0 +1,20 @@
+# Large raw microdata — see RAW_DATA_MANIFEST.md
+censo_ampliado.zip
+personas_slim.csv
+Personas00.CSV
+Viviendas00.CSV
+Migrantes00.CSV
+
+# Banxico SIE token — never commit
+*token*
+.env
+
+# Python / pytensor
+__pycache__/
+*.pyc
+.pytensor/
+.venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

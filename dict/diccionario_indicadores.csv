@@ -1,0 +1,18 @@
+variable,fuente,constructo,universo,directa_modelada,modelada_sae,derivada,tiene_num_denom
+analf_pct,CONAPO,educación,población 15+,directa (censo),no,no,no
+sin_basica_pct,CONAPO,educación,población 15+,directa (censo),no,no,no
+sin_drenaje_pct,CONAPO,vivienda-servicios,ocupantes viviendas,directa (censo),no,no,no
+sin_electr_pct,CONAPO,vivienda-servicios,ocupantes viviendas,directa (censo),no,no,no
+sin_agua_pct,CONAPO,vivienda-servicios,ocupantes viviendas,directa (censo),no,no,no
+piso_tierra_pct,CONAPO,vivienda-calidad,ocupantes viviendas,directa (censo),no,no,no
+hacinam_pct,CONAPO,vivienda-calidad,viviendas particulares,directa (censo),no,no,no
+loc_peq_pct,CONAPO,territorial,población total,directa (censo),no,no,no
+ing_2sm_pct,CONAPO,ingreso-laboral,población ocupada,directa (censo),no,no,no
+rezago_educ_pct,CONEVAL,educación,personas,directa (muestra ampliada),no,no,sí
+car_salud_pct,CONEVAL,salud,personas,directa (muestra ampliada),no,no,sí
+car_segsoc_pct,CONEVAL,seguridad social,personas,MODELADA (ENIGH+SAE),sí,no,sí
+car_vivienda_pct,CONEVAL,vivienda-calidad,personas,directa (muestra ampliada),no,no,sí
+car_servbas_pct,CONEVAL,vivienda-servicios,personas,directa (muestra ampliada),no,no,sí
+car_alim_pct,CONEVAL,alimentación,personas,MODELADA (ENIGH+SAE),sí,no,sí
+lp_ingreso_pct,CONEVAL,ingreso-monetario,personas,MODELADA (EBPH-SAE),sí,no,sí
+lp_ingreso_ext_pct,CONEVAL,ingreso-monetario,personas,MODELADA (EBPH-SAE),sí,no,sí

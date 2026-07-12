@@ -1,0 +1,14 @@
+variable,descripcion,fuente,estatus_medicion,constructo,rol_modelo
+dep_ratio,Razón de dependencia (0-14 + 60+)/(15-59)*100,Censo 2020 ITER,MEDIDA OFICIAL (directa del censo completo),demografía,cofactor
+pct_60mas,% población 60 años y más,Censo 2020 ITER,MEDIDA OFICIAL,demografía,cofactor
+tasa_ocup,% PEA ocupada (POCUPADA/PEA),Censo 2020 ITER,MEDIDA OFICIAL,empleo,cofactor
+tasa_part,% participación (PEA/pob 15+),Censo 2020 ITER,MEDIDA OFICIAL,empleo,cofactor
+pct_sinderecho,% sin derechohabiencia a salud,Censo 2020 ITER,MEDIDA OFICIAL,empleo/salud,cofactor (sensibilidad: solapa con car_salud)
+remesas_pc_usd,Remesas familiares 2020 per cápita (USD/persona),Banxico CE166 (SIE API),"MEDIDA OFICIAL (flujo anual, 4 trim. sumados)",económico,cofactor o validación externa
+pct_primario,% ocupados sector primario (SCIAN 11),Censo 2020 ampliado (ponderado),MEDIDA OFICIAL PONDERADA (factores de expansión),estructura productiva,cofactor
+pct_secundario,% ocupados sector secundario (SCIAN 21-33),Censo 2020 ampliado (ponderado),MEDIDA OFICIAL PONDERADA,estructura productiva,cofactor
+pct_terciario,% ocupados sector terciario (SCIAN 43-93),Censo 2020 ampliado (ponderado),MEDIDA OFICIAL PONDERADA,estructura productiva,cofactor
+empleo_precario_pct,"% ocupados en clases precarias (cuenta propia+sin pago+jornalero+ayudante, SITTRA 2,3,5,6)",Censo 2020 ampliado (ponderado),PROXY DE INFORMALIDAD — NO es la tasa oficial de informalidad (esa es ENOE: sin seguridad social vía empleo). Es un correlato estructural de precariedad laboral.,económico,cofactor CON análisis de sensibilidad
+urbano_pct,% población en localidades >=5000 hab,CONAPO/Censo 2020,MEDIDA OFICIAL (complemento de loc_peq),territorial,cofactor (metropolitaneidad parcial)
+log_pob,log10 población total 2020,Censo 2020 ITER,MEDIDA OFICIAL,tamaño,cofactor (metropolitaneidad/tamaño)
+remesas_low_conf,Bandera: match Banxico-CVEGEO de baja confianza (1 caso: Zapotitlán del Río por eliminación),derivada,BANDERA DE CALIDAD,metadato,—
