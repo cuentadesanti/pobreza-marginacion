@@ -74,3 +74,111 @@ N=2455 municipios, J=17 indicadores, componentes espaciales=2, escala BYM2=0.627
 
 
 Running chain 3:  50%|█████     | 1000/2000 [07:12<08:10,  2.04it/s][A[A[A
+Running chain 1:  45%|████▌     | 900/2000 [07:37<10:19,  1.78it/s][ARunning chain 0:  50%|█████     | 1000/2000 [08:03<09:10,  1.82it/s]
+
+Running chain 2:  45%|████▌     | 900/2000 [08:07<10:35,  1.73it/s][A[A
+
+
+Running chain 3:  55%|█████▌    | 1100/2000 [08:11<07:50,  1.91it/s][A[A[A
+Running chain 1:  50%|█████     | 1000/2000 [08:36<09:31,  1.75it/s][ARunning chain 0:  55%|█████▌    | 1100/2000 [09:02<08:25,  1.78it/s]
+
+Running chain 2:  50%|█████     | 1000/2000 [09:04<09:34,  1.74it/s][A[A
+
+
+Running chain 3:  60%|██████    | 1200/2000 [09:09<07:12,  1.85it/s][A[A[A
+Running chain 1:  55%|█████▌    | 1100/2000 [09:34<08:36,  1.74it/s][ARunning chain 0:  60%|██████    | 1200/2000 [10:00<07:35,  1.76it/s]
+
+Running chain 2:  55%|█████▌    | 1100/2000 [10:02<08:40,  1.73it/s][A[A
+
+
+Running chain 3:  65%|██████▌   | 1300/2000 [10:08<06:28,  1.80it/s][A[A[A
+Running chain 1:  60%|██████    | 1200/2000 [10:33<07:43,  1.73it/s][ARunning chain 0:  65%|██████▌   | 1300/2000 [11:00<06:43,  1.73it/s]
+
+Running chain 2:  60%|██████    | 1200/2000 [11:02<07:46,  1.72it/s][A[A
+
+
+Running chain 3:  70%|███████   | 1400/2000 [11:08<05:40,  1.76it/s][A[A[A
+Running chain 1:  65%|██████▌   | 1300/2000 [11:33<06:49,  1.71it/s][ARunning chain 0:  70%|███████   | 1400/2000 [12:00<05:50,  1.71it/s]
+
+Running chain 2:  65%|██████▌   | 1300/2000 [12:02<06:51,  1.70it/s][A[A
+
+
+Running chain 3:  75%|███████▌  | 1500/2000 [12:08<04:49,  1.73it/s][A[A[A
+Running chain 1:  70%|███████   | 1400/2000 [12:34<05:54,  1.69it/s][ARunning chain 0:  75%|███████▌  | 1500/2000 [13:01<04:55,  1.69it/s]
+
+Running chain 2:  70%|███████   | 1400/2000 [13:03<05:56,  1.68it/s][A[A
+
+
+Running chain 3:  80%|████████  | 1600/2000 [13:09<03:55,  1.70it/s][A[A[A
+Running chain 1:  75%|███████▌  | 1500/2000 [13:35<04:59,  1.67it/s][ARunning chain 0:  80%|████████  | 1600/2000 [14:03<04:00,  1.67it/s]
+
+Running chain 2:  75%|███████▌  | 1500/2000 [14:05<05:01,  1.66it/s][A[A
+
+
+Running chain 3:  85%|████████▌ | 1700/2000 [14:11<02:59,  1.67it/s][A[A[A
+Running chain 1:  80%|████████  | 1600/2000 [14:38<04:02,  1.65it/s][ARunning chain 0:  85%|████████▌ | 1700/2000 [15:06<03:02,  1.64it/s]
+
+Running chain 2:  80%|████████  | 1600/2000 [15:08<04:04,  1.64it/s][A[A
+
+
+Running chain 3:  90%|█████████ | 1800/2000 [15:14<02:01,  1.64it/s][A[A[A
+Running chain 1:  85%|████████▌ | 1700/2000 [15:42<03:05,  1.62it/s][ARunning chain 0:  90%|█████████ | 1800/2000 [16:11<02:04,  1.61it/s]
+
+Running chain 2:  85%|████████▌ | 1700/2000 [16:13<03:06,  1.61it/s][A[A
+
+
+Running chain 3:  95%|█████████▌| 1900/2000 [16:19<01:02,  1.61it/s][A[A[A
+Running chain 1:  90%|█████████ | 1800/2000 [16:47<02:05,  1.59it/s][ARunning chain 0:  95%|█████████▌| 1900/2000 [17:19<01:03,  1.56it/s]
+
+Running chain 2:  90%|█████████ | 1800/2000 [17:21<02:08,  1.56it/s][A[A
+
+
+Running chain 3: 100%|██████████| 2000/2000 [17:27<00:00,  1.57it/s][A[A[ARunning chain 3: 100%|██████████| 2000/2000 [17:27<00:00,  1.91it/s]
+
+Running chain 1:  95%|█████████▌| 1900/2000 [17:53<01:03,  1.57it/s][ARunning chain 0: 100%|██████████| 2000/2000 [18:20<00:00,  1.59it/s]Running chain 0: 100%|██████████| 2000/2000 [18:20<00:00,  1.82it/s]
+
+
+Running chain 2:  95%|█████████▌| 1900/2000 [18:21<01:02,  1.59it/s][A[A
+Running chain 1: 100%|██████████| 2000/2000 [18:47<00:00,  1.65it/s][ARunning chain 1: 100%|██████████| 2000/2000 [18:47<00:00,  1.77it/s]
+
+
+Running chain 2: 100%|██████████| 2000/2000 [19:03<00:00,  1.76it/s][A[ARunning chain 2: 100%|██████████| 2000/2000 [19:03<00:00,  1.75it/s]
+There were 8 divergences after tuning. Increase `target_accept` or reparameterize.
+The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details
+The effective sample size per chain is smaller than 100 for some parameters.  A higher number is needed for reliable rhat and ess computation. See https://arxiv.org/abs/1903.08008 for details
+Sampling: [Y]
+/Users/cuentadesanti/code/pobreza-marginacion/.venv/lib/python3.13/site-packages/arviz/stats/diagnostics.py:596: RuntimeWarning: invalid value encountered in scalar divide
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/Users/cuentadesanti/code/pobreza-marginacion/.venv/lib/python3.13/site-packages/arviz/stats/stats.py:1043: RuntimeWarning: overflow encountered in exp
+  weights = 1 / np.exp(len_scale - len_scale[:, None]).sum(axis=1)
+/Users/cuentadesanti/code/pobreza-marginacion/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:49: RuntimeWarning: overflow encountered in reduce
+  return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+/Users/cuentadesanti/code/pobreza-marginacion/.venv/lib/python3.13/site-packages/arviz/stats/stats.py:795: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+{'rung': 1, 'K': 3, 'facs': 'material|educativo|monetario', 'residual_moran_I': 0.4133, 'rhat_alpha_sigma': 2.189, 'elpd_loo': -25833.6, 'mean_latent_sd': 0.547, 'rho_spatial': ''}
+
+=== Rung 2 (K=3) ===
+  0%|          | 0/2000 [00:00<?, ?it/s]Compiling.. :   0%|          | 0/2000 [00:00<?, ?it/s]
+  0%|          | 0/2000 [00:00<?, ?it/s][A
+Compiling.. :   0%|          | 0/2000 [00:00<?, ?it/s][A
+
+  0%|          | 0/2000 [00:00<?, ?it/s][A[A
+
+Compiling.. :   0%|          | 0/2000 [00:00<?, ?it/s][A[A
+
+
+  0%|          | 0/2000 [00:00<?, ?it/s][A[A[A
+
+
+Compiling.. :   0%|          | 0/2000 [00:00<?, ?it/s][A[A[ARunning chain 0:   0%|          | 0/2000 [00:01<?, ?it/s]
+Running chain 1:   0%|          | 0/2000 [00:01<?, ?it/s][A
+
+Running chain 2:   0%|          | 0/2000 [00:01<?, ?it/s][A[A
+
+
+Running chain 3:   0%|          | 0/2000 [00:01<?, ?it/s][A[A[A
+
+
+Running chain 3:   5%|▌         | 100/2000 [01:16<23:46,  1.33it/s][A[A[ARunning chain 0:   5%|▌         | 100/2000 [01:19<24:57,  1.27it/s]
+Running chain 1:   5%|▌         | 100/2000 [01:20<25:12,  1.26it/s][A
+
