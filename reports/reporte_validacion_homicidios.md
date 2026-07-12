@@ -49,4 +49,15 @@ anticipar violencia** — son direcciones distintas del mismo espacio de indicad
 `RAW_DATA_MANIFEST.md`. Figura: `../figures/06_validacion_homicidios/fig_validacion_homicidios.png`; tabla:
 `outputs/validacion_homicidios.csv`.
 
-*Sensibilidad pendiente: tasa por municipio de residencia (vs ocurrencia), y ventana 2018–2022.*
+## Sensibilidad (cerrada, criterio pre-registrado)
+
+"Se sostiene" se definió como: mismo orden cualitativo, diferencia clave (17 indicadores −
+residual) con signo estable en todos los folds, sin depender de metrópolis, e insensible al
+prior de suavizamiento. Resultado (`outputs/sensibilidad_homicidios.csv`,
+`scripts/sensibilidad_homicidios.py`): el orden **17 ≥ VistaD > z bruto ≫ residual** se
+sostiene en las 7 variantes — residencia vs ocurrencia, ventana 2018–2022, tasa suavizada
+empírica-Bayes con m ∈ {10k, 20k, 50k} hab-año, y excluyendo las 5 mayores metrópolis
+(R² 17-ind: 0.231 vs 0.228). La diferencia 17−residual es positiva en el 100% de los folds
+de todas las variantes (0.06–0.21). Nota: para incluir 2022 (que ya no trae `PRESUNTO`) el
+homicidio se define por CAUSA_DEF ICD-10 X85–Y09, validado ≡ PRESUNTO al 99.99% en 2019–2021.
+Frente cerrado.

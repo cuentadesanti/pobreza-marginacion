@@ -1,0 +1,8 @@
+variante,17_indicadores,z_bruto_r1,vistaD,z_resid_r3+disc,vistaD+z3+disc,_dif17_resid,_dif_signo_estable
+ocurr_2019_21 (original),0.228,0.113,0.204,0.027,0.23,0.201,True
+resid_2019_21,0.215,0.098,0.188,0.032,0.218,0.183,True
+ocurr_2018_22,0.243,0.116,0.181,0.031,0.214,0.212,True
+ocurr_suavizada_m10k,0.1,0.058,0.051,0.018,0.057,0.083,True
+ocurr_suavizada_m20k,0.097,0.062,0.058,0.022,0.067,0.075,True
+ocurr_suavizada_m50k,0.089,0.062,0.065,0.026,0.075,0.062,True
+ocurr_2019_21_sin_5_metros,0.231,0.11,0.204,0.027,0.231,0.205,True

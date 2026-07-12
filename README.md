@@ -46,7 +46,7 @@ GLLVM_REPLICACION.md   guía de corrida e interpretación de la escalera
 
 ## Hallazgos por hito (`reports/`)
 
-1. **Dimensionalidad** (`reporte_dimensionalidad.md`): el dato soporta **2–3 factores** (Horn=3, Velicer MAP=2, bootstrap estable). Factor general fuerte (eigenvalor 9.28). `car_salud` casi ortogonal (comunalidad 0.02). Educación y ruralidad se funden.
+1. **Dimensionalidad** (`reporte_dimensionalidad.md`): el dato soporta **2–3 factores** (Horn=3, Velicer MAP=2, bootstrap estable). Factor general fuerte (eigenvalor 9.28). `car_salud` casi ortogonal (comunalidad 0.02). Educación y ruralidad se funden en la solución MARGINAL; la especificación condicional (peldaños 2+, ruralidad como cofactor) las distingue — resuelto, no reabrir salvo lectura causal del factor educativo.
 2. **Confirmación K** (`reporte_confirmatorio_k.md`): un baseline ridge/KNN gana al factor model en precisión puntual (el latente NO es predictor superior); entre factor models, K=3 > K=2 en 15/17 indicadores. Modelo deduplicado colapsa a K=2 → K=3 está en el borde.
 3. **Regímenes LISA** (`reporte_regimenes_lisa.md`): régimen AA (más marginado que pobre) es rural, con remesas; BB (más pobre que marginado) es urbano. La composición explica la magnitud pero no la geografía.
 4. **Modelo externo** (`reporte_modelo_externo.md`): con cofactores externos (sin insumos CONAPO/CONEVAL), la dependencia espacial residual persiste (Moran I 0.51→0.46, p=0.001) → el componente espacial del GLLVM está justificado empíricamente.

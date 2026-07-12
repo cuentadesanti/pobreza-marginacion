@@ -1,0 +1,18 @@
+indicador,grupo,instrumento,modelado,calibrado_estatal,universo,gamma_abs_media,gamma_abs_sd_post,share_var_estatal
+car_salud,CONEVAL directo,muestra censal (diseño),False,False,personas,0.439,0.027,0.274
+sin_drenaje,CONAPO censal,censo básico (conteo completo),False,False,ocupantes viviendas,0.341,0.02,0.227
+car_servbas,CONEVAL directo,muestra censal (diseño),False,False,personas,0.363,0.015,0.194
+hacinam,CONAPO censal,censo básico (conteo completo),False,False,viviendas particulares,0.356,0.016,0.189
+lp_ingreso_ext,CONEVAL SAE+calibrado,SAE (ENIGH+muestra) + calibración estatal,True,True,personas,0.36,0.016,0.177
+lp_ingreso,CONEVAL SAE+calibrado,SAE (ENIGH+muestra) + calibración estatal,True,True,personas,0.354,0.016,0.166
+car_alim,CONEVAL SAE+calibrado,SAE (ENIGH+muestra) + calibración estatal,True,True,personas,0.309,0.023,0.153
+car_vivienda,CONEVAL directo,muestra censal (diseño),False,False,personas,0.29,0.017,0.148
+analf,CONAPO censal,censo básico (conteo completo),False,False,población 15+,0.316,0.016,0.145
+piso_tierra,CONAPO censal,censo básico (conteo completo),False,False,ocupantes viviendas,0.274,0.016,0.119
+rezago_educ,CONEVAL directo,muestra censal (diseño),False,False,personas,0.265,0.014,0.118
+sin_electr,CONAPO censal,censo básico (conteo completo),False,False,ocupantes viviendas,0.287,0.022,0.118
+ing_2sm,CONAPO muestra,muestra censal,False,False,población ocupada,0.296,0.015,0.118
+car_segsoc,CONEVAL SAE+calibrado,SAE (ENIGH+muestra) + calibración estatal,True,True,personas,0.269,0.018,0.105
+sin_agua,CONAPO censal,censo básico (conteo completo),False,False,ocupantes viviendas,0.245,0.021,0.096
+sin_basica,CONAPO censal,censo básico (conteo completo),False,False,población 15+,0.244,0.013,0.086
+loc_peq,CONAPO censal,censo básico (conteo completo),False,False,población total,0.069,0.006,0.01
