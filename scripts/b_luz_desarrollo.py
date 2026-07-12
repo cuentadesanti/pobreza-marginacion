@@ -145,6 +145,29 @@ def main():
     print(f"población sola: {r2_pob:.3f} | +spline luz: {r2_pob_ntl:.3f} "
           f"(Δ luz neta de urbanización = {r2_pob_ntl - r2_pob:+.3f})")
 
+    # ---------- 3b. estabilidad bootstrap de los nodos regionales ----------
+    rng = np.random.default_rng(1)
+    boot_rows, boot_ci = [], {}
+    y_mat = d["material_mean"].values
+    for reg in ["norte", "centro", "sur-sureste"]:
+        k = (d.region == reg).values
+        xr, yr = x[k], y_mat[k]
+        ks_pt, _, _, _ = fit_knots(xr, yr, 1)
+        knots = []
+        for _ in range(400):
+            i = rng.integers(0, len(xr), len(xr))
+            kb, _, _, _ = fit_knots(xr[i], yr[i], 1)
+            knots.append(kb[0])
+        lo, hi = np.percentile(knots, [2.5, 97.5])
+        n_abajo, n_arriba = int((xr <= ks_pt[0]).sum()), int((xr > ks_pt[0]).sum())
+        boot_ci[reg] = (10**ks_pt[0]-0.01, 10**lo-0.01, 10**hi-0.01, n_abajo, n_arriba)
+        boot_rows.append(dict(region=reg, knot_nW=round(10**ks_pt[0]-0.01, 3),
+                              ic95_lo_nW=round(10**lo-0.01, 3), ic95_hi_nW=round(10**hi-0.01, 3),
+                              n_abajo=n_abajo, n_arriba=n_arriba))
+        print(f"bootstrap {reg}: nodo {10**ks_pt[0]-0.01:.3f} nW IC95 [{10**lo-0.01:.3f}, "
+              f"{10**hi-0.01:.3f}] | n abajo/arriba = {n_abajo}/{n_arriba}")
+    pd.DataFrame(boot_rows).to_csv(os.path.join(OUT, "b_breakpoints_bootstrap.csv"), index=False)
+
     # ---------- 4. cruce con discordancia satelital ----------
     _, _, m2, _ = fit_knots(x, y, 2)
     resid_simple = y - m2.predict(np.column_stack([x] + [hinge(x, k) for k in ks2]))
@@ -185,8 +208,9 @@ def main():
         k = (d.region == reg).values
         ks1, _, m1, _ = fit_knots(x[k], y[k], 1)
         xs = np.linspace(x[k].min(), x[k].max(), 100)
+        pt, lo, hi, nb, na = boot_ci[reg]
         b.plot(xs, m1.predict(np.column_stack([xs, hinge(xs, ks1[0])])), color=c, lw=2.2,
-               label=f"{reg}: quiebre en {10**ks1[0] - 0.01:.2f} nW")
+               label=f"{reg}: {pt:.2f} nW  IC95[{lo:.2f}, {hi:.2f}]  (n {nb}/{na})")
         b.scatter(x[k], y[k], s=5, color=c, alpha=0.18, linewidths=0)
         b.axvline(ks1[0], color=c, lw=1, ls=":")
     b.legend(frameon=False, fontsize=8.5, loc="upper right")

@@ -110,7 +110,10 @@ migratorio Zacatecas–Jalisco–Michoacán–Guanajuato–Mixteca), `../figures
 (municipios nombrados).
 
 
-## ¿Hasta dónde llega el modelo simple? (corte B: luz → desarrollo)
+## La luz predice la privación material solo después de respetar sus regímenes no lineales y regionales (corte B)
+
+*El modelo log-lineal nacional falla en el piso rural; los umbrales de información difieren en
+más de un orden de magnitud entre macroregiones.*
 
 La premisa canónica (Jean et al. 2016) de una relación **log-lineal** luz↔desarrollo se cae a
 escala municipal mexicana, y se cae de forma instructiva
@@ -125,28 +128,36 @@ escala municipal mexicana, y se cae de forma instructiva
 | hgb lentes completas | 0.40 | 100% |
 
 1. **El canónico no ve nada** (0.005) donde la misma información leída no-linealmente da 0.41.
-   La transformación correcta (spline con quiebres) rescata *parte* (0.11), dos covariables lo
-   suben a 0.27 — pero **nadie simple alcanza el 90%**: la no-linealidad que importa es más fina
-   que dos nodos. El "modelo simple que daba para más" daba, honestamente, para dos tercios.
+   La transformación correcta (spline con quiebres) rescata *parte* — el spline solo recupera
+   **28%** del R² del modelo flexible (0.11/0.40); con ruralidad y accesibilidad sube a **66%**
+   (0.27/0.40) — pero **nada simple alcanza el 90%**: la no-linealidad que importa es más fina
+   que dos nodos. No existe una transformación obvia que recupere casi toda la señal.
 2. **Los quiebres** (grid-search, `fig_b_curva_quiebre.png`): 0.015 y 0.30 nW. Tres regímenes:
    **piso oscuro** (14% de municipios, luz≈0 y privación variando de −1 a +2.5: la lente ciega
    justo donde vive la privación material profunda), **penumbra rural** (50%, pendiente −0.34) y
    **rango informativo** (36%, pendiente −0.77). **La saturación urbana esperada NO aparece** a
    escala municipal — arriba la luz discrimina *mejor*, no peor (la saturación es fenómeno de
    píxel intra-urbano que el promedio municipal diluye). Semilla refutada, hallazgo ganado.
-3. **El quiebre es regional**: norte y centro entran al régimen informativo desde ~0.02 nW; el
-   sur-sureste hasta **~0.9 nW** (45×). La "relación única" nacional es un promedio de curvas
-   regionales con umbrales distintos — coherente con el fracaso del leave-one-macroregion-out.
+3. **El quiebre es regional, con la incertidumbre medida** (`b_breakpoints_bootstrap.csv`,
+   400 remuestreos): norte 0.024 nW con IC95 [0.005, 0.042] (n 122/274 por lado); sur-sureste
+   0.92 nW con IC95 [0.30, 3.42] (n 1152/189). **Los IC95 son disjuntos**: el umbral del sur es
+   más de un orden de magnitud mayor que el del norte — contraste estructural, no un nodo de
+   pocas observaciones. El nodo del centro NO está identificado (IC95 hasta 35 nW; solo 42
+   municipios debajo — su curva es casi log-lineal intra-región). La "relación única" nacional
+   es un promedio de regímenes regionales con umbrales distintos — coherente con el fracaso del
+   leave-one-macroregion-out.
 4. **No es tamaño de ciudad**: log(población) solo da R²cv −0.04; la luz *neta* de población
    conserva +0.17. La señal es de intensidad lumínica, no de urbanización per se.
 5. **Dónde miente la curva simple**: sus residuales correlacionan **0.755** con los del modelo
    de lentes completo — la misma estructura de discordancia (economías de remesas del lado
    "mejor de lo esperado"); no hay estructura nueva escondida.
 
-**El puente con la vara alta:** la log-lineal luce razonable a escala país-continente porque
-promedia sobre regímenes y regiones; a escala municipal se resuelve en piso oscuro + umbrales
-regionales, y por eso el modelo simple falla exactamente donde más importa focalizar — el campo
-profundo sin luz. *(Contraste legítimo: log-lineal vs no-lineal con las mismas variables; NO
+**El puente con la vara alta (formulado a la medida de la evidencia):** la aparente relación
+log-lineal **no es estable al bajar a escala municipal y combinar regiones con regímenes
+distintos** — demostrar que lo de Jean et al. es específicamente un artefacto de agregación
+exigiría reproducir el análisis a varias escalas sobre los mismos datos (pendiente natural).
+Lo que sí está demostrado: el modelo simple falla exactamente donde más importa focalizar — el
+campo profundo sin luz. *(Contraste legítimo: log-lineal vs no-lineal con las mismas variables; NO
 corrimos un CNN, no afirmamos nada sobre deep learning.)*
 
 ## Reproducibilidad
