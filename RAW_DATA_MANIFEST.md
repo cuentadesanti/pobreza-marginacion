@@ -78,3 +78,6 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
   Proxies de observabilidad en la misma tabla (internet_pct del ITER, dist_capital_km, etc.).
 - ACLED (2018+): REQUIERE cuenta gratuita — variables `ACLED_EMAIL`/`ACLED_KEY` pendientes.
 - Auditoría completa de 12 fuentes: `reports/auditoria_fuentes_crimen.md` + `outputs/g_fuentes_crimen.csv`.
+- ACLED agregado ADMIN1 (export de usuario 2026-06-27): `data/raw/acled_agregado_admin1_lac.xlsx`
+  → `scripts/build_vistaG_estatal.py` → `vistaG_crimen_estatal.parquet` (estado-año 2018-2026,
+  violencia política, fatalidades, batallas). ESTATAL: no sustituye el export de eventos.
