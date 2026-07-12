@@ -90,9 +90,24 @@ identificabilidad del factor; en lo monetario, informalidad y transferencias que
 registra. La etiqueta "invisibilidad institucional" se sostiene con fuerza para salud; para
 el resto la afirmación precisa es *invisibilidad a lentes espaciales convencionales*.
 
-**Cierre:** *la privación material deja una huella visible en la actividad nocturna; la
-educación, el ingreso sostenido por transferencias y la heterogeneidad institucional pueden
-permanecer invisibles para las lentes espaciales convencionales.*
+## Síntesis en tres capas
+
+| Capa | Contenido |
+|---|---|
+| **Visible** | vivienda, servicios básicos, urbanización, actividad material agregada (ΔR² máximo: `car_servbas`, `piso_tierra`; NTL→material 0.41–0.43 robusto a bloqueos) |
+| **Parcialmente visible y regionalmente calibrada** | ingreso monetario, educación observada, accesibilidad — la relación luz↔privación es transferible entre bloques espaciales comparables pero NO invariante entre macroregiones (LORO −0.31): es una familia de calibraciones regionales f_r(NTL, geo), no una f nacional |
+| **Invisible para estas lentes** | salud institucional, privación residual condicionada, transferencias sin actividad local equivalente, historia educativa de cohortes, heterogeneidad administrativa estatal |
+
+**Cierre:** *el espacio observa bien la materialidad de la privación, pero no su arquitectura
+institucional ni todas sus fuentes de ingreso. Las luces capturan actividad, no necesariamente
+participación en ella; el relieve condiciona costos pero no genera una relación nacional
+estable; y las remesas permiten mejorar vivienda e ingreso sin una huella productiva local
+equivalente.*
+
+Figuras: `fig_satelital_delta.png` (la fila decisiva, visualizada), `fig_satelital_mapa.png`
+(la geografía de la discordancia: el cinturón azul "mejor de lo esperado" es el corredor
+migratorio Zacatecas–Jalisco–Michoacán–Guanajuato–Mixteca), `fig_satelital_discordancia.png`
+(municipios nombrados).
 
 ## Reproducibilidad
 

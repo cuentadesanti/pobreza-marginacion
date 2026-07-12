@@ -65,7 +65,13 @@ GLLVM_REPLICACION.md   guía de corrida e interpretación de la escalera
    aporta (R²=0.016). La señal es un *contraste* intra-familia de indicadores, casi ortogonal
    al nivel — un índice sintético único no puede focalizar privación y anticipar violencia a
    la vez.
-9. **Diagnóstico municipal** (`data/processed/diagnostico_municipal_v1.parquet`,
+9. **Validación satelital — Vista F** (`reporte_satelital.md`): la privación material bruta es
+   visible desde el espacio (NTL solo: R² 0.41–0.43 bajo bloqueos espaciales; no cruza
+   macroregiones); las lentes agregan ΔR²≈+0.07–0.20 sobre Vista D (máximo en servicios
+   básicos/piso de tierra, replicado en indicadores observados); nada ve el residual
+   condicional; las remesas se materializan en paredes, no en salarios locales (β opuestas
+   por factor, colas ~20×).
+10. **Diagnóstico municipal** (`data/processed/diagnostico_municipal_v1.parquet`,
    `outputs/top_discordantes.csv`): z ± sd por factor y municipio + régimen LISA + fiscal;
    los top residual-material (Sierra Tarahumara) son todos régimen AA — dos rutas
    independientes, misma historia.
