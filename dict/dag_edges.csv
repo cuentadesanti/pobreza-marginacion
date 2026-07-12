@@ -1,0 +1,88 @@
+source,target,relation_type,mechanism,source_kind,target_kind
+loc_peq,z_infra,causal_sustantivo,dispersión territorial encarece redes de agua/drenaje/luz y acumula déficit de servicios,observada,latente
+loc_peq,z_edu,causal_sustantivo,oferta escolar limitada y lejana en localidades pequeñas,observada,latente
+pct_prim,z_mon,causal_sustantivo,economías agrícolas de bajo ingreso monetario,observada,latente
+pct_prim,z_lab,causal_sustantivo,ocupación agrícola mayormente informal,observada,latente
+empleo_prec,z_lab,causal_sustantivo,cuenta propia/jornalero/sin pago carecen de seguridad social contributiva,observada,latente
+empleo_prec,z_mon,causal_sustantivo,precariedad laboral deprime el ingreso,observada,latente
+dep_ratio,z_mon,causal_sustantivo,más dependientes por perceptor reducen el ingreso per cápita del hogar,observada,latente
+remesas,z_mon,causal_sustantivo,(−) transferencias sostienen el ingreso corriente,observada,latente
+remesas,z_infra,causal_sustantivo,(−) remesas financian construcción y mejora de vivienda,observada,latente
+fiscal,z_infra,causal_sustantivo,(−) capacidad fiscal municipal provee y mantiene servicios,observada,latente
+pol_salud,car_salud,causal_sustantivo,la afiliación depende del régimen estatal (transición INSABI 2020); hallazgo escalera: ~22% varianza estatal,estructural,observada
+loc_peq,sin_drenaje,efecto_directo,costo técnico de red de drenaje por dispersión a igual privación latente,observada,observada
+loc_peq,sin_agua,efecto_directo,costo de red de agua entubada por dispersión,observada,observada
+loc_peq,sin_electr,efecto_directo,costo de extensión eléctrica por dispersión,observada,observada
+pct_60mas,analf,efecto_directo,cohortes nacidas antes de la expansión educativa: composición etaria y no privación actual,observada,observada
+pct_60mas,sin_basica,efecto_directo,escolaridad truncada de cohortes viejas,observada,observada
+pct_60mas,rezago_educ,efecto_directo,composición etaria (el criterio por cohorte de CONEVAL mitiga pero no elimina),observada,observada
+pct_60mas,car_segsoc,efecto_directo,(−) pensiones contributivas y programa adulto mayor dan acceso,observada,observada
+pct_prim,ing_2sm,efecto_directo,ingreso agrícola en especie y subreportado en censo,observada,observada
+pct_prim,car_segsoc,efecto_directo,empleo agrícola sin IMSS por estructura ocupacional,observada,observada
+remesas,lp_ingreso,efecto_directo,suma directa al ingreso corriente per cápita,observada,observada
+remesas,lp_ingreso_ext,efecto_directo,ídem sobre la línea extrema,observada,observada
+remesas,car_vivienda,efecto_directo,mejora de materiales y espacios financiada con remesas,observada,observada
+remesas,piso_tierra,efecto_directo,sustitución de piso financiada con remesas,observada,observada
+dep_ratio,lp_ingreso,efecto_directo,el ICTPC es per cápita: más dependientes bajan el indicador casi por definición,observada,observada
+z_edu,analf,carga_latente,privación educativa acumulada de adultos,latente,observada
+z_edu,sin_basica,carga_latente,ídem,latente,observada
+z_edu,rezago_educ,carga_latente,ídem (versión normativa CONEVAL),latente,observada
+z_infra,sin_drenaje,carga_latente,déficit de infraestructura y vivienda,latente,observada
+z_infra,sin_electr,carga_latente,ídem,latente,observada
+z_infra,sin_agua,carga_latente,ídem,latente,observada
+z_infra,piso_tierra,carga_latente,calidad de vivienda,latente,observada
+z_infra,hacinam,carga_latente,espacios de vivienda,latente,observada
+z_infra,car_vivienda,carga_latente,calidad y espacios (constructo CONEVAL),latente,observada
+z_infra,car_servbas,carga_latente,servicios básicos (constructo CONEVAL),latente,observada
+z_mon,ing_2sm,carga_latente,insuficiencia monetaria,latente,observada
+z_mon,car_alim,carga_latente,inseguridad alimentaria vía restricción de gasto,latente,observada
+z_mon,lp_ingreso,carga_latente,ingreso bajo línea de pobreza,latente,observada
+z_mon,lp_ingreso_ext,carga_latente,ídem línea extrema,latente,observada
+z_lab,car_segsoc,carga_latente,inserción laboral sin protección social,latente,observada
+censo_basico,analf,medicion,conteo completo; denominador excluye no especificado,instrumento,observada
+censo_basico,sin_basica,medicion,ídem con redistribución de no especificados,instrumento,observada
+censo_basico,sin_drenaje,medicion,ocupantes de viviendas particulares,instrumento,observada
+censo_basico,sin_electr,medicion,ídem,instrumento,observada
+censo_basico,sin_agua,medicion,ídem,instrumento,observada
+censo_basico,piso_tierra,medicion,ídem,instrumento,observada
+censo_basico,hacinam,medicion,viviendas; >2.5 ocupantes por dormitorio (Lab. de Microdatos),instrumento,observada
+censo_basico,loc_peq,medicion,población total por tamaño de localidad,instrumento,observada
+muestra_censal,ing_2sm,medicion,cuestionario ampliado (muestra): único CONAPO con error muestral,instrumento,observada
+muestra_censal,rezago_educ,medicion,estimación directa de diseño sobre la muestra censal,instrumento,observada
+muestra_censal,car_salud,medicion,ídem,instrumento,observada
+muestra_censal,car_vivienda,medicion,ídem,instrumento,observada
+muestra_censal,car_servbas,medicion,ídem,instrumento,observada
+muestra_censal,op_sae,estimacion_estadistica,covariables municipales x_ij del ampliado,instrumento,operador
+mec_enigh,op_sae,estimacion_estadistica,parámetros por grupo de estados (k-medias × urbano/rural),instrumento,operador
+op_sae,car_segsoc,estimacion_estadistica,logístico + rescate de información; umbral = media estatal,operador,observada
+op_sae,car_alim,estimacion_estadistica,logístico stepwise; umbral = media estatal,operador,observada
+op_sae,lp_ingreso,estimacion_estadistica,EBPH lineal mixto; 100 simulaciones de ingreso,operador,observada
+op_sae,lp_ingreso_ext,estimacion_estadistica,ídem,operador,observada
+mec_enigh,op_calib,estimacion_estadistica,totales estatales objetivo,instrumento,operador
+op_calib,car_segsoc,estimacion_estadistica,ponderadores recalibrados: agregados municipales ≡ estatales,operador,observada
+op_calib,car_alim,estimacion_estadistica,ídem,operador,observada
+op_calib,lp_ingreso,estimacion_estadistica,ídem,operador,observada
+op_calib,lp_ingreso_ext,estimacion_estadistica,ídem,operador,observada
+analf,im_conapo,derivacion_determinista,DP2: d/σ·(1−R²) con base peor escenario 2010–2020,observada,indice
+sin_basica,im_conapo,derivacion_determinista,ídem,observada,indice
+sin_drenaje,im_conapo,derivacion_determinista,ídem,observada,indice
+sin_electr,im_conapo,derivacion_determinista,ídem,observada,indice
+sin_agua,im_conapo,derivacion_determinista,ídem,observada,indice
+piso_tierra,im_conapo,derivacion_determinista,ídem,observada,indice
+hacinam,im_conapo,derivacion_determinista,ídem,observada,indice
+loc_peq,im_conapo,derivacion_determinista,ídem,observada,indice
+ing_2sm,im_conapo,derivacion_determinista,ídem,observada,indice
+rezago_educ,pobreza_coneval,derivacion_determinista,cuadrantes: carencias + bienestar por ingreso,observada,indice
+car_salud,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+car_segsoc,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+car_vivienda,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+car_servbas,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+car_alim,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+lp_ingreso,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+lp_ingreso_ext,pobreza_coneval,derivacion_determinista,ídem,observada,indice
+pobreza_2015,formula_fais,retroalimentacion_politica,insumo legal vigente ~2020: pobreza extrema municipal 2015 (art. 34 LCF),indice,politica
+piso_2013,formula_fais,retroalimentacion_politica,herencia: asignación 2013 de la fórmula vieja de masa carencial (perfil marginación),politica,politica
+pobreza_coneval,formula_fais,retroalimentacion_politica,la medición 2020 alimenta asignaciones 2021+ (cierra el ciclo),indice,politica
+formula_fais,fism,retroalimentacion_politica,asignación anual FISM por municipio,politica,politica
+fism,inversion,retroalimentacion_politica,ejecución en agua/drenaje/electrificación/vivienda,politica,politica
+inversion,z_infra,retroalimentacion_politica,reduce la privación de infraestructura FUTURA: medición→dinero→fenómeno,politica,latente

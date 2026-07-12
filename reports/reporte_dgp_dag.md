@@ -56,68 +56,33 @@ Detalles del cálculo que importan para el modelo:
 | Integración | Cuadrantes pobreza = f(carencias, ingreso) promediados sobre las 100 simulaciones |
 | **Calibración** | Ponderadores recalibrados (logit, Deville–Särndal) para que los agregados municipales **cuadren exactamente con los estatales del MEC-ENIGH**; solo en municipios >10 mil hab. no censados |
 
-## 3. El DAG
+## 3. El DAG (a nivel de variable)
 
 ![DAG de medición](../figures/fig_dag_dgp.png)
 
-*(Versión mermaid navegable abajo; el PNG es el canónico.)*
+**El objeto canónico es la edge-list**: `dict/dag_edges.csv` — 87 relaciones, una fila por
+arista con `source, target, relation_type, mechanism, source_kind, target_kind`. La figura se
+genera desde ella (`scripts/fig_dag.py`), de modo que figura y tabla no pueden divergir.
+Reglas de construcción (revisión conceptual 2026-07-12):
 
-```mermaid
-graph TD
-    subgraph LATENTE["Privación latente del municipio i"]
-        Z["z_i = (material, educativo, monetario)"]
-    end
+- **Un nodo = una variable empírica, un constructo latente, un instrumento, un operador
+  estadístico, un índice publicado o un objeto de política.** Sin cajas colectivas.
+- **`loc_peq` es UN solo nodo** con doble rol (condición estructural "dispersión territorial"
+  e indicador CONAPO): son la misma columna, y una identidad no es una relación causal.
+- **Privación latente en 4 dimensiones conceptuales** (educativa, infraestructura/vivienda,
+  monetaria, laboral/protección). La evidencia del GLLVM (K=3) dice que la laboral no emerge
+  como factor separado — eso es un *resultado* sobre el mundo, no un supuesto del grafo.
+  `car_salud` no tiene padre latente: su varianza municipal es política estatal (hallazgo de
+  la escalera, ~22% estado).
+- **Siete semánticas de arista** distinguidas por color: causal sustantivo, carga latente,
+  efecto directo de cofactor (no vía z), observación por instrumento, estimación estadística
+  (operadores SAE y calibración), derivación determinista (índices), y retroalimentación de
+  política. Los operadores (12 modelos SAE, calibración) se dibujan como operadores, no como
+  variables del mundo.
+- **Los índices publicados aparecen antes de la fórmula FAIS**: IM-CONAPO y pobreza municipal
+  CONEVAL son derivaciones deterministas de los indicadores; la fórmula toma la pobreza 2015
+  (y el piso 2013 de la fórmula vieja) y produce FISM → inversión → privación futura.
 
-    subgraph CONTEXTO["Cofactores territoriales (Vista D)"]
-        RUR[ruralidad loc_peq]
-        REM[remesas pc Banxico]
-        DEM[demografía, sectores, empleo precario]
-        EST[entidad federativa s_i]
-    end
-
-    subgraph INSTRUMENTOS
-        CB[Censo básico 2020]
-        CA[Muestra censal ampliado]
-        ENIGH[MEC MCS-ENIGH 2020<br/>solo estatal]
-        SAE[12 modelos SAE<br/>logístico + EBPH]
-        CAL[Calibración a totales estatales]
-    end
-
-    subgraph CONAPO_IND["9 indicadores CONAPO"]
-        A1[analf, sin_basica]
-        A2[sin_drenaje, sin_electr, sin_agua]
-        A3[piso_tierra, hacinam]
-        A4[loc_peq, ing_2sm]
-    end
-
-    subgraph CONEVAL_IND["8 indicadores CONEVAL"]
-        B1[rezago_educ, car_salud,<br/>car_vivienda, car_servbas]
-        B2[car_segsoc, car_alim]
-        B3[lp_ingreso, lp_ingreso_ext]
-    end
-
-    Z --> CB; Z --> CA; Z --> ENIGH
-    RUR --> Z; REM --> Z; DEM --> Z
-    RUR -->|β_D directo: costo de red por dispersión| A2
-    RUR ==>|IDENTIDAD: ruralidad ≡ loc_peq| A4
-    DEM -->|cohortes viejas / pensiones| B1
-    DEM -->|estructura ocupacional| B2
-    REM -->|transferencias directas al ingreso| B3
-    CB --> A1; CB --> A2; CB --> A3; CB --> A4
-    CA --> A4
-    CA --> B1
-    CA -->|covariables x_ij| SAE
-    ENIGH -->|parámetros β por grupo de estados| SAE
-    SAE --> B2; SAE --> B3
-    ENIGH --> CAL; CAL --> B2; CAL --> B3
-    EST -->|agrupación k-medias y umbrales estatales| SAE
-
-    POB2015[Pobreza municipal 2015] -->|fórmula FAIS art. 34 LCF| FAIS[FAIS/FISM 2020]
-    FAIS -.->|inversión en servicios| Z
-```
-
-*(Los índices finales — IM/DP2 de CONAPO, cuadrantes de CONEVAL, IRS — son funciones
-deterministas de los nodos indicadores; se omiten porque el repo trabaja con componentes.)*
 
 ### Los cofactores tienen DOS rutas, no una
 
@@ -141,7 +106,26 @@ estadísticos. Por eso los factores de los peldaños 2–4 se leen como *privaci
 no como "la privación verdadera". El DAG dibuja ambas rutas para que ese límite quede a la
 vista.
 
-## 4. Las cinco dependencias mecánicas que el DAG hace visibles
+## 4. Las cinco dependencias mecánicas son CAMINOS del grafo, no aristas
+
+Cada "dependencia" es un patrón de padres compartidos o un camino que la edge-list induce —
+por eso no aparecen como flechas extra:
+
+1. **Bloques de método** = dos indicadores con el mismo padre instrumento (p.ej. `sin_agua` ←
+   censo → ... y `car_servbas` ← muestra censal, con las mismas preguntas de fondo).
+2. **Correlación inducida por SAE** = camino `muestra censal → op.SAE → car_alim` junto a
+   `muestra censal → rezago_educ`: el mismo instrumento es padre directo de unos e insumo del
+   operador que genera otros.
+3. **Suavizamiento/calibración estatal** = camino `MEC-ENIGH → op.calibración → indicadores
+   modelados`: el nivel estatal es ancestro común de los 4 modelados.
+4. **`ing_2sm` puente** = único indicador CONAPO cuyo padre instrumental es la muestra censal
+   (no el censo básico), compartiendo instrumento con el pipeline CONEVAL y constructo con
+   `lp_ingreso`.
+5. **Circularidad FAIS** = ciclo entre cortes: `pobreza 2015 → fórmula → FISM → inversión →
+   z_infra (futuro) → indicadores 2020 → pobreza 2020 → fórmula 2021+`. En un corte es DAG;
+   entre cortes es un lazo de control.
+
+## 4a. Detalle de las cinco dependencias
 
 **(1) Bloques de método por instrumento compartido.** Los pares casi-duplicados
 (`sin_drenaje`/`sin_electr`/`sin_agua` vs `car_servbas`; `piso_tierra`/`hacinam` vs
