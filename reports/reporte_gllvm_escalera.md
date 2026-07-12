@@ -201,6 +201,37 @@ Conclusión calibrada: el componente estatal no está dominado por la arquitectu
 compatible con heterogeneidad sustantiva estatal, aunque sigue mezclando política, composición
 y medición.
 
+## Comparación marginal 2-vs-3: qué hace γ_estado exactamente
+
+Apples-to-apples (misma verosimilitud MvN; `comparacion_marginal_2v3.csv`): ELPD favorece al
+peldaño 3 por **5,410 ± 135** (el posterior de p2 mezcla modos — R-hat ΛΛᵀ 1.53 — así que su
+ELPD es de mezcla; el orden es inequívoco de cualquier forma). Tres piezas que separan las
+lecturas posibles:
+
+1. **Eigenestructura**: p2 = (1.80, 0.63, 0.37, **0.087**, ≈0) vs p3 = (1.23, 0.50, 0.34, ≈0).
+   Sin efectos estatales aparece una cuarta dirección latente débil: la heterogeneidad estatal
+   se filtra hacia el espacio factorial.
+2. **Ángulos principales top-3**: (52.9°, 6.3°, 3.8°) — dos ejes esencialmente compartidos,
+   UNO se reorganiza 53° al quitar γ_s.
+3. **El test Δσ²ⱼ ∝ shareⱼ**: los indicadores donde γ_s absorbe más uniqueness son exactamente
+   los de mayor share estatal (`sin_drenaje` Δσ²=0.32/share=0.23, `car_salud` 0.18/0.28,
+   razones 0.7–2.0 en el top-6). Evidencia directa de que, sin γ_s, la heterogeneidad estatal
+   se reparte ambiguamente entre uniqueness y covarianza latente — la lectura (1) de las tres
+   posibles, con apoyo empírico.
+
+## Validación corta INSABI: γ_salud como exposición a la transición
+
+`validacion_insabi.csv` (dependencia = % de población afiliada a SP/INSABI en el propio Censo,
+`PDER_SEGP`; rango estatal 5.8–49.3%): **corr(γ_car_salud, dependencia) = +0.61 — la más alta
+de los 17 indicadores**; placebos 0.18–0.25, salvo `piso_tierra` (0.49, que delata confusión
+parcial con nivel de pobreza: los estados SP-dependientes son pobres). Nota honesta: el signo
+pre-registrado era el opuesto (más afiliación ⇒ menos carencia); el mecanismo correcto es de
+**exposición a la transición** — al desaparecer el Seguro Popular, la afiliación dejó de
+reportarse y la carencia medida saltó más donde más dependía del sistema (la carencia nacional
+se duplicó en 2020). Estatus: interpretación institucional con soporte correlacional y
+confusión parcial declarada — no prueba causal; `car_salud` pasa de anomalía estadística a
+huella de la transición INSABI.
+
 ## Implicación integradora
 
 La pregunta central del repo ("¿cuándo cuentan historias distintas?") queda reformulada por la

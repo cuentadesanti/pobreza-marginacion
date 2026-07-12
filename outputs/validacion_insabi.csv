@@ -1,0 +1,7 @@
+indicador,corr_gamma_vs_dependencia_SEGP,tipo
+car_salud,0.606,HIPÓTESIS
+car_vivienda,0.178,placebo
+sin_drenaje,0.221,placebo
+rezago_educ,0.233,placebo
+sin_basica,0.246,placebo
+piso_tierra,0.489,placebo
