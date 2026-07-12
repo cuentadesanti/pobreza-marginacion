@@ -1,0 +1,9 @@
+peldano,r2cv,sd,n_params,pct_del_sofisticado
+E0 OLS ntl_mean (lineal puro),-0.213,0.539,1,-53.0
+E1 OLS log_ntl (canónico Jean),0.005,0.401,1,1.0
+E2 + ntl_pc,0.078,0.274,2,19.0
+E3 OLS spline(log_ntl) [2 nodos],0.106,0.243,3,26.0
+E4 spline + loc_peq + acc_km,0.267,0.211,5,66.0
+E5 hgb lentes completas (M3),0.404,0.196,5,100.0
+(control) OLS log_pob solo,-0.036,,1,
+(control) log_pob + spline(log_ntl),0.129,,4,

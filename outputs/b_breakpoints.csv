@@ -1,0 +1,13 @@
+outcome,ambito,nodo,knot_logntl,knot_radiancia,pendiente,pct_municipios,r2_insample
+material_mean,global,0,,,-1.461,14.1,0.357
+material_mean,global,1,-1.597,0.015,-0.335,49.7,0.357
+material_mean,global,2,-0.506,0.302,-0.774,36.2,0.357
+material_mean,norte,1,-1.467,0.024,-0.533,69.2,0.456
+material_mean,centro,1,-1.542,0.019,-0.536,94.2,0.535
+material_mean,sur-sureste,1,-0.034,0.915,-0.939,14.1,0.374
+marg9,global,0,,,-0.965,14.1,0.365
+marg9,global,1,-1.597,0.015,-0.27,49.7,0.365
+marg9,global,2,-0.506,0.302,-0.701,36.2,0.365
+marg9,norte,1,-1.467,0.024,-0.482,69.2,0.435
+marg9,centro,1,-1.542,0.019,-0.502,94.2,0.563
+marg9,sur-sureste,1,-0.451,0.344,-0.737,25.1,0.344
