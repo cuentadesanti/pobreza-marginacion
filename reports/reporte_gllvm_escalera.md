@@ -112,6 +112,33 @@ el Hallazgo 3. El Moran residual de K=2 replica el patrón de K=3 (mínimo en el
 - ELPD-LOO: Pareto-k altos (esperado con latentes por observación); usar solo como ordenamiento
   grueso entre peldaños, no como diferencia calibrada.
 
+## Re-corrida con anclas v2 (2026-07-12): qué se sostiene y qué no
+
+Se re-corrió K=3 completo con material→`piso_tierra` y `diag ~ LogNormal(log .5, .4)`.
+
+| Peldaño | Moran resid. | ELPD v2 | ELPD v1 | sd latente v2 |
+|---|---|---|---|---|
+| 1 | 0.413 | −25,834 | −26,229 | 0.55 |
+| 2 | 0.346 | −15,624 | −15,730 | 0.41 |
+| 3 | **0.223** | **−13,555** | −15,118 | 0.40 |
+| 4 | 0.323 | −16,855 | −12,876 | 0.35 |
+
+1. **Los hallazgos sustantivos replican**: test DAG (0.32/0.34/0.27), correlaciones fiscales de
+   γ̄_s (−0.45/+0.47), Moran mínimo en el peldaño 3, `car_salud` estatal. Los scores municipales
+   correlacionan 0.83–0.91 entre corridas sin intercambio de factores (matriz cruzada diagonal),
+   el top-25 material comparte 17/25 y Batopilas sigue #1 con la misma media y sd más angosta
+   (0.46→0.28).
+2. **La ventaja de ELPD del peldaño 4 NO replica**: en v2 el espacial cae por debajo del estatal
+   (−16,855 vs −13,555), igual que en K=2. La ordenación 3>4 es la robusta; la 4>3 de la v1 era
+   dependiente del modo. Conclusión reforzada: **la geografía por indicador (estado) es la
+   especificación defendible; el BYM2 compartido en z no lo es** (ρ sigue clavado en 1.00).
+3. **Las anclas v2 no eliminaron el label switching** (max|R−I| entre cadenas ≈ 1.3 en peldaños
+   3–4): la multimodalidad es más profunda que el prior del ancla — material y educativo están
+   tan correlacionados que hay modos rotados casi equiprobables. Todo lo reportado sigue
+   alineado por cadena (válido); la solución de fondo para la siguiente iteración es
+   post-procesamiento rotacional por draw (varimax/target hacia una estructura fija) o
+   reparametrizar (marginalizar z), no seguir apretando priors.
+
 ## Implicación integradora
 
 La pregunta central del repo ("¿cuándo cuentan historias distintas?") queda reformulada por la
