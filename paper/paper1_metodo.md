@@ -481,7 +481,7 @@ condicionales). Los posteriores completos están archivados en el repositorio.
 Todos los datos derivados, el código de estimación, los posteriores archivados y los scripts
 que generan cada figura y tabla de este artículo están disponibles en el repositorio del
 proyecto (https://github.com/cuentadesanti/pobreza-marginacion; archivo
-permanente: doi:10.5281/zenodo.21344604), junto con las tablas canónicas del DAG (nodos y
+permanente: doi:10.5281/zenodo.21344720), junto con las tablas canónicas del DAG (nodos y
 aristas versionados con validación automática de aciclicidad), el manifiesto de datos crudos
 (URLs y advertencias de cada fuente oficial) y las verificaciones automáticas de consistencia
 entre texto y resultados. La tabla suplementaria S1 mapea cada figura y tabla a su script

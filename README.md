@@ -130,7 +130,7 @@ Ver `RAW_DATA_MANIFEST.md` para las URLs exactas de los crudos grandes.
 
 - **Código** (`scripts/`): MIT (ver `LICENSE`).
 - **Datos derivados, figuras y documentos** (`outputs/`, `figures/`, `reports/`, `paper/`,
-  `dict/`): CC-BY-4.0 — citar el DOI del depósito Zenodo (10.5281/zenodo.21344604).
+  `dict/`): CC-BY-4.0 — citar el DOI del depósito Zenodo (10.5281/zenodo.21344720).
 - **Datos fuente** en `data/raw/` conservan los términos de sus productores (INEGI, CONEVAL,
   CONAPO, Banxico, Harvard Dataverse). Los datos de ACLED **no se redistribuyen** (sus
   términos lo prohíben); ver `RAW_DATA_MANIFEST.md` para obtenerlos con cuenta propia.

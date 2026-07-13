@@ -491,7 +491,7 @@ significativos en la tipología espacial de discordancia.<!-- src: veta_48_tripl
 
 Todos los datos derivados, el código de estimación y los scripts que generan cada figura y
 tabla de este artículo están disponibles en el repositorio del proyecto (https://github.com/cuentadesanti/pobreza-marginacion; archivo
-permanente: doi:10.5281/zenodo.21344604), junto con el manifiesto de datos crudos (URLs y advertencias de cada fuente
+permanente: doi:10.5281/zenodo.21344720), junto con el manifiesto de datos crudos (URLs y advertencias de cada fuente
 oficial) y las verificaciones automáticas de consistencia entre texto y resultados. La tabla
 suplementaria S1 mapea cada figura y tabla a su script generador y a su archivo de
 resultados. Material suplementario adicional: los mapas de medias y desviaciones posteriores
