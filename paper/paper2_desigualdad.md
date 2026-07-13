@@ -1,4 +1,4 @@
-# La distribución territorial de la privación en México: escalas, dimensiones y focalización
+# Desigualdad territorial en México: escalas, dimensiones y límites de la focalización municipal
 
 **Borrador de trabajo (Paper 2, sustantivo) — 2026-07-13**
 *Objetivo editorial: World Development (alternativas alineadas: Regional Studies, Journal of Regional Science, World Development Perspectives; español; traducción al enviar).*
@@ -62,7 +62,7 @@ responde dónde vive la desigualdad territorial (Figura 1, Tabla 1); §4, si las
 privación se solapan (Tabla 2, Figura 2); §5 analiza actividad visible y bienestar local
 (Figura 3); §6, qué características territoriales predicen la privación (Tabla 3); §7 agrupa
 las validaciones externas por la pregunta que responden (Figuras 4 y 5); §8 deriva
-implicaciones para la focalización; §9 discute limitaciones. El apéndice documenta las
+implicaciones para la focalización; §9 concluye y §10 discute limitaciones. El apéndice documenta las
 baterías de robustez.
 
 ## 2. Datos y construcción del espacio de privación
@@ -83,7 +83,9 @@ su co-movimiento se modela explícitamente. La convergencia se verifica sobre la
 covarianza latente (R̂ = 1.003). Las tres dimensiones resultantes: **material-infraestructural**,
 **educativa**, y un contraste de **vivienda e ingreso frente a servicios de red**.
 
-Dos propiedades del espacio estimado gobiernan todo lo que sigue. Primera, cada municipio
+Fijamos la terminología: llamamos *privación* al nivel (observado o latente) de carencia de
+un municipio en una dimensión, y *desigualdad territorial* a la dispersión de esa privación
+entre municipios. Dos propiedades del espacio estimado gobiernan todo lo que sigue. Primera, cada municipio
 tiene una media y una desviación posterior por dimensión, y la inferencia las hereda: los
 modelos municipales se ponderan por el inverso de la varianza posterior, y la clasificación
 individual de un municipio solo es estadísticamente firme en 42%, 55% y 14% de los casos
@@ -101,7 +103,7 @@ Parte de las diferencias de privación entre municipios coincide con las fronter
 fracción importante persiste entre municipios del mismo estado. La pregunta es cuánto pesa
 cada componente, y la respuesta cambia según el objeto que se mire (Figura 1).
 
-![Figura 1. Buena parte de la desigualdad observada coincide con fronteras estatales; la heterogeneidad residual vive dentro de los estados. Panel (a): porcentaje de la desigualdad de cada indicador publicado atribuible a diferencias entre estados (descomposición de Theil, ponderación poblacional). Panel (b): porcentaje de la varianza del factor material sin condicionar y de las tres dimensiones residuales atribuible a diferencias entre estados. Los métodos de descomposición difieren entre paneles y sus niveles no son directamente comparables.](../figures/09_desigualdad/fig_theil_escalas.png)
+![Figura 1. Buena parte de la desigualdad observada coincide con fronteras estatales; la heterogeneidad residual vive dentro de los estados. Panel (a): fracción del índice de Theil de cada indicador publicado atribuible a diferencias entre estados (ponderación poblacional). Panel (b): fracción de la varianza del factor material sin condicionar y de las tres dimensiones residuales atribuible a diferencias entre estados. Cada panel usa su propio estadístico; los niveles no se comparan entre paneles.](../figures/09_desigualdad/fig_theil_escalas.png)
 
 En los indicadores observados, las diferencias entre estados explican del 31.1% (sin
 electricidad) al 58.8% (línea de pobreza por ingreso) de la desigualdad total, con mediana
@@ -120,8 +122,8 @@ mostramos que esa escala depende del objeto: en el nivel observado de la privaci
 componente interestatal pesa cerca de la mitad, y es la heterogeneidad residual la que
 reproduce el predominio intraestatal.
 
-**Tabla 1. Porcentaje de la desigualdad atribuible a diferencias entre estados, por objeto y
-método de descomposición.**<!-- src: desigualdad_theil.csv -->
+**Tabla 1. Fracción atribuible a diferencias entre estados, por objeto y método de
+descomposición** (panel A: fracción del índice de Theil; panel B: fracción de la varianza).<!-- src: desigualdad_theil.csv -->
 
 | Objeto | % entre estados | Método |
 |---|---|---|
@@ -151,9 +153,9 @@ dos, y solo el 2.0% (48 municipios) lo es en las tres — apenas por encima del 
 esperaría si las tres dimensiones fueran independientes (Tabla 2, Figura 2). La coincidencia
 por pares es igualmente baja (índices de Jaccard de 0.05 a 0.21 según el umbral). En el nivel
 observado ocurre lo contrario: ahí domina un factor general y el municipio con carencias
-simultáneas en todo sí es la norma entre los más pobres. La concentración multidimensional de
-desventaja es, por tanto, un fenómeno del nivel observado; en el residuo, cada dimensión
-tiene su propia geografía.
+simultáneas en todo sí es la norma entre los más pobres. La concentración simultánea de desventaja es
+fuerte en el nivel observado; en el espacio residual, en cambio, no encontramos solapamiento
+extremo adicional claramente distinto de la independencia.
 
 **Tabla 2. Coincidencia de desventaja severa entre las tres dimensiones residuales** (razón
 entre la proporción observada de municipios severos en las tres y la esperada bajo
@@ -166,7 +168,7 @@ independencia; IC bootstrap de 1,000 réplicas).<!-- src: desigualdad_robustez.c
 | q80 | 1.43 | [0.97, 1.99] | 0.13 | 0.15 | 0.10 |
 | q90 | 2.44 | [0.80, 4.48] | 0.06 | 0.10 | 0.05 |
 
-![Figura 2. Municipios por número de dimensiones residuales con desventaja severa simultánea (cuartil superior de cada dimensión). La coincidencia en las tres dimensiones — 48 municipios, 2.0% — es cercana a la esperada bajo independencia.](../figures/04_diagnostico_mapas/fig_acumulacion.png)
+![Figura 2. Municipios por número de dimensiones residuales con desventaja severa simultánea (cuartil superior de cada dimensión). La coincidencia en las tres dimensiones — 48 municipios, 2.0% — no difiere claramente de la esperada bajo independencia.](../figures/04_diagnostico_mapas/fig_acumulacion.png)
 
 Los 48 municipios severos en las tres dimensiones — concentrados en Oaxaca, pequeños, rurales
 y con baja recepción de remesas — se describen en el suplemento; el grupo es sensible al
@@ -205,10 +207,9 @@ ingreso sin una huella productiva local equivalente — y el efecto tiene el sig
 cada dimensión (−0.034 sobre la material, +0.027 sobre la monetaria<!-- src:
 satelital_remesas_reg.csv -->). El contraste entre colas resume el patrón: la mediana de
 remesas en los municipios que están mejor de lo que sus luces sugieren es unas 20 veces
-(IC95 bootstrap 14–28) la de los municipios subestimados (Figura 3). Interpretamos este
-desacople como una **brecha de apropiación territorial** — la actividad económica de un
-territorio no se traduce necesariamente en inclusión laboral y bienestar de su población —
-como lectura de los coeficientes, no como identificación causal. La regresión completa está
+(IC95 bootstrap 14–28) la de los municipios subestimados (Figura 3). Interpretamos el desacople como evidencia compatible con una traducción incompleta de la
+actividad visible en bienestar local; la etiqueta **brecha de apropiación territorial** es una
+lectura interpretativa de esos coeficientes, no una identificación causal. La regresión completa está
 en el apéndice E.
 
 ![Figura 3. Privación observada contra predicha por luces nocturnas y geografía (predicción fuera de muestra, bloqueada por estado). Los municipios por encima de la diagonal están peor de lo que su actividad visible sugiere y se caracterizan por precariedad laboral; los municipios por debajo, mejor, y se caracterizan por recepción de remesas.](../figures/07_satelital/fig_satelital_discordancia.png)
@@ -229,6 +230,12 @@ están en el modelo. Dos disciplinas de lectura: la contribución marginal de ca
 depende del orden en que entra (los incrementos no son atribuciones), y todo el ejercicio es
 predictivo, no causal.
 
+La lectura sustantiva: la privación material no es principalmente una consecuencia del
+relieve o del aislamiento. Su predictibilidad aumenta de forma marcada cuando se incorpora la
+forma en que el territorio está poblado e integrado productivamente — lo que sugiere que la
+desigualdad material combina restricciones geográficas con procesos históricos de
+urbanización y empleo.
+
 **Tabla 3. Capacidad predictiva de bloques de características territoriales sobre la
 privación material** (R² de validación cruzada bloqueada por estado; los bloques entran
 acumulativamente en el orden mostrado).<!-- src: desigualdad_robustez.csv capa3 -->
@@ -248,7 +255,7 @@ Tres grupos de análisis externos — ninguno usado en la construcción del espa
 
 ### 7.1 ¿La desigualdad residual coincide con la geografía de la violencia?
 
-No. Tres fuentes independientes convergen en esa respuesta.
+Los tres análisis siguientes producen el mismo patrón general: no.
 
 *Homicidios.* Para medir si la privación anticipa violencia, usamos 103 mil registros
 oficiales de homicidio (2019–2021) y comparamos la capacidad de cinco conjuntos de
@@ -275,7 +282,8 @@ candidatos municipales (2007–2012; Trejo & Ley 2021) tampoco muestran una ruta
 la privación residual de 2020 — el indicador es nulo en dos dimensiones y contradictorio en
 la tercera —, pero sí predicen homicidio una década después (+0.26, t = 2.7)<!-- src:
 g5_coercion.csv --> y ocurrieron donde coincidían competencia criminal y fragmentación
-política. La violencia persiste como violencia; no se convierte en privación residual.
+política. La coerción política histórica conserva asociación con la violencia posterior, pero no con
+las dimensiones residuales de privación.
 
 La lectura conjunta: violencia y privación son dimensiones territorialmente distintas. Un
 índice de privación — observado o residual — no sirve como mapa de riesgo de violencia, y
@@ -329,14 +337,32 @@ diferencia distributiva antes de cualquier análisis de incidencia del gasto.
    coincide con fronteras estatales — mayor en ingreso, menor en servicios de red — es
    materia de coordinación federal-estatal; la heterogeneidad residual, predominantemente
    intraestatal, requiere capacidad de discriminación fina dentro de cada estado, que las
-   transferencias por fórmula no proporcionan.
+   fórmulas nacionales agregadas difícilmente capturan con precisión.
 3. **Ningún indicador único cubre todos los usos.** El nivel observado no anticipa violencia;
    los sensores remotos no ven el residuo ni la pobreza urbana; los registros de crimen
    dependen de la detección; y las fórmulas de transferencia heredan los sesgos del
-   instrumento con que se midió. Cada lente tiene un dominio de validez documentado aquí, y
-   la política que use una sola hereda sus puntos ciegos.
+   instrumento con que se midió. Cada fuente de información cubre dimensiones distintas y tiene errores de
+   medición propios, documentados aquí; la política que use una sola hereda sus puntos
+   ciegos.
 
-## 9. Limitaciones
+## 9. Conclusión
+
+La desigualdad territorial mexicana no puede reducirse a una sola jerarquía municipal. Una
+parte importante de la privación observada sigue fronteras estatales — más en el ingreso,
+menos en los servicios de red — pero las diferencias residuales, las que quedan una vez
+descontado lo que la composición y la pertenencia estatal explican, se concentran dentro de
+los estados. Las dimensiones residuales de la privación, además, rara vez identifican los
+mismos municipios, y la actividad económica visible desde satélite no garantiza un bienestar
+local proporcional: donde el desacople es mayor, la constante es la precariedad laboral.
+
+Para la política pública, estos resultados implican que la focalización debe especificar
+tanto la dimensión de la privación como la escala territorial de la intervención: ninguna
+lista única de municipios prioritarios sirve simultáneamente a programas de infraestructura,
+educación e ingreso, y ningún nivel de gobierno puede cerrar por sí solo brechas que viven a
+escalas distintas. El límite principal del ejercicio es su naturaleza asociativa y de corte
+transversal: describe la estructura de la desigualdad, no sus mecanismos.
+
+## 10. Limitaciones
 
 Los resultados son de corte transversal (2020) y de naturaleza asociativa; ninguna relación
 reportada se identifica causalmente. Las dimensiones residuales son scores latentes con

@@ -31,7 +31,7 @@ FIG = ps.figdir("04_diagnostico_mapas")
 HERE = ps.REPO
 PROC, OUT = os.path.join(HERE, "data", "processed"), os.path.join(HERE, "outputs")
 EJES = ["eje1", "eje2", "eje3"]
-ACUM_COL = {0: "#f0efec", 1: "#f4b8b8", 2: "#e34948", 3: "#8f1f1f"}
+ACUM_COL = {0: "#f0efec", 1: "#f0d3c0", 2: "#dc9b6b", 3: "#b35f36"}
 
 
 def norm(df):
@@ -150,7 +150,7 @@ def main():
                                    f"({dist.loc[k, 'pct_munis'] if k in dist.index else 0}% munis)")
                        for k in (0, 1, 2, 3)], loc="lower left", frameon=False, fontsize=8.5)
     ax.set_title("Municipios por número de dimensiones con desventaja severa simultánea\n"
-                 "la coincidencia en las tres dimensiones (48 municipios) es cercana a la esperada bajo independencia",
+                 "la coincidencia triple (48 municipios) no difiere claramente de la esperada bajo independencia",
                  fontsize=11, loc="left", color=ps.INK)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig_acumulacion.png"), dpi=150)

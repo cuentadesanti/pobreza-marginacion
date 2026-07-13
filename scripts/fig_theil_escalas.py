@@ -55,9 +55,9 @@ def main():
     fig, (a, b) = plt.subplots(1, 2, figsize=(11.8, 5.4), facecolor=ps.SURF,
                                gridspec_kw={"width_ratios": [1.45, 1]})
     barras(a, ind, "(a) Desigualdad observada (indicadores publicados)",
-           "% entre estados (descomposición de Theil, ponderación poblacional)")
+           "fracción del índice de Theil atribuible a diferencias entre estados (%)")
     barras(b, ejes, "(b) Heterogeneidad residual",
-           "% entre estados (descomposición de varianza)")
+           "fracción de la varianza atribuible a diferencias entre estados (%)")
     b.legend(frameon=False, fontsize=8, loc="lower right")
     fig.suptitle("Buena parte de la desigualdad observada coincide con fronteras estatales;\n"
                  "la heterogeneidad residual vive dentro de los estados (métodos distintos por panel; niveles no comparables entre paneles)",
