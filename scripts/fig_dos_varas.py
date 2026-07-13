@@ -70,7 +70,7 @@ def main():
     a.set_xlim(lim); a.set_ylim(lim)
     a.set_xlabel("privación según CONEVAL (pobreza, media logit-z)")
     a.set_ylabel("privación según CONAPO (marginación)")
-    a.set_title("(a) Dos varas, dos Méxicos\narriba de la diagonal: más marginado que pobre",
+    a.set_title("(a) Las dos mediciones oficiales comparadas\narriba de la diagonal: más marginado que pobre",
                 fontsize=10, loc="left", color=INK)
     # nombrar extremos con población >20k
     ext = d[(d["pob_conapo"] > 20000)]
@@ -78,8 +78,8 @@ def main():
                            ext.nsmallest(3, "discordancia_obs")]).iterrows():
         a.annotate(r["nom_mun"], (r["coneval"], r["conapo"]), fontsize=7, color=INK2,
                    xytext=(5, 3), textcoords="offset points")
-    a.text(0.02, 0.95, "● AA  ", transform=a.transAxes, color=RED, fontsize=9)
-    a.text(0.10, 0.95, "● BB  ", transform=a.transAxes, color=BLUE, fontsize=9)
+    a.text(0.02, 0.95, "● marginación > pobreza  ", transform=a.transAxes, color=RED, fontsize=9)
+    a.text(0.22, 0.95, "● pobreza > marginación  ", transform=a.transAxes, color=BLUE, fontsize=9)
     a.text(0.18, 0.95, "● no significativo", transform=a.transAxes, color=MUT, fontsize=9)
 
     # (b) la vara vale dinero — explícito: qué dinero, qué fórmula, cuánta brecha
@@ -90,36 +90,33 @@ def main():
     xs = np.linspace(m["nivel"].min(), m["nivel"].max(), 60)
     base = np.exp(b[0] + b[1] * xs + b[2] * xs**2 + b[3] * m["log_pob"].median())
     bx.plot(xs, base * np.exp(b[4]), color=RED, lw=2.2, ls="--", zorder=5,
-            label=f"municipios AA: {gapAA:+.0f}% (t=4.3)")
+            label=f"perfil marginación > pobreza: {gapAA:+.0f}% (t=4.3)")
     bx.plot(xs, base, color=INK2, lw=2, zorder=5, label="esperado por su nivel de privación")
     bx.plot(xs, base * np.exp(b[5]), color=BLUE, lw=2.2, ls="--", zorder=5,
-            label=f"municipios BB: {gapBB:+.0f}% (n.s.)")
+            label=f"perfil pobreza > marginación: {gapBB:+.0f}% (n.s.)")
     # brecha anotada con flecha doble en el extremo derecho
     xg = xs[-6]
     yA = float(base[-6] * np.exp(b[4])); yB = float(base[-6] * np.exp(b[5]))
     bx.annotate("", (xg, yA), (xg, yB),
                 arrowprops=dict(arrowstyle="<->", color=INK, lw=1.4), zorder=6)
-    bx.text(xg - 0.07, np.sqrt(yA * yB), "brecha 19%\n≈ $1,200 millones/año",
+    bx.text(xg - 0.07, np.sqrt(yA * yB), "brecha 19%",
             ha="right", va="center", fontsize=9, color=INK, fontweight="bold", zorder=6)
     # la mecánica de la fórmula, dentro de la figura
     bx.text(0.02, 0.97,
-            "El dinero: Ramo 33 por habitante (FAIS+FORTAMUN, EFIPEM 2020).\n"
-            "La fórmula FAIS (art. 34 Ley de Coordinación Fiscal):\n"
-            "  piso = asignación 2013 (fórmula VIEJA de masa carencial ≈ perfil marginación)\n"
-            "  + excedente repartido por pobreza extrema CONEVAL (vara nueva)\n"
-            "→ el piso heredado sigue pagando al perfil 'marginado'.",
+            "Ramo 33 por habitante (FAIS+FORTAMUN, EFIPEM 2020). La fórmula FAIS\n"
+            "conserva como piso la asignación 2013 (fórmula de masa carencial).",
             transform=bx.transAxes, fontsize=8, color=INK2, va="top",
             bbox=dict(boxstyle="round,pad=0.45", facecolor="#f6f5f1", edgecolor="#c3c2b7", lw=0.8))
     bx.set_yscale("log")
     bx.set_xlabel("nivel de privación total del municipio (media de los 17 indicadores, logit-z)")
     bx.set_ylabel("transferencias federales Ramo 33, 2020\n(pesos por habitante, escala log)")
-    bx.set_title("(b) Mismo nivel de privación, distinta etiqueta, distinto dinero",
+    bx.set_title("(b) Transferencias por habitante según nivel de privación y perfil",
                  fontsize=10, loc="left", color=INK)
     bx.legend(frameon=False, fontsize=8.5, loc="lower right")
     bx.grid(axis="y", color=GRID, lw=0.5)
 
-    fig.suptitle("La vara vale dinero: a igual privación, el municipio 'más marginado que pobre' (AA)\n"
-                 "recibe 19% más transferencias por habitante que el 'más pobre que marginado' (BB)",
+    fig.suptitle("Transferencias federales según el perfil de medición: a igual nivel de privación, el municipio\n"
+                 "clasificado como más marginado que pobre recibe 19% más por habitante",
                  fontsize=12, color=INK, x=0.02, ha="left")
     fig.text(0.02, 0.005, "Cada punto = un municipio (2,250 con EFIPEM 2020). Regresión: "
              "log(transferencia pc) ~ nivel + nivel² + log población + régimen LISA. "

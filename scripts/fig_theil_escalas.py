@@ -27,9 +27,9 @@ NOMBRES = {"analf_pct": "analfabetismo", "sin_basica_pct": "sin educación bási
            "car_vivienda_pct": "carencia vivienda", "car_servbas_pct": "carencia serv. básicos",
            "car_alim_pct": "carencia alimentación", "lp_ingreso_pct": "línea de pobreza",
            "lp_ingreso_ext_pct": "línea de pobreza extrema",
-           "z_material_bruto": "factor material bruto",
-           "eje1": "eje material (condicional)", "eje2": "eje educativo (condicional)",
-           "eje3": "eje vivienda+ingreso vs redes (condicional)"}
+           "z_material_bruto": "factor material (sin condicionar)",
+           "eje1": "dimensión material (residual)", "eje2": "dimensión educativa (residual)",
+           "eje3": "dim. vivienda-ingreso vs redes (residual)"}
 AZUL, ARENA = ps.C[0], "#d9d4c5"
 
 
@@ -54,13 +54,13 @@ def main():
     ejes = th[th.tipo.isin(["var_eje_canonico", "var_eje"])]
     fig, (a, b) = plt.subplots(1, 2, figsize=(11.8, 5.4), facecolor=ps.SURF,
                                gridspec_kw={"width_ratios": [1.45, 1]})
-    barras(a, ind, "(a) Indicadores observados — descomposición de Theil",
-           "% del Theil total entre estados")
-    barras(b, ejes, "(b) Factor bruto y ejes — desc. de varianza",
-           "% de la varianza entre estados")
+    barras(a, ind, "(a) Desigualdad observada (indicadores publicados)",
+           "% entre estados (descomposición de Theil, ponderación poblacional)")
+    barras(b, ejes, "(b) Heterogeneidad residual",
+           "% entre estados (descomposición de varianza)")
     b.legend(frameon=False, fontsize=8, loc="lower right")
-    fig.suptitle("Las dos escalas de la desigualdad territorial: el nivel observado es ~mitad interestatal;\n"
-                 "el residuo condicional es predominantemente intraestatal (funcionales distintos por panel — no comparar niveles entre paneles)",
+    fig.suptitle("Buena parte de la desigualdad observada coincide con fronteras estatales;\n"
+                 "la heterogeneidad residual vive dentro de los estados (métodos distintos por panel; niveles no comparables entre paneles)",
                  fontsize=10.5, color=ps.INK, x=0.02, ha="left")
     fig.tight_layout(rect=[0, 0, 1, 0.90])
     fig.savefig(os.path.join(FIG, "fig_theil_escalas.png"), dpi=150)

@@ -99,10 +99,10 @@ def main():
 
     sets = {
         "17 indicadores": X17,
-        "z peldaño 1 (3 factores)": Z1,
-        "Vista D (composición)": XD,
-        "z peldaño 3 + discordancia": np.hstack([Z3, DISC]),
-        "Vista D + z3 + discordancia": np.hstack([XD, Z3, DISC]),
+        "factores brutos (3)": Z1,
+        "características municipales": XD,
+        "factores residuales": np.hstack([Z3, DISC]),
+        "modelo combinado": np.hstack([XD, Z3, DISC]),
     }
     cvk = KFold(5, shuffle=True, random_state=1)
     res = {}

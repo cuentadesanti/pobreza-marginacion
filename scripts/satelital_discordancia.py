@@ -78,11 +78,11 @@ def main():
                         xytext=(4, 2), textcoords="offset points")
         lim = [min(s.z_pred.min(), s.z_obs.min()) - .2, max(s.z_pred.max(), s.z_obs.max()) + .2]
         ax.plot(lim, lim, color="#c3c2b7", lw=1)
-        ax.set_xlabel(f"ẑ {fac} según lentes espaciales (M3, out-of-fold)")
-        ax.set_ylabel(f"z {fac} observado (GLLVM peldaño 1)")
-        ax.set_title(f"({'ab'[fac=='monetario']}) {fac} — rojo: el satélite subestima la privación"
+        ax.set_xlabel(f"privación {fac} predicha por luces y geografía (fuera de muestra)")
+        ax.set_ylabel(f"privación {fac} observada (estandarizada)")
+        ax.set_title(f"({'ab'[fac=='monetario']}) {fac} — rojo: peor de lo que la actividad visible sugiere"
                      f"\nazul: mejor de lo esperado por sus luces/geografía", fontsize=9, loc="left")
-    fig.suptitle("Discordancia bidireccional: dónde las lentes espaciales se equivocan de municipio",
+    fig.suptitle("La actividad económica visible no siempre coincide con el bienestar local observado",
                  fontsize=12, color=INK, x=0.02, ha="left")
     fig.tight_layout(rect=[0, 0, 1, 0.94])
     fig.savefig(os.path.join(FIG, "fig_satelital_discordancia.png"), dpi=160)

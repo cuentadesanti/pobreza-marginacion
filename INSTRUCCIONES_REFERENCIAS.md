@@ -17,8 +17,9 @@ Añadir a la sección **Referencias** de AMBOS papers las que apliquen (ver mape
 
 - Boltvinik, J. (2012). Treinta años de medición de la pobreza en México. *Estudios Sociológicos*
   30(núm. extra): 79–110. doi:10.24201/es.2012v30nextra.186
-- Székely, M. (2005). Pobreza y desigualdad en México entre 1950 y 2004. *El Trimestre Económico*
-  72(288): 913–931. doi:10.20430/ete.v72i288.566
+- Székely, M. (2017 [orig. 2005]). Pobreza y desigualdad en México entre 1950 y 2004. *El Trimestre
+  Económico*. doi:10.20430/ete.v72i288.566 — **Crossref porta 2017** (reedición); citar el año que se
+  use consistentemente. Se quitaron páginas 913–931 (no confirmadas en Crossref).
 - Lustig, N. & Székely, M. (1997). *México: evolución económica, pobreza y desigualdad*. Banco
   Interamericano de Desarrollo. doi:10.18235/0009827
 - Lustig, N. (ed.) (2018). *Commitment to Equity Handbook: Estimating the Impact of Fiscal Policy on
@@ -50,8 +51,10 @@ oración:
 **Edición 2 (trasfondo sustantivo, con cita).** Reemplazar
 *"El debate Boltvinik–CONEVAL sobre umbrales… (Székely y coautores)…"* por:
 > El debate de larga data sobre umbrales y agregación de la pobreza multidimensional (Boltvinik 2012) y
-> la tradición de series comparables de pobreza y desigualdad bajo cambio de instrumento (Székely 2005)
+> la tradición de series comparables de pobreza y desigualdad bajo cambio de instrumento (Székely 2017)
 > son el trasfondo sustantivo: dos mediciones oficiales del mismo fenómeno con maquinarias en disputa.
+
+(Usar el mismo año de Székely en prosa y bibliografía — Crossref porta 2017 para ese DOI.)
 
 → Bibliografía Paper 1: añadir **Boltvinik 2012, Székely 2005, Peláez 2022**.
 

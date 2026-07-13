@@ -149,8 +149,8 @@ def main():
                              label=f"{k} dimensiones severas "
                                    f"({dist.loc[k, 'pct_munis'] if k in dist.index else 0}% munis)")
                        for k in (0, 1, 2, 3)], loc="lower left", frameon=False, fontsize=8.5)
-    ax.set_title("Acumulación multidimensional de privación residual (ejes canónicos condicionales)\n"
-                 "¿la desigualdad se concentra en los mismos municipios o cada dimensión tiene su geografía?",
+    ax.set_title("Municipios por número de dimensiones con desventaja severa simultánea\n"
+                 "la coincidencia en las tres dimensiones (48 municipios) es cercana a la esperada bajo independencia",
                  fontsize=11, loc="left", color=ps.INK)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig_acumulacion.png"), dpi=150)
