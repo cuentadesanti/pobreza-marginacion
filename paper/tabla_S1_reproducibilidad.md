@@ -35,6 +35,8 @@ verificaciones automáticas de consistencia texto↔resultados son `scripts/chec
 | Figura 3 (brecha, dispersión) | `scripts/satelital_discordancia.py` | `figures/07_satelital/fig_satelital_discordancia.png` |
 | Figura 4 (homicidios) | `scripts/validacion_homicidios.py` | `figures/06_validacion_homicidios/fig_validacion_homicidios.png`, `outputs/validacion_homicidios.csv` |
 | Figura 5 (dos varas y dinero) | `scripts/fig_dos_varas.py` | `figures/05_dag/fig_dos_varas_dinero.png`, `outputs/gap_aportaciones_regimen.csv` |
+| Figura 6 (piso/incremento FISM) | `scripts/build_b_fism_piso.py` + `scripts/b_fism_descomposicion.py` | `figures/05_dag/fig_b_piso_incremento.png`, `outputs/b_fism_descomposicion.csv`, `outputs/fism_2013_municipal.parquet`, `outputs/fism_fortamun_2020_municipal.parquet` |
+| Suplemento: cobertura del test piso/incremento | `scripts/b_fism_descomposicion.py` | `figures/05_dag/fig_b_cobertura_sesgo.png`, `outputs/b_fism_cobertura.csv` |
 | Tabla 1 (partición dos paneles) | `scripts/desigualdad.py` | `outputs/desigualdad_theil.csv` |
 | Tabla 2 (acumulación por umbral) | `scripts/desigualdad_robustez.py` | `outputs/desigualdad_robustez.csv` (bloque C) |
 | Tabla 3 (escalera predictiva) | `scripts/desigualdad_robustez.py` | `outputs/desigualdad_robustez.csv` (capa 3), `data/processed/vistaD_indigena.parquet` |

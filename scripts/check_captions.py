@@ -121,6 +121,31 @@ def bindings():
     gap = pd.read_csv(os.path.join(OUT, "gap_aportaciones_regimen.csv")).set_index("coef")
     B += [(P2, "gap fiscal AA", gap.loc["AA", "gap_pct_vs_ns"], "{:.1f}"),
           (P2, "gap fiscal BB", gap.loc["BB", "gap_pct_vs_ns"], "{:.1f}")]
+
+    # Tarea B — descomposición piso/incremento del FISM (§7.3, Figuras 5 y 6)
+    bf = pd.read_csv(os.path.join(OUT, "b_fism_descomposicion.csv"))
+    res = bf[bf.spec == "resumen"].set_index("term")["coef"]
+    t_inc_BB = bf[(bf.spec == "niveles_inc_pc") & (bf.term == "BB")]["t"].iloc[0]
+    t_sub_AA = bf[(bf.spec == "log_aportaciones_efipem_submuestra")
+                  & (bf.term == "AA")]["t"].iloc[0]
+    B += [(P2, "B piso share fondo", res["share_piso_fondo_oficial_pct"], "{:.1f}"),
+          (P2, "B ic dif efipem lo", res["brecha_AABB_efipem_full_pct_ci_lo"], "{:.1f}"),
+          (P2, "B ic dif efipem hi", res["brecha_AABB_efipem_full_pct_ci_hi"], "{:.1f}"),
+          (P2, "B n intersección", res["n_interseccion"], "{:.0f}"),
+          (P2, "B cobertura modelo", res["cobertura_modelo_pct"], "{:.1f}"),
+          (P2, "B brecha submuestra AA", res["ols_efipem_submuestra_AA_pct"], "{:.1f}"),
+          (P2, "B t submuestra AA", t_sub_AA, "{:.1f}"),
+          (P2, "B brecha piso", res["ols_brecha_AABB_piso"], "{:.0f}"),
+          (P2, "B brecha incremento", res["ols_brecha_AABB_inc"], "{:.0f}"),
+          (P2, "B ic dif brecha lo", res["dif_brecha_piso_menos_inc_ci_lo"], "{:.0f}"),
+          (P2, "B ic dif brecha hi", res["dif_brecha_piso_menos_inc_ci_hi"], "{:.0f}"),
+          (P2, "B piso BB pct", res["ols_piso_BB_pct"], "{:.1f}"),
+          (P2, "B piso BB ci lo", 100 * (np.exp(res["log_piso_BB_ci_lo"]) - 1), "{:.1f}"),
+          (P2, "B piso BB ci hi", 100 * (np.exp(res["log_piso_BB_ci_hi"]) - 1), "{:.1f}"),
+          (P2, "B incremento BB pc", res["ols_inc_BB_pc"], "{:.0f}"),
+          (P2, "B t incremento BB", t_inc_BB, "{:.1f}"),
+          (P2, "B deflactor INPC", res["deflactor_inpc_2013_2020"], "{:.3f}"),
+          (P2, "B n spec extendida", res["n_spec_extendida"], "{:.0f}")]
     return B
 
 
