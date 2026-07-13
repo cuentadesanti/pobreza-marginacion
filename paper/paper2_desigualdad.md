@@ -508,15 +508,17 @@ significativos en la tipología espacial de discordancia.<!-- src: veta_48_tripl
   of Public Economics*. doi:10.1016/j.jpubeco.2010.11.006
 - Auditoría Superior de la Federación (2013). *Diagnóstico sobre la opacidad en el gasto
   federalizado*. ASF, Cámara de Diputados.
+  https://www.asf.gob.mx/uploads/56_Informes_especiales_de_auditoria/Diagnostico_sobre_la_Opacidad_en_el_Gasto_Federalizado_version_final.pdf
 - Boltvinik, J. (2012). Treinta años de medición de la pobreza en México. *Estudios
   Sociológicos* 30(núm. extra): 79–110. doi:10.24201/es.2012v30nextra.186
 - Chen, X. & Nordhaus, W.D. (2011). Using luminosity data as a proxy for economic statistics.
   *PNAS*. doi:10.1073/pnas.1017031108
-- Chiapa, C. & Velázquez, C. (coords.) (2011). *Estudios del Ramo 33*. El Colegio de México /
-  CONEVAL.
+- Chiapa, C. & Velázquez, C. (coords.) (2011). *Estudios del Ramo 33*. El Colegio de México,
+  Centro de Estudios Económicos / CONEVAL. https://libros.colmex.mx/tienda/estudios-del-ramo-33/
 - CONEVAL (2015). *Análisis del uso de los recursos del Fondo de Aportaciones para la
   Infraestructura Social (FAIS)*. Consejo Nacional de Evaluación de la Política de Desarrollo
   Social.
+  https://www.coneval.org.mx/EvaluacionDS/PP/CEIPP/ERG33/Documents/Analisis_Recursos_FAIS_2015.pdf
 - Cortés, F. & Valdés Cruz, S. (2023). Desigualdad en la distribución del ingreso: México 2016
   a 2020. En *Los derroteros del desarrollo*. UNAM-PUED.
   doi:10.22201/pued.9786073078337e.2023.c9
@@ -524,7 +526,7 @@ significativos en la tipología espacial de discordancia.<!-- src: veta_48_tripl
   índice de Conapo. *Estudios Sociológicos* 29(86): 361–387. doi:10.24201/es.2011v29n86.228
 - Díaz Cayeros, A. & Silva Castañeda, S. (2004). *Descentralización a escala municipal en
   México: la inversión en infraestructura social*. CEPAL, Serie Estudios y Perspectivas 15,
-  Sede Subregional en México.
+  Sede Subregional en México. https://repositorio.cepal.org/handle/11362/4935
 - Henderson, J.V., Storeygard, A. & Weil, D.N. (2012). Measuring Economic Growth from Outer
   Space. *American Economic Review*. doi:10.1257/aer.102.2.994
 - Jean, N., Burke, M., Xie, M., Davis, W.M., Lobell, D.B. & Ermon, S. (2016). Combining
