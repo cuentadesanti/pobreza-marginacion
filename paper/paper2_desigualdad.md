@@ -330,24 +330,71 @@ estadística, aunque la correlación es sugestiva y no una identificación.
 nivel de privación y tamaño, los municipios clasificados como más marginados que pobres
 reciben +15.8% de transferencias del Ramo 33 per cápita (t = 4.3), y los clasificados como
 más pobres que marginados, −3.0% (no significativo)<!-- src: gap_aportaciones_regimen.csv -->
-(Figura 5). El origen es institucional: la fórmula del fondo de infraestructura conserva como
-piso la asignación de 2013, calculada con la fórmula anterior de masa carencial, cuyo perfil
-se aproxima al índice de marginación. El análisis de incidencia de la política fiscal sobre
-la desigualdad tiene un marco establecido (Lustig 2018); nuestro hallazgo es anterior a esa
-etapa: la fórmula de asignación misma, al heredar el instrumento de medición, introduce una
-diferencia distributiva antes de cualquier análisis de incidencia del gasto.
+(Figura 5). La brecha entre ambos perfiles (≈19 puntos) descansa sobre el brazo positivo: el
+intervalo al 95% de la *diferencia* entre perfiles, con remuestreo por conglomerado estatal,
+va de −2.0% a +47.4%<!-- src: b_fism_descomposicion.csv --> — la asociación concentra su masa
+en brechas positivas, pero la diferencia en sí pierde significancia convencional cuando se
+reconoce que los regímenes de medición se agrupan por estado.
 
-![Figura 5. Transferencias federales por habitante según el nivel de privación y el perfil de medición del municipio. A igual privación y tamaño, el perfil "más marginado que pobre" recibe +15.8% respecto de lo esperado (t = 4.3) y el perfil "más pobre que marginado" −3.0% (n.s.); la brecha entre ambos perfiles es ≈19%.](../figures/05_dag/fig_dos_varas_dinero.png)
+El correlato institucional es conocido en su mecánica y nuevo en la lectura que proponemos.
+La fórmula vigente del fondo de infraestructura social (art. 34 de la Ley de Coordinación
+Fiscal, reforma de diciembre de 2013) asigna a cada unidad lo que recibió en 2013 — el piso —
+más una participación en el crecimiento del fondo que sí se reparte por las carencias de la
+población en pobreza extrema medida por CONEVAL. Ese piso de 2013 se calculó con la fórmula
+anterior, construida sobre el Índice Global de Pobreza: cinco necesidades básicas censales
+(ingreso, educación, espacio de la vivienda, drenaje y electricidad-combustible) homólogas a
+los insumos del índice de marginación, y de ahí que el perfil del piso se aproxime a la vara
+de marginación y no a la de pobreza. Que el piso congela la distribución previa a la reforma
+está documentado: CONEVAL (2015) cuantificó la diferencia entre repartir el fondo 2014 con la
+fórmula nueva y conservar la asignación de 2013, la Auditoría Superior de la Federación
+(2013) describió la práctica inercial y la opacidad del reparto federalizado, y la literatura
+del FAIS encontraba desde antes una focalización débil (Díaz Cayeros & Silva Castañeda 2004;
+Chiapa & Velázquez 2011). Lo que esos antecedentes no formulan es la consecuencia entre
+varas: como el piso hereda un instrumento (≈marginación) discordante del que gobierna el
+incremento (pobreza CONEVAL), dos municipios de igual privación latente cobran distinto según
+cuál de las dos mediciones oficiales los pinte peor. Y el piso todavía domina el fondo: en
+términos reales (INPC, factor 1.310), la asignación de 2013 equivalía en 2020 a 81.0% del
+FISM municipal<!-- src: b_fism_descomposicion.csv -->.
+
+Para probar el mecanismo descompusimos la transferencia de 2020 en piso más incremento en los
+municipios con FISM rastreable en ambos años en los reportes trimestrales de la SHCP (SRFT):
+249 municipios, 10.1% del modelo — una intersección sesgada hacia municipios más grandes,
+menos rurales y menos privados que el resto (apéndice G, Figura A1), aunque dentro de ella
+la brecha del Ramo 33 agregado se reproduce (+17.2%,
+t = 2.4)<!-- src: b_fism_descomposicion.csv -->. El resultado apunta en la dirección del
+mecanismo sin cerrarlo: la brecha entre perfiles se concentra en el piso (+600 pesos por
+habitante) y no en el incremento (−149), pero el intervalo de la diferencia cruza cero
+([−1,221, +2,838]) (Figura 6). El brazo con potencia estadística es el espejo del perfil
+favorecido: los municipios más pobres que marginados parten de un piso 32.9% menor que el de
+municipios comparables (IC 95% [−46.6%, 0.0%]) y el incremento — repartido con la vara de
+pobreza — los compensa parcialmente (+342 pesos por habitante, t = 2.2): la fórmula nueva
+corrige en el margen lo que la vieja les negó. Con efectos fijos estatales todas las brechas
+se disuelven; la variación del piso es interestatal, consistente con que el reparto municipal
+de 2013 fue decisión de cada estado (art. 35 LCF) sobre un perfil federal común. La lectura
+conjunta es la de un legado en erosión, no un estado estacionario: el peso del piso cae
+mecánicamente con cada ejercicio en que el fondo crece, y la brecha de 2020 es la fotografía
+de un sesgo que se diluye. La evidencia es asociativa y de un solo corte; la descomposición
+es sugestiva, con la cobertura declarada como su límite. El análisis de incidencia de la
+política fiscal sobre la desigualdad tiene un marco establecido (Lustig 2018); nuestro
+hallazgo es anterior a esa etapa: la fórmula de asignación misma, al heredar el instrumento
+de medición, puede introducir una diferencia distributiva antes de cualquier análisis de
+incidencia del gasto.
+
+![Figura 5. Transferencias federales por habitante según el nivel de privación y el perfil de medición del municipio. A igual privación y tamaño, el perfil "más marginado que pobre" recibe +15.8% respecto de lo esperado (t = 4.3) y el perfil "más pobre que marginado" −3.0% (n.s.); la brecha entre ambos perfiles es ≈19%, con IC 95% de la diferencia (bootstrap por conglomerado estatal) de −2.0% a +47.4%.](../figures/05_dag/fig_dos_varas_dinero.png)
+
+![Figura 6. Descomposición de la transferencia FISM 2020 en piso 2013 (fórmula del Índice Global de Pobreza) e incremento (fórmula de pobreza extrema CONEVAL), en los 224 municipios con dato en ambos años y controles completos (privación y su cuadrado, población, ruralidad, FORTAMUN per cápita). La brecha entre perfiles se concentra en el piso (+600 pesos por habitante) y no en el incremento (−149), con intervalo de la diferencia que cruza cero; el perfil "más pobre que marginado" parte de un piso 32.9% menor y el incremento lo compensa parcialmente (+342 pesos per cápita, t = 2.2). Evidencia sugestiva: cobertura de 10.1% del modelo, sesgada hacia municipios grandes.](../figures/05_dag/fig_b_piso_incremento.png)
 
 ## 8. Implicaciones para la focalización
 
 1. **La medición asigna dinero antes que el gasto.** El hallazgo con mayor alcance general
    es fiscal: cuando una fórmula de transferencias hereda — como piso o como insumo — el
-   instrumento con que se midió la carencia, introduce una diferencia distributiva entre
-   territorios de igual privación *antes* de cualquier decisión de gasto. En México ese
-   mecanismo vale +15.8% de Ramo 33 per cápita para el perfil favorecido; el diseño de
-   fórmulas debería auditarse contra esta circularidad medición→asignación, y el punto es
-   exportable a cualquier sistema de transferencias basado en fórmula.
+   instrumento con que se midió la carencia, puede introducir una diferencia distributiva
+   entre territorios de igual privación *antes* de cualquier decisión de gasto. En México ese
+   mecanismo se asocia con +15.8% de Ramo 33 per cápita para el perfil favorecido, y la
+   descomposición piso/incremento apunta en la misma dirección sin cerrarla; el diseño de
+   fórmulas debería auditarse contra esta circularidad medición→asignación — una hipótesis
+   exportable a cualquier sistema de transferencias basado en fórmula (las cláusulas de
+   *hold harmless* son comunes en los sistemas de igualación), ilustrada aquí con México.
 2. **La focalización depende de la dimensión y de la escala.** Ordenar municipios por
    privación observada y ordenarlos por sus peores residuos dimensionales produce listas casi
    disjuntas. La primera lista concentra la desventaja acumulada; la segunda identifica
@@ -455,19 +502,40 @@ población en localidades pequeñas; recepción de remesas mediana de 17 contra 
 cápita; 27% con presencia criminal documentada contra 48% nacional; 44 de 48 no
 significativos en la tipología espacial de discordancia.<!-- src: veta_48_triple.csv -->
 
+**G. Cobertura del test piso/incremento del FISM (§7.3).** La intersección de municipios con
+FISM rastreable en 2013 y 2020 en el SRFT (249; 10.1% del modelo) difiere sistemáticamente
+del resto: más poblada (SMD +0.59), menos rural (−0.28) y menos privada (−0.36), con Hidalgo
+y Puebla sobrerrepresentados y sin Oaxaca ni Veracruz<!-- src: b_fism_cobertura.csv -->. Este
+sesgo de cobertura es la razón por la que la descomposición del §7.3 se reporta como
+sugestiva y no como evidencia de mecanismo.
+
+![Figura A1. Chequeo de sesgo de cobertura del test piso/incremento: municipios de la intersección SRFT 2013∩2020 contra los excluidos del modelo, en población, ruralidad, privación total, los tres ejes canónicos y composición por estado (diferencias de medias estandarizadas, SMD).](../figures/05_dag/fig_b_cobertura_sesgo.png)
+
 ## Referencias
 
 - Alkire, S. & Foster, J. (2011). Counting and multidimensional poverty measurement. *Journal
   of Public Economics*. doi:10.1016/j.jpubeco.2010.11.006
+- Auditoría Superior de la Federación (2013). *Diagnóstico sobre la opacidad en el gasto
+  federalizado*. ASF, Cámara de Diputados.
+  https://www.asf.gob.mx/uploads/56_Informes_especiales_de_auditoria/Diagnostico_sobre_la_Opacidad_en_el_Gasto_Federalizado_version_final.pdf
 - Boltvinik, J. (2012). Treinta años de medición de la pobreza en México. *Estudios
   Sociológicos* 30(núm. extra): 79–110. doi:10.24201/es.2012v30nextra.186
 - Chen, X. & Nordhaus, W.D. (2011). Using luminosity data as a proxy for economic statistics.
   *PNAS*. doi:10.1073/pnas.1017031108
+- Chiapa, C. & Velázquez, C. (coords.) (2011). *Estudios del Ramo 33*. El Colegio de México,
+  Centro de Estudios Económicos / CONEVAL. https://libros.colmex.mx/tienda/estudios-del-ramo-33/
+- CONEVAL (2015). *Análisis del uso de los recursos del Fondo de Aportaciones para la
+  Infraestructura Social (FAIS)*. Consejo Nacional de Evaluación de la Política de Desarrollo
+  Social.
+  https://www.coneval.org.mx/EvaluacionDS/PP/CEIPP/ERG33/Documents/Analisis_Recursos_FAIS_2015.pdf
 - Cortés, F. & Valdés Cruz, S. (2023). Desigualdad en la distribución del ingreso: México 2016
   a 2020. En *Los derroteros del desarrollo*. UNAM-PUED.
   doi:10.22201/pued.9786073078337e.2023.c9
 - Cortés, F. & Vargas, D. (2011). Marginación en México a través del tiempo: a propósito del
   índice de Conapo. *Estudios Sociológicos* 29(86): 361–387. doi:10.24201/es.2011v29n86.228
+- Díaz Cayeros, A. & Silva Castañeda, S. (2004). *Descentralización a escala municipal en
+  México: la inversión en infraestructura social*. CEPAL, Serie Estudios y Perspectivas 15,
+  Sede Subregional en México. https://repositorio.cepal.org/handle/11362/4935
 - Henderson, J.V., Storeygard, A. & Weil, D.N. (2012). Measuring Economic Growth from Outer
   Space. *American Economic Review*. doi:10.1257/aer.102.2.994
 - Jean, N., Burke, M., Xie, M., Davis, W.M., Lobell, D.B. & Ermon, S. (2016). Combining
@@ -495,5 +563,6 @@ permanente: doi:10.5281/zenodo.21344720), junto con el manifiesto de datos crudo
 oficial) y las verificaciones automáticas de consistencia entre texto y resultados. La tabla
 suplementaria S1 mapea cada figura y tabla a su script generador y a su archivo de
 resultados. Material suplementario adicional: los mapas de medias y desviaciones posteriores
-de las tres dimensiones, el mapa de presencia y competencia criminal documentada, y la
-caracterización de los 48 municipios triple-severos.
+de las tres dimensiones, el mapa de presencia y competencia criminal documentada, la
+caracterización de los 48 municipios triple-severos, y el chequeo de sesgo de cobertura del
+test piso/incremento del FISM (`fig_b_cobertura_sesgo`).

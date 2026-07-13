@@ -92,3 +92,22 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
 - ACLED agregado ADMIN1 (export de usuario 2026-06-27): `data/raw/acled_agregado_admin1_lac.xlsx`
   → `scripts/build_vistaG_estatal.py` → `vistaG_crimen_estatal.parquet` (estado-año 2018-2026,
   violencia política, fatalidades, batallas). ESTATAL: no sustituye el export de eventos.
+
+### Tarea B — piso 2013 del FISM y ejercicio 2020 (§7.3 Paper 2, 2026-07-13)
+- **FISM 2013 municipal** (el piso de la fórmula post-reforma): 32 XLSX estatales del
+  Anexo XXI de los Informes Trimestrales, 2013-T4, uno por entidad:
+  `https://www.transparenciapresupuestaria.gob.mx/work/models/PTP/DatosAbiertos/Anexos_Informes_trimestrales/2013/Cuarto_trimestre/Gasto_federalizado_Nivel_Fondo/<Estado>.xlsx`
+  (`<Estado>` = `Aguascalientes` … `Zacatecas`, con guiones bajos; 2.3 MB en total).
+  ⚠ Coahuila y Querétaro traen hoja `Recuperado_Hoja1` (la entidad se lee del título
+  interno); Baja California Sur usa `3.` en vez de `3-` en el nombre de hoja; el municipio
+  `0-COBERTURA ESTATAL` se marca `cobertura_estatal=True` y queda FUERA del test municipal.
+- **FAIS Municipal / FORTAMUN 2020**: CSV `ejercicio_del_gasto.csv` (180 MB, latin-1) del
+  reporte SRFT 2020-T4, datos abiertos de Transparencia Presupuestaria (Ejercicio del gasto
+  por municipio, partida genérica). Se toma el último trimestre reportado por municipio-fondo
+  (`MONTO_APROBADO` anual). ⚠ Sumar los 4 trimestres cuadruplica: el "monto que cuadra con el
+  fondo nacional" del handoff previo era ese sobreconteo. Cobertura real T-último: 77% del
+  FISMDF, 937 municipios.
+- Constructor: `scripts/build_b_fism_piso.py <dir_xlsx_2013> <ejercicio_del_gasto.csv>` →
+  `outputs/fism_2013_municipal.parquet`, `outputs/fism_fortamun_2020_municipal.parquet`.
+  Test: `scripts/b_fism_descomposicion.py`. Deflactor INPC 2013→2020 = 1.3095 (promedios
+  anuales 82.036 → 107.430, base 2ªq jul-2018).
