@@ -53,24 +53,73 @@ La respuesta corta de este paper: una parte sustancial de la discordancia no es 
 sino de la maquinaria, y es consistente principalmente con la firma del método de imputación
 de ingreso. Llegar a esa respuesta con garantías exige dos piezas que constituyen la
 contribución metodológica: un DAG de medición que hace explícitas las dependencias mecánicas
-que un análisis conjunto no debe confundir con estructura sustantiva (§2), y una estrategia de
+que un análisis conjunto no debe confundir con estructura sustantiva (§3), y una estrategia de
 estimación e identificación que resuelve el principal problema de identificación y
-convergencia de esta aplicación en lugar de ocultarlo (§3).
-El paper compañero (`paper2_desigualdad.md`) explota el espacio latente resultante para la
-lectura sustantiva de la desigualdad territorial.
+convergencia de esta aplicación en lugar de ocultarlo (§4). El paper compañero
+(`paper2_desigualdad.md`) explota el espacio latente resultante para la lectura sustantiva de
+la desigualdad territorial.
 
-## 2. El proceso generador como DAG de medición
+El resto del artículo procede así: §2 sitúa la contribución en la literatura; §3 presenta los
+datos y el DAG de medición (Figura 1); §4 desarrolla el método — especificación, priors,
+estimación y la secuencia de identificación (Tabla 1, Figura 2); §5 presenta el resultado
+fundacional (Tabla 2, Figura 3); §6 la certeza municipal y su geografía (Figuras 4 y 5); §7 la
+descomposición de los efectos estatales (Tabla 3); §8 discute. El apéndice técnico documenta
+la escalera completa con scores muestreados, el test de alineación Procrustes y la comparación
+formal con y sin efectos estatales.
 
-Trabajamos con los 17 indicadores elementales que alimentan ambas mediciones (9 de CONAPO,
-8 de CONEVAL: 6 carencias — en la metodología de conteo de Alkire & Foster 2011 — y 2 líneas
-de ingreso) para 2,469 municipios en 2020, deliberadamente sin usar los índices finales, que
-son funciones deterministas de estos componentes. Los indicadores se modelan en escala logit
-estandarizada; los cuatro indicadores modelados por CONEVAL vía áreas pequeñas (Rao & Molina
-2015) no son conteos y una verosimilitud binomial les atribuiría precisión falsa.
+## 2. Antecedentes y trabajo relacionado
 
-El DAG de medición (Figura 1; objeto canónico en dos tablas versionadas — 56 nodos, 97
-aristas en siete semánticas tipificadas — con validación automática de aciclicidad, de una
-matriz de tipos permitidos y de sincronía prosa-tablas) explicita, entre otras relaciones:
+La medición oficial de la pobreza multidimensional mexicana pertenece a la familia de conteo
+de Alkire & Foster (2011): carencias dicotomizadas por persona, agregadas con una regla de
+identificación. El índice de marginación de CONAPO viene de otra tradición — la distancia DP2
+de Peña Trapero, diseñada para agregar indicadores territoriales continuos sin ponderaciones
+arbitrarias (Peña-Trapero 2021; Zarzosa Espina 2021, para su uso regional en España, el molde
+del uso mexicano). Ambas tradiciones producen *índices*; la literatura comparada suele
+preguntarse cuál ordena mejor. Nuestra pregunta es anterior: qué proceso generador conjunto
+explica que dos agregaciones defendibles del mismo territorio diverjan donde divergen. Para
+los cuatro indicadores municipales que CONEVAL no observa sino estima, la maquinaria relevante
+es la estimación en áreas pequeñas — el emparejamiento censo-encuesta con predicción empírica
+mejor y calibración a totales estatales que sintetizan Rao & Molina (2015) — y esa maquinaria,
+mostramos, deja una firma identificable en la covarianza inter-agencia.
+
+El instrumento natural para modelar vistas múltiples y ruidosas de un constructo común es el
+modelo de variables latentes generalizado (GLLVM; Skrondal & Rabe-Hesketh 2004), cuya
+aplicación moderna a matrices multivariadas de gran escala está estandarizada en ecología
+(Niku et al. 2019) pero sigue siendo rara en medición de pobreza. La dificultad práctica que
+esta literatura reporta — multimodalidad posterior, sensibilidad a anclas, label switching —
+suele tratarse como estorbo computacional; aquí la tratamos como información: distinguir qué
+parte es rotación inocua y qué parte es no-identificación real es precisamente lo que permite
+separar factores, método y federalismo. La raíz conceptual de nuestro efecto de método es la
+matriz multirrasgo-multimétodo de Campbell & Fiske (1959): dos instrumentos que miden los
+mismos rasgos comparten varianza de método además de varianza de rasgo. Nuestro aporte a esa
+tradición es de parametrización — el método como *contraste* inter-agencia de dirección fija,
+ortogonal al nivel, que resuelve la colinealidad método-factor que las direcciones uniformes
+inducen — y de objeto: hasta donde sabemos, nadie ha modelado la maquinaria conjunta de dos
+agencias estadísticas del mismo país como problema latente con método explícito y proceso
+generador documentado como grafo.
+
+## 3. Datos y el proceso generador como DAG de medición
+
+### 3.1 Indicadores
+
+Trabajamos con los 17 indicadores elementales que alimentan ambas mediciones para 2,469
+municipios en 2020 (2,455 en la matriz del modelo, tras exigir covariables completas):
+9 de CONAPO desde el censo (analfabetismo, sin educación básica, sin drenaje, sin
+electricidad, sin agua entubada, piso de tierra, hacinamiento, población en localidades
+pequeñas, ingresos hasta 2 salarios mínimos) y 8 de CONEVAL (rezago educativo y las carencias
+de salud, seguridad social, vivienda, servicios básicos y alimentación — en la metodología de
+conteo de Alkire & Foster 2011 — más las dos líneas de pobreza por ingreso). Deliberadamente
+no usamos los índices finales, que son funciones deterministas de estos componentes. Los
+cuatro indicadores que CONEVAL modela vía áreas pequeñas (las dos líneas de ingreso, y las
+carencias estimadas con el emparejamiento censo-ENIGH; Rao & Molina 2015) no son conteos: una
+verosimilitud binomial les atribuiría precisión falsa, por lo que toda la matriz se modela en
+escala logit estandarizada (§4.1).
+
+### 3.2 El DAG de medición
+
+El DAG (Figura 1; objeto canónico en dos tablas versionadas — 56 nodos, 97 aristas en siete
+semánticas tipificadas — con validación automática de aciclicidad, de una matriz de tipos
+permitidos y de sincronía prosa-tablas) explicita, entre otras relaciones:
 
 - que la pobreza multidimensional **no es derivable de las prevalencias marginales
   municipales** — pasa por la distribución conjunta persona-hogar y una regla de
@@ -95,59 +144,136 @@ SAE; los cuatro indicadores SAE comparten la calibración estatal; los indicador
 CONAPO comparten instrumento; las carencias de vivienda y servicios comparten definiciones
 fronterizas; y educación aparece en ambas agencias con cohortes distintas.
 
-## 3. Método: el GLLVM marginalizado y la identificación del subespacio
+![Figura 1. El DAG de medición y política a nivel de variable (México 2020): 56 nodos y 97 aristas en siete semánticas tipificadas, con aciclicidad verificada computacionalmente (networkx) sobre las tablas canónicas `dict/dag_nodes.csv` y `dict/dag_edges.csv`. El lazo FAIS aparece temporalizado (t−1…t+2) y `loc_peq` con borde grueso indica rol dual.](../figures/05_dag/fig_dag_pesado.png)
+
+## 4. Método
+
+### 4.1 Transformación de escala
+
+Cada indicador municipal se observa como porcentaje y_j ∈ [0, 100]. Se transforma con
+corrección de continuidad c = 0.5, p_j = (y_j + c) / (100 + 2c), luego logit(p_j) y
+estandarización por indicador ("escala logit-z"). La corrección evita ±∞ en los ceros
+estructurales (p. ej., municipios sin viviendas con piso de tierra) sin recortar información;
+la estandarización hace comparables las cargas entre indicadores de dispersión muy distinta.
+
+### 4.2 Especificación y priors
 
 El marco es un GLLVM (Skrondal & Rabe-Hesketh 2004; en su implementación aplicada moderna,
-Niku et al. 2019) con especificación condicional η_ij = α_j + λ_j′z_i + β_r,j·rural_i +
-β_D,j′x_i + γ_j,s(i) + m_ij + ε_ij, con z_i ∈ ℝ³ los factores latentes, γ_j,s efectos
-estado×indicador (ZeroSum; la extensión espacial BYM2 — Besag, York & Mollié 1991, en la
-reparametrización de Riebler et al. 2016 — se evaluó como peldaño adicional y su patología de
-frontera se documenta en el repositorio) y m_ij efectos de método por familia. La estimación con scores muestreados exhibe la patología
-conocida: cadenas en rotaciones distintas pese a anclas, y — demostrado con un test de
-alineación Procrustes por draw — no-convergencia genuina más allá de la rotación (R̂ alineado
-2.16), con las cadenas difiriendo en el reparto de varianza entre factores, bloques de método
-y unicidades. Distinguimos por eso tres veredictos: estructural (sobre ΛΛᵀ, invariante a
-rotación), no-rotacional (sobre parámetros de media y varianza) e interpretativo (sobre ejes
-nombrados).
+Niku et al. 2019) con verosimilitud gaussiana en escala logit-z y scores marginalizados. La
+media condicional del indicador j en el municipio i es
 
-La solución tiene tres pasos, cada uno con su diagnóstico:
+  η_ij = α_j + λ_j′z_i + β_r,j·rural_i + β_D,j′x_i + γ_j,s(i) + m_ij + ε_ij,
 
-1. **Marginalizar.** Y_i ~ N(μ_i, ΛΛᵀ + Σ_b λ_b²v_bv_bᵀ + Ψ) elimina ~7,400 parámetros
-   latentes; la estructura de medias converge de inmediato (R̂ ≤ 1.011) pero la descomposición
-   de covarianza no (R̂ ΛΛᵀ = 2.05): la multimodalidad no era de los scores.
+con z_i ∈ ℝ³ los factores latentes, x_i las covariables de composición (Vista D: demografía,
+mezcla sectorial, remesas), γ_j,s efectos estado×indicador y m_ij efectos de método por
+familia. Marginalizando z y m, la verosimilitud integrada es
+
+  Y_i ~ MvN(μ_i, Σ),  Σ = ΛΛᵀ + Σ_b λ_b² v_b v_bᵀ + Ψ,
+
+donde Λ (17×3) apila las cargas, v_b son las tres direcciones de método *fijas* (§4.4) con
+magnitud λ_b libre, y Ψ = diag(σ_j²) las unicidades. Priors (los del script canónico
+`gllvm_marginal.py`): λ_jk ~ N(0, 1) sin restricciones (especificación libre); coeficientes de
+media W ~ N(0, 1); efectos estatales γ_j,· ~ ZeroSumNormal(σ = 0.5) por indicador (la
+restricción de suma cero separa nivel nacional de desviación estatal); magnitudes de método
+λ_b ~ HalfNormal(0.5); unicidades σ_j ~ HalfNormal(1). La extensión espacial BYM2 (Besag, York
+& Mollié 1991, en la reparametrización de Riebler et al. 2016) se evaluó como peldaño
+adicional de la escalera; su patología de frontera (ρ → 1) se documenta en el apéndice A.
+
+### 4.3 Estimación y diagnósticos
+
+NUTS (numpyro) con 4 cadenas, 1,000 de calentamiento + 1,000 draws por cadena, target_accept
+0.9, semilla 11. La cantidad monitoreada es ΛΛᵀ — el subespacio, invariante a rotación — no Λ.
+Distinguimos tres veredictos de convergencia: **estructural** (R̂ y ESS sobre ΛΛᵀ y funciones
+invariantes), **no-rotacional** (parámetros de media y varianza: W, γ, σ, λ_b) e
+**interpretativo** (estabilidad de los ejes nombrados tras la convención de orientación).
+Un modelo puede pasar el segundo y fallar el primero; reportar solo R̂ de parámetros de media
+oculta exactamente la patología que importa.
+
+### 4.4 La secuencia de identificación
+
+La estimación con scores muestreados exhibe la patología conocida: cadenas en rotaciones
+distintas pese a anclas y — demostrado con un test de alineación Procrustes por draw
+(apéndice B) — no-convergencia genuina más allá de la rotación (R̂ alineado 2.16), con las
+cadenas difiriendo en el reparto de varianza entre factores, bloques de método y unicidades.
+La solución tiene tres pasos, cada uno con su diagnóstico (Tabla 1):
+
+1. **Marginalizar.** La verosimilitud integrada elimina ~7,400 parámetros latentes; la
+   estructura de medias converge de inmediato (R̂ ≤ 1.011) pero la descomposición de
+   covarianza no (R̂ ΛΛᵀ = 2.05): la multimodalidad no era de los scores.
 2. **El método como contraste inter-agencia.** Los bloques de método con dirección uniforme
    sobre su soporte son casi colineales con las cargas del factor; fijar la dirección como
    contraste inter-agencia (CONAPO+/CONEVAL−, ortogonal al nivel; solo la magnitud es libre)
    reduce la multimodalidad (R̂ 1.53) y es conceptualmente superior: el método *es* el
    desacuerdo entre instrumentos, no otra fuente de nivel — la lógica de la matriz
-   multirrasgo-multimétodo (Campbell & Fiske 1959) llevada a parametrización.
+   multirrasgo-multimétodo (Campbell & Fiske 1959) llevada a parametrización. Las tres
+   direcciones: educación {analf +½, sin_basica +½, rezago_educ −1}; líneas de ingreso
+   {lp +1, lp_ext +1} (misma agencia: el contraste es *con el factor*, no entre agencias —
+   captura co-movimiento más allá del factor monetario); vivienda-servicios {drenaje,
+   electricidad, agua +⅓ cada uno; car_vivienda, car_servbas −½ cada uno}. Cada v_b se
+   normaliza a norma 1.
 3. **Liberar las anclas.** El modo restante era un conflicto anclas-verosimilitud (una cadena
    alcanzaba logp +106 pagando un prior extremo por colapsar el ancla monetaria). Sin anclas,
    monitoreando solo ΛΛᵀ: **R̂ = 1.003** con ESS 3,490, cero divergencias, BFMI 0.91, y tres
-   eigenvalores sustantivos (1.23, 0.50, 0.34) con el resto cercanos a cero — compatibles con
-   rango efectivo 3, condicionado a la especificación y escala.
+   eigenvalores sustantivos de E[ΛΛᵀ] (1.23, 0.50, 0.34) con el resto cercanos a cero —
+   compatibles con rango efectivo 3, condicionado a la especificación y escala; no es una
+   prueba de K.
+
+**Tabla 1. La escalera de convergencia** (fuente: `tabla1_escalera.csv`; los diagnósticos
+marginales se recomputan de los posteriores archivados). Los ELPD solo se comparan dentro del
+mismo bloque de verosimilitud: la escalera con z muestreada usa verosimilitud condicional
+puntual; los marginalizados, MvN integrada — el objeto predictivo cambia.
+
+| Modelo | Moran I resid. | R̂ | ELPD-LOO | ¿Converge? |
+|---|---|---|---|---|
+| peldaño 1 (z muestreada, base) | 0.413 | 2.19 | −25,833.6 | no (multimodal) |
+| peldaño 2 (+ Vista D) | 0.345 | 2.70 | −15,624.4 | no (multimodal) |
+| peldaño 3 (+ γ_estado) | 0.223 | 1.90 | −13,554.7 | no (multimodal) |
+| peldaño 4 (+ BYM2 espacial) | 0.323 | 2.50 | −16,855.0 | no (multimodal) |
+| marginalizado sin γ_s (p2) | — | 1.530 | −29,516.1 | no (multimodal) |
+| **marginalizado con γ_s (p3, canónico)** | — | **1.003** | **−24,106.1** | **sí** |
 
 Los ejes canónicos se definen por eigen-descomposición de E[ΛΛᵀ] con convención de signo
-documentada: eje 1 material-infraestructural, eje 2 educativo, y eje 3 — la dimensión que las
-anclas suprimían — un contraste de *vivienda e ingreso contra servicios de red*. Los scores
-municipales E[z|Y] se obtienen por regresión GLS por draw, con media y desviación posterior.
+documentada (elemento mayor positivo; ejes por draw alineados al canónico): eje 1
+material-infraestructural, eje 2 educativo, y eje 3 — la dimensión que las anclas suprimían —
+un contraste de *vivienda e ingreso contra servicios de red*. Los scores municipales E[z|Y] se
+obtienen por regresión GLS por draw — ẑ_i = E[Λᵀ Σ⁻¹ (Y_i − μ_i)] sobre el posterior — con
+media y desviación posterior por municipio y eje (Figura 2 muestra la descomposición de
+varianza resultante por indicador).
+
+![Figura 2. Descomposición de varianza por indicador a lo largo de la escalera: factor común, método, covariables, estado y unicidad. La reducción de unicidad al añadir γ_s es proporcional al share de varianza estatal de cada indicador.](../figures/02_escalera_gllvm/fig_escalera_vardecomp.png)
+
+### 4.5 Qué hacen los efectos estatales
 
 Los efectos estatales no son decorativos, y el orden del argumento importa. (i) Sin γ_s el
 modelo no identifica una posterior estable: el peldaño marginalizado sin efectos estatales
 sigue estructuralmente multimodal — la multimodalidad no era solo label switching. (ii) En esa
 especificación aparece una cuarta dirección latente débil y un eje rota 53° respecto de la
-solución canónica. (iii) Al incluir γ_s, la reducción de unicidad por indicador es
-proporcional a su share de varianza estatal — evidencia directa de que, sin γ_s, la
+solución canónica (apéndice C). (iii) Al incluir γ_s, la reducción de unicidad por indicador
+es proporcional a su share de varianza estatal — evidencia directa de que, sin γ_s, la
 heterogeneidad estatal se reparte ambiguamente entre unicidad y covarianza latente. (iv) La
 comparación de verosimilitud idéntica favorece al modelo con efectos estatales (ELPD
 +5,410 ± 135), pero este contraste es descriptivo y se interpreta con cautela: uno de los dos
 modelos comparados no está bien identificado.
 
-## 4. Resultado fundacional: la discordancia es de método
+## 5. Resultado fundacional: la discordancia es de método
 
 El modelo estima el desacuerdo inter-agencia por familia con dirección fija y magnitud libre,
-y produce scores municipales E[m|Y] con incertidumbre (fuente: `desacuerdo_agencias.csv`,
-`fig_desacuerdo_agencias.png`). Tres hechos:
+y produce scores municipales E[m|Y] con incertidumbre — la proyección GLS del residuo sobre la
+dirección del contraste, escalada por su carga posterior, análoga a E[z|Y]. La Tabla 2 resume;
+la Figura 3 mapea.
+
+**Tabla 2. El desacuerdo inter-agencia por familia** (fuente: `desacuerdo_familias.csv`,
+agregando `desacuerdo_agencias.csv`; cargas = desviación estándar del componente de método).
+"p2/p3" = sin/con efectos estatales. "% sustantivo" = municipios con |m|/sd ≥ 2. Medias por
+régimen LISA de la discordancia observada (AA = "más marginado que pobre").
+
+| Familia | Carga p2 | Carga p3 | % sustantivo | media AA | media BB |
+|---|---|---|---|---|---|
+| educación | 0.012 | 0.012 | 0.0 | 0.000 | 0.000 |
+| líneas de ingreso (SAE-EBPH) | **0.582** | **0.574** | **22.6** | **−0.325** | **+0.339** |
+| vivienda-servicios | 0.135 | 0.029 | 0.0 | 0.021 | 0.012 |
+
+Tres hechos:
 
 1. **En educación las agencias esencialmente acuerdan** (carga 0.012) — el desacuerdo aparente
    entre indicadores educativos vive en cargas y cohortes, no en método.
@@ -156,49 +282,66 @@ y produce scores municipales E[m|Y] con incertidumbre (fuente: `desacuerdo_agenc
 3. **El componente de método dominante es la firma del modelo de ingreso SAE-EBPH** (0.58) —
    las dos líneas de pobreza moviéndose juntas más allá del factor monetario. Esa firma
    municipal parte los regímenes espaciales de discordancia: media de −0.325 en los municipios
-   "más marginados que pobres" (LISA alto-alto de la discordancia) y +0.339 en los "más pobres
-   que marginados", con 22.6% de municipios con firma sustantiva (|m|/sd ≥ 2) y sin
-   correlación con composición.
+   "más marginados que pobres" y +0.339 en los "más pobres que marginados", con 22.6% de
+   municipios con firma sustantiva y sin correlación con composición.
 
 La discordancia "más pobre que marginado" que originó el proyecto es, en buena parte,
 consistente principalmente con la firma compartida del método de imputación de ingreso: el
 componente de método asociado a las líneas SAE domina la discordancia estimada. La firma es
 inferida — se identifica desde la covarianza residual y la estructura del DAG, no comparando
-estimaciones con y sin SAE (§7) —, pero el resultado es fundacional y no una validación:
+estimaciones con y sin SAE (§8) —, pero el resultado es fundacional y no una validación:
 reordena qué preguntas territoriales son formulables con estas mediciones — las comparaciones
 de ingreso entre municipios dentro de un estado arrastran la firma del modelo SAE, mientras
 que las comparaciones educativas son limpias de método.
+
+![Figura 3. La anatomía del método. (a) La firma SAE-EBPH municipal (carga 0.58): rojo = las dos líneas de ingreso se desvían juntas hacia más pobreza de lo que el factor monetario explica. (b) El desacuerdo vivienda-servicios CONAPO vs CONEVAL (0.135 sin estado; 0.029 con estado: fenómeno estatal, huella de calibración).](../figures/04_diagnostico_mapas/fig_desacuerdo_agencias.png)
 
 La lectura complementaria por indicador acota — como falsación posible, no como prueba — la
 interpretación de los efectos estatales: los indicadores SAE-calibrados no dominan el
 componente estatal (Δshare vs. directos de CONEVAL: −0.034, IC95 [−0.060, −0.007]) aunque
 exhiben un piso de calibración respecto de los censales (+0.027, [+0.007, +0.049]).
 
-## 5. Identificación del subespacio e incertidumbre municipal
+## 6. Identificación del subespacio e incertidumbre municipal
 
 La identificación es del subespacio, no de los ejes: reportamos por eso la certeza de
 clasificación municipal como resultado (fuente: `certeza_canonica.csv`). La clasificación
-individual es sustantiva (|z|/sd ≥ 2) en 42% de los municipios para el eje material, 55% para
-el educativo y solo 14% para el tercero — el eje 3 existe como dirección de covarianza
+individual es sustantiva (|z|/sd ≥ 2) en 41.9% de los municipios para el eje material, 54.6%
+para el educativo y solo 13.6% para el tercero — el eje 3 existe como dirección de covarianza
 nacional, pero su clasificación municipal individual es débil en la mayor parte del
-territorio, y todo uso aplicado debe heredar esa distinción.
+territorio, y todo uso aplicado debe heredar esa distinción (Figuras 4 y 5).
+
+![Figura 4. Certeza posterior por eje canónico: |E[z]|/SD[z] clasificado en indistinguible de cero (<1), sugerente (1–2) y sustantivo (≥2). Sustantivo: 41.9% (eje 1), 54.6% (eje 2), 13.6% (eje 3) de los municipios (`certeza_canonica.csv`).](../figures/04_diagnostico_mapas/fig_certeza_canonica.png)
+
+![Figura 5. Los tres ejes canónicos del espacio latente condicional: media posterior E[z|Y] (arriba) y desviación posterior (abajo) por municipio, modelo marginalizado convergido (R̂ ΛΛᵀ = 1.003).](../figures/04_diagnostico_mapas/fig_mapas_canonicos.png)
 
 La incertidumbre tiene además geografía propia (fuente: `veta_ignorancia.csv`): la desviación
-posterior municipal crece con el tamaño y la urbanización (correlación +0.32 con log población
-en el eje 1; −0.26 con ruralidad). Condicionado en las covariables, la representación
-municipal es más precisa en municipios rurales y pequeños que en los urbanos y grandes — un
-patrón opuesto al de los diseños muestrales, que saben más donde hay más gente. Una
-explicación plausible, no identificada, es la heterogeneidad urbana intra-municipal: la
+posterior municipal crece con el tamaño y la urbanización (correlación +0.322 con log
+población en el eje 1; −0.259 con ruralidad). Condicionado en las covariables, la
+representación municipal es más precisa en municipios rurales y pequeños que en los urbanos y
+grandes — un patrón opuesto al de los diseños muestrales, que saben más donde hay más gente.
+Una explicación plausible, no identificada, es la heterogeneidad urbana intra-municipal: la
 desviación respecto de la composición es más idiosincrática precisamente donde el municipio
 agrega realidades internas más diversas.
 
-## 6. Qué hace γ_estado: federalismo sectorial y legibilidad institucional
+## 7. Qué hace γ_estado: federalismo sectorial y legibilidad institucional
 
 El componente estatal estimado no es un gradiente único. La descomposición espectral de la
-matriz γ (17 indicadores × 32 estados; fuente: `veta_gamma_pca.csv`) muestra que solo 42% de
-su varianza es un factor común — interpretable como capacidad estatal: correlaciona +0.42 con
-el PIB estatal per cápita — y el 58% restante es específico por dominio de política:
-**federalismo sectorial**, no un ranking de estados.
+matriz γ (17 indicadores × 32 estados) muestra que solo 41.8% de su varianza es un factor
+común — interpretable como capacidad estatal: correlaciona +0.42 con el log del PIB estatal
+per cápita — y el 58.2% restante es específico por dominio de política: **federalismo
+sectorial**, no un ranking de estados (Tabla 3).
+
+**Tabla 3. Descomposición espectral de los efectos estatales** (fuente: `tabla3_gamma.csv`,
+`veta_gamma_pca.csv`; SVD de la matriz γ 17×32 centrada por indicador).
+
+| Medida | Valor |
+|---|---|
+| Share de varianza del PC1 (gradiente común) | 41.8% |
+| Share de varianza del PC2 | 14.9% |
+| Share específico por dominio (sectorial) | 58.2% |
+| corr(PC1 estatal, log PIBE per cápita) | +0.42 |
+| corr(PC1 estatal, gasto estatal / PIBE) | −0.48 |
+| Indicadores con mayor peso en PC1 | car_servbas (−0.40), hacinam (−0.38), lp_ingreso (−0.34) |
 
 Un episodio institucional vuelve legible esta lectura: la varianza estatal máxima corresponde
 a la carencia de salud (0.27), cuya correlación con la dependencia estatal del sistema Seguro
@@ -207,24 +350,60 @@ como huella de la transición sanitaria de 2020 (fuente: `validacion_insabi.csv`
 componente estatal es compatible con heterogeneidad sustantiva, aunque sigue mezclando
 política, composición y medición; esa mezcla es un límite declarado, no un defecto ocultable.
 
-## 7. Discusión: qué significa modelar la maquinaria
+## 8. Discusión: qué significa modelar la maquinaria
 
 Modelar la maquinaria en lugar de proponer otro índice cambia el tipo de conclusión
 disponible. No decimos qué municipio "es" más pobre; decimos qué parte del desacuerdo entre
 las mediciones oficiales es método (la firma SAE), qué parte es calibración (vivienda), qué
 parte es federal (γ sectorial) y qué parte queda como estructura territorial — y con qué
 certeza municipal (dicho en corto: el modelo sabe más del campo que de la ciudad, y lo
-declara). Los límites: los resultados son asociativos; la separación entre las dos
-rutas de los cofactores requiere restricciones de exclusión sustantivas que no imponemos; la
-identificación del rango efectivo 3 está condicionada a especificación y escala; y la firma
-SAE se estima desde la covarianza residual — medirla directamente exige replicar el SAE de
-CONEVAL, extensión declarada.
+declara).
+
+Los límites: los resultados son asociativos; la separación entre las dos rutas de los
+cofactores requiere restricciones de exclusión sustantivas que no imponemos; la identificación
+del rango efectivo 3 está condicionada a especificación y escala; y la firma SAE se estima
+desde la covarianza residual — medirla directamente exige replicar el SAE de CONEVAL,
+extensión declarada, junto con la incorporación del error estándar publicado del SAE como capa
+de error de medición (la extensión que la tradición de Rao & Molina pide) y un estudio de
+simulación que convierta la secuencia de identificación en receta general.
 
 Para la práctica estadística oficial la implicación es constructiva: las dependencias
 mecánicas del DAG (secuencia SAE→calibración, rol dual de `loc_peq`, circularidad FAIS
 temporalizada) son propiedades documentables del sistema de medición que cualquier usuario
 serio de estos datos — académico o gubernamental — necesita conocer para no confundir
 maquinaria con territorio.
+
+## Apéndice técnico
+
+**A. La escalera con scores muestreados.** Cuatro peldaños (base → +Vista D → +γ_estado →
++BYM2 espacial), cada uno estimado con K=2 y K=3 (`ladder_summary_K3.csv`,
+`loadings_*`, `vardecomp_*`). Ninguno converge en el sentido estructural (R̂ 1.9–2.7; Tabla 1),
+aunque las cantidades de ajuste (α, η, ELPD, Moran) coinciden entre cadenas — la ilustración
+exacta de por qué el veredicto no-rotacional no basta. El peldaño espacial (BYM2 sobre z, sin
+estado) exhibe la patología de frontera ρ → 1 y su ventaja aparente de ELPD no replica al
+reestimar con la verosimilitud v2; queda correctamente descartado por el criterio de
+comparabilidad.
+
+**B. El test de alineación Procrustes.** Para separar rotación inocua de no-identificación
+real: por cadena, se alinean los draws de Λ (y de z) al primer draw por rotación Procrustes y
+se recomputa R̂ sobre lo alineado (`test_label_switching.py`, `analyze_ladder.py`). Resultado
+en el peldaño 3 muestreado: R̂ alineado = 2.16 — las cadenas difieren en el *reparto de
+varianza* entre factores, método y unicidades, no solo en la orientación. Este test es el que
+justifica marginalizar en lugar de post-procesar.
+
+**C. La comparación 2-vs-3 marginal** (`comparacion_marginal_2v3.csv`). Con verosimilitud
+idéntica (MvN sobre la misma Y): (i) eigenestructura de E[ΛΛᵀ] — p2 = (1.80, 0.63, 0.37,
+0.087, ≈0) vs p3 = (1.23, 0.50, 0.34, ≈0): sin efectos estatales aparece una cuarta dirección
+latente débil; (ii) ángulos principales entre los subespacios top-3: (52.9°, 6.3°, 3.8°) — dos
+ejes esencialmente compartidos, uno se reorganiza 53°; (iii) la caída de unicidad por
+indicador Δσ_j² es proporcional al share de varianza estatal del indicador en p3 — el test
+elegante de que γ_s absorbe heterogeneidad que antes se repartía ambiguamente. ELPD:
++5,410 ± 135 a favor de p3 (descriptivo; el posterior de p2 es de mezcla).
+
+**D. Detalle de estimación.** PyMC 5.25 con NUTS de numpyro; 4 cadenas × (1,000 + 1,000),
+target_accept 0.9, semilla 11; log-verosimilitud puntual almacenada para LOO; scores E[z|Y] y
+E[m|Y] por draw (submuestreo 1:4) con varianza total = var(medias) + media(varianzas
+condicionales). Posteriores archivados: `idata_marginal_rung2.nc`, `idata_marginal_rung3.nc`.
 
 ## Referencias
 
@@ -257,8 +436,10 @@ integrará desde `reporte_literatura.md` en la versión de envío.)
 
 *Materiales: todos los resultados, figuras y tablas son reproducibles desde el repositorio
 (scripts numerados por capítulo, manifiesto de figuras, DAG canónico en tablas versionadas con
-validación automática de aciclicidad y de sincronía prosa-tablas, y manifiesto de datos crudos
-con URLs y advertencias). Cifras citadas y sus outputs: R̂ y eigenvalores
+validación automática de aciclicidad y de sincronía prosa-tablas — `check_dag_conteos.py`,
+`check_captions.py` — y manifiesto de datos crudos con URLs y advertencias). Tablas:
+`tabla1_escalera.csv`, `desacuerdo_familias.csv`, `tabla3_gamma.csv` (generadas por
+`tablas_paper.py` desde artefactos archivados). Cifras citadas y sus outputs: R̂ y eigenvalores
 (`reporte_gllvm_escalera.md`), firma SAE (`desacuerdo_agencias.csv`), certeza
 (`certeza_canonica.csv`), ignorancia (`veta_ignorancia.csv`), γ-PCA (`veta_gamma_pca.csv`),
 INSABI (`validacion_insabi.csv`), medición-vs-federalismo (`tabla_medicion_federalismo.csv`).*

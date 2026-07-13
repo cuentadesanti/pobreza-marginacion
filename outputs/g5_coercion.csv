@@ -12,7 +12,7 @@ G5b,log_hom_eb,C_calderon,0.138,0.033,4.2
 G5c,coercion_any,C_calderon,0.05,0.018,2.8
 G5c,coercion_any,juxt,-0.023,0.025,-0.9
 G5c,coercion_any,CxJuxt,0.056,0.016,3.4
-G5d,pc1_gamma_estatal,corr_coercion,-0.061,,
+G5d,pc1_gamma_estatal,corr_coercion,0.077,,
 G5_rob,eje1,sin_proxies_cobertura:coercion_any,-0.126,0.121,-1.0
 G5_rob,log_hom_eb,sin_proxies_cobertura:coercion_any,0.244,0.097,2.5
 G5_rob,eje1,sin_5_metropolis:coercion_any,-0.02,0.115,-0.2

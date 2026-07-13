@@ -53,8 +53,9 @@ toda especificación (`g5_coercion.csv`).
 - **G5c** (¿dónde ocurrió?): coerción ~ competencia × fragmentación partidista vertical
   (juxtaposition): interacción **+0.056 (t 3.4)** — la lectura transversal reproduce el
   mecanismo del paper original con una fuente de presencia criminal independiente (OCVED).
-- **G5d** (estatal, descriptivo, n=30): tasa de coerción ⊥ PC1 de γ (corr −0.06) — el
-  gradiente común de capacidad estatal no está asociado a la coerción histórica.
+- **G5d** (estatal, descriptivo, n=31): tasa de coerción ⊥ PC1 de γ (corr +0.08; corregida
+  una desalineación posicional de columnas detectada en capa C) — el gradiente común de
+  capacidad estatal no está asociado a la coerción histórica.
 
 ## Interpretación (calibrada)
 

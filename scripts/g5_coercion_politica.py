@@ -135,7 +135,10 @@ def main():
     gam = pd.read_csv(os.path.join(OUT, "gamma_marginal_rung3.csv"), index_col=0)
     Gm = gam.values - gam.values.mean(axis=1, keepdims=True)
     U, S, Vt = np.linalg.svd(Gm, full_matrices=False)
-    pc1_est = pd.Series(Vt[0, :] * S[0], index=[c.zfill(2) for c in gam.columns])
+    # columnas de gamma POSICIONALES: mapear al orden de estados del modelo (vetas_finales.py)
+    cov_g = pd.read_parquet(os.path.join(PROC, "gllvm_covars.parquet"))
+    ents = sorted(cov_g.cvegeo.astype(str).str.zfill(5).str[:2].unique())
+    pc1_est = pd.Series(Vt[0, :] * S[0], index=ents)
     m = pd.concat([est.rename("coercion_r100k"), pc1_est.rename("pc1_gamma")], axis=1).dropna()
     print(f"G5d estatal (n={len(m)}): corr(tasa coerción, PC1_gamma) = "
           f"{np.corrcoef(m.coercion_r100k, m.pc1_gamma)[0, 1]:+.3f} (descriptivo)")
