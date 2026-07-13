@@ -1,7 +1,7 @@
 # Desigualdad territorial en dos escalas: geografías disjuntas de la privación municipal en México
 
 **Borrador de trabajo (Paper 2, sustantivo) — 2026-07-12**
-*Objetivo editorial: World Development / Journal of Development Economics (español; traducción al enviar).*
+*Objetivo editorial: World Development (alternativas alineadas: Regional Studies, Journal of Regional Science, World Development Perspectives; español; traducción al enviar).*
 *Versión unificada de referencia: `manuscrito.md`. Paper metodológico compañero: `paper1_metodo.md`.*
 
 ## Resumen
@@ -15,18 +15,19 @@ entre-estados 48–59%), mientras la desigualdad residual — descontadas compos
 pertenencia estatal — es predominantemente intraestatal (76–87%). Segundo, las **geografías
 residuales rara vez se superponen** (Jaccard 0.05–0.21 entre pares de dimensiones; la triple
 severidad apenas excede la esperada bajo independencia): la acumulación multidimensional vive
-en el nivel bruto, y los 48 municipios triple-severos del espacio residual — la mitad en
-Oaxaca, mediana 5,430 habitantes, fuera de la economía de remesas y casi todos invisibles a la
-tipología espacial estándar — son los olvidados de los olvidados. Tercero, existe una **brecha
+en el nivel bruto, y el pequeño grupo de municipios severos en las tres dimensiones residuales
+tiene un perfil distintivo — pequeño, rural, concentrado en Oaxaca, fuera de la economía de
+remesas e invisible a la tipología espacial estándar. Tercero, existe una **brecha
 de apropiación territorial**: municipios cuya actividad económica es visible desde satélite
 pero cuya mejora social local es menor a la esperada; su predictor dominante es la precariedad
 laboral (β = +0.23, t = 8.6), con las remesas operando en sentido inverso. Una escalera
 predictiva de circunstancias (geografía heredada → demografía → inserción productiva →
 composición indígena) alcanza R² = 0.78 sobre la privación bruta con validación espacialmente
-bloqueada. Cinco validaciones externas independientes — homicidios, luces nocturnas,
-exposición criminal documentada (incluida la coerción política histórica), transición INSABI e
-incidencia fiscal — convergen: violencia y privación son dimensiones territorialmente
-distintas, y las transferencias aún pagan a la vara vieja.
+bloqueada. Cinco análisis externos independientes — homicidios, luces nocturnas, exposición
+criminal documentada (incluida la coerción política histórica), transición INSABI e incidencia
+fiscal — delimitan distintas implicaciones y límites del espacio estimado; donde se
+superponen, apuntan a que violencia y privación son dimensiones territorialmente distintas, y
+a que las transferencias aún pagan a la vara vieja.
 
 **Palabras clave:** desigualdad territorial; pobreza multidimensional; acumulación de
 desventajas; remesas; luces nocturnas; México.
@@ -61,8 +62,9 @@ comparaciones de ingreso intra-estado arrastran la firma del método SAE — est
 ## 3. La desigualdad opera en dos escalas
 
 En los indicadores observados, cerca de la mitad de la dispersión ponderada por población
-ocurre entre estados (Theil entre-estados: 48–59% según indicador; 50.8% para el factor
-material bruto), con las líneas de ingreso como lo más federalizado (58.8%) — consistente a la
+ocurre entre estados (descomposición aditiva entre/dentro del índice de Theil — Theil 1979;
+Shorrocks 1984 —: 48–59% entre estados según indicador; 50.8% para el factor material bruto),
+con las líneas de ingreso como lo más federalizado (58.8%) — consistente a la
 vez con la calibración estatal del método de imputación y con el federalismo fiscal. Una vez
 descontadas composición y pertenencia estatal, la desigualdad de los ejes canónicos es
 predominantemente intraestatal (76–87%). No hay contradicción: los efectos estatales absorben
@@ -83,19 +85,23 @@ La acumulación multidimensional — el municipio "peor en todo" — es un fenó
 bruto, donde domina el factor general; el espacio residual selecciona territorios distintos
 por dimensión.
 
-**Los 48 triple-severos, con nombre** (fuente: `veta_48_triple.csv`): el 2% que sí acumula
-severidad residual en las tres dimensiones tiene un perfil nítido — 24 de 48 en Oaxaca,
-pequeños (mediana 5,430 habitantes contra ~12,700 nacional), 75% rurales, fuera de la economía
-de remesas (mediana 17 vs 92 USD per cápita), con *menos* presencia criminal documentada que
-el promedio (27% vs 48%) y casi todos invisibles para la tipología espacial de discordancia
-(44/48 no significativos en LISA). No son los municipios famosos de la pobreza mexicana ni los
-de la violencia: son los olvidados de los olvidados, y ninguna de las lentes usuales — índice
-agregado, mapa de clusters, registro de eventos — los selecciona.
+**Los 48 municipios severos en las tres dimensiones residuales** (fuente: `veta_48_triple.csv`)
+tienen un perfil nítido — 24 de 48 en Oaxaca, pequeños (mediana 5,430 habitantes contra
+~13,550 nacional), 79% rurales (≥50% de su población en localidades pequeñas; 75% con umbral
+≥80%), fuera de la economía de remesas (mediana 17 vs 92 USD per cápita), con *menos*
+presencia criminal documentada que el promedio (27% vs 48%) y casi todos invisibles para la
+tipología espacial de discordancia (44/48 no significativos en LISA). No son los municipios
+prominentes de la pobreza mexicana ni los de la violencia, y ninguna de las lentes usuales —
+índice agregado, mapa de clusters, registro de eventos — los selecciona. Dos cautelas: el
+grupo es pequeño y sensible al umbral (la razón observado/esperado roza 1), y el eje 3 tiene
+la certeza municipal más baja del sistema — se reporta como caracterización descriptiva, no
+como estrato estadísticamente robusto.
 
 ## 5. La brecha de apropiación territorial
 
 Definimos la brecha como la discordancia residual entre la actividad económica visible
-(predicción de privación material a partir de luces nocturnas y geografía física, fuera de
+(predicción de privación material a partir de luces nocturnas — el proxy de actividad de
+Henderson, Storeygard & Weil 2012 y Chen & Nordhaus 2011 — y geografía física, fuera de
 muestra y con validación espacialmente bloqueada) y la privación social observada. Con efectos
 fijos estatales y errores robustos, el predictor dominante es la precariedad laboral
 (β = +0.23, t = 8.6) — municipios donde la actividad existe y brilla pero la inserción es por
@@ -123,8 +129,8 @@ disciplinada: predecible-desde, no causado-por.
 
 ## 7. Validaciones externas convergentes
 
-Cinco rutas independientes, ninguna usada en la construcción del espacio latente, convergen
-en la misma estructura:
+Cinco análisis externos independientes, ninguno usado en la construcción del espacio latente,
+delimitan distintas implicaciones y límites del espacio estimado:
 
 1. **Homicidios** (100 mil registros oficiales; orden estable en siete variantes de
    sensibilidad; `sensibilidad_homicidios.csv`): la privación explica ~23% de la violencia
@@ -133,17 +139,21 @@ en la misma estructura:
    privación y anticipar violencia a la vez.
 2. **Luces nocturnas** (`reporte_satelital.md`): ven la privación material bruta (R² 0.41–0.43
    con bloqueo espacial no administrativo; sin transferencia entre macroregiones) y nada del
-   residual (24/24 R² < 0). La relación log-lineal canónica se resuelve en regímenes: piso
-   oscuro (14% de municipios), umbrales regionales con IC disjuntos, sin saturación urbana a
-   escala municipal.
+   residual (24/24 R² < 0). La relación log-lineal canónica de esta literatura (y el salto
+   predictivo de Jean et al. 2016, aquí solo como referente, sin benchmark propio de imágenes)
+   se resuelve a escala municipal en regímenes: piso oscuro (14% de municipios), umbrales
+   regionales con IC disjuntos, sin saturación urbana.
 3. **Exposición criminal documentada** (OCVED, 65 mil eventos diario-municipales con actores;
    `reporte_crimen_desigualdad.md`): predice violencia — más bajo competencia entre
    organizaciones que bajo monopolio (+0.130 vs +0.083) — y es esencialmente ortogonal a la
    privación residual (resultado negativo documentado con robustez). La **coerción política
-   histórica** (ataques a autoridades y candidatos 2007–2012, réplica de Trejo-Ley con DOI
-   verificado; `g5_coercion.csv`) refuerza el patrón como exposición rezagada: no mueve la
-   privación residual de 2020, pero predice homicidio 2019–21 una década después (+0.26,
-   t = 2.7) y ocurrió donde competencia criminal y fragmentación política interactúan.
+   histórica** (ataques a autoridades y candidatos 2007–2012; Trejo & Ley 2021, datos de
+   réplica doi:10.7910/DVN/VIXNNE; `g5_coercion.csv`) refuerza el patrón como exposición
+   rezagada: no se identifica una ruta robusta hacia la privación residual de 2020 (el
+   indicador de coerción es nulo en los ejes 1 y 2, y en el eje 3 el indicador y la tasa se
+   contradicen — colinealidad entre ambas medidas, no una ruta), mientras que sí predice
+   homicidio 2019–21 una década después (+0.26, t = 2.7) y ocurrió donde competencia criminal
+   y fragmentación política interactúan.
    Advertencia permanente: los datos de eventos observan O = R × D — presencia documentada no
    es control territorial y la ausencia de registro no es ausencia real; todos los modelos
    llevan proxies de observabilidad.
@@ -156,18 +166,21 @@ en la misma estructura:
    heredado de la fórmula antigua de masa carencial sigue pagando al perfil de marginación.
    **La vara con que se mide un municipio vale dinero.**
 
-La convergencia importa más que cada pieza: dimensionalidad latente, validación por
-homicidios, lentes satelitales, acumulación disjunta y exposición criminal llegan por caminos
-independientes a la misma conclusión — violencia y privación residual son dimensiones
-territorialmente distintas, y la desigualdad tiene más de una geografía.
+Las cinco piezas no validan la misma cantidad, y conviene decirlo: homicidios prueba la
+ortogonalidad del residuo con la violencia; el satélite, la visibilidad de lo material bruto;
+INSABI interpreta un efecto estatal puntual; la exposición criminal aporta un resultado
+negativo robusto sobre privación; y la fiscalidad muestra consecuencias distributivas de la
+medición. Juntas delimitan qué es — y qué no es — el espacio estimado. En lo único en que sí
+se superponen (violencia y privación residual como dimensiones territorialmente distintas)
+llegan por caminos independientes, y ahí la convergencia importa más que cada pieza.
 
 ## 8. Implicaciones de política
 
 1. **Focalización**: focalizar a los más pobres en todo (nivel bruto) y focalizar los peores
    residuos por dimensión produce listas casi disjuntas. La elección entre ambas es una
    decisión distributiva que hoy se toma implícitamente al elegir índice; conviene tomarla
-   explícitamente. Los 48 triple-severos residuales — invisibles a todas las lentes usuales —
-   son el caso de prueba concreto.
+   explícitamente. Los 48 triple-severos residuales — invisibles a todas las lentes usuales:
+   los olvidados de los olvidados — son el caso de prueba concreto.
 2. **La vara que paga**: mientras la fórmula de transferencias conserve pisos heredados de la
    masa carencial, el perfil de marginación seguirá cobrando prima sobre la pobreza vigente a
    igual privación. El diseño de fórmulas debería auditarse contra la circularidad
@@ -177,6 +190,27 @@ territorialmente distintas, y la desigualdad tiene más de una geografía.
    prensa; el índice no ve el residuo). La política que use una sola lente hereda sus puntos
    ciegos — documentados aquí con su geografía.
 
+## Referencias
+
+- Chen, X. & Nordhaus, W.D. (2011). Using luminosity data as a proxy for economic statistics.
+  *PNAS*. doi:10.1073/pnas.1017031108
+- Henderson, J.V., Storeygard, A. & Weil, D.N. (2012). Measuring Economic Growth from Outer
+  Space. *American Economic Review*. doi:10.1257/aer.102.2.994
+- Jean, N., Burke, M., Xie, M., Davis, W.M., Lobell, D.B. & Ermon, S. (2016). Combining
+  satellite imagery and machine learning to predict poverty. *Science*.
+  doi:10.1126/science.aaf7894
+- Shorrocks, A.F. (1984). Inequality Decomposition by Population Subgroups. *Econometrica*.
+  doi:10.2307/1913511
+- Theil, H. (1979). World income inequality and its components. *Economics Letters*.
+  doi:10.1016/0165-1765(79)90213-1
+- Trejo, G. & Ley, S. (2021). High-Profile Criminal Violence: Why Drug Cartels Murder
+  Government Officials and Party Candidates in Mexico. *British Journal of Political Science*
+  51(1): 203–229. doi:10.1017/S0007123418000637. Datos de réplica: Harvard Dataverse,
+  doi:10.7910/DVN/VIXNNE.
+
+(La literatura sustantiva mexicana — Cortés, Boltvinik, Lustig, Székely, CEEY, CONEVAL,
+CONAPO — se integrará desde `reporte_literatura.md` en la versión de envío.)
+
 ---
 
 *Materiales: todos los resultados, figuras y tablas son reproducibles desde el repositorio
@@ -184,5 +218,4 @@ territorialmente distintas, y la desigualdad tiene más de una geografía.
 advertencias de cada fuente). Cifras citadas y sus outputs: Theil y robustez
 (`desigualdad_theil.csv`, `desigualdad_robustez.csv`), acumulación (`fig_acumulacion.png`),
 triple-severos (`veta_48_triple.csv`), brecha (`reporte_satelital.md`), crimen y coerción
-(`reporte_crimen_desigualdad.md`, `g5_coercion.csv`), fiscal (`reporte_dgp_dag.md` §4b).
-Referencias con DOI verificado en `reports/revision_literatura.md`.*
+(`reporte_crimen_desigualdad.md`, `g5_coercion.csv`), fiscal (`reporte_dgp_dag.md` §4b).*

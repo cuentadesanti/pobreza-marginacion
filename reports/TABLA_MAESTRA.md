@@ -30,7 +30,7 @@
 | La geografía de la ignorancia | sd posterior mayor en municipios grandes/urbanos (+0.32 pob, −0.26 ruralidad): el modelo sabe más del campo que de la ciudad | sección de incertidumbre | `veta_ignorancia.csv` |
 | Los 48 triple-severos | mitad Oaxaca; mediana 5,430 hab; remesas 17 vs 92 USD; 27% presencia criminal vs 48%; 44/48 invisibles al LISA | el rostro del resultado 2 | `veta_48_triple.csv` |
 | Exposición criminal ⊥ privación residual (Vista G) | G1/G2 negativos con robustez; G4: competencia +0.130 > monopolio +0.083 sobre homicidio | quinta ruta de dimensiones distintas | `reporte_crimen_desigualdad.md` |
-| Coerción política (Trejo-Ley, rezagada 2007–12) | privación residual: nulo; homicidio 2019–21: +0.26 (t 2.7) robusto; coerción donde competencia×fragmentación (t 3.4) | cierra criterio 5 Vista G; persistencia de violencia, no de privación | `g5_coercion.csv` |
+| Coerción política (Trejo-Ley, rezagada 2007–12) | privación residual: sin ruta robusta (nulo en ejes 1-2; eje3 dummy/tasa contradictorios = colinealidad); homicidio 2019–21: +0.26 (t 2.7) robusto; coerción donde competencia×fragmentación (t 3.4) | cierra criterio 5 Vista G; persistencia de violencia, no de privación | `g5_coercion.csv` |
 
 ## Apéndices / extensiones declaradas
 
