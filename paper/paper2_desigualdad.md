@@ -11,17 +11,21 @@ distintas del mismo fenómeno. Este trabajo pregunta cómo se distribuye la desi
 territorial entre estados y municipios, y si las distintas dimensiones de privación se
 concentran en los mismos lugares. Para responderlo construimos un espacio latente municipal de
 privación a partir de los 17 indicadores elementales de ambos sistemas, con efectos de método
-y de estado explícitos e incertidumbre municipal cuantificada. Tres resultados. Primero, una
-parte importante de la desigualdad observada ocurre entre estados — del 31% al
-59%<!-- src: desigualdad_theil.csv --> del índice de Theil según el indicador —, pero la
-heterogeneidad residual, una vez descontadas la composición del municipio y su pertenencia
-estatal, se concentra dentro de ellos (76–87% de la varianza). Segundo, las distintas
+y de estado explícitos e incertidumbre municipal cuantificada. Tres resultados. Primero, medido con
+la misma descomposición de varianza, el peso de las diferencias entre estados cae de 50.8% en
+la privación material observada a 23.6% en su contraparte residual — y a 13–14% en las
+dimensiones educativa y de vivienda-ingreso —: una vez descontadas la composición del
+municipio y su pertenencia estatal, la heterogeneidad se concentra dentro de los estados (en
+los indicadores publicados, la fracción interestatal del índice de Theil va del 31% al
+59%<!-- src: desigualdad_theil.csv --> según el indicador). Segundo, las distintas
 dimensiones residuales de privación seleccionan municipios diferentes: la coincidencia de
 desventaja severa en las tres dimensiones apenas excede la esperada bajo independencia.
 Tercero, la actividad económica visible desde satélite no se traduce de forma uniforme en
 bienestar local: los municipios que están peor de lo que su actividad sugiere se caracterizan
-por precariedad laboral, y los que están mejor, por recepción de remesas. La implicación
-central para la política: la focalización depende de qué dimensión de la privación y qué
+por precariedad laboral, y los que están mejor, por recepción de remesas. Documentamos
+además que la fórmula de transferencias federales, al conservar como piso una asignación
+calculada con el instrumento de medición anterior, introduce una diferencia distributiva
+entre municipios de igual privación. La implicación central para la política: la focalización depende de qué dimensión de la privación y qué
 escala territorial se quiera intervenir, y ningún indicador único resuelve ambas elecciones a
 la vez.
 
@@ -105,22 +109,26 @@ cada componente, y la respuesta cambia según el objeto que se mire (Figura 1).
 
 ![Figura 1. Buena parte de la desigualdad observada coincide con fronteras estatales; la heterogeneidad residual vive dentro de los estados. Panel (a): fracción del índice de Theil de cada indicador publicado atribuible a diferencias entre estados (ponderación poblacional). Panel (b): fracción de la varianza del factor material sin condicionar y de las tres dimensiones residuales atribuible a diferencias entre estados. Cada panel usa su propio estadístico; los niveles no se comparan entre paneles.](../figures/09_desigualdad/fig_theil_escalas.png)
 
-En los indicadores observados, las diferencias entre estados explican del 31.1% (sin
-electricidad) al 58.8% (línea de pobreza por ingreso) de la desigualdad total, con mediana
-de 47.8% y 50.8% para el factor material sin condicionar<!-- src: desigualdad_theil.csv -->.
-El orden es informativo: los servicios de red — electricidad, drenaje, dispersión — son lo
-menos alineado con fronteras estatales (31–35%), mientras que las dos líneas de pobreza por
-ingreso son lo más (55.9–58.8%), un patrón consistente tanto con el federalismo fiscal como
-con el hecho de que esas líneas se estiman con un modelo calibrado a totales estatales (la
-huella de método documentada en el paper compañero). En la heterogeneidad residual el cuadro
-se invierte: descontadas composición y pertenencia estatal, del 76% al 87% de la varianza de
-las tres dimensiones es intraestatal (Tabla 1). No hay contradicción entre ambas lecturas:
-los efectos estatales absorben la parte interestatal antes de estimar el residuo. Que la
-desigualdad del ingreso en México se sostiene predominantemente dentro de las entidades es un
-hallazgo recurrente de la literatura distributiva nacional (Cortés & Valdés Cruz 2023); aquí
-mostramos que esa escala depende del objeto: en el nivel observado de la privación el
-componente interestatal pesa cerca de la mitad, y es la heterogeneidad residual la que
-reproduce el predominio intraestatal.
+El contraste central se mide con un solo estadístico. La fracción de la varianza atribuible
+a diferencias entre estados es de 50.8% para el factor material observado y de 23.6% para su
+contraparte residual — 13.8% y 13.1% en las dimensiones educativa y de vivienda-ingreso
+(Tabla 1, panel B)<!-- src: desigualdad_theil.csv -->. Con la misma medida, el peso
+interestatal cae marcadamente — a menos de la mitad — al descontar composición y pertenencia
+estatal, y del 76% al 87% de la varianza residual es intraestatal. La textura por indicador
+(panel A, índice de Theil) va en la misma dirección y añade un orden informativo: las
+diferencias entre estados explican del 31.1% (sin electricidad) al 58.8% (línea de pobreza
+por ingreso) de la desigualdad de cada indicador publicado, con mediana de 47.8%. Los
+servicios de red — electricidad, drenaje, dispersión — son lo menos alineado con fronteras
+estatales (31–35%), mientras que las dos líneas de pobreza por ingreso son lo más
+(55.9–58.8%), un patrón consistente tanto con el federalismo fiscal como con el hecho de que
+esas líneas se estiman con un modelo calibrado a totales estatales (la huella de método
+documentada en el paper compañero). No hay contradicción entre las dos lecturas del factor
+material: los efectos estatales absorben la parte interestatal antes de estimar el residuo.
+Que la desigualdad del ingreso en México se sostiene predominantemente dentro de las
+entidades es un hallazgo recurrente de la literatura distributiva nacional (Cortés & Valdés
+Cruz 2023); aquí mostramos que esa escala depende del objeto: en el nivel observado de la
+privación el componente interestatal pesa cerca de la mitad, y es la heterogeneidad residual
+la que reproduce el predominio intraestatal.
 
 **Tabla 1. Fracción atribuible a diferencias entre estados, por objeto y método de
 descomposición** (panel A: fracción del índice de Theil; panel B: fracción de la varianza).<!-- src: desigualdad_theil.csv -->
@@ -179,7 +187,10 @@ descriptiva.<!-- src: veta_48_triple.csv -->
 ortogonales de la covarianza latente, de modo que parte del bajo solapamiento es atribuible a
 la construcción y no solo a la geografía. Por eso el contraste relevante de la Tabla 2 es
 contra la independencia — y la razón observado/esperado cercana a 1 indica que, incluso
-tomado con esa cautela, no hay concentración extrema adicional que reportar.
+tomado con esa cautela, no hay concentración extrema adicional que reportar. El resultado
+tampoco depende de la dimensión menos precisa: restringiendo el cálculo a las dos dimensiones
+firmes (material y educativa), la razón observado/esperado es 1.07
+[0.91, 1.23]<!-- src: solapamiento_2dim.csv --> — aún más cerca de la independencia.
 
 ## 5. Actividad económica visible y bienestar local
 
@@ -206,8 +217,9 @@ agregada. Las remesas operan en sentido contrario (−0.07, t = −5.3): mejoran
 ingreso sin una huella productiva local equivalente — y el efecto tiene el signo esperado en
 cada dimensión (−0.034 sobre la material, +0.027 sobre la monetaria<!-- src:
 satelital_remesas_reg.csv -->). El contraste entre colas resume el patrón: la mediana de
-remesas en los municipios que están mejor de lo que sus luces sugieren es unas 20 veces
-(IC95 bootstrap 14–28) la de los municipios subestimados (Figura 3). Interpretamos el desacople como evidencia compatible con una traducción incompleta de la
+remesas en los municipios que están mejor de lo que sus luces sugieren es unas 20 veces la de
+los municipios subestimados — 440 contra 21 USD per cápita; IC95 bootstrap de la razón
+14–28 — (Figura 3). Interpretamos el desacople como evidencia compatible con una traducción incompleta de la
 actividad visible en bienestar local; la etiqueta **brecha de apropiación territorial** es una
 lectura interpretativa de esos coeficientes, no una identificación causal. La regresión completa está
 en el apéndice E.
@@ -246,7 +258,9 @@ acumulativamente en el orden mostrado).<!-- src: desigualdad_robustez.csv capa3 
 | + composición demográfica | estructura etaria, dependencia | 0.469 |
 | + estructura productiva | mezcla sectorial, precariedad laboral | 0.732 |
 | + composición indígena | % hablantes de lengua indígena, % monolingüe | 0.775 |
-| + pertenencia estatal | (validación no bloqueada; no comparable) | 0.891 |
+
+*Nota: añadir la pertenencia estatal eleva el ajuste a 0.891, pero con validación no
+bloqueada por estado; no es comparable con las filas de la tabla.*
 
 ## 7. Validaciones externas
 
@@ -327,18 +341,25 @@ diferencia distributiva antes de cualquier análisis de incidencia del gasto.
 
 ## 8. Implicaciones para la focalización
 
-1. **La focalización depende de la dimensión y de la escala.** Ordenar municipios por
+1. **La medición asigna dinero antes que el gasto.** El hallazgo con mayor alcance general
+   es fiscal: cuando una fórmula de transferencias hereda — como piso o como insumo — el
+   instrumento con que se midió la carencia, introduce una diferencia distributiva entre
+   territorios de igual privación *antes* de cualquier decisión de gasto. En México ese
+   mecanismo vale +15.8% de Ramo 33 per cápita para el perfil favorecido; el diseño de
+   fórmulas debería auditarse contra esta circularidad medición→asignación, y el punto es
+   exportable a cualquier sistema de transferencias basado en fórmula.
+2. **La focalización depende de la dimensión y de la escala.** Ordenar municipios por
    privación observada y ordenarlos por sus peores residuos dimensionales produce listas casi
    disjuntas. La primera lista concentra la desventaja acumulada; la segunda identifica
    municipios que están peor de lo que su estructura explica en una dimensión específica.
    Elegir un índice es elegir implícitamente una de las dos; conviene que esa elección sea
    explícita y responda al instrumento de política en cuestión.
-2. **La escala señala al nivel de gobierno.** La parte de la desigualdad observada que
+3. **La escala señala al nivel de gobierno.** La parte de la desigualdad observada que
    coincide con fronteras estatales — mayor en ingreso, menor en servicios de red — es
    materia de coordinación federal-estatal; la heterogeneidad residual, predominantemente
    intraestatal, requiere capacidad de discriminación fina dentro de cada estado, que las
    fórmulas nacionales agregadas difícilmente capturan con precisión.
-3. **Ningún indicador único cubre todos los usos.** El nivel observado no anticipa violencia;
+4. **Ningún indicador único cubre todos los usos.** El nivel observado no anticipa violencia;
    los sensores remotos no ven el residuo ni la pobreza urbana; los registros de crimen
    dependen de la detección; y las fórmulas de transferencia heredan los sesgos del
    instrumento con que se midió. Cada fuente de información cubre dimensiones distintas y tiene errores de
@@ -354,6 +375,12 @@ descontado lo que la composición y la pertenencia estatal explican, se concentr
 los estados. Las dimensiones residuales de la privación, además, rara vez identifican los
 mismos municipios, y la actividad económica visible desde satélite no garantiza un bienestar
 local proporcional: donde el desacople es mayor, la constante es la precariedad laboral.
+
+Los tres hallazgos trascienden el caso mexicano: el patrón de dos escalas aplica a cualquier
+país cuya medición en áreas pequeñas se calibre a unidades administrativas; el desacople
+entre luminosidad y bienestar es replicable dondequiera que coexistan sensores nocturnos y
+medición social; y el sesgo de fórmula heredado del instrumento de medición es un mecanismo
+general de reproducción de desigualdad que precede al análisis fiscal estándar.
 
 Para la política pública, estos resultados implican que la focalización debe especificar
 tanto la dimensión de la privación como la escala territorial de la intervención: ninguna

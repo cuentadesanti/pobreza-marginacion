@@ -92,6 +92,12 @@ def bindings():
     B.append((P2, "combinaciones residuales negativas", float((r3.r2cv_media < 0).sum()),
               "{:.0f} de 30"))
 
+    # R2 (revisión v2): solapamiento con solo las dos dimensiones firmes
+    s2 = pd.read_csv(os.path.join(OUT, "solapamiento_2dim.csv")).set_index("dimensiones")
+    B.append((P2, "obs/esp dos dimensiones firmes", s2.loc["dos_firmes", "razon"], "{:.2f}"))
+    B.append((P2, "IC lo dos firmes", s2.loc["dos_firmes", "ic_lo"], "{:.2f}"))
+    B.append((P2, "IC hi dos firmes", s2.loc["dos_firmes", "ic_hi"], "{:.2f}"))
+
     # F3: monopolio vs competencia desde su CSV (ventana principal + variantes ap. D)
     mc = pd.read_csv(os.path.join(OUT, "g_monopolio_competencia.csv")).set_index(
         ["ventana", "var"])
