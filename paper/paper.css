@@ -1,0 +1,33 @@
+/* Estilo de compilación de los papers (pandoc → Chrome headless → PDF).
+   Reconstruido para calzar con los PDFs de 2026-07-13: A4, cuerpo Palatino
+   (los símbolos fuera de Palatino caen a Times New Roman, como en el original). */
+@page { size: A4; margin: 22mm; }
+
+html {
+  font-family: Palatino, "Palatino Linotype", "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+body { margin: 0; max-width: none; hyphens: auto; text-align: justify; }
+
+h1 { font-size: 16.5pt; line-height: 1.25; margin: 0 0 0.4em; }
+h2 { font-size: 13pt; margin: 1.5em 0 0.5em; }
+h3 { font-size: 11.5pt; margin: 1.2em 0 0.4em; }
+h1, h2, h3 { text-align: left; page-break-after: avoid; }
+
+figure { margin: 1.1em 0; page-break-inside: avoid; }
+img { max-width: 100%; }
+figcaption { font-size: 8.8pt; line-height: 1.35; color: #333; text-align: left; margin-top: 0.4em; }
+
+table { border-collapse: collapse; font-size: 9.5pt; margin: 0.9em auto; }
+th, td { padding: 2px 9px; }
+thead th { border-bottom: 1px solid #444; }
+tbody tr:last-child td { border-bottom: 1px solid #444; }
+thead { border-top: 1px solid #444; }
+
+code { font-family: Menlo, monospace; font-size: 88%; }
+blockquote { margin: 0.8em 1.5em; color: #333; }
+/* URLs largas de las referencias: sin esto una línea irrompible desborda el ancho
+   y Chrome encoge TODO el documento para que quepa (shrink-to-fit) */
+a { color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+body { overflow-wrap: break-word; }

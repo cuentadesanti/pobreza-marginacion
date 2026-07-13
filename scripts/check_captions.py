@@ -146,6 +146,10 @@ def bindings():
           (P2, "B t incremento BB", t_inc_BB, "{:.1f}"),
           (P2, "B deflactor INPC", res["deflactor_inpc_2013_2020"], "{:.3f}"),
           (P2, "B n spec extendida", res["n_spec_extendida"], "{:.0f}")]
+    cob = pd.read_csv(os.path.join(OUT, "b_fism_cobertura.csv")).set_index("variable")
+    B += [(P2, "B SMD población", cob.loc["log_pob", "smd"], "{:.2f}"),
+          (P2, "B SMD ruralidad", cob.loc["loc_peq_pct", "smd"], "{:.2f}"),
+          (P2, "B SMD privación", cob.loc["nivel", "smd"], "{:.2f}")]
     return B
 
 

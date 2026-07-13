@@ -359,8 +359,8 @@ FISM municipal<!-- src: b_fism_descomposicion.csv -->.
 Para probar el mecanismo descompusimos la transferencia de 2020 en piso más incremento en los
 municipios con FISM rastreable en ambos años en los reportes trimestrales de la SHCP (SRFT):
 249 municipios, 10.1% del modelo — una intersección sesgada hacia municipios más grandes,
-menos rurales y menos privados que el resto (el chequeo completo de cobertura acompaña al
-repositorio), aunque dentro de ella la brecha del Ramo 33 agregado se reproduce (+17.2%,
+menos rurales y menos privados que el resto (apéndice G, Figura A1), aunque dentro de ella
+la brecha del Ramo 33 agregado se reproduce (+17.2%,
 t = 2.4)<!-- src: b_fism_descomposicion.csv -->. El resultado apunta en la dirección del
 mecanismo sin cerrarlo: la brecha entre perfiles se concentra en el piso (+600 pesos por
 habitante) y no en el incremento (−149), pero el intervalo de la diferencia cruza cero
@@ -501,6 +501,15 @@ mediana de 5,430 habitantes contra ~13,550 nacional; 79% con al menos la mitad d
 población en localidades pequeñas; recepción de remesas mediana de 17 contra 92 USD per
 cápita; 27% con presencia criminal documentada contra 48% nacional; 44 de 48 no
 significativos en la tipología espacial de discordancia.<!-- src: veta_48_triple.csv -->
+
+**G. Cobertura del test piso/incremento del FISM (§7.3).** La intersección de municipios con
+FISM rastreable en 2013 y 2020 en el SRFT (249; 10.1% del modelo) difiere sistemáticamente
+del resto: más poblada (SMD +0.59), menos rural (−0.28) y menos privada (−0.36), con Hidalgo
+y Puebla sobrerrepresentados y sin Oaxaca ni Veracruz<!-- src: b_fism_cobertura.csv -->. Este
+sesgo de cobertura es la razón por la que la descomposición del §7.3 se reporta como
+sugestiva y no como evidencia de mecanismo.
+
+![Figura A1. Chequeo de sesgo de cobertura del test piso/incremento: municipios de la intersección SRFT 2013∩2020 contra los excluidos del modelo, en población, ruralidad, privación total, los tres ejes canónicos y composición por estado (diferencias de medias estandarizadas, SMD).](../figures/05_dag/fig_b_cobertura_sesgo.png)
 
 ## Referencias
 
