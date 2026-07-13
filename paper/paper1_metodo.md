@@ -99,12 +99,15 @@ método explícito y proceso generador documentado como grafo.
 
 En la literatura mexicana, la crítica canónica al índice de marginación es la de Cortés &
 Vargas (2011): el índice de CONAPO confunde constructo con método y no es comparable en el
-tiempo sin reconstrucción. Este paper puede leerse como la respuesta formal a esa crítica en
-el corte transversal — separar constructo (z), método (m) y heterogeneidad federal (γ) es
-exactamente la descomposición que aquella objeción pedía. El debate Boltvinik–CONEVAL sobre
-umbrales y agregación de la pobreza multidimensional, y la tradición de series comparables
-bajo cambio de instrumento (Székely y coautores), son el trasfondo sustantivo: dos mediciones
-oficiales del mismo fenómeno con maquinarias en disputa. Las metodologías oficiales que aquí
+tiempo sin reconstrucción. Peláez Herreros (2022) profundiza esta línea al recardinalizar el
+índice para hacer comparables sus niveles — evidencia adicional de que la agregación DP2
+mezcla constructo y escala de medición, la distinción que nuestro modelo hace explícita. Este
+paper puede leerse como la respuesta formal a esa crítica en el corte transversal — separar
+constructo (z), método (m) y heterogeneidad federal (γ) es exactamente la descomposición que
+aquella objeción pedía. El debate de larga data sobre umbrales y agregación de la pobreza
+multidimensional (Boltvinik 2012) y la tradición de series comparables de pobreza y
+desigualdad bajo cambio de instrumento (Székely 2005) son el trasfondo sustantivo: dos
+mediciones oficiales del mismo fenómeno con maquinarias en disputa. Las metodologías oficiales que aquí
 se modelan están documentadas por las propias agencias (CONEVAL 2021 para la medición
 municipal de pobreza; CONAPO 2021 para el índice de marginación 2020), y el DAG de §3 es, en
 buena medida, su lectura formalizada.
@@ -444,6 +447,8 @@ condicionales). Los posteriores completos están archivados en el repositorio.
 - Besag, J., York, J. & Mollié, A. (1991). Bayesian image restoration, with two applications
   in spatial statistics. *Annals of the Institute of Statistical Mathematics*.
   doi:10.1007/bf00116466
+- Boltvinik, J. (2012). Treinta años de medición de la pobreza en México. *Estudios
+  Sociológicos* 30(núm. extra): 79–110. doi:10.24201/es.2012v30nextra.186
 - Campbell, D.T. & Fiske, D.W. (1959). Convergent and discriminant validation by the
   multitrait-multimethod matrix. *Psychological Bulletin*. doi:10.1037/h0046016
 - CONAPO (2021). *Índice de marginación por entidad federativa y municipio 2020*. Consejo
@@ -455,6 +460,8 @@ condicionales). Los posteriores completos están archivados en el repositorio.
 - Niku, J., Hui, F.K.C., Taskinen, S. & Warton, D.I. (2019). gllvm: Fast analysis of
   multivariate abundance data with generalized linear latent variable models. *Methods in
   Ecology and Evolution*. doi:10.1111/2041-210x.13303
+- Peláez Herreros, Ó. (2022). El Índice de Marginación del Conapo transformado en indicador
+  cardinal. *EconoQuantum* 20(1). doi:10.18381/eq.v20i1.7294
 - Peña-Trapero, B. (2021). La medición del Bienestar Social: una revisión crítica. *Studies of
   Applied Economics*. doi:10.25115/eea.v27i2.4919
 - Rao, J.N.K. & Molina, I. (2015). *Small Area Estimation*, 2ª ed. Wiley.
@@ -464,12 +471,10 @@ condicionales). Los posteriores completos están archivados en el repositorio.
   doi:10.1177/0962280216660421
 - Skrondal, A. & Rabe-Hesketh, S. (2004). *Generalized Latent Variable Modeling*. Chapman &
   Hall/CRC. doi:10.1201/9780203489437
+- Székely, M. (2005). Pobreza y desigualdad en México entre 1950 y 2004. *El Trimestre
+  Económico* 72(288): 913–931. doi:10.20430/ete.v72i288.566
 - Zarzosa Espina, P. (2021). Estimación de la pobreza en las comunidades autónomas españolas
   mediante la distancia DP2. *Studies of Applied Economics*. doi:10.25115/eea.v27i2.4923
-
-(Boltvinik y Székely se citan como tradiciones en §2; sus referencias formales — junto con la
-literatura de incidencia fiscal relevante para el tercer paper — se completarán con DOI
-verificado al preparar la versión de envío.)
 
 ## Disponibilidad de datos y código
 

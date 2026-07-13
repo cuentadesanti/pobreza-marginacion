@@ -63,11 +63,17 @@ dos escalas necesita, y que un Gini no ofrece sin residuo. La pregunta de a qué
 desigualdad territorial tiene tradición larga en economía regional — para México, la agenda de
 convergencia regional estancada tras la apertura comercial es el trasfondo macro — y la
 crítica metodológica a los índices territoriales oficiales es también mexicana: Cortés &
-Vargas (2011) mostraron que el índice de marginación confunde constructo con método. Nuestra
-contribución es hacer la pregunta de escala *condicional*: separar la partición del nivel
-bruto (lo que las agencias publican) de la partición del residuo (lo que queda tras
-composición y pertenencia estatal), y mostrar que son objetos distributivos distintos con
-respuestas distintas.
+Vargas (2011) mostraron que el índice de marginación confunde constructo con método. Este
+trabajo se inscribe en la tradición de medición de pobreza y desigualdad en México (Lustig &
+Székely 1997; Boltvinik 2012). Nuestra contribución es hacer la pregunta de escala
+*condicional*: separar la partición del nivel bruto (lo que las agencias publican) de la
+partición del residuo (lo que queda tras composición y pertenencia estatal), y mostrar que
+son objetos distributivos distintos con respuestas distintas. Que la desigualdad del ingreso
+en México se sostiene predominantemente *dentro* de las entidades y no entre ellas es un
+hallazgo recurrente de la literatura distributiva nacional (Cortés & Valdés Cruz 2023); aquí
+mostramos que esa escala depende del objeto: en el nivel bruto de la privación el componente
+interestatal pesa cerca de la mitad, y solo el residuo condicional reproduce el predominio
+intraestatal.
 
 Segunda, la acumulación de desventajas: la literatura de pobreza multidimensional (Alkire &
 Foster 2011, la base de la medición mexicana) presupone que las carencias se cuentan porque se
@@ -288,7 +294,10 @@ delimitan distintas implicaciones y límites del espacio estimado:
    marginados que pobres" reciben +15.8% de transferencias del Ramo 33 per cápita (t = 4.3) y
    los "más pobres que marginados" −3.0% (n.s.)<!-- src: gap_aportaciones_regimen.csv --> — el
    piso heredado de la fórmula antigua de masa carencial sigue pagando al perfil de
-   marginación. **La vara con que se mide un municipio vale dinero.**
+   marginación. El análisis de incidencia de la política fiscal sobre la desigualdad tiene
+   marco establecido (Lustig 2018); nuestro hallazgo es que la *fórmula de asignación misma* —
+   al heredar la vara de medición — introduce una brecha distributiva antes de cualquier
+   análisis de incidencia del gasto. **La vara con que se mide un municipio vale dinero.**
 
 ![Figura 4. Validación por homicidios: R² de validación cruzada de cada conjunto predictor sobre la tasa municipal de homicidios 2019–2021. La composición carga la señal; el residuo latente no aporta.](../figures/06_validacion_homicidios/fig_validacion_homicidios.png)
 
@@ -366,8 +375,13 @@ monetario) replica con ambos outcomes.
 
 - Alkire, S. & Foster, J. (2011). Counting and multidimensional poverty measurement. *Journal
   of Public Economics*. doi:10.1016/j.jpubeco.2010.11.006
+- Boltvinik, J. (2012). Treinta años de medición de la pobreza en México. *Estudios
+  Sociológicos* 30(núm. extra): 79–110. doi:10.24201/es.2012v30nextra.186
 - Chen, X. & Nordhaus, W.D. (2011). Using luminosity data as a proxy for economic statistics.
   *PNAS*. doi:10.1073/pnas.1017031108
+- Cortés, F. & Valdés Cruz, S. (2023). Desigualdad en la distribución del ingreso: México 2016
+  a 2020. En *Los derroteros del desarrollo*. UNAM-PUED.
+  doi:10.22201/pued.9786073078337e.2023.c9
 - Cortés, F. & Vargas, D. (2011). Marginación en México a través del tiempo: a propósito del
   índice de Conapo. *Estudios Sociológicos* 29(86): 361–387. doi:10.24201/es.2011v29n86.228
 - Henderson, J.V., Storeygard, A. & Weil, D.N. (2012). Measuring Economic Growth from Outer
@@ -375,6 +389,11 @@ monetario) replica con ambos outcomes.
 - Jean, N., Burke, M., Xie, M., Davis, W.M., Lobell, D.B. & Ermon, S. (2016). Combining
   satellite imagery and machine learning to predict poverty. *Science*.
   doi:10.1126/science.aaf7894
+- Lustig, N. (ed.) (2018). *Commitment to Equity Handbook: Estimating the Impact of Fiscal
+  Policy on Inequality and Poverty*, vol. 1. Brookings/CEQ Institute.
+  doi:10.5040/9780815753834
+- Lustig, N. & Székely, M. (1997). *México: evolución económica, pobreza y desigualdad*.
+  Banco Interamericano de Desarrollo. doi:10.18235/0009827
 - Shorrocks, A.F. (1984). Inequality Decomposition by Population Subgroups. *Econometrica*.
   doi:10.2307/1913511
 - Theil, H. (1979). World income inequality and its components. *Economics Letters*.
@@ -383,9 +402,6 @@ monetario) replica con ambos outcomes.
   Government Officials and Party Candidates in Mexico. *British Journal of Political Science*
   51(1): 203–229. doi:10.1017/S0007123418000637. Datos de réplica: Harvard Dataverse,
   doi:10.7910/DVN/VIXNNE.
-
-(La literatura sustantiva mexicana restante — Boltvinik, Lustig, Székely, CEEY — se completará
-con DOI verificado al preparar la versión de envío.)
 
 ## Disponibilidad de datos y código
 
