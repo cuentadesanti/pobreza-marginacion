@@ -6,6 +6,11 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
 - `iter_2020.zip` (36.6 MB) — INEGI Censo 2020, Iterador (ITER) nacional.
   https://www.inegi.org.mx/contenidos/programas/ccpv/2020/datosabiertos/iter/iter_00_cpv2020_csv.zip
 - `banxico_ce166.xls` (105 KB) — export directo del cuadro CE166 (solo trimestres recientes; los datos 2020 se bajaron vía API SIE).
+- `trejo_ley/` (~2 MB) — réplica Trejo & Ley, *High-Profile Criminal Violence* (Harvard
+  Dataverse, doi:10.7910/DVN/VIXNNE, descargado 2026-07-12 vía API `format=original`):
+  `Dataset_HighProfileCriminalViolence.dta` (panel municipio-año 2007–2012, 2,018 municipios,
+  CAPAM), `Codebook_...pdf`, `ReadMe.pdf`. ⚠ `cve_inegi` es int — zfill(5) obligatorio.
+  Usado en G5 (`scripts/g5_coercion_politica.py`).
 
 ## NO incluidos (grandes — descargar aparte)
 

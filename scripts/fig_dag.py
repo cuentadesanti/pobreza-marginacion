@@ -112,6 +112,9 @@ def validate(N, E):
     dual = N[N["dual_role"] != "no"]
     print("· nodos con rol dual:", dual["node_id"].tolist())
     print("· aristas por tipo:\n" + E.groupby("relation_type").size().to_string())
+    import check_dag_conteos
+    if check_dag_conteos.main() != 0:
+        ok = False
     return ok
 
 

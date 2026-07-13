@@ -19,7 +19,7 @@ Exposición principal: ventana pre-2020 (2015–2018).
 | 2. Exposición criminal explica desigualdad intraestatal residual | **✗ NEGATIVO** (G1): sobre los ejes canónicos, P y C no son robustos (β_C en eje1 voltea de −0.14 a +0.01 entre especificaciones); solo WC vecinal es sugerente (t 2.0–2.5) sin sobrevivir la ventana histórica |
 | 3. Brecha de apropiación mayor bajo coerción/competencia | **✗ NEGATIVO** (G2): C t=1.2; WC t=2.2 no sobrevive Calderón. La brecha sigue siendo un fenómeno de precariedad laboral, no de exposición criminal documentada |
 | 4. Violencia organizada y privación son dimensiones territorialmente distintas | **✓ el hallazgo del capítulo**: la misma exposición que predice homicidio (t 3–4.5) no mueve la privación residual — **quinta ruta independiente** a la conclusión (dimensionalidad, homicidios-validación, satélite, acumulación disjunta, y ahora exposición criminal) |
-| 5. Coerción política como ruta específica | pendiente (Fase 3: Trejo-Ley descargable; PAIAMEX por pedir) |
+| 5. Coerción política como ruta específica | **✓ como violencia, ✗ como privación** (G5, Trejo-Ley 2007–2012 rezagado): la coerción histórica no mueve los ejes residuales 2020 (eje1 t −0.3; eje3 con signos contradictorios dummy/tasa → no se promueve), pero predice homicidio 2019–21 una década después (+0.26, t 2.7; sobrevive sin proxies, sin metrópolis y condicionando en C_calderon) y ocurrió donde competencia × fragmentación partidista interactúan (CxJ t 3.4 — réplica transversal de la tesis Trejo-Ley con OCVED independiente) |
 
 ## Detalle de estimaciones (FE estado, WLS 1/sd², HC1; `g_modelos_principales.csv`, `g_robustez.csv`)
 
@@ -33,6 +33,29 @@ Exposición principal: ventana pre-2020 (2015–2018).
   competencia > monopolio > sin registro, estable entre ventanas. Consistente con la
   literatura (la violencia sube con la disputa, no con el control).
 
+## G5 — coerción política (Fase 3, cerrada con Trejo-Ley)
+
+**Fuente verificada**: réplica de Trejo & Ley, *High-Profile Criminal Violence* (Dataverse
+doi:10.7910/DVN/VIXNNE; codebook leído). Panel municipio-año 2007–2012, 2,018 municipios;
+CAPAM: 311 ataques del crimen organizado contra autoridades, candidatos y activistas (204
+municipios con ≥1). **Exposición histórica rezagada** — nunca contemporánea a los outcomes
+2020. CAPAM se construye de prensa: O = R × D aplica y los proxies de observabilidad van en
+toda especificación (`g5_coercion.csv`).
+
+- **G5a** (privación residual 2020): nulo en eje1/eje2 (dummy t −0.3 / −0.1); en eje3 el
+  dummy y la tasa dan signos opuestos (+0.372 vs −0.157) — colinealidad dummy/tasa, no ruta;
+  no se promueve. La coerción política se suma a P/C/WC: **ninguna cara de la exposición
+  criminal documentada explica la desigualdad residual de privación.**
+- **G5b** (persistencia de violencia): coerción 2007–12 → homicidio EB 2019–21 **+0.26
+  (t 2.7)**, estable sin proxies (t 2.5), sin metrópolis (t 2.4) y condicionando en la
+  competencia OCVED de la misma era (+0.25, con C_calderon +0.14 t 4.2): canal propio,
+  no reducible a la mera presencia de organizaciones.
+- **G5c** (¿dónde ocurrió?): coerción ~ competencia × fragmentación partidista vertical
+  (juxtaposition): interacción **+0.056 (t 3.4)** — la lectura transversal reproduce el
+  mecanismo del paper original con una fuente de presencia criminal independiente (OCVED).
+- **G5d** (estatal, descriptivo, n=30): tasa de coerción ⊥ PC1 de γ (corr −0.06) — el
+  gradiente común de capacidad estatal no está asociado a la coerción histórica.
+
 ## Interpretación (calibrada)
 
 La exposición criminal documentada en México es, territorialmente, **un fenómeno de violencia
@@ -40,9 +63,10 @@ más que de privación**: asociación compatible con disputa→violencia (más f
 competencia que bajo monopolio), y esencialmente ortogonal a la desigualdad residual de
 privación una vez descontadas composición y estado. El resultado negativo de G1/G2 se
 documenta y **la Vista G no se fuerza dentro de la tesis principal** — queda como capítulo de
-validación con un hallazgo propio (criterio 4) y una agenda de Fase 3 (coerción política:
-Trejo-Ley 1995–2012 descargable; PAIAMEX y MCO por gestionar con autores; eventos ACLED
-municipales pendientes de credencial).
+validación con dos hallazgos propios (criterio 4: dimensiones distintas; G5b: la coerción
+política de 2007–12 deja una huella de violencia medible una década después, pero no de
+privación). Agenda restante: PAIAMEX y MCO por gestionar con autores; eventos ACLED
+municipales pendientes de credencial.
 
 **Advertencias vigentes**: OCVED termina en 2018 (la "ventana pre-2020" es 2015–2018);
 sin-registro ≠ ausencia real (los modelos llevan proxies de observabilidad; sin ellos, β_C

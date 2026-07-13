@@ -53,7 +53,10 @@ def main():
     d = comp.merge(zc, on="cvegeo").merge(cov.drop(columns=["pob_tot"]), on="cvegeo",
                                           suffixes=("", "_c")).merge(F, on="cvegeo") \
             .merge(z1[["cvegeo", "material_mean"]].rename(columns={"material_mean": "z1_material"}),
+                   on="cvegeo") \
+            .merge(norm(pd.read_parquet(os.path.join(PROC, "vistaD_indigena.parquet"))),
                    on="cvegeo")
+    assert len(d) >= 2450, f"merge perdió municipios: {len(d)}"
     d["ent"] = d["cvegeo"].str[:2]
     g = d["ent"].values
     rows = []
@@ -102,7 +105,10 @@ def main():
     y = d.z1_material.values
     bloques = [("geografía heredada", ["tri_mean", "elev_mean", "acc_km", "loc_peq_pct"]),
                ("+ demografía", ["pct_60mas", "dep_ratio"]),
-               ("+ estructura económica", ["pct_primario", "pct_secundario", "empleo_precario_pct"])]
+               ("+ estructura económica", ["pct_primario", "pct_secundario", "empleo_precario_pct"]),
+               # D5: composición indígena (ITER, P3YM_HLI/P3HLINHE verificadas en el
+               # diccionario oficial) — al final para no alterar la secuencia ya citada
+               ("+ composición indígena", ["pct_hli", "pct_hli_nhe"])]
     cols, r2prev = [], None
     print("\nCapa 3: R² incremental (CV bloqueado por estado; 'estado' aparte al final):")
     gkf = GroupKFold(5)

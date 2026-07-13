@@ -48,7 +48,7 @@ cuándo y por qué cuentan historias distintas, y qué implica esa estructura pa
 la desigualdad territorial.
 
 Nuestra contribución es triple. Primero, metodológica: formalizamos el proceso generador de
-ambas mediciones como un DAG de medición a nivel de variable (56 nodos, 92 aristas tipificadas
+ambas mediciones como un DAG de medición a nivel de variable (56 nodos, 97 aristas tipificadas
 en siete semánticas, aciclicidad verificada computacionalmente), del cual se derivan cinco
 dependencias mecánicas entre indicadores que cualquier análisis conjunto debe modelar y no
 confundir con estructura sustantiva — incluida la circularidad de política del fondo FAIS,
@@ -206,8 +206,8 @@ que se mide un municipio vale dinero.
 ## 6. Incertidumbre y alcance
 
 La desviación posterior municipal es parte del resultado, no una nota: la clasificación
-individual es sustantiva (|z|/sd ≥ 2) en 42% de los municipios para el eje material, 54% para
-el educativo y solo 14% para el tercero — el eje existe como dirección de covarianza nacional,
+individual es sustantiva (|z|/sd ≥ 2) en 42% de los municipios para el eje material, 55% para
+el educativo y solo 14% para el tercero (41.9/54.6/13.6; `certeza_canonica.csv`) — el eje existe como dirección de covarianza nacional,
 pero su clasificación municipal individual es débil en la mayor parte del territorio. La
 incertidumbre además tiene geografía: es mayor en municipios grandes y urbanos (correlación
 +0.32 con población), donde la desviación respecto de la composición es más idiosincrática —

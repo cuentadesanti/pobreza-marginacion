@@ -166,7 +166,7 @@ def main():
         m = HistGradientBoostingRegressor(max_depth=4, max_iter=300, random_state=1).fit(Xc[tr], y[tr])
         r2s.append(r2_score(y[te], m.predict(Xc[te])))
     print(f"\nCapa 3 exprés: R²cv(circunstancias estructurales → z material bruto) = "
-          f"{np.mean(r2s):.3f} (asociación, no causal; falta composición indígena — pendiente)")
+          f"{np.mean(r2s):.3f} (asociación, no causal; composición indígena en desigualdad_robustez.py)")
 
 
 if __name__ == "__main__":

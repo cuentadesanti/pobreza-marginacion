@@ -18,4 +18,5 @@ C_acumulacion,q90,razon_obs_esp_3sev,2.44,0.8,4.48,0.06,0.1,0.05
 capa3_incremental,geografía heredada,r2cv,0.265,,,,,
 capa3_incremental,+ demografía,r2cv,0.469,,,,,
 capa3_incremental,+ estructura económica,r2cv,0.732,,,,,
-capa3_incremental,+ estado (KFold simple),r2cv,0.879,,,,,
+capa3_incremental,+ composición indígena,r2cv,0.775,,,,,
+capa3_incremental,+ estado (KFold simple),r2cv,0.891,,,,,

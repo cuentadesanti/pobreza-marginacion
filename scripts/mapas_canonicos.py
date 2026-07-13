@@ -38,6 +38,25 @@ def main():
     z["cvegeo"] = z["cvegeo"].astype(str).str.zfill(5)
     g = geo.merge(z, on="cvegeo", how="left")
 
+    # D3: la fila de certeza (42/54/14) con su CSV fuente — un solo origen para
+    # la figura y la prosa, computado sobre los N municipios del modelo (no
+    # sobre los polígonos, donde los sin-dato contaminarían el denominador).
+    filas = []
+    for e in EJES:
+        snr = z[f"{e}_mean"].abs() / z[f"{e}_sd"]
+        cls = np.where(snr >= 2, 2, np.where(snr >= 1, 1, 0))
+        filas.append({"eje": e, "n_municipios": len(cls),
+                      "n_indistinguible": int((cls == 0).sum()),
+                      "n_sugerente": int((cls == 1).sum()),
+                      "n_sustantivo": int((cls == 2).sum()),
+                      "pct_indistinguible": round(100 * float((cls == 0).mean()), 1),
+                      "pct_sugerente": round(100 * float((cls == 1).mean()), 1),
+                      "pct_sustantivo": round(100 * float((cls == 2).mean()), 1)})
+    cert = pd.DataFrame(filas)
+    cert.to_csv(os.path.join(OUT, "certeza_canonica.csv"), index=False)
+    print("certeza_canonica.csv (reparto |z|/sd por eje):")
+    print(cert[["eje", "pct_indistinguible", "pct_sugerente", "pct_sustantivo"]].to_string(index=False))
+
     fig, axes = plt.subplots(2, 3, figsize=(16.5, 8.6), facecolor=ps.SURF)
     for j, (e, lbl) in enumerate(EJES.items()):
         a = axes[0, j]; a.set_axis_off()
@@ -65,8 +84,8 @@ def main():
         cls[g[f"{e}_mean"].isna()] = np.nan
         g["_c"] = [CERT_COL.get(c, "#f5f5f2") if not np.isnan(c) else "#f5f5f2" for c in cls]
         g.plot(color=g["_c"], ax=a, linewidth=0.04, edgecolor=ps.BASE)
-        pct = {k: 100 * float(np.nanmean(cls == k)) for k in (0, 1, 2)}
-        a.set_title(f"{lbl}\nsustantivo: {pct[2]:.0f}% de municipios", fontsize=9.5,
+        pct_sust = float(cert.loc[cert.eje == e, "pct_sustantivo"].iloc[0])
+        a.set_title(f"{lbl}\nsustantivo: {pct_sust:.0f}% de municipios", fontsize=9.5,
                     loc="left", color=ps.INK)
     axes[0].legend(handles=[Patch(facecolor=CERT_COL[k], label=CERT_LAB[k]) for k in (0, 1, 2)],
                    loc="lower left", frameon=False, fontsize=7.5)

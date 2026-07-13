@@ -100,11 +100,15 @@ del conjunto definido de circunstancias* — no "es causada por". Escalera incre
 | geografía heredada (rugosidad, elevación, aislamiento, dispersión) | 0.27 | +0.27 |
 | + composición demográfica | 0.47 | +0.20 |
 | + inserción productiva (sectores, precariedad) | **0.73** | +0.26 |
-| + pertenencia estatal (KFold simple — NO bloqueado, no comparable estrictamente) | 0.88 | — |
+| + composición indígena (ITER: % habla lengua indígena, % monolingüe) | 0.78 | +0.04 |
+| + pertenencia estatal (KFold simple — NO bloqueado, no comparable estrictamente) | 0.89 | — |
 
-La inserción productiva aporta tanto como la geografía heredada. "Estado" se reporta aparte:
-no es una circunstancia elemental del mismo tipo. Falta composición indígena (el censo la
-trae; pendiente de Vista D).
+La inserción productiva aporta tanto como la geografía heredada. La composición indígena
+(P3YM_HLI / P3HLINHE del ITER 2020, verificadas en el diccionario oficial;
+`vistaD_indigena.parquet`) añade poco *condicional* a geografía+demografía+inserción — no
+porque no importe, sino porque su huella ya viaja dentro de esas circunstancias (mediana
+nacional 1.7% de hablantes, media 17.9%: distribución fuertemente bimodal). "Estado" se
+reporta aparte: no es una circunstancia elemental del mismo tipo.
 
 ## Capa 5 — fiscal (referencia)
 

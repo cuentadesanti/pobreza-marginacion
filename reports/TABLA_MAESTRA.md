@@ -24,15 +24,16 @@
 | Curva luz-privación con regímenes | canónico 0.005; piso oscuro 14%; umbral sur vs norte IC disjuntos | límite del modelo simple | corte B |
 | La vara vale dinero | AA +15.8% Ramo 33 pc (t=4.3) vs BB −3% | política/circularidad FAIS | `reporte_dgp_dag.md` §4b |
 | Homicidios: el residual no predice violencia | orden estable en 7 variantes; dif +0.06–0.21 todos los folds | validación externa 1 | `sensibilidad_homicidios.csv` |
-| Certeza municipal por eje | sustantivo: 42/54/14% de municipios | anti-sobreinterpretación | `fig_certeza_canonica.png` |
-| Circunstancias → privación bruta (incremental) | 0.27→0.47→0.73 (+estado 0.88 no bloqueado) | capa de oportunidades (predictivo) | `desigualdad_robustez.csv` |
+| Certeza municipal por eje | sustantivo: 41.9/54.6/13.6% de municipios | anti-sobreinterpretación | `certeza_canonica.csv`; `fig_certeza_canonica.png` |
+| Circunstancias → privación bruta (incremental) | 0.27→0.47→0.73→0.78 (+indígena Δ0.04; +estado 0.89 no bloqueado) | capa de oportunidades (predictivo) | `desigualdad_robustez.csv`; `vistaD_indigena.parquet` |
 | Federalismo sectorial | PC1 de γ = 42% (común, = capacidad: +0.42 PIBE pc); 58% específico por dominio | refina la lectura de γ_s | `veta_gamma_pca.csv` |
 | La geografía de la ignorancia | sd posterior mayor en municipios grandes/urbanos (+0.32 pob, −0.26 ruralidad): el modelo sabe más del campo que de la ciudad | sección de incertidumbre | `veta_ignorancia.csv` |
 | Los 48 triple-severos | mitad Oaxaca; mediana 5,430 hab; remesas 17 vs 92 USD; 27% presencia criminal vs 48%; 44/48 invisibles al LISA | el rostro del resultado 2 | `veta_48_triple.csv` |
 | Exposición criminal ⊥ privación residual (Vista G) | G1/G2 negativos con robustez; G4: competencia +0.130 > monopolio +0.083 sobre homicidio | quinta ruta de dimensiones distintas | `reporte_crimen_desigualdad.md` |
+| Coerción política (Trejo-Ley, rezagada 2007–12) | privación residual: nulo; homicidio 2019–21: +0.26 (t 2.7) robusto; coerción donde competencia×fragmentación (t 3.4) | cierra criterio 5 Vista G; persistencia de violencia, no de privación | `g5_coercion.csv` |
 
 ## Apéndices / extensiones declaradas
 
 DAG canónico verificado (56 nodos/97 aristas, acíclico); DGP y 5 dependencias mecánicas;
-FAIS dinámico (otro paper); multi-escala del corte B; composición indígena en Vista D;
+FAIS dinámico (otro paper); multi-escala del corte B;
 raster de accesibilidad MAP; DENUE (Vista F2); serie 2010–2020.
