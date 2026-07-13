@@ -31,16 +31,26 @@ def main():
                          moran_resid=round(r.residual_moran_I, 3),
                          rhat=round(r.rhat_alpha_sigma, 2), elpd=round(r.elpd_loo, 1),
                          converge="no (multimodal)"))
-    for rung, etiqueta in [(2, "marginalizado sin γ_s (p2)"), (3, "marginalizado con γ_s (p3, canónico)")]:
+    eig_rows = []
+    for rung, etiqueta in [(2, "marginalizado sin γ_s (M−γ)"),
+                           (3, "marginalizado con γ_s (M+γ, canónico)")]:
         idata = az.from_netcdf(os.path.join(OUT, f"idata_marginal_rung{rung}.nc"))
         rhat = float(np.nanmax(az.rhat(idata, var_names=["LamLamT"]).LamLamT.values))
         elpd = float(az.loo(idata).elpd_loo)
         rows.append(dict(bloque="marginalizado_MvN", modelo=etiqueta, moran_resid=np.nan,
                          rhat=round(rhat, 3), elpd=round(elpd, 1),
                          converge="sí" if rhat < 1.01 else "no (multimodal)"))
+        # M4 de la revisión: eigenestructura de E[ΛΛᵀ] con CSV propio (antes solo en reporte)
+        LL = idata.posterior["LamLamT"].mean(("chain", "draw")).values
+        ev = np.sort(np.linalg.eigvalsh(LL))[::-1]
+        eig_rows.append(dict(modelo=etiqueta,
+                             **{f"eigen{k+1}": round(float(ev[k]), 3) for k in range(5)}))
     t1 = pd.DataFrame(rows)
     t1.to_csv(os.path.join(OUT, "tabla1_escalera.csv"), index=False)
     print("tabla1_escalera.csv"); print(t1.to_string(index=False))
+    te = pd.DataFrame(eig_rows)
+    te.to_csv(os.path.join(OUT, "eigen_marginal_2v3.csv"), index=False)
+    print("\neigen_marginal_2v3.csv"); print(te.to_string(index=False))
 
     # ---------- tabla 2: desacuerdo por familia ----------
     m2 = az.from_netcdf(os.path.join(OUT, "idata_marginal_rung2.nc")).posterior["mload"]
@@ -53,11 +63,14 @@ def main():
         col = f"m_{fam}"
         sust = 100 * float((des[col].abs() / des[f"{col}_sd"] >= 2).mean())
         lisa_m = des.groupby(des.lisa.fillna("ns"))[col].mean()
+        # M5 de la revisión: la nulidad "sin correlación con composición" con su estadístico
+        corrs = {f"corr_{c}": round(float(np.corrcoef(des[col], des[c])[0, 1]), 3)
+                 for c in ["loc_peq_pct", "pct_60mas", "log_pob"]}
         rows.append(dict(familia=fam, mload_p2=round(float(ml2[i]), 3),
                          mload_p3=round(float(ml3[i]), 3),
                          pct_sustantivo=round(sust, 1),
                          media_AA=round(float(lisa_m.get("AA", np.nan)), 3),
-                         media_BB=round(float(lisa_m.get("BB", np.nan)), 3)))
+                         media_BB=round(float(lisa_m.get("BB", np.nan)), 3), **corrs))
     t2 = pd.DataFrame(rows)
     t2.to_csv(os.path.join(OUT, "desacuerdo_familias.csv"), index=False)
     print("\ndesacuerdo_familias.csv"); print(t2.to_string(index=False))

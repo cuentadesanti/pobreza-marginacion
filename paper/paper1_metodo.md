@@ -98,12 +98,29 @@ inducen — y de objeto: hasta donde sabemos, nadie ha modelado la maquinaria co
 agencias estadísticas del mismo país como problema latente con método explícito y proceso
 generador documentado como grafo.
 
+En la literatura mexicana, la crítica canónica al índice de marginación es la de Cortés &
+Vargas (2011): el índice de CONAPO confunde constructo con método y no es comparable en el
+tiempo sin reconstrucción. Este paper puede leerse como la respuesta formal a esa crítica en
+el corte transversal — separar constructo (z), método (m) y heterogeneidad federal (γ) es
+exactamente la descomposición que aquella objeción pedía. El debate Boltvinik–CONEVAL sobre
+umbrales y agregación de la pobreza multidimensional, y la tradición de series comparables
+bajo cambio de instrumento (Székely y coautores), son el trasfondo sustantivo: dos mediciones
+oficiales del mismo fenómeno con maquinarias en disputa. Las metodologías oficiales que aquí
+se modelan están documentadas por las propias agencias (CONEVAL 2021 para la medición
+municipal de pobreza; CONAPO 2021 para el índice de marginación 2020), y el DAG de §3 es, en
+buena medida, su lectura formalizada.
+
 ## 3. Datos y el proceso generador como DAG de medición
 
 ### 3.1 Indicadores
 
 Trabajamos con los 17 indicadores elementales que alimentan ambas mediciones para 2,469
-municipios en 2020 (2,455 en la matriz del modelo, tras exigir covariables completas):
+municipios en 2020; la matriz del modelo tiene 2,455 tras exigir covariables completas. Los
+14 excluidos son en su mayoría municipios de creación reciente (los seis nuevos de Chiapas,
+tres de Morelos, San Quintín, Seybaplaya, Bacalar, Puerto Morelos) que las series fuente de
+covariables — en particular el crosswalk de remesas — aún no incorporan; van de 4,315 a
+117,568 habitantes en siete estados, de modo que el descarte no selecciona por tamaño ni por
+nivel de privación. Los indicadores:
 9 de CONAPO desde el censo (analfabetismo, sin educación básica, sin drenaje, sin
 electricidad, sin agua entubada, piso de tierra, hacinamiento, población en localidades
 pequeñas, ingresos hasta 2 salarios mínimos) y 8 de CONEVAL (rezago educativo y las carencias
@@ -144,7 +161,7 @@ SAE; los cuatro indicadores SAE comparten la calibración estatal; los indicador
 CONAPO comparten instrumento; las carencias de vivienda y servicios comparten definiciones
 fronterizas; y educación aparece en ambas agencias con cohortes distintas.
 
-![Figura 1. El DAG de medición y política a nivel de variable (México 2020): 56 nodos y 97 aristas en siete semánticas tipificadas, con aciclicidad verificada computacionalmente (networkx) sobre las tablas canónicas `dict/dag_nodes.csv` y `dict/dag_edges.csv`. El lazo FAIS aparece temporalizado (t−1…t+2) y `loc_peq` con borde grueso indica rol dual.](../figures/05_dag/fig_dag_pesado.png)
+![Figura 1. El DAG de medición y política a nivel de variable (México 2020): 56 nodos y 97 aristas en siete semánticas tipificadas, con aciclicidad verificada computacionalmente (networkx) sobre las tablas canónicas `dict/dag_nodes.csv` y `dict/dag_edges.csv`. El lazo FAIS aparece temporalizado (t−1…t+2) y `loc_peq` con borde grueso indica rol dual.](../figures/05_dag/fig_dag_full.png)
 
 ## 4. Método
 
@@ -203,14 +220,16 @@ La solución tiene tres pasos, cada uno con su diagnóstico (Tabla 1):
 2. **El método como contraste inter-agencia.** Los bloques de método con dirección uniforme
    sobre su soporte son casi colineales con las cargas del factor; fijar la dirección como
    contraste inter-agencia (CONAPO+/CONEVAL−, ortogonal al nivel; solo la magnitud es libre)
-   reduce la multimodalidad (R̂ 1.53) y es conceptualmente superior: el método *es* el
-   desacuerdo entre instrumentos, no otra fuente de nivel — la lógica de la matriz
-   multirrasgo-multimétodo (Campbell & Fiske 1959) llevada a parametrización. Las tres
-   direcciones: educación {analf +½, sin_basica +½, rezago_educ −1}; líneas de ingreso
-   {lp +1, lp_ext +1} (misma agencia: el contraste es *con el factor*, no entre agencias —
-   captura co-movimiento más allá del factor monetario); vivienda-servicios {drenaje,
-   electricidad, agua +⅓ cada uno; car_vivienda, car_servbas −½ cada uno}. Cada v_b se
-   normaliza a norma 1.
+   reduce la multimodalidad (R̂ 1.53 — medido *aún con las anclas puestas*, el paso intermedio
+   de esta secuencia en la especificación con γ_s; la coincidencia con el R̂ = 1.530 del
+   modelo sin efectos estatales de la Tabla 1 es un accidente numérico entre dos corridas
+   distintas) y es conceptualmente superior: el método *es* el desacuerdo entre instrumentos,
+   no otra fuente de nivel — la lógica de la matriz multirrasgo-multimétodo de Campbell &
+   Fiske (1959) llevada a parametrización. Las tres direcciones: educación {analf +½,
+   sin_basica +½, rezago_educ −1}; líneas de ingreso {lp +1, lp_ext +1} (misma agencia: el
+   contraste es *con el factor*, no entre agencias — captura co-movimiento más allá del
+   factor monetario); vivienda-servicios {drenaje, electricidad, agua +⅓ cada uno;
+   car_vivienda, car_servbas −½ cada uno}. Cada v_b se normaliza a norma 1.
 3. **Liberar las anclas.** El modo restante era un conflicto anclas-verosimilitud (una cadena
    alcanzaba logp +106 pagando un prior extremo por colapsar el ancla monetaria). Sin anclas,
    monitoreando solo ΛΛᵀ: **R̂ = 1.003** con ESS 3,490, cero divergencias, BFMI 0.91, y tres
@@ -219,9 +238,13 @@ La solución tiene tres pasos, cada uno con su diagnóstico (Tabla 1):
    prueba de K.
 
 **Tabla 1. La escalera de convergencia** (fuente: `tabla1_escalera.csv`; los diagnósticos
-marginales se recomputan de los posteriores archivados). Los ELPD solo se comparan dentro del
-mismo bloque de verosimilitud: la escalera con z muestreada usa verosimilitud condicional
-puntual; los marginalizados, MvN integrada — el objeto predictivo cambia.
+marginales se recomputan de los posteriores archivados). Nomenclatura: "peldaño" queda
+reservado a la escalera con scores muestreados; los modelos de verosimilitud integrada se
+denotan **M−γ** (marginalizado sin efectos estatales) y **M+γ** (con ellos) — dos ejes
+distintos (muestreado/marginalizado × sin/con γ_s), no una sola escalera. Los ELPD solo se
+comparan dentro del mismo bloque de verosimilitud: la escalera con z muestreada usa
+verosimilitud condicional puntual; los marginalizados, MvN integrada — el objeto predictivo
+cambia.
 
 | Modelo | Moran I resid. | R̂ | ELPD-LOO | ¿Converge? |
 |---|---|---|---|---|
@@ -229,8 +252,8 @@ puntual; los marginalizados, MvN integrada — el objeto predictivo cambia.
 | peldaño 2 (+ Vista D) | 0.345 | 2.70 | −15,624.4 | no (multimodal) |
 | peldaño 3 (+ γ_estado) | 0.223 | 1.90 | −13,554.7 | no (multimodal) |
 | peldaño 4 (+ BYM2 espacial) | 0.323 | 2.50 | −16,855.0 | no (multimodal) |
-| marginalizado sin γ_s (p2) | — | 1.530 | −29,516.1 | no (multimodal) |
-| **marginalizado con γ_s (p3, canónico)** | — | **1.003** | **−24,106.1** | **sí** |
+| marginalizado sin γ_s (M−γ) | — | 1.530 | −29,516.1 | no (multimodal) |
+| **marginalizado con γ_s (M+γ, canónico)** | — | **1.003** | **−24,106.1** | **sí** |
 
 Los ejes canónicos se definen por eigen-descomposición de E[ΛΛᵀ] con convención de signo
 documentada (elemento mayor positivo; ejes por draw alineados al canónico): eje 1
@@ -264,10 +287,11 @@ la Figura 3 mapea.
 
 **Tabla 2. El desacuerdo inter-agencia por familia** (fuente: `desacuerdo_familias.csv`,
 agregando `desacuerdo_agencias.csv`; cargas = desviación estándar del componente de método).
-"p2/p3" = sin/con efectos estatales. "% sustantivo" = municipios con |m|/sd ≥ 2. Medias por
-régimen LISA de la discordancia observada (AA = "más marginado que pobre").
+M−γ/M+γ = marginalizado sin/con efectos estatales (Tabla 1). "% sustantivo" = municipios con
+|m|/sd ≥ 2. Medias por régimen LISA de la discordancia observada (AA = "más marginado que
+pobre").
 
-| Familia | Carga p2 | Carga p3 | % sustantivo | media AA | media BB |
+| Familia | Carga M−γ | Carga M+γ | % sustantivo | media AA | media BB |
 |---|---|---|---|---|---|
 | educación | 0.012 | 0.012 | 0.0 | 0.000 | 0.000 |
 | líneas de ingreso (SAE-EBPH) | **0.582** | **0.574** | **22.6** | **−0.325** | **+0.339** |
@@ -283,7 +307,8 @@ Tres hechos:
    las dos líneas de pobreza moviéndose juntas más allá del factor monetario. Esa firma
    municipal parte los regímenes espaciales de discordancia: media de −0.325 en los municipios
    "más marginados que pobres" y +0.339 en los "más pobres que marginados", con 22.6% de
-   municipios con firma sustantiva y sin correlación con composición.
+   municipios con firma sustantiva y sin correlación con composición (|r| ≤ 0.001 con
+   dispersión rural, envejecimiento y tamaño poblacional; `desacuerdo_familias.csv`).
 
 La discordancia "más pobre que marginado" que originó el proyecto es, en buena parte,
 consistente principalmente con la firma compartida del método de imputación de ingreso: el
@@ -326,10 +351,10 @@ agrega realidades internas más diversas.
 ## 7. Qué hace γ_estado: federalismo sectorial y legibilidad institucional
 
 El componente estatal estimado no es un gradiente único. La descomposición espectral de la
-matriz γ (17 indicadores × 32 estados) muestra que solo 41.8% de su varianza es un factor
+matriz γ (17 indicadores × 32 estados) muestra que solo 42% de su varianza es un factor
 común — interpretable como capacidad estatal: correlaciona +0.42 con el log del PIB estatal
-per cápita — y el 58.2% restante es específico por dominio de política: **federalismo
-sectorial**, no un ranking de estados (Tabla 3).
+per cápita — y el 58% restante es específico por dominio de política: **federalismo
+sectorial**, no un ranking de estados (valores exactos en la Tabla 3; en prosa redondeamos).
 
 **Tabla 3. Descomposición espectral de los efectos estatales** (fuente: `tabla3_gamma.csv`,
 `veta_gamma_pca.csv`; SVD de la matriz γ 17×32 centrada por indicador).
@@ -391,14 +416,16 @@ en el peldaño 3 muestreado: R̂ alineado = 2.16 — las cadenas difieren en el 
 varianza* entre factores, método y unicidades, no solo en la orientación. Este test es el que
 justifica marginalizar en lugar de post-procesar.
 
-**C. La comparación 2-vs-3 marginal** (`comparacion_marginal_2v3.csv`). Con verosimilitud
-idéntica (MvN sobre la misma Y): (i) eigenestructura de E[ΛΛᵀ] — p2 = (1.80, 0.63, 0.37,
-0.087, ≈0) vs p3 = (1.23, 0.50, 0.34, ≈0): sin efectos estatales aparece una cuarta dirección
-latente débil; (ii) ángulos principales entre los subespacios top-3: (52.9°, 6.3°, 3.8°) — dos
-ejes esencialmente compartidos, uno se reorganiza 53°; (iii) la caída de unicidad por
-indicador Δσ_j² es proporcional al share de varianza estatal del indicador en p3 — el test
-elegante de que γ_s absorbe heterogeneidad que antes se repartía ambiguamente. ELPD:
-+5,410 ± 135 a favor de p3 (descriptivo; el posterior de p2 es de mezcla).
+**C. La comparación M−γ vs M+γ.** Con verosimilitud idéntica (MvN sobre la misma Y):
+(i) eigenestructura de E[ΛΛᵀ] (`eigen_marginal_2v3.csv`, recomputada de los posteriores
+archivados) — M−γ = (1.804, 0.628, 0.371, 0.087, ≈0) vs M+γ = (1.230, 0.501, 0.344, ≈0): sin
+efectos estatales aparece una cuarta dirección latente débil; (ii) ángulos principales entre
+los subespacios top-3: (52.9°, 6.3°, 3.8°) — dos ejes esencialmente compartidos, uno se
+reorganiza 53°; (iii) la caída de unicidad por indicador Δσ_j² es proporcional al share de
+varianza estatal del indicador en M+γ (`comparacion_marginal_2v3.csv`, la tabla σ/share por
+indicador) — el test elegante de que γ_s absorbe heterogeneidad que antes se repartía
+ambiguamente. ELPD: +5,410 ± 135 a favor de M+γ (descriptivo; el posterior de M−γ es de
+mezcla).
 
 **D. Detalle de estimación.** PyMC 5.25 con NUTS de numpyro; 4 cadenas × (1,000 + 1,000),
 target_accept 0.9, semilla 11; log-verosimilitud puntual almacenada para LOO; scores E[z|Y] y
@@ -414,6 +441,12 @@ condicionales). Posteriores archivados: `idata_marginal_rung2.nc`, `idata_margin
   doi:10.1007/bf00116466
 - Campbell, D.T. & Fiske, D.W. (1959). Convergent and discriminant validation by the
   multitrait-multimethod matrix. *Psychological Bulletin*. doi:10.1037/h0046016
+- CONAPO (2021). *Índice de marginación por entidad federativa y municipio 2020*. Consejo
+  Nacional de Población, nota técnico-metodológica.
+- CONEVAL (2021). *Metodología para la medición de la pobreza en los municipios de México,
+  2020*. Consejo Nacional de Evaluación de la Política de Desarrollo Social.
+- Cortés, F. & Vargas, D. (2011). Marginación en México a través del tiempo: a propósito del
+  índice de Conapo. *Estudios Sociológicos* 29(86): 361–387. doi:10.24201/es.2011v29n86.228
 - Niku, J., Hui, F.K.C., Taskinen, S. & Warton, D.I. (2019). gllvm: Fast analysis of
   multivariate abundance data with generalized linear latent variable models. *Methods in
   Ecology and Evolution*. doi:10.1111/2041-210x.13303
@@ -429,8 +462,9 @@ condicionales). Posteriores archivados: `idata_marginal_rung2.nc`, `idata_margin
 - Zarzosa Espina, P. (2021). Estimación de la pobreza en las comunidades autónomas españolas
   mediante la distancia DP2. *Studies of Applied Economics*. doi:10.25115/eea.v27i2.4923
 
-(La literatura sustantiva mexicana — Cortés, Boltvinik, Lustig, Székely, CONEVAL, CONAPO — se
-integrará desde `reporte_literatura.md` en la versión de envío.)
+(Boltvinik y Székely se citan como tradiciones en §2; sus referencias formales — junto con la
+literatura de incidencia fiscal de Lustig/Scott relevante para el paper 3 — se completarán con
+DOI verificado al preparar la versión de envío, desde `reporte_literatura.md`.)
 
 ---
 

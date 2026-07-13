@@ -54,6 +54,16 @@ def bindings():
           (P1, "firma media AA", fam.loc["lineas_sae", "media_AA"], "{:.3f}"),
           (P1, "firma media BB", fam.loc["lineas_sae", "media_BB"], "{:.3f}")]
 
+    eig = pd.read_csv(os.path.join(OUT, "eigen_marginal_2v3.csv"))
+    for _, r in eig.iterrows():
+        for k in (1, 2, 3):
+            B.append((P1, f"eigen{k} {r.modelo}", r[f"eigen{k}"], "{:.3f}"))
+    # M5: la nulidad firma↔composición — el máximo |r| citado como cota debe estar en prosa
+    t2m5 = pd.read_csv(os.path.join(OUT, "desacuerdo_familias.csv")).set_index("familia")
+    maxr = max(abs(t2m5.loc["lineas_sae", c])
+               for c in ["corr_loc_peq_pct", "corr_pct_60mas", "corr_log_pob"])
+    B.append((P1, "cota |r| firma-composición", max(maxr, 0.001), "{:.3f}"))
+
     t3 = pd.read_csv(os.path.join(OUT, "tabla3_gamma.csv")).set_index("medida")
     B += [(P1, "gamma share PC1", t3.loc["share_varianza_PC1_pct", "valor"], "{:.1f}"),
           (P1, "gamma share sectorial", t3.loc["share_sectorial_pct", "valor"], "{:.1f}"),

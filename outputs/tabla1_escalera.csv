@@ -3,5 +3,5 @@ escalera_z_muestreada,peldaño 1,0.413,2.19,-25833.6,no (multimodal)
 escalera_z_muestreada,peldaño 2,0.345,2.7,-15624.4,no (multimodal)
 escalera_z_muestreada,peldaño 3,0.223,1.9,-13554.7,no (multimodal)
 escalera_z_muestreada,peldaño 4,0.323,2.5,-16855.0,no (multimodal)
-marginalizado_MvN,marginalizado sin γ_s (p2),,1.53,-29516.1,no (multimodal)
-marginalizado_MvN,"marginalizado con γ_s (p3, canónico)",,1.003,-24106.1,sí
+marginalizado_MvN,marginalizado sin γ_s (M−γ),,1.53,-29516.1,no (multimodal)
+marginalizado_MvN,"marginalizado con γ_s (M+γ, canónico)",,1.003,-24106.1,sí
