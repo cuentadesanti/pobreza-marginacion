@@ -12,6 +12,12 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
   CAPAM), `Codebook_...pdf`, `ReadMe.pdf`. ⚠ `cve_inegi` es int — zfill(5) obligatorio.
   Usado en G5 (`scripts/g5_coercion_politica.py`).
 
+## NO incluidos por licencia (ACLED)
+- `data/raw/acled_agregado_admin1_lac.xlsx` y `data/processed/vistaG_crimen_estatal.parquet`
+  — los términos de uso de ACLED prohíben redistribuir sus datos (crudos o transformados);
+  exportar desde acleddata.com con cuenta propia y correr `scripts/build_vistaG_estatal.py`.
+  Removidos de la historia de git antes de publicar el repo.
+
 ## NO incluidos (grandes — descargar aparte)
 
 ### Censo 2020 — Cuestionario ampliado (microdatos)

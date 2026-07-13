@@ -22,3 +22,7 @@ __pycache__/
 # Posteriores pesados de la escalera
 outputs/*.nc
 outputs/*.log
+
+# ACLED: sus términos de uso prohíben redistribuir datos (crudos o transformados)
+acled_agregado_admin1_lac.xlsx
+vistaG_crimen_estatal.parquet
