@@ -158,7 +158,8 @@ def main():
     ax.text(0.15, 9.9, "El proceso generador en una página — medición y política de la privación municipal",
             fontsize=12.5, color=INK, fontweight="bold")
     ax.text(0.15, 9.55, "vista principal (25 nodos); placas ×N = repetición sobre la familia, no agregación · "
-            "canónico completo: dict/dag_{nodes,edges}.csv y fig_dag_full.png (51 nodos, 92 aristas, acíclico verificado)",
+            "canónico completo: dict/dag_{nodes,edges}.csv y fig_dag_full.png "
+            f"({len(N)} nodos, {len(E)} aristas, acíclico verificado)",
             fontsize=7.6, color=INK2)
     leyenda = [Line2D([0], [0], color=c, ls=ls, lw=max(lw, 1.6), label=n) for (c, ls, lw), n in
                [(STYLE["causal_sustantivo"], "causal sustantivo"),

@@ -1,28 +1,29 @@
-# Desigualdad territorial en dos escalas: geografías disjuntas de la privación municipal en México
+# Desigualdad territorial en dos escalas: geografías débilmente solapadas de la privación municipal en México
 
-**Borrador de trabajo (Paper 2, sustantivo) — 2026-07-12**
+**Borrador de trabajo (Paper 2, sustantivo) — 2026-07-13**
 *Objetivo editorial: World Development (alternativas alineadas: Regional Studies, Journal of Regional Science, World Development Perspectives; español; traducción al enviar).*
-*Versión unificada de referencia: `manuscrito.md`. Paper metodológico compañero: `paper1_metodo.md`.*
 
 ## Resumen
 
 ¿A qué escala opera la desigualdad territorial mexicana, y se acumulan sus dimensiones en los
 mismos lugares? Usando un espacio latente municipal de privación estimado sobre los 17
 indicadores elementales de las dos mediciones oficiales (CONAPO y CONEVAL; método en el paper
-compañero), documentamos tres resultados. Primero, la desigualdad opera en **dos escalas**:
-cerca de la mitad de la dispersión de los indicadores observados ocurre entre estados (Theil
-entre-estados 48–59%), mientras la desigualdad residual — descontadas composición y
-pertenencia estatal — es predominantemente intraestatal (76–87%). Segundo, las **geografías
-residuales rara vez se superponen** (Jaccard 0.05–0.21 entre pares de dimensiones; la triple
-severidad apenas excede la esperada bajo independencia): la acumulación multidimensional vive
-en el nivel bruto, y el pequeño grupo de municipios severos en las tres dimensiones residuales
-tiene un perfil distintivo — pequeño, rural, concentrado en Oaxaca, fuera de la economía de
-remesas e invisible a la tipología espacial estándar. Tercero, existe una **brecha de
-apropiación territorial**: municipios cuya actividad económica es visible desde satélite pero
-cuya mejora social local es menor a la esperada; su predictor dominante es la precariedad
-laboral (β = +0.23, t = 8.6), con las remesas operando en sentido inverso. Una escalera
-predictiva de circunstancias (geografía heredada → demografía → inserción productiva →
-composición indígena) alcanza R² = 0.78 sobre la privación bruta con validación espacialmente
+compañero), documentamos tres resultados. Primero, la desigualdad opera en **dos escalas**: en
+los indicadores observados, el componente interestatal del índice de Theil va de 31% a
+59%<!-- src: desigualdad_theil.csv --> según el indicador (mediana 48%; 50.8% para el factor
+material bruto), con los servicios de red como lo menos federalizado y las líneas de ingreso
+como lo más; la desigualdad residual — descontadas composición y pertenencia estatal — es en
+cambio predominantemente intraestatal (76–87% de la varianza). Segundo, las **severidades
+residuales se solapan débilmente** (Jaccard 0.05–0.21 entre pares de dimensiones; la triple
+severidad apenas excede la esperada bajo independencia): el municipio "peor en todo" es un
+fenómeno del nivel observado, mientras que en el espacio residual — ortogonal en parte por
+construcción — hay poco solapamiento extremo adicional al esperado. Tercero, existe una
+**brecha entre la privación observada y la predicha por lentes espaciales** — que
+interpretamos como brecha de apropiación territorial: municipios cuya actividad económica es
+visible desde satélite pero cuya mejora social local es menor a la esperada; su predictor
+dominante es la precariedad laboral (β estandarizado = +0.23, t = 8.6), con las remesas
+operando en sentido inverso. Una escalera predictiva de condiciones estructurales e
+inserciones históricas alcanza R² = 0.78 sobre la privación bruta con validación espacialmente
 bloqueada. Cinco análisis externos independientes — homicidios, luces nocturnas, exposición
 criminal documentada (incluida la coerción política histórica), transición INSABI e incidencia
 fiscal — delimitan distintas implicaciones y límites del espacio estimado; donde se
@@ -39,18 +40,19 @@ desventajas; remesas; luces nocturnas; México.
 El debate aplicado sobre la medición municipal de la pobreza en México suele plantearse como
 una elección entre índices. Este paper toma otra ruta: dado un espacio latente de privación
 que integra los indicadores elementales de ambas agencias oficiales — con efectos de método y
-de estado explícitos, estimado con la maquinaria descrita en el paper compañero
-(`paper1_metodo.md`) — pregunta por la **estructura** de la desigualdad territorial: a qué
-escala opera, si sus dimensiones se acumulan en los mismos municipios, y si la actividad
-económica visible implica inclusión social local. Las tres respuestas (dos escalas; geografías
-disjuntas; brecha de apropiación) tienen implicaciones directas de focalización que ningún
-índice sintético único puede satisfacer simultáneamente.
+de estado explícitos, estimado con la maquinaria descrita en el paper compañero — pregunta por
+la **estructura** de la desigualdad territorial: a qué escala opera, si sus dimensiones se
+acumulan en los mismos municipios, y si la actividad económica visible implica inclusión
+social local. Las tres respuestas (dos escalas; severidades débilmente solapadas; brecha de
+apropiación) tienen implicaciones directas de focalización que ningún índice sintético único
+puede satisfacer simultáneamente.
 
-El artículo procede así: §2 sitúa la contribución; §3 resume datos y espacio latente (Figura
-1) y define los objetos distributivos; §4 presenta la partición en dos escalas (Tabla 1); §5
-las geografías disjuntas y su acumulación (Tabla 2, Figura 2); §6 la brecha de apropiación
-(Figura 3); §7 la capa de circunstancias (Tabla 3); §8 los cinco análisis externos (Figuras
-4–6); §9 discute implicaciones de política. El apéndice documenta las baterías de robustez.
+El artículo procede así: §2 sitúa la contribución; §3 resume datos y espacio latente y define
+los objetos distributivos; §4 presenta la partición en dos escalas (Figura 1, Tabla 1); §5 el
+solapamiento de severidades residuales (Tabla 2, Figura 2); §6 la brecha de apropiación
+(Figura 3); §7 la capa de condiciones estructurales (Tabla 3); §8 los cinco análisis externos
+(Figuras 4 y 5); §9 discute implicaciones de política. El apéndice documenta las baterías de
+robustez y la regresión completa de la brecha.
 
 ## 2. Antecedentes y trabajo relacionado
 
@@ -58,39 +60,42 @@ Tres literaturas convergen aquí. Primera, la descomposición de la desigualdad:
 índice de Theil (1979) porque es el miembro canónico de la familia aditivamente descomponible
 que Shorrocks (1984) axiomatizó — la partición exacta entre/dentro de estados que la tesis de
 dos escalas necesita, y que un Gini no ofrece sin residuo. La pregunta de a qué escala vive la
-desigualdad territorial — ¿entre regiones o dentro de ellas? — tiene tradición larga en
-economía regional; nuestra contribución es hacerla *condicional*: separar la partición del
-nivel bruto (lo que las agencias publican) de la partición del residuo (lo que queda tras
+desigualdad territorial tiene tradición larga en economía regional — para México, la agenda de
+convergencia regional estancada tras la apertura comercial es el trasfondo macro — y la
+crítica metodológica a los índices territoriales oficiales es también mexicana: Cortés &
+Vargas (2011) mostraron que el índice de marginación confunde constructo con método. Nuestra
+contribución es hacer la pregunta de escala *condicional*: separar la partición del nivel
+bruto (lo que las agencias publican) de la partición del residuo (lo que queda tras
 composición y pertenencia estatal), y mostrar que son objetos distributivos distintos con
 respuestas distintas.
 
 Segunda, la acumulación de desventajas: la literatura de pobreza multidimensional (Alkire &
 Foster 2011, la base de la medición mexicana) presupone que las carencias se cuentan porque se
-acumulan. Medimos directamente cuánto se acumulan las severidades — en el nivel bruto y en el
-residual — con razones observado/esperado bajo independencia e índices de Jaccard, y
-encontramos que la acumulación es un fenómeno del nivel, no del residuo.
+acumulan. Medimos directamente cuánto se acumulan las severidades — en el nivel observado y en
+el residual — con razones observado/esperado bajo independencia e índices de Jaccard.
 
 Tercera, los sensores remotos como lente de desarrollo: las luces nocturnas como proxy de
 actividad económica (Henderson, Storeygard & Weil 2012; con la advertencia de ruido de Chen &
 Nordhaus 2011) y el salto predictivo con imágenes de Jean et al. (2016), que citamos como
 referente sin benchmark propio de imágenes. Nuestro uso es inverso al habitual: no predecimos
 pobreza con luces para sustituir encuestas, sino que usamos la *discordancia* entre lo que la
-luz predice y lo que la medición social observa como objeto de estudio — la brecha de
-apropiación.
+luz predice y lo que la medición social observa como objeto de estudio.
 
 ## 3. Datos y espacio latente (resumen)
 
 Diecisiete indicadores elementales (9 CONAPO, 8 CONEVAL) para 2,469 municipios en 2020 (2,455
-en la matriz del modelo), modelados en escala logit estandarizada dentro de un GLLVM
-marginalizado con K=3 factores, efectos de método como contrastes inter-agencia, covariables
-de composición y efectos estado×indicador; convergencia verificada sobre el subespacio de
-covarianza (R̂ ΛΛᵀ = 1.003). Los ejes canónicos: 1 material-infraestructural, 2 educativo, 3
-vivienda+ingreso contra servicios de red. Cada municipio tiene media y desviación posterior
-por eje; toda inferencia de este paper hereda esa incertidumbre — los modelos municipales van
-ponderados por 1/sd², y la clasificación individual solo es sustantiva en 42/55/14% de los
-municipios según el eje (`certeza_canonica.csv`). El detalle metodológico — incluida la
-advertencia de que las comparaciones de ingreso intra-estado arrastran la firma del método
-SAE — está en el paper 1.
+en la matriz del modelo; el paper compañero documenta el descarte), modelados en escala logit
+estandarizada dentro de un modelo de variables latentes marginalizado con tres factores,
+efectos de método sobre direcciones de dependencia metodológica predefinidas, covariables de
+composición (demografía, mezcla sectorial, remesas) y efectos estado×indicador; convergencia
+verificada sobre el subespacio de covarianza (R̂ ΛΛᵀ = 1.003). Los ejes canónicos: 1
+material-infraestructural, 2 educativo, 3 el contraste de vivienda e ingreso contra servicios
+de red. Cada municipio tiene media y desviación posterior por eje; toda inferencia de este
+paper hereda esa incertidumbre — los modelos municipales van ponderados por el inverso de la
+varianza posterior, y la clasificación individual solo es sustantiva en 42/55/14% de los
+municipios según el eje<!-- src: certeza_canonica.csv -->. El detalle metodológico — incluida
+la advertencia de que las comparaciones de ingreso intra-estado arrastran la firma del método
+de imputación — está en el paper compañero.
 
 Dos objetos distributivos, definidos con precisión porque §4 los contrasta: el **nivel bruto**
 (los indicadores publicados, o el factor material estimado sin covariables ni efectos
@@ -99,50 +104,71 @@ descuentan composición y pertenencia estatal). Ambos son legítimos; responden 
 distintas — "¿dónde está la privación?" versus "¿dónde hay más privación de la que la
 estructura del municipio explica?".
 
-![Figura 1. El espacio latente condicional: media posterior (arriba) y desviación posterior (abajo) de los tres ejes canónicos, modelo marginalizado convergido (R̂ ΛΛᵀ = 1.003).](../figures/04_diagnostico_mapas/fig_mapas_canonicos.png)
-
 ## 4. La desigualdad opera en dos escalas
 
-En los indicadores observados, cerca de la mitad de la dispersión ponderada por población
-ocurre entre estados (descomposición aditiva entre/dentro del índice de Theil — Theil 1979;
-Shorrocks 1984 —: 48–59% entre estados según indicador; 50.8% para el factor material bruto),
-con las líneas de ingreso como lo más federalizado (58.8%) — consistente a la vez con la
-calibración estatal del método de imputación y con el federalismo fiscal. Una vez descontadas
-composición y pertenencia estatal, la desigualdad de los ejes canónicos es predominantemente
-intraestatal (76–87%; Tabla 1). No hay contradicción: los efectos estatales absorben la parte
-interestatal antes de estimar el residuo — son dos objetos distributivos distintos y los
-reportamos como tales.
+La Figura 1 muestra la partición entre/dentro de estados para ambos objetos — con una
+advertencia de lectura que la tabla hereda: los indicadores observados se descomponen con el
+índice de Theil y los ejes con descomposición de varianza; son funcionales distintos y **sus
+niveles porcentuales no se comparan entre paneles**, solo el patrón dentro de cada uno.
 
-**Tabla 1. La partición entre/dentro de estados, por objeto distributivo** (fuente:
-`desigualdad_theil.csv`; ponderación poblacional; indicadores por Theil, ejes por
-descomposición de varianza).
+![Figura 1. Las dos escalas: componente interestatal por indicador observado (panel a, descomposición de Theil, ponderación poblacional) y por factor bruto/ejes condicionales (panel b, descomposición de varianza). Los funcionales difieren entre paneles y sus niveles no son comparables; el patrón sí: el nivel observado es ~mitad interestatal, el residuo condicional es predominantemente intraestatal.](../figures/09_desigualdad/fig_theil_escalas.png)
+
+En los indicadores observados, el componente interestatal va de 31.1% (sin electricidad) a
+58.8% (línea de pobreza por ingreso), con mediana 47.8% y 50.8% para el factor material bruto
+ponderado por población<!-- src: desigualdad_theil.csv -->. El orden no es aleatorio: **lo
+menos federalizado son los servicios de red** (electricidad, drenaje, dispersión: 31–35%) —
+infraestructura cuya variación es local — **y lo más federalizado son las dos líneas de
+ingreso** (55.9–58.8%), consistente a la vez con la calibración estatal del método de
+imputación de ingreso (la firma documentada en el paper compañero) y con el federalismo
+fiscal. Una vez descontadas composición y pertenencia estatal, la desigualdad de los ejes
+canónicos es predominantemente intraestatal (76–87% de la varianza; Tabla 1). No hay
+contradicción: los efectos estatales absorben la parte interestatal antes de estimar el
+residuo — son dos objetos distributivos distintos y los reportamos como tales.
+
+**Tabla 1. La partición entre/dentro de estados, en dos paneles no comparables entre sí**
+(panel A: descomposición de Theil, ponderación poblacional; panel B: descomposición de
+varianza).<!-- src: desigualdad_theil.csv -->
+
+*Panel A — indicadores observados (Theil)*
+
+| Indicador | % entre estados | % dentro |
+|---|---|---|
+| línea de pobreza por ingreso | 58.8 | 41.2 |
+| piso de tierra | 54.7 | 45.3 |
+| analfabetismo | 53.1 | 46.9 |
+| sin agua entubada | 40.4 | 59.6 |
+| sin electricidad | 31.1 | 68.9 |
+
+*Panel B — factor bruto y ejes condicionales (varianza)*
 
 | Objeto | % entre estados | % dentro |
 |---|---|---|
-| analfabetismo (observado) | 53.1 | 46.9 |
-| piso de tierra (observado) | 54.7 | 45.3 |
-| línea de pobreza por ingreso (observado) | 58.8 | 41.2 |
-| sin agua entubada (observado) | 40.4 | 59.6 |
 | factor material bruto | 50.8 | 49.2 |
-| eje 1 condicional (material) | 23.6 | 76.4 |
-| eje 2 condicional (educativo) | 13.8 | 86.2 |
-| eje 3 condicional (viv+ing vs redes) | 13.1 | 86.9 |
+| eje material (condicional) | 23.6 | 76.4 |
+| eje educativo (condicional) | 13.8 | 86.2 |
+| eje vivienda+ingreso vs redes (condicional) | 13.1 | 86.9 |
 
 La partición bruta es robusta al esquema de ponderación; la residual depende del objeto
-distributivo: el componente interestatal del eje 1 casi desaparece al equiponderar municipios
-(23.6% → 0.5%), es decir, es un fenómeno de personas concentradas en municipios grandes, no de
-territorios (`desigualdad_robustez.csv`, bloque A).
+distributivo: el componente interestatal del eje material casi desaparece al equiponderar
+municipios (23.6% → 0.5%), es decir, es un fenómeno de personas concentradas en municipios
+grandes, no de territorios.<!-- src: desigualdad_robustez.csv bloque A -->
 
-## 5. Las geografías residuales rara vez se superponen
+## 5. Las severidades residuales se solapan débilmente
 
-Definiendo severidad como el cuartil superior de cada eje canónico, la proporción de
-municipios severos en las tres dimensiones (2.0%) apenas excede la esperada bajo independencia
-(1.6%; Tabla 2): la acumulación multidimensional — el municipio "peor en todo" — es un
-fenómeno del nivel bruto, donde domina el factor general; el espacio residual selecciona
-territorios distintos por dimensión (Figura 2).
+Una advertencia algebraica antes del resultado: los ejes canónicos provienen de una
+eigen-descomposición, así que son **ortogonales por construcción** — sus extremos tienden a
+solaparse poco por álgebra, no solo por geografía. La pregunta empírica bien planteada no es
+"¿se solapan?" sino "¿se solapan *más de lo esperado bajo independencia*?". La respuesta:
+apenas. Definiendo severidad como el cuartil superior de cada eje, la proporción de municipios
+severos en las tres dimensiones (2.0%) apenas excede la esperada bajo independencia (1.6%), y
+la razón observado/esperado roza 1 en todos los umbrales (Tabla 2). En el nivel observado, en
+cambio, el factor general domina y el municipio "peor en todo" sí existe. La lectura
+calibrada: **hay poco solapamiento extremo adicional al esperado en el espacio residual** — la
+concentración multidimensional es un fenómeno del nivel, y las geografías residuales de cada
+dimensión son, en lo esencial, distintas (Figura 2).
 
 **Tabla 2. Acumulación residual: razón observado/esperado de triple severidad y solapamiento
-por pares** (fuente: `desigualdad_robustez.csv`, bloque C; IC bootstrap de 1,000 réplicas).
+por pares** (IC bootstrap de 1,000 réplicas).<!-- src: desigualdad_robustez.csv bloque C -->
 
 | Umbral de severidad | obs/esp 3 severas | IC95 | Jaccard (1,2) | Jaccard (1,3) | Jaccard (2,3) |
 |---|---|---|---|---|---|
@@ -151,110 +177,122 @@ por pares** (fuente: `desigualdad_robustez.csv`, bloque C; IC bootstrap de 1,000
 | q80 | 1.43 | [0.97, 1.99] | 0.13 | 0.15 | 0.10 |
 | q90 | 2.44 | [0.80, 4.48] | 0.06 | 0.10 | 0.05 |
 
-![Figura 2. Acumulación multidimensional de privación residual: municipios por número de dimensiones severas simultáneas (cuartil superior de cada eje canónico condicional). Las geografías se solapan débilmente; 48 municipios (2.0%) son severos en las tres.](../figures/04_diagnostico_mapas/fig_acumulacion.png)
+![Figura 2. Acumulación multidimensional de privación residual: municipios por número de dimensiones severas simultáneas (cuartil superior de cada eje canónico condicional). Las geografías severas se solapan débilmente; 48 municipios (2.0%) son severos en las tres.](../figures/04_diagnostico_mapas/fig_acumulacion.png)
 
-**Los 48 municipios severos en las tres dimensiones residuales** (fuente: `veta_48_triple.csv`)
-tienen un perfil nítido — 24 de 48 en Oaxaca, pequeños (mediana 5,430 habitantes contra
-~13,550 nacional), 79% rurales (≥50% de su población en localidades pequeñas; 75% con umbral
-≥80%), fuera de la economía de remesas (mediana 17 vs 92 USD per cápita), con *menos*
-presencia criminal documentada que el promedio (27% vs 48%) y casi todos invisibles para la
-tipología espacial de discordancia (44/48 no significativos en LISA). No son los municipios
-prominentes de la pobreza mexicana ni los de la violencia, y ninguna de las lentes usuales —
-índice agregado, mapa de clusters, registro de eventos — los selecciona. Dos cautelas: el
-grupo es pequeño y sensible al umbral (la razón observado/esperado roza 1), y el eje 3 tiene
-la certeza municipal más baja del sistema — se reporta como caracterización descriptiva, no
-como estrato estadísticamente robusto.
+Como viñeta descriptiva — no como estrato estadísticamente robusto: los **48 municipios
+severos en las tres dimensiones residuales** tienen un perfil nítido<!-- src: veta_48_triple.csv -->
+— 24 de 48 en Oaxaca, pequeños (mediana 5,430 habitantes contra ~13,550 nacional), 79% rurales
+(≥50% de su población en localidades pequeñas; 75% con umbral ≥80%), fuera de la economía de
+remesas (mediana 17 vs 92 USD per cápita), con *menos* presencia criminal documentada que el
+promedio (27% vs 48%) y casi todos no significativos para la tipología espacial de
+discordancia (44/48). No son los municipios prominentes de la pobreza mexicana ni los de la
+violencia. Las dos cautelas que esta viñeta hereda: el grupo es pequeño y sensible al umbral
+(la razón observado/esperado roza 1), y el tercer eje — vivienda+ingreso contra redes — tiene
+la certeza municipal más baja del sistema.
 
-## 6. La brecha de apropiación territorial
+## 6. La brecha entre privación observada y predicha por lentes espaciales
 
-**Construcción.** La brecha se define en tres pasos, todos fuera de muestra: (i) se predice la
-privación material bruta de cada municipio a partir de sus luces nocturnas — el proxy de
-actividad de Henderson, Storeygard & Weil 2012 y Chen & Nordhaus 2011 — y su geografía física
-(gradient boosting, validación cruzada agrupada por estado: la predicción de cada municipio
-proviene de un modelo que no vio ningún municipio de su estado); (ii) la brecha es el residual
-z_observado − z_predicho de esa predicción out-of-fold (`satelital_oof.parquet`, modelo de
-lentes M3); (iii) la brecha se regresa sobre candidatos a explicación con efectos fijos
-estatales y errores robustos HC1. Brecha positiva = el municipio está *peor* socialmente de lo
-que su actividad visible sugiere.
+**El objeto formal primero.** Se construye en tres pasos, todos fuera de muestra: (i) se
+predice la privación material bruta de cada municipio a partir de sus luces nocturnas — el
+proxy de actividad de Henderson, Storeygard & Weil (2012) y Chen & Nordhaus (2011) — y su
+geografía física (gradient boosting, validación cruzada agrupada por estado: la predicción de
+cada municipio proviene de un modelo que no vio ningún municipio de su estado); (ii) la
+*brecha* es el residual entre privación observada y predicha de esa predicción out-of-fold;
+(iii) la brecha se regresa sobre candidatos a explicación con efectos fijos estatales y
+errores robustos HC1, con covariables estandarizadas (los β son estandarizados). Brecha
+positiva = el municipio está *peor* socialmente de lo que su actividad visible sugiere. Dos
+límites declarados: el modelo base ya incluye luz *y* geografía física (no es un contraste
+puro luz-vs-bienestar), y la brecha usa la predicción puntual out-of-fold sin propagar su
+incertidumbre.
 
-**Resultado.** El predictor dominante es la precariedad laboral (β = +0.23, t = 8.6) —
-municipios donde la actividad existe y brilla pero la inserción es por cuenta propia, jornal o
-sin pago — seguido del tamaño urbano (+0.15; pobreza urbana invisible a la luz agregada); las
-remesas operan en sentido contrario (−0.07, t = −5.3): mejoran vivienda e ingreso sin huella
-productiva local equivalente (β de signo opuesto por factor: −0.034 material, +0.027
-monetario). El contraste descriptivo entre colas es elocuente: la mediana de remesas en los
-municipios "mejor de lo esperado por sus luces" es ~20 veces (IC95 14–28) la de los
-subestimados (Figura 3). **La actividad territorial no implica inclusión laboral local.**
+**Resultado.** El predictor dominante es la precariedad laboral (β = +0.23, t = 8.6)<!-- src:
+desigualdad_brecha_apropiacion.csv --> — municipios donde la actividad existe y brilla pero la
+inserción es por cuenta propia, jornal o sin pago — seguido del tamaño urbano (+0.15; pobreza
+urbana invisible a la luz agregada); las remesas operan en sentido contrario (−0.07, t = −5.3):
+mejoran vivienda e ingreso sin huella productiva local equivalente (β de signo opuesto por
+factor: −0.034 material, +0.027 monetario<!-- src: satelital_remesas_reg.csv -->). La
+regresión completa está en el apéndice E. El contraste descriptivo entre colas es elocuente:
+la mediana de remesas en los municipios "mejor de lo esperado por sus luces" es ~20 veces
+(IC95 bootstrap 14–28) la de los subestimados (Figura 3). La interpretación que proponemos —
+**brecha de apropiación territorial**: la actividad visible no implica inclusión laboral
+local — es una lectura de esos coeficientes, no una identificación causal.
 
-![Figura 3. La brecha de apropiación: privación observada contra predicha por las lentes satelitales (out-of-fold, bloqueado por estado), con las colas etiquetadas. Los municipios "mejor de lo esperado" son territorios de remesas; los "peor de lo esperado", de precariedad laboral.](../figures/07_satelital/fig_satelital_discordancia.png)
+![Figura 3. La brecha entre privación observada y predicha por las lentes satelitales (out-of-fold, bloqueado por estado), con las colas etiquetadas. Los municipios "mejor de lo esperado" son territorios de remesas; los "peor de lo esperado", de precariedad laboral.](../figures/07_satelital/fig_satelital_discordancia.png)
 
-## 7. Circunstancias y oportunidades
+## 7. Condiciones estructurales e inserciones históricas
 
-¿Cuánta de la privación bruta es predecible desde circunstancias estructurales que ningún
-municipio elige? Una escalera incremental (gradient boosting, validación cruzada bloqueada por
-estado — GroupKFold de 5 pliegues sobre los 32 estados —; Tabla 3) responde: geografía heredada
-0.27; + composición demográfica 0.47; + inserción productiva 0.73; + composición indígena
-(ITER 2020: % hablantes de lengua indígena y % monolingüe, columnas verificadas en el
-diccionario oficial; `vistaD_indigena.parquet`) **0.78**. La contribución condicional indígena
-es moderada (Δ +0.04) no porque la dimensión étnica no importe, sino porque su huella ya viaja
-dentro de la geografía, la demografía y la inserción — la desventaja indígena en México está
-estructuralmente *incorporada* en las circunstancias territoriales. Formulación disciplinada:
-predecible-desde, no causado-por.
+¿Cuánta de la privación bruta es predecible desde las condiciones de partida del territorio?
+Una escalera incremental (gradient boosting, validación cruzada bloqueada por estado, cinco
+pliegues de estados completos; Tabla 3) responde: la geografía heredada — rugosidad,
+elevación, aislamiento, dispersión — predice 0.27; sumando composición demográfica, 0.47;
+sumando la inserción productiva — que a diferencia de la geografía es un outcome histórico e
+institucional, no una condición predeterminada —, 0.73; sumando composición indígena (%
+hablantes de lengua indígena y % monolingüe, del censo), **0.78**.<!-- src:
+desigualdad_robustez.csv capa3 --> La composición indígena aporta poca señal predictiva
+*incremental* una vez incluidas geografía, demografía e inserción — compatible con una fuerte
+superposición entre la dimensión étnica y las demás condiciones territoriales. Dos disciplinas
+de lectura: el incremento de cada bloque depende del orden de entrada (sin una descomposición
+tipo Shapley, los Δ no son atribuciones), y toda la escalera es predecible-desde, no
+causado-por.
 
-**Tabla 3. Escalera predictiva de circunstancias → privación material bruta** (fuente:
-`desigualdad_robustez.csv`, bloque capa3; R² de validación cruzada bloqueada por estado).
+**Tabla 3. Escalera predictiva → privación material bruta** (R² de validación cruzada
+bloqueada por estado).<!-- src: desigualdad_robustez.csv capa3 -->
 
-| Bloque de circunstancias | R²cv | Δ |
+| Bloque | R²cv | Δ (según orden de entrada) |
 |---|---|---|
 | geografía heredada (rugosidad, elevación, aislamiento, dispersión) | 0.265 | +0.265 |
 | + composición demográfica | 0.469 | +0.204 |
 | + inserción productiva (sectores, precariedad) | 0.732 | +0.263 |
 | + composición indígena | **0.775** | +0.042 |
-| + pertenencia estatal (KFold simple — NO bloqueado, no comparable) | 0.891 | — |
+| + pertenencia estatal (validación NO bloqueada, no comparable) | 0.891 | — |
 
 ## 8. Cinco análisis externos
 
 Cinco análisis externos independientes, ninguno usado en la construcción del espacio latente,
 delimitan distintas implicaciones y límites del espacio estimado:
 
-1. **Homicidios** (100 mil registros oficiales; orden estable en siete variantes de
-   sensibilidad; `sensibilidad_homicidios.csv`, Figura 4): la privación explica ~23% de la
-   violencia municipal, casi todo vía composición; el residual no aporta. La señal es un
-   contraste intra-familia casi ortogonal al nivel — un índice sintético único no puede
-   focalizar privación y anticipar violencia a la vez.
-2. **Luces nocturnas** (`reporte_satelital.md`): ven la privación material bruta (R² 0.41–0.43
-   con bloqueo espacial no administrativo; sin transferencia entre macroregiones) y nada del
-   residual (24/24 R² < 0). La relación log-lineal canónica de esta literatura (y el salto
-   predictivo de Jean et al. 2016, aquí solo como referente, sin benchmark propio de imágenes)
-   se resuelve a escala municipal en regímenes: piso oscuro (14% de municipios), umbrales
-   regionales con IC disjuntos, sin saturación urbana.
-3. **Exposición criminal documentada** (OCVED, 65 mil eventos diario-municipales con actores;
-   `reporte_crimen_desigualdad.md`, Figura 5): predice violencia — más bajo competencia entre
-   organizaciones que bajo monopolio (+0.130 vs +0.083) — y es esencialmente ortogonal a la
-   privación residual (resultado negativo documentado con robustez). La **coerción política
-   histórica** (ataques a autoridades y candidatos 2007–2012; Trejo & Ley 2021, datos de
-   réplica doi:10.7910/DVN/VIXNNE; `g5_coercion.csv`) refuerza el patrón como exposición
-   rezagada: no se identifica una ruta robusta hacia la privación residual de 2020 (el
-   indicador de coerción es nulo en los ejes 1 y 2, y en el eje 3 el indicador y la tasa se
-   contradicen — colinealidad entre ambas medidas, no una ruta), mientras que sí predice
-   homicidio 2019–21 una década después (+0.26, t = 2.7) y ocurrió donde competencia criminal
-   y fragmentación política interactúan. Advertencia permanente: los datos de eventos observan
-   O = R × D — presencia documentada no es control territorial y la ausencia de registro no es
-   ausencia real; todos los modelos llevan proxies de observabilidad.
+1. **Homicidios** (103 mil registros oficiales 2019–2021; orden estable en siete variantes de
+   sensibilidad; Figura 4): la privación explica ~23% de la violencia municipal, casi todo vía
+   composición; el residual no aporta.<!-- src: validacion_homicidios.csv,
+   sensibilidad_homicidios.csv --> La señal es un contraste intra-familia casi ortogonal al
+   nivel — un índice sintético único no puede focalizar privación y anticipar violencia a la
+   vez.
+2. **Luces nocturnas**: ven la privación material bruta (R² 0.41–0.43 con bloqueo espacial no
+   administrativo; sin transferencia entre macroregiones) y esencialmente nada del residual —
+   ninguna combinación modelo×factor×estimador supera R²cv = 0.03 sobre los ejes condicionales
+   y 26 de 30 son negativas.<!-- src: satelital_modelos.csv --> La relación log-lineal
+   canónica de esta literatura (y el salto predictivo de Jean et al. 2016, aquí solo como
+   referente, sin benchmark propio de imágenes) se resuelve a escala municipal en regímenes:
+   piso oscuro (14% de municipios), umbrales regionales con IC disjuntos, sin saturación
+   urbana.
+3. **Exposición criminal documentada** (65 mil eventos diario-municipales con actores,
+   2000–2018): predice violencia — más bajo competencia entre organizaciones que bajo
+   monopolio (+0.130, t = 4.0, vs +0.083, t = 3.1)<!-- src: g_monopolio_competencia.csv --> —
+   y es esencialmente ortogonal a la privación residual (resultado negativo documentado con
+   robustez). La **coerción política histórica** (ataques a autoridades y candidatos
+   2007–2012; Trejo & Ley 2021) refuerza el patrón como exposición rezagada: no se identifica
+   una ruta robusta hacia la privación residual de 2020 (el indicador de coerción es nulo en
+   los ejes material y educativo, y en el tercero indicador y tasa se contradicen —
+   colinealidad entre ambas medidas, no una ruta), mientras que sí predice homicidio 2019–21
+   una década después (+0.26, t = 2.7)<!-- src: g5_coercion.csv --> y ocurrió donde
+   competencia criminal y fragmentación política interactúan. Advertencia permanente: los
+   datos de eventos observan lo real filtrado por la detección — presencia documentada no es
+   control territorial y la ausencia de registro no es ausencia real; todos los modelos llevan
+   proxies de observabilidad.
 4. **Transición INSABI**: la varianza estatal máxima del sistema corresponde a la carencia de
    salud, con correlación +0.61 con la dependencia estatal del Seguro Popular/INSABI (máxima
-   de los 17 indicadores; placebos 0.18–0.49) — el componente estatal captura política real,
-   no solo ruido de medición.
-5. **Incidencia fiscal** (Figura 6): a igual privación y tamaño, los municipios "más
-   marginados que pobres" reciben +15.8% de transferencias del Ramo 33 per cápita (t = 4.3) —
-   el piso heredado de la fórmula antigua de masa carencial sigue pagando al perfil de
+   de los 17 indicadores; placebos 0.18–0.49)<!-- src: validacion_insabi.csv --> — el
+   componente estatal contiene señal compatible con política institucional real, no únicamente
+   con calibración; la correlación es sugestiva, no una identificación.
+5. **Incidencia fiscal** (Figura 5): a igual privación y tamaño, los municipios "más
+   marginados que pobres" reciben +15.8% de transferencias del Ramo 33 per cápita (t = 4.3) y
+   los "más pobres que marginados" −3.0% (n.s.)<!-- src: gap_aportaciones_regimen.csv --> — el
+   piso heredado de la fórmula antigua de masa carencial sigue pagando al perfil de
    marginación. **La vara con que se mide un municipio vale dinero.**
 
 ![Figura 4. Validación por homicidios: R² de validación cruzada de cada conjunto predictor sobre la tasa municipal de homicidios 2019–2021. La composición carga la señal; el residuo latente no aporta.](../figures/06_validacion_homicidios/fig_validacion_homicidios.png)
 
-![Figura 5. Exposición criminal documentada (OCVED 2000–2018): presencia y competencia entre organizaciones por municipio. Presencia documentada ≠ control territorial (O = R × D).](../figures/08_crimen/fig_g_presencia_competencia.png)
-
-![Figura 6. Dos varas y dinero: a igual nivel de privación y tamaño, los municipios "más marginados que pobres" (AA) reciben +15.8% de Ramo 33 per cápita respecto de lo esperado (t = 4.3) y los "más pobres que marginados" (BB) −3.0% (n.s.); la brecha AA–BB que anota la figura es ≈19% (`gap_aportaciones_regimen.csv`).](../figures/05_dag/fig_dos_varas_dinero.png)
+![Figura 5. Dos varas y dinero: a igual nivel de privación y tamaño, los municipios "más marginados que pobres" (AA) reciben +15.8% de Ramo 33 per cápita respecto de lo esperado (t = 4.3) y los "más pobres que marginados" (BB) −3.0% (n.s.); la brecha AA–BB que anota la figura es ≈19%.](../figures/05_dag/fig_dos_varas_dinero.png)
 
 Las cinco piezas no validan la misma cantidad, y conviene decirlo: homicidios prueba la
 ortogonalidad del residuo con la violencia; el satélite, la visibilidad de lo material bruto;
@@ -269,12 +307,12 @@ llegan por caminos independientes, y ahí la convergencia importa más que cada 
 1. **Focalización**: focalizar a los más pobres en todo (nivel bruto) y focalizar los peores
    residuos por dimensión produce listas casi disjuntas. La elección entre ambas es una
    decisión distributiva que hoy se toma implícitamente al elegir índice; conviene tomarla
-   explícitamente. Los 48 triple-severos residuales — invisibles a todas las lentes usuales:
-   los olvidados de los olvidados — son el caso de prueba concreto.
+   explícitamente. Los 48 municipios triple-severos del residuo — que ninguna de las lentes
+   usuales selecciona — ilustran lo que la segunda lista vería y la primera no.
 2. **La vara que paga**: mientras la fórmula de transferencias conserve pisos heredados de la
    masa carencial, el perfil de marginación seguirá cobrando prima sobre la pobreza vigente a
    igual privación. El diseño de fórmulas debería auditarse contra la circularidad
-   medición→dinero→fenómeno (agenda del paper 3, con montos anuales).
+   medición→dinero→fenómeno (agenda del tercer paper, con montos anuales).
 3. **Ninguna lente única**: índice, satélite y registro de eventos ven dimensiones distintas y
    fallan en lugares distintos (la luz no ve pobreza urbana; los eventos no ven donde no hay
    prensa; el índice no ve el residuo). La política que use una sola lente hereda sus puntos
@@ -282,31 +320,47 @@ llegan por caminos independientes, y ahí la convergencia importa más que cada 
 
 ## Apéndice: baterías de robustez
 
-**A. Ponderación de la partición** (`desigualdad_robustez.csv`, bloque A): el % entre estados
-del nivel bruto es estable a población / municipio equiponderado / exclusión de municipios
-<1,000 habitantes (50.8 / 47.6 / 50.7 para el factor material); el del eje 1 condicional cae
-de 23.6 a 0.5 al equiponderar — la sensibilidad es del objeto distributivo, y se declara.
+**A. Ponderación de la partición.** El % entre estados del nivel bruto es estable a población
+/ municipio equiponderado / exclusión de municipios <1,000 habitantes (50.8 / 47.6 / 50.7 para
+el factor material); el del eje material condicional cae de 23.6 a 0.5 al equiponderar — la
+sensibilidad es del objeto distributivo, y se declara.<!-- src: desigualdad_robustez.csv A -->
 
 **B. Umbrales de acumulación** (Tabla 2): la razón observado/esperado y los Jaccard se
 reportan en q70/q75/q80/q90 con bootstrap; ninguna configuración lleva la triple severidad
 lejos de la independencia.
 
-**C. Homicidios, siete variantes** (`sensibilidad_homicidios.csv`): ventana temporal,
-ocurrencia vs residencia, suavizamiento EB, transformación, exclusión de metrópolis, pesos y
-pliegues — el orden de los conjuntos predictores (composición > bruto > residuo ≈ 0) es
-estable en las siete; la diferencia composición−residuo es positiva en todos los pliegues de
-todas las variantes (+0.06 a +0.21).
+**C. Homicidios, siete variantes**: ventana temporal, ocurrencia vs residencia, suavizamiento,
+transformación, exclusión de metrópolis, pesos y pliegues — el orden de los conjuntos
+predictores (composición > bruto > residuo ≈ 0) es estable en las siete; la diferencia
+composición−residuo es positiva en todos los pliegues de todas las variantes
+(0.06–0.21).<!-- src: sensibilidad_homicidios.csv -->
 
-**D. Crimen: escenarios de cobertura** (`g_robustez.csv`, `g5_coercion.csv`): los negativos de
-privación sobreviven sin proxies de observabilidad, sin las 5 metrópolis y en las tres
-ventanas (2015–18, Calderón 2006–11, 2018); el contraste competencia>monopolio sobre homicidio
-sobrevive las ventanas y se atenúa sin la descomposición por número de organizaciones; la
-coerción histórica mantiene su asociación con homicidio (t 2.4–2.7) en todos los escenarios.
+**D. Crimen: escenarios de cobertura**: los negativos de privación sobreviven sin proxies de
+observabilidad, sin las 5 metrópolis y en las tres ventanas de exposición; el contraste
+competencia>monopolio sobre homicidio sobrevive las tres ventanas (competencia 0.130 / 0.152 /
+0.237 vs monopolio 0.083 / 0.021 / 0.110)<!-- src: g_monopolio_competencia.csv --> y se
+atenúa sin la descomposición por número de organizaciones; la coerción histórica mantiene su
+asociación con homicidio (t 2.4–2.7) en todos los escenarios.<!-- src: g5_coercion.csv -->
 
-**E. Brecha: definición del residual**: la regresión de la brecha es estable a estimar sobre
-el factor bruto rung-1 o los 6 indicadores observados directamente; el signo opuesto de
-remesas por factor (−0.034 material / +0.027 monetario) replica con ambos outcomes
-(`reporte_satelital.md`).
+**E. La regresión completa de la brecha** (β estandarizados, efectos fijos estatales, errores
+HC1; el cuerpo reporta los tres coeficientes interpretados).<!-- src:
+desigualdad_brecha_apropiacion.csv -->
+
+| Regresor | β | t |
+|---|---|---|
+| empleo precario (%) | +0.226 | 8.6 |
+| población en localidades pequeñas (%) | +0.140 | 9.1 |
+| log población | +0.151 | 8.3 |
+| rugosidad del terreno | −0.135 | −9.1 |
+| sector secundario (%) | +0.085 | 8.1 |
+| remesas per cápita (log) | −0.072 | −5.3 |
+| sector primario (%) | −0.024 | −2.0 |
+| sector terciario (%) | −0.023 | −1.6 |
+| accesibilidad (km) | −0.010 | −0.8 |
+
+La regresión es además estable a estimar sobre el factor bruto o sobre los seis indicadores
+observados directamente; el signo opuesto de remesas por factor (−0.034 material / +0.027
+monetario) replica con ambos outcomes.
 
 ## Referencias
 
@@ -314,6 +368,8 @@ remesas por factor (−0.034 material / +0.027 monetario) replica con ambos outc
   of Public Economics*. doi:10.1016/j.jpubeco.2010.11.006
 - Chen, X. & Nordhaus, W.D. (2011). Using luminosity data as a proxy for economic statistics.
   *PNAS*. doi:10.1073/pnas.1017031108
+- Cortés, F. & Vargas, D. (2011). Marginación en México a través del tiempo: a propósito del
+  índice de Conapo. *Estudios Sociológicos* 29(86): 361–387. doi:10.24201/es.2011v29n86.228
 - Henderson, J.V., Storeygard, A. & Weil, D.N. (2012). Measuring Economic Growth from Outer
   Space. *American Economic Review*. doi:10.1257/aer.102.2.994
 - Jean, N., Burke, M., Xie, M., Davis, W.M., Lobell, D.B. & Ermon, S. (2016). Combining
@@ -328,16 +384,15 @@ remesas por factor (−0.034 material / +0.027 monetario) replica con ambos outc
   51(1): 203–229. doi:10.1017/S0007123418000637. Datos de réplica: Harvard Dataverse,
   doi:10.7910/DVN/VIXNNE.
 
-(La literatura sustantiva mexicana — Cortés, Boltvinik, Lustig, Székely, CEEY, CONEVAL,
-CONAPO — se integrará desde `reporte_literatura.md` en la versión de envío.)
+(La literatura sustantiva mexicana restante — Boltvinik, Lustig, Székely, CEEY — se completará
+con DOI verificado al preparar la versión de envío.)
 
----
+## Disponibilidad de datos y código
 
-*Materiales: todos los resultados, figuras y tablas son reproducibles desde el repositorio
-(scripts numerados por capítulo, manifiesto de figuras y manifiesto de datos crudos con URLs y
-advertencias de cada fuente; sincronía prosa-dato verificada por `check_dag_conteos.py` y
-`check_captions.py`). Cifras citadas y sus outputs: Theil y robustez (`desigualdad_theil.csv`,
-`desigualdad_robustez.csv`), acumulación (`fig_acumulacion.png`), triple-severos
-(`veta_48_triple.csv`), brecha (`satelital_oof.parquet`, `reporte_satelital.md`), crimen y
-coerción (`reporte_crimen_desigualdad.md`, `g5_coercion.csv`), fiscal
-(`gap_aportaciones_regimen.csv`, `reporte_dgp_dag.md` §4b).*
+Todos los datos derivados, el código de estimación y los scripts que generan cada figura y
+tabla de este artículo están disponibles en el repositorio del proyecto [URL / DOI Zenodo al
+depositar], junto con el manifiesto de datos crudos (URLs y advertencias de cada fuente
+oficial) y las verificaciones automáticas de consistencia entre texto y resultados. La tabla
+suplementaria S1 mapea cada figura y tabla a su script generador y a su archivo de resultados.
+Material suplementario adicional: los mapas de medias y desviaciones posteriores de los tres
+ejes canónicos, y el mapa de presencia y competencia criminal documentada.

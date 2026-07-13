@@ -20,7 +20,7 @@
 | γ_estado estabiliza la descomposición | p2 vs p3: ELPD +5,410±135; un eje rota 53°; Δσ²ⱼ∝shareⱼ | por qué el peldaño 3 es canónico | `comparacion_marginal_2v3.csv` |
 | Medición vs federalismo | ΔSAE−directos −0.034 [−0.060,−0.007]; ΔSAE−censal +0.027 [+0.007,+0.049] | acota la lectura de γ_s | `tabla_medicion_federalismo.csv` |
 | `car_salud` = huella INSABI | corr +0.61 con dependencia SP/INSABI (máx de 17); placebos 0.18–0.49 | interpretación institucional puntual | `validacion_insabi.csv` |
-| Luces ven lo material bruto | R² 0.41–0.43 (bloqueos); nada ve el residual (24/24 <0) | alcance de las lentes | `reporte_satelital.md` |
+| Luces ven lo material bruto | R² 0.41–0.43 (bloqueos); del residual esencialmente nada (26/30 <0; máx 0.03) | alcance de las lentes | `reporte_satelital.md` |
 | Curva luz-privación con regímenes | canónico 0.005; piso oscuro 14%; umbral sur vs norte IC disjuntos | límite del modelo simple | corte B |
 | La vara vale dinero | AA +15.8% Ramo 33 pc (t=4.3) vs BB −3% | política/circularidad FAIS | `reporte_dgp_dag.md` §4b |
 | Homicidios: el residual no predice violencia | orden estable en 7 variantes; dif +0.06–0.21 todos los folds | validación externa 1 | `sensibilidad_homicidios.csv` |

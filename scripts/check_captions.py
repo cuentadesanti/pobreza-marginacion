@@ -77,9 +77,27 @@ def bindings():
     th = pd.read_csv(os.path.join(OUT, "desigualdad_theil.csv")).set_index("medida")
     for med, lab in [("z_material_bruto", "material bruto"), ("lp_ingreso_pct", "líneas"),
                      ("analf_pct", "analf"), ("piso_tierra_pct", "piso"),
-                     ("sin_agua_pct", "agua"), ("eje1", "eje1"), ("eje2", "eje2"),
-                     ("eje3", "eje3")]:
+                     ("sin_agua_pct", "agua"), ("sin_electr_pct", "electricidad"),
+                     ("eje1", "eje1"), ("eje2", "eje2"), ("eje3", "eje3")]:
         B.append((P2, f"theil % entre {lab}", th.loc[med, "pct_entre"], "{:.1f}"))
+    # F1: los extremos del rango citado en prosa deben ser los del CSV
+    ind = pd.read_csv(os.path.join(OUT, "desigualdad_theil.csv"))
+    ind = ind[ind.tipo == "theil_indicador"]
+    B.append((P2, "theil rango min", ind.pct_entre.min(), "{:.1f}"))
+    B.append((P2, "theil rango max", ind.pct_entre.max(), "{:.1f}"))
+
+    # F2: el conteo de combinaciones residuales negativas, computado del CSV
+    sm = pd.read_csv(os.path.join(OUT, "satelital_modelos.csv"))
+    r3 = sm[sm.outcome == "rung3"]
+    B.append((P2, "combinaciones residuales negativas", float((r3.r2cv_media < 0).sum()),
+              "{:.0f} de 30"))
+
+    # F3: monopolio vs competencia desde su CSV (ventana principal + variantes ap. D)
+    mc = pd.read_csv(os.path.join(OUT, "g_monopolio_competencia.csv")).set_index(
+        ["ventana", "var"])
+    for vent in ["reciente_1518", "calderon_0611", "w2018"]:
+        for var in ["monopolio_N1", "competencia_N2plus"]:
+            B.append((P2, f"{var} {vent}", mc.loc[(vent, var), "beta"], "{:.3f}"))
 
     rob = pd.read_csv(os.path.join(OUT, "desigualdad_robustez.csv"))
     ac = rob[(rob.bloque == "C_acumulacion")].set_index("esquema")

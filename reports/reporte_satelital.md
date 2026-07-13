@@ -81,7 +81,7 @@ ruralidad + log población, errores HC1 (`satelital_remesas_reg.csv`):
 
 ## Lo que nada ve: el residual del peldaño 3
 
-24/24 combinaciones con R²<0 sobre los z condicionales, y ΔR² de las lentes ≈ 0. Tras remover
+26/30 combinaciones con R²<0 sobre los z condicionales (las 4 restantes, todas ridge, ≤0.03), y ΔR² de las lentes ≈ 0. Tras remover
 composición observable y efectos estatales, **las lentes espaciales no recuperan la desviación
 municipal residual** — el residuo del GLLVM no es una versión escondida de urbanización o
 brillo. Interpretación por factor, sin sobre-extender: en salud apunta a lo institucional

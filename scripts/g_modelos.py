@@ -133,12 +133,25 @@ def main():
     RB = pd.DataFrame(rob); RB.to_csv(os.path.join(OUT, "g_robustez.csv"), index=False)
     print("\nRobustez (β_C vs β_P):")
     print(RB.to_string(index=False))
-    # N=1 vs N>=2 (steer 7.6)
-    n1 = (d[f"N_orgs_{W}"] == 1).astype(float); n2p = (d[f"N_orgs_{W}"] >= 2).astype(float)
-    r = wls_fe(d.log_hom_eb.values, np.column_stack([n1.values, n2p.values, Xfull]), d.ent,
-               labels=["N1", "N2plus"] + XCOLS + OBS)
-    print(f"\n7.6 homicidio: monopolio N=1 {r['N1'][0]:+.3f} (t{r['N1'][2]:+.1f}) vs "
-          f"competencia N≥2 {r['N2plus'][0]:+.3f} (t{r['N2plus'][2]:+.1f})")
+    # N=1 vs N>=2 (steer 7.6) — persistido a CSV (F3 de la revisión del paper 2:
+    # el número titular no puede vivir solo en stdout)
+    mc = []
+    for Wv in (W, "calderon_0611", "w2018"):
+        n1 = (d[f"N_orgs_{Wv}"] == 1).astype(float)
+        n2p = (d[f"N_orgs_{Wv}"] >= 2).astype(float)
+        r = wls_fe(d.log_hom_eb.values, np.column_stack([n1.values, n2p.values, Xfull]),
+                   d.ent, labels=["N1", "N2plus"] + XCOLS + OBS)
+        for k, nom in [("N1", "monopolio_N1"), ("N2plus", "competencia_N2plus")]:
+            b, se, t = r[k]
+            mc.append(dict(ventana=Wv, var=nom, beta=round(b, 3), se=round(se, 3),
+                           t=round(t, 1)))
+    MC = pd.DataFrame(mc)
+    MC.to_csv(os.path.join(OUT, "g_monopolio_competencia.csv"), index=False)
+    p = MC[MC.ventana == W].set_index("var")
+    print(f"\n7.6 homicidio: monopolio N=1 {p.loc['monopolio_N1', 'beta']:+.3f} "
+          f"(t{p.loc['monopolio_N1', 't']:+.1f}) vs competencia N≥2 "
+          f"{p.loc['competencia_N2plus', 'beta']:+.3f} (t{p.loc['competencia_N2plus', 't']:+.1f})"
+          f" | g_monopolio_competencia.csv")
 
 
 if __name__ == "__main__":
