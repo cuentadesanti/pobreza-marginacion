@@ -25,6 +25,13 @@ verificaciones automáticas de consistencia texto↔resultados son `scripts/chec
 | Contrastes SAE/federalismo (§5) | `scripts/tabla_medicion_federalismo.py` | `outputs/tabla_medicion_federalismo.csv` |
 | INSABI (§7) | `scripts/validacion_insabi.py` | `outputs/validacion_insabi.csv` |
 | Geografía de la incertidumbre (§6) | `scripts/vetas_finales.py` | `outputs/veta_ignorancia.csv` |
+| Moran residual marginalizados (Tabla 1) | `scripts/moran_marginal.py` | `outputs/moran_marginal.csv` |
+| Selección formal de K (§4.6) | `scripts/gllvm_marginal.py --k {2,4}` + análisis en el propio script | `outputs/seleccion_k.csv`, `outputs/k{2,4}_run.log` |
+| Correlación de las líneas (§5.2) | `scripts/corr_lineas.py` | `outputs/corr_lineas.csv` |
+| IC de Fisher estatales (§7) | `scripts/ic_fisher.py` | `outputs/ic_fisher_estatales.csv` |
+| Apéndice E (sensibilidad v_b + σ_γ) | `scripts/sensibilidad_vb.py`, `scripts/gllvm_marginal.py --hyper` | `outputs/sensibilidad_vb.csv`, `outputs/hyper_sigma_gamma.csv`, `figures/02_escalera_gllvm/fig_sensibilidad_vb.png` |
+| Apéndice F (simulación de identificación) | `scripts/sim_identificacion.py` | `outputs/sim_identificacion.csv`, `outputs/sim_identificacion_resumen.csv`, `figures/02_escalera_gllvm/fig_sim_identificacion.png` |
+| Capa de error de medición SAE (§5.3) | `scripts/build_sae_se.py`, `scripts/gllvm_marginal_hetero.py` | `data/processed/sae_se_municipal.parquet`, `outputs/nivel1_hetero_resumen.csv` |
 
 ## Paper 2 — Desigualdad territorial en dos escalas
 

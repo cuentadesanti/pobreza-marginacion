@@ -1,0 +1,4 @@
+correlacion,r,ci_lo,ci_hi,n
+PC1_log_pibe_pc,0.42,0.08,0.67,32
+PC1_gasto_pibe,-0.48,-0.71,-0.16,32
+salud_dependencia_sp,0.606,0.33,0.79,32

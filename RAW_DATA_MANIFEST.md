@@ -111,3 +111,18 @@ Los insumos grandes NO se versionan en el repo (tamaño). Descárgalos a `data/r
   `outputs/fism_2013_municipal.parquet`, `outputs/fism_fortamun_2020_municipal.parquet`.
   Test: `scripts/b_fism_descomposicion.py`. Deflactor INPC 2013→2020 = 1.3095 (promedios
   anuales 82.036 → 107.430, base 2ªq jul-2018).
+
+### Revisión mayor Paper 1 — error de medición SAE (§5.3, 2026-07-13)
+- **Precisión municipal de los indicadores SAE de CONEVAL**. ⚠ CONEVAL NO publica el error
+  estándar continuo por municipio: lo publicado son **bandas de precisión** (CV ≤ 15% / 15–25%
+  / > 25%) por municipio × indicador × subgrupo, en "Pobreza por grupos poblacionales a escala
+  municipal 2010-2020" (oct. 2022):
+  `https://www.coneval.org.mx/Medicion/Documents/Pobreza_municipal/2020/gpos_pob/Indicadores_pobreza_grupos_municipal.zip`
+  (verificación de puntuales: `.../2020/Concentrado_indicadores_de_pobreza_2020.zip`). Crudos
+  FUERA del repo en `~/Downloads/coneval_municipal_2020/`.
+- Constructor `scripts/build_sae_se.py`: CV representativo por banda (0.10/0.20/0.35),
+  combinación rural/urbano por pesos de población, cap de factibilidad se ≤ min(p,100−p)/1.96,
+  propagación a escala logit por método delta → `data/processed/sae_se_municipal.parquet`.
+  El error estándar SAE correlaciona **negativamente** con log población (−0.56 en la línea de
+  ingreso): es menor en municipios grandes. Modelo heteroscedástico:
+  `scripts/gllvm_marginal_hetero.py` → `outputs/nivel1_hetero_resumen.csv`.

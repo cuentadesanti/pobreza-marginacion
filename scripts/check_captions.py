@@ -74,6 +74,75 @@ def bindings():
     B += [(P1, "ignorancia corr log_pob eje1", ig.loc["eje1", "log_pob"], "{:.3f}"),
           (P1, "ignorancia corr ruralidad eje1", ig.loc["eje1", "loc_peq_pct"], "{:.3f}")]
 
+    # Revisión mayor P1 — Bloque 2.1: Moran residual de los marginalizados (Tabla 1)
+    mm = pd.read_csv(os.path.join(OUT, "moran_marginal.csv")).set_index("modelo")
+    B += [(P1, "moran marginal M-γ", mm.loc["marginal_rung2", "moran_I_mean"], "{:.3f}"),
+          (P1, "moran marginal M+γ", mm.loc["marginal_rung3", "moran_I_mean"], "{:.3f}")]
+
+    # Bloque 2.3: selección formal de K (§4.6)
+    sk = pd.read_csv(os.path.join(OUT, "seleccion_k.csv")).set_index("modelo")
+    B += [(P1, "K2 delta elpd", sk.loc["K=2", "elpd_diff"], "{:.0f}"),
+          (P1, "K2 dse", sk.loc["K=2", "dse"], "{:.0f}"),
+          (P1, "K4 delta elpd", sk.loc["K=3", "elpd_diff"], "{:.0f}"),
+          (P1, "K4 dse", sk.loc["K=3", "dse"], "{:.0f}"),
+          (P1, "K rhat subespacio K2", sk.loc["rhat_subespacio_K2", "elpd_loo"], "{:.3f}"),
+          (P1, "K eje4 share", sk.loc["eigen4_share_pct", "elpd_loo"], "{:.1f}"),
+          (P1, "K ángulo 1", sk.loc["angulo_principal_1_grados", "elpd_loo"], "{:.1f}"),
+          (P1, "K ángulo 2", sk.loc["angulo_principal_2_grados", "elpd_loo"], "{:.1f}"),
+          (P1, "K ángulo 3", sk.loc["angulo_principal_3_grados", "elpd_loo"], "{:.1f}"),
+          (P1, "K eje4 lp", sk.loc["eje4_carga_lp_ingreso", "elpd_loo"], "{:.2f}"),
+          (P1, "K eje4 lp_ext", sk.loc["eje4_carga_lp_ingreso_ext", "elpd_loo"], "{:.2f}"),
+          (P1, "K eje4 ing2sm", sk.loc["eje4_carga_ing_2sm", "elpd_loo"], "{:.2f}"),
+          (P1, "K eje4 alim", sk.loc["eje4_carga_car_alim", "elpd_loo"], "{:.2f}"),
+          (P1, "K eje4 viv", sk.loc["eje4_carga_car_vivienda", "elpd_loo"], "{:.2f}")]
+
+    # Bloque 1: el hecho mecánico de las dos líneas (§5.2)
+    cl = pd.read_csv(os.path.join(OUT, "corr_lineas.csv")).set_index("medida")
+    B += [(P1, "corr líneas logit-z", cl.loc["corr_logitz_lineas", "valor"], "{:.3f}"),
+          (P1, "corr líneas parcial", cl.loc["corr_parcial_dado_resto", "valor"], "{:.3f}")]
+
+    # Bloque 2.2 + 4.2: sensibilidad v_b (apéndice E) e hiperprior sigma_gamma
+    vb = pd.read_csv(os.path.join(OUT, "sensibilidad_vb.csv"))
+    vb = vb[vb.bloque == "líneas (SAE)"].set_index("escenario")
+    B += [(P1, "vb base líneas", vb.loc["base {+pesos originales}", "mload_mean"], "{:.2f}"),
+          (P1, "vb educ+20 líneas", vb.loc["educ +20% censal", "mload_mean"], "{:.2f}"),
+          (P1, "vb asim 0.8:1", vb.loc["líneas asimétrica 0.8:1", "mload_mean"], "{:.2f}"),
+          (P1, "vb asim 1:0.8", vb.loc["líneas asimétrica 1:0.8", "mload_mean"], "{:.2f}"),
+          (P1, "vb asim 1:0.8 lo", vb.loc["líneas asimétrica 1:0.8", "mload_lo"], "{:.2f}"),
+          (P1, "vb asim 1:0.8 hi", vb.loc["líneas asimétrica 1:0.8", "mload_hi"], "{:.2f}")]
+    hy = pd.read_csv(os.path.join(OUT, "hyper_sigma_gamma.csv")).set_index("medida")
+    B += [(P1, "hyper sigma_gamma", hy.loc["sigma_gamma_post_media", "valor"], "{:.2f}"),
+          (P1, "hyper share PC1", hy.loc["share_PC1_hyper_pct", "valor"], "{:.1f}"),
+          (P1, "hyper corr gamma", hy.loc["corr_gamma_hyper_base", "valor"], "{:.3f}"),
+          (P1, "hyper rhat", hy.loc["rhat_LamLamT_hyper", "valor"], "{:.2f}")]
+
+    # Nivel 1: capa de error de medición heteroscedástica (§5.3)
+    h1 = pd.read_csv(os.path.join(OUT, "nivel1_hetero_resumen.csv")).set_index("métrica")
+    B += [(P1, "hetero mload líneas", h1.loc["mload_lineas_sae", "hetero"], "{:.3f}"),
+          (P1, "hetero mload líneas homo", h1.loc["mload_lineas_sae", "homo"], "{:.3f}"),
+          (P1, "hetero corr logpob eje1 homo", h1.loc["corr_sd_logpob_eje1", "homo"], "{:.2f}"),
+          (P1, "hetero corr logpob eje1", h1.loc["corr_sd_logpob_eje1", "hetero"], "{:.2f}"),
+          (P1, "hetero corr logpob eje3 homo", h1.loc["corr_sd_logpob_eje3", "homo"], "{:.2f}"),
+          (P1, "hetero corr logpob eje3", h1.loc["corr_sd_logpob_eje3", "hetero"], "{:.2f}"),
+          (P1, "hetero rhat", h1.loc["rhat_max_monitoreado", "hetero"], "{:.3f}")]
+
+    # Nivel 2: simulación de identificación (apéndice F)
+    sim = pd.read_csv(os.path.join(OUT, "sim_identificacion_resumen.csv"))
+    simi = sim.set_index(["escenario", "variante"])
+    B += [(P1, "sim d_referee libre", simi.loc[("d_referee", "libre"), "lambda_hat"], "{:.3f}"),
+          (P1, "sim c_gen3_fit2 λ", simi.loc[("c_gen3_fit2", "libre"), "lambda_hat"], "{:.2f}"),
+          (P1, "sim c_gen3_fit2 frob", simi.loc[("c_gen3_fit2", "libre"), "frob"], "{:.2f}"),
+          (P1, "sim a_lam03 λ", simi.loc[("a_lam03", "libre"), "lambda_hat"], "{:.3f}"),
+          (P1, "sim a_lam06 λ", simi.loc[("a_lam06", "libre"), "lambda_hat"], "{:.3f}")]
+    d_lib = sim[(sim.escenario == "d_referee") & (sim.variante == "libre")]
+
+    # Bloque 4.1: IC de Fisher en correlaciones estatales (§7)
+    fi = pd.read_csv(os.path.join(OUT, "ic_fisher_estatales.csv")).set_index("correlacion")
+    for nombre, key in [("pibe", "PC1_log_pibe_pc"), ("gasto", "PC1_gasto_pibe"),
+                        ("salud", "salud_dependencia_sp")]:
+        B += [(P1, f"IC fisher {nombre} lo", fi.loc[key, "ci_lo"], "{:.2f}"),
+              (P1, f"IC fisher {nombre} hi", fi.loc[key, "ci_hi"], "{:.2f}")]
+
     th = pd.read_csv(os.path.join(OUT, "desigualdad_theil.csv")).set_index("medida")
     for med, lab in [("z_material_bruto", "material bruto"), ("lp_ingreso_pct", "líneas"),
                      ("analf_pct", "analf"), ("piso_tierra_pct", "piso"),

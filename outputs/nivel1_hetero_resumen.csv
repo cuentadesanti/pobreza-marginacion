@@ -1,0 +1,16 @@
+métrica,homo,hetero,sd_homo,sd_hetero
+mload_educacion,0.012,0.011,0.009,0.008
+mload_lineas_sae,0.574,0.572,0.01,0.01
+mload_viv_servicios,0.029,0.039,0.021,0.027
+corr_sd_logpob_eje1,0.336,0.31,,
+corr_sd_locpeq_eje1,-0.27,-0.247,,
+sd_media_eje1,0.344,0.347,,
+corr_sd_logpob_eje2,0.335,0.327,,
+corr_sd_locpeq_eje2,-0.272,-0.263,,
+sd_media_eje2,0.258,0.253,,
+corr_sd_logpob_eje3,0.255,0.193,,
+corr_sd_locpeq_eje3,-0.206,-0.146,,
+sd_media_eje3,0.583,0.59,,
+elpd_loo,-24106.1,-25029.5,,
+rhat_max_monitoreado,,1.004,,
+divergencias,,0.0,,

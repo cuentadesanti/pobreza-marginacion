@@ -1,0 +1,8 @@
+medida,valor
+sigma_gamma_post_media,0.3818
+sigma_gamma_post_sd,0.0128
+share_PC1_hyper_pct,40.6639
+share_PC1_base_pct,41.7991
+corr_gamma_hyper_base,0.9984
+rhat_LamLamT_hyper,1.53
+elpd_hyper,-24232.0

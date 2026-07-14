@@ -102,16 +102,16 @@ def main():
     fig, axes = plt.subplots(1, 2, figsize=(15, 5.8), facecolor=ps.SURF)
     for ax, col, ttl in [
         (axes[0], "m_lineas_sae",
-         "(a) FIRMA SAE-EBPH (carga 0.58 — el método dominante)\nrojo: las dos líneas de ingreso se desvían JUNTAS hacia más pobreza\nde lo que el factor monetario explica"),
+         "(a) HUELLA DEL MODELO DE INGRESO en áreas pequeñas (carga 0.58 — el componente dominante)\nrojo: las dos líneas de ingreso se desvían JUNTAS hacia más pobreza\nde lo que el factor monetario explica"),
         (axes[1], "m_viv_servicios",
-         "(b) Desacuerdo VIVIENDA-SERVICIOS CONAPO vs CONEVAL (carga 0.135 sin estado;\n0.029 con estado: es un fenómeno ESTATAL — huella de calibración)")]:
+         "(b) Desacuerdo VIVIENDA-SERVICIOS CONAPO vs CONEVAL (carga 0.135 sin estado;\n0.029 con estado: es un fenómeno ESTATAL — huella de la calibración estatal)")]:
         ax.set_axis_off()
         v = g[col]
         norm = TwoSlopeNorm(vcenter=0, vmin=np.nanquantile(v, .01), vmax=np.nanquantile(v, .99))
         g.plot(column=col, cmap=ps.DIV, norm=norm, ax=ax, linewidth=0.04, edgecolor=ps.BASE,
                missing_kwds={"color": "#f5f5f2"}, legend=True, legend_kwds={"shrink": 0.55})
         ax.set_title(ttl, fontsize=9.5, loc="left", color=ps.INK)
-    fig.suptitle("La anatomía del método: la firma SAE domina, el desacuerdo de vivienda es estatal, y en educación las agencias casi acuerdan",
+    fig.suptitle("La anatomía del método: la huella del modelo de ingreso domina, el desacuerdo de vivienda es huella de calibración estatal, y en educación las agencias casi acuerdan",
                  fontsize=12, color=ps.INK, x=0.02, ha="left")
     fig.tight_layout(rect=[0, 0, 1, 0.94])
     fig.savefig(os.path.join(FIG, "fig_desacuerdo_agencias.png"), dpi=150)

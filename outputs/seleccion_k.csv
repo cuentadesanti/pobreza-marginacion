@@ -1,0 +1,15 @@
+modelo,rank,elpd_loo,elpd_diff,dse,weight
+K=4,0.0,-23775.4337,0.0,0.0,0.9116
+K=3,1.0,-24106.1422,330.7085,31.9991,0.0884
+K=2,2.0,-25112.2628,1336.829,54.5488,0.0
+eigen4_share_pct,,7.2819,,,
+rhat_subespacio_K2,,1.53,,,
+rhat_subespacio_K4,,1.003,,,
+angulo_principal_1_grados,,1.16,,,
+angulo_principal_2_grados,,2.64,,,
+angulo_principal_3_grados,,15.22,,,
+eje4_carga_car_vivienda,,-0.571,,,
+eje4_carga_lp_ingreso,,0.377,,,
+eje4_carga_lp_ingreso_ext,,0.373,,,
+eje4_carga_ing_2sm,,0.326,,,
+eje4_carga_car_alim,,0.309,,,
