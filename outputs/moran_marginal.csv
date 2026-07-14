@@ -1,0 +1,3 @@
+modelo,moran_I_mean,I_analf,I_sin_basica,I_sin_drenaje,I_sin_electr,I_sin_agua,I_piso_tierra,I_hacinam,I_loc_peq,I_ing_2sm,I_rezago_educ,I_car_salud,I_car_segsoc,I_car_vivienda,I_car_servbas,I_car_alim,I_lp_ingreso,I_lp_ingreso_ext
+marginal_rung2,0.3447,0.3903,0.2921,0.5854,0.3882,0.3813,0.5194,0.3287,0.0757,0.3532,0.3094,0.3314,0.3481,0.3532,0.3411,0.3281,0.2551,0.2799
+marginal_rung3,0.2229,0.3066,0.1778,0.365,0.2623,0.2935,0.3026,0.2375,0.0437,0.2411,0.1483,0.1893,0.2397,0.2184,0.2472,0.2472,0.1188,0.1503
