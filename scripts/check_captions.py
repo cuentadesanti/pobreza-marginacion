@@ -219,6 +219,12 @@ def bindings():
     B += [(P2, "B SMD población", cob.loc["log_pob", "smd"], "{:.2f}"),
           (P2, "B SMD ruralidad", cob.loc["loc_peq_pct", "smd"], "{:.2f}"),
           (P2, "B SMD privación", cob.loc["nivel", "smd"], "{:.2f}")]
+
+    # P4 feedback humano — test de sesgo de selección (interacción perfil×pertenencia)
+    p4 = pd.read_csv(os.path.join(OUT, "b_fism_p4_seleccion.csv")).set_index("term")
+    B += [(P2, "P4 interacción t", p4.loc["AA_x_enFISM", "t"], "{:.1f}"),
+          (P2, "P4 efecto extra lo", p4.loc["AA_x_enFISM", "ci_lo_pct"], "{:.1f}"),
+          (P2, "P4 efecto extra hi", p4.loc["AA_x_enFISM", "ci_hi_pct"], "{:.1f}")]
     return B
 
 

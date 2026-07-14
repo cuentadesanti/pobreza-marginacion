@@ -20,15 +20,16 @@ la multimodalidad entre factores, bloques de método y unicidades — se resuelv
 secuencia diagnóstica de tres pasos — verosimilitud integrada, efectos de método sobre
 direcciones de dependencia metodológica predefinidas, y monitoreo del subespacio ΛΛᵀ, la
 cantidad identificada (R̂ = 1.003; tres eigenvalores sustantivos compatibles con rango
-efectivo 3). Segunda, el resultado fundacional, en dos afirmaciones de estatus distinto: las dos
-líneas de pobreza por ingreso — dos umbrales sobre la misma variable de ingreso estimada en
-áreas pequeñas (correlación municipal 0.984) — comparten un componente que los indicadores
-censales directos no tienen (carga 0.58), la huella del modelo de ingreso y de su calibración
-estatal, que parte limpiamente los regímenes espaciales de discordancia; y la evidencia de
-método identificada con claridad es la calibración estatal: el desacuerdo de vivienda-servicios
-— indicadores censales directos, sin modelo de ingreso de por medio — cae de 0.135 a 0.029 al
-condicionar en efectos de estado, mientras que en educación las agencias esencialmente
-acuerdan (0.012). Tercera, epistemológica:
+efectivo 3). Segunda, el resultado fundacional, en dos afirmaciones de estatus distinto. (a) Descriptiva:
+las dos líneas de pobreza por ingreso — dos umbrales sobre la misma variable de ingreso
+estimada en áreas pequeñas (correlación municipal 0.984) — comparten un componente que los
+indicadores censales directos no tienen (carga 0.58) y que parte limpiamente los regímenes
+espaciales de discordancia; si ese componente es método de estimación o estructura del ingreso
+es lo que el cuerpo delimita, no algo que este diseño identifique. (b) Identificada: la única
+ruta de método que el diseño separa con limpieza es la calibración estatal — el desacuerdo de
+vivienda-servicios, indicadores censales directos sin modelo de ingreso de por medio, cae de
+0.135 a 0.029 al condicionar en efectos de estado, mientras que en educación las agencias
+esencialmente acuerdan (0.012). Tercera, epistemológica:
 la incertidumbre posterior municipal es parte del resultado — la clasificación individual es
 sustantiva en 42/55/14% de los municipios según el eje, y esa incertidumbre tiene geografía
 propia: la representación es más precisa en municipios rurales y pequeños que en los urbanos y
@@ -351,6 +352,23 @@ favorece a K=4 y así queda dicho; quien prefiera el criterio predictivo puro de
 cuarto eje que refracciona el bloque monetario-instrumental, no una dimensión nueva de
 privación.
 
+Estos dos resultados —el ELPD favorece a K=4 y la simulación (apéndice F) muestra que
+*sub-extraer* factores es el único escenario que infla la carga de método— podrían leerse
+juntos como una objeción: si el criterio predictivo pide cuatro factores y se estima con tres,
+¿no se está inflando la huella del ingreso por construcción? La respuesta está en *qué* eje se
+omite. El sesgo de sub-extracción de la simulación surge cuando el factor omitido es una
+**dimensión sustantiva de privación** cuya varianza se filtra al bloque de método. El cuarto
+eje de aquí no lo es: su vector — carencia de vivienda −0.57 dominante, contra las dos líneas
+de ingreso (+0.38, +0.37), el ingreso censal (+0.33) y la carencia alimentaria (+0.31) —
+es un contraste *dentro* del propio instrumento de ingreso, la misma dirección donde §5
+localiza la huella del modelo. Omitirlo no relega una dimensión de privación al método:
+concentra señal del bloque monetario sobre esa huella, de modo que si algo hace, refuerza la
+lectura de método en vez de contaminarla. La magnitud, en consecuencia, debe leerse como
+**cota superior condicionada a K=3**: con un cuarto eje que absorbe parte del contraste de
+ingreso, la carga de método no subiría — a lo sumo se redistribuiría dentro de la misma
+familia. El sesgo que la simulación identifica empuja hacia arriba solo si el factor omitido
+fuera sustantivo, y este no lo es.
+
 ## 5. Resultado fundacional: la huella de la maquinaria en la discordancia
 
 ### 5.1 El componente de método por familia
@@ -410,7 +428,10 @@ contraste de vivienda no comparten variable de ingreso alguna. La huella del ing
 como el componente *descriptivamente* dominante — real, municipal, espacialmente estructurado
 — cuya atribución fina entre modelo de áreas pequeñas y estructura del ingreso exige el error
 estándar oficial del SAE como capa de error de medición (§5.3) y, para el reparto
-factor/método en general, el estudio de simulación del apéndice F.
+factor/método en general, el estudio de simulación del apéndice F. Su magnitud (0.57) es,
+además, una **cota superior condicionada a K=3**: como el cuarto eje que el ELPD favorecería
+(§4.6) es un contraste interno del propio bloque de ingreso, extraerlo redistribuiría esa
+carga dentro de la familia monetaria sin aumentarla.
 
 El resultado sigue siendo fundacional en el sentido que importa: reordena qué preguntas
 territoriales son formulables con estas mediciones — las comparaciones de ingreso entre

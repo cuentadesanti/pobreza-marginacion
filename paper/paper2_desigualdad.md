@@ -24,8 +24,8 @@ Tercero, la actividad económica visible desde satélite no se traduce de forma 
 bienestar local: los municipios que están peor de lo que su actividad sugiere se caracterizan
 por precariedad laboral, y los que están mejor, por recepción de remesas. Documentamos
 además que la fórmula de transferencias federales, al conservar como piso una asignación
-calculada con el instrumento de medición anterior, introduce una diferencia distributiva
-entre municipios de igual privación. La implicación central para la política: la focalización depende de qué dimensión de la privación y qué
+calculada con el instrumento de medición anterior, puede introducir una diferencia
+distributiva entre municipios de igual privación. La implicación central para la política: la focalización depende de qué dimensión de la privación y qué
 escala territorial se quiera intervenir, y ningún indicador único resuelve ambas elecciones a
 la vez.
 
@@ -339,8 +339,10 @@ reconoce que los regímenes de medición se agrupan por estado.
 El correlato institucional es conocido en su mecánica y nuevo en la lectura que proponemos.
 La fórmula vigente del fondo de infraestructura social (art. 34 de la Ley de Coordinación
 Fiscal, reforma de diciembre de 2013) asigna a cada unidad lo que recibió en 2013 — el piso —
-más una participación en el crecimiento del fondo que sí se reparte por las carencias de la
-población en pobreza extrema medida por CONEVAL. Ese piso de 2013 se calculó con la fórmula
+más una participación en el crecimiento del fondo que sí se reparte por la fórmula nueva: 0.8
+por las carencias de la población en pobreza extrema medida por CONEVAL y 0.2 por un factor de
+eficiencia (la reducción de esa pobreza en el propio municipio). Ese piso de 2013 se calculó
+con la fórmula
 anterior, construida sobre el Índice Global de Pobreza: cinco necesidades básicas censales
 (ingreso, educación, espacio de la vivienda, drenaje y electricidad-combustible) homólogas a
 los insumos del índice de marginación, y de ahí que el perfil del piso se aproxime a la vara
@@ -358,9 +360,14 @@ FISM municipal<!-- src: b_fism_descomposicion.csv -->.
 
 Para probar el mecanismo descompusimos la transferencia de 2020 en piso más incremento en los
 municipios con FISM rastreable en ambos años en los reportes trimestrales de la SHCP (SRFT):
-249 municipios, 10.1% del modelo — una intersección sesgada hacia municipios más grandes,
-menos rurales y menos privados que el resto (apéndice G, Figura A1), aunque dentro de ella
-la brecha del Ramo 33 agregado se reproduce (+17.2%,
+249 rastreables en ambos años, 224 con controles fiscales completos (FORTAMUN per cápita) y
+210 en la submuestra con transferencias EFIPEM. Esta intersección está sesgada hacia
+municipios más grandes, menos rurales y menos privados que el resto (10.1% del modelo;
+apéndice G, Figura A1), pero el sesgo no distorsiona la lectura: estimado sobre la muestra
+completa, el efecto del perfil "más marginado que pobre" sobre las transferencias no difiere
+entre los municipios rastreables y el resto (interacción perfil×pertenencia t = −0.3, con el
+efecto adicional acotado en [−14.9%, +12.9%])<!-- src: b_fism_p4_seleccion.csv -->; y dentro
+de la submuestra la brecha del Ramo 33 agregado se reproduce (+17.2%,
 t = 2.4)<!-- src: b_fism_descomposicion.csv -->. El resultado apunta en la dirección del
 mecanismo sin cerrarlo: la brecha entre perfiles se concentra en el piso (+600 pesos por
 habitante) y no en el incremento (−149), pero el intervalo de la diferencia cruza cero
@@ -505,9 +512,14 @@ significativos en la tipología espacial de discordancia.<!-- src: veta_48_tripl
 **G. Cobertura del test piso/incremento del FISM (§7.3).** La intersección de municipios con
 FISM rastreable en 2013 y 2020 en el SRFT (249; 10.1% del modelo) difiere sistemáticamente
 del resto: más poblada (SMD +0.59), menos rural (−0.28) y menos privada (−0.36), con Hidalgo
-y Puebla sobrerrepresentados y sin Oaxaca ni Veracruz<!-- src: b_fism_cobertura.csv -->. Este
-sesgo de cobertura es la razón por la que la descomposición del §7.3 se reporta como
-sugestiva y no como evidencia de mecanismo.
+y Puebla sobrerrepresentados y sin Oaxaca ni Veracruz<!-- src: b_fism_cobertura.csv -->. Ese
+sesgo describe *quién* entra en el test, pero no distorsiona *el efecto* medido: sobre la
+muestra completa, el coeficiente del perfil de medición sobre las transferencias es
+estadísticamente el mismo dentro y fuera de la intersección (interacción perfil×pertenencia
+t = −0.3<!-- src: b_fism_p4_seleccion.csv -->). La cautela del §7.3 —reportar la descomposición
+como sugestiva y no como evidencia de mecanismo— proviene por tanto de la potencia (el
+intervalo de la diferencia piso-incremento cruza cero con 224 municipios), no de que la
+submuestra esté midiendo un efecto distinto del de la población.
 
 ![Figura A1. Chequeo de sesgo de cobertura del test piso/incremento: municipios de la intersección SRFT 2013∩2020 contra los excluidos del modelo, en población, ruralidad, privación total, los tres ejes canónicos y composición por estado (diferencias de medias estandarizadas, SMD).](../figures/05_dag/fig_b_cobertura_sesgo.png)
 
